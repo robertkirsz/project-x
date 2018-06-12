@@ -1,0 +1,17 @@
+<svg width="360px" height="129px" viewBox="0 0 360 129" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CONB---Current-Onboarding-Version" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0.1.0-CONB-splash-screen" transform="translate(0.000000, -463.000000)" fill-rule="nonzero">
+            <g id="motife-expanded" transform="translate(0.000000, 463.000000)">
+                <polygon id="Shape" fill="#E41509" points="101 129 0 129 0 0 101 0"></polygon>
+                <polygon id="Shape" fill="#F39100" points="196 52 115 52 115 129 196 129"></polygon>
+                <polygon id="Shape" fill="#CC0915" points="254 30 196 30 196 129 254 129"></polygon>
+                <polygon id="Shape" fill="#20A134" points="360 52 268 52 268 129 360 129"></polygon>
+                <polygon id="Shape" fill="#0976BD" points="268 67 254 67 254 129 268 129"></polygon>
+                <polygon id="Shape" fill="#1F1A15" points="115 67 101 67 101 129 115 129"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

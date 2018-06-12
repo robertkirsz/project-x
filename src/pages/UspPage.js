@@ -24,7 +24,7 @@ export default class UspPage extends Component {
     return (
       <Div flex={1} column itemsCenter pBottom={30}>
         <Header>
-          <SkipButton to="/intro">SKIP</SkipButton>
+          <SkipButton to="/">SKIP</SkipButton>
         </Header>
 
         <Div flex={1}>

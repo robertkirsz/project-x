@@ -1,18 +1,26 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { Div } from 'styled-kit'
 
 import IntroPage from 'pages/IntroPage'
+import UspPage from 'pages/UspPage'
 
-class App extends Component {
+import motife from 'assets/motife-collapsed.png'
+
+export default class App extends Component {
   render() {
     return (
-      <Fragment>
+      <Background flex={1} column>
         <Switch>
           <Route path="/intro" component={IntroPage} />
+          <Route path="/usp" component={UspPage} />
         </Switch>
-      </Fragment>
+      </Background>
     )
   }
 }
 
-export default App
+const Background = Div.extend`
+  background: url(${motife}) center bottom no-repeat;
+  background-size: contain;
+`

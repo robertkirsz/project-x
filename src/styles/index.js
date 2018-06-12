@@ -31,6 +31,7 @@ injectGlobal`
   }
 
   body {
+    font-family: Roboto, sans-serif;
     height: 100%;
     cursor: default;
   }
@@ -44,6 +45,8 @@ injectGlobal`
   * {
     user-select: none;
     cursor: inherit;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
   }
 
   button, a {

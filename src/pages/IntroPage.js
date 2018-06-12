@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import logo from 'assets/logo.svg'
-import motife from 'assets/motife-expanded.svg'
+import motife from 'assets/motife-expanded.png'
 
 export default class IntroPage extends Component {
   goNext = () => this.props.history.push('/usp')

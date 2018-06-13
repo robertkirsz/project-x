@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { Div } from 'styled-kit'
 
+import preloadImages from 'utils/preloadImages'
+
 import TextField from '@material-ui/core/TextField'
 
 import IntroPage from 'pages/IntroPage'
@@ -12,11 +14,16 @@ import motife from 'assets/motife-collapsed.png'
 export default class App extends Component {
   state = {
     password: '',
-    loggedIn: false
+    loggedIn: false,
+    imagesLoaded: false
+  }
+
+  componentDidMount() {
+    preloadImages().then(() => this.setState({ imagesLoaded: true }))
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (!this.state.loggedIn && this.state.password === 'test') {
+    if (!this.state.loggedIn && this.state.imagesLoaded && this.state.password === 'test') {
       setTimeout(() => this.setState({ loggedIn: true }), 500)
     }
   }

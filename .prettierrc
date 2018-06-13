@@ -1,9 +1,9 @@
 {
   "printWidth": 120,
   "tabWidth": 2,
-  "semi": true,
+  "semi": false,
   "singleQuote": true,
-  "trailingComma": "es5",
+  "trailingComma": false,
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
   "parser": "babylon"

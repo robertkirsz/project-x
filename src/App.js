@@ -26,7 +26,7 @@ export default class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (!this.state.loggedIn && this.state.imagesLoaded && this.state.password === 'test') {
-      sessionStorage.setItem('loggedIn', true);
+      sessionStorage.setItem('loggedIn', true)
       setTimeout(() => this.setState({ loggedIn: true }), 500)
     }
   }
@@ -39,7 +39,13 @@ export default class App extends Component {
     return (
       <Background flex={1} column loggedIn={loggedIn}>
         {!loggedIn && (
-          <TextField label="Password" value={password} onChange={this.changePassword} autoFocus style={{ margin: 'auto' }} />
+          <TextField
+            label="Password"
+            value={password}
+            onChange={this.changePassword}
+            autoFocus
+            style={{ margin: 'auto' }}
+          />
         )}
         {loggedIn && (
           <Switch>
@@ -54,6 +60,7 @@ export default class App extends Component {
   }
 }
 
+/* prettier-ignore */
 const Background = Div.extend`
   ${props => props.loggedIn && `
     background: url(${motife}) center bottom no-repeat;

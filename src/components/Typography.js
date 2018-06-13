@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
 
-const withUnit = value => (typeof value === 'number' ? `${value}px` : value);
+const withUnit = value => (typeof value === 'number' ? `${value}px` : value)
 
+/* prettier-ignore */
 const baseStyles = css`
   margin: 0;
   color: #1F1A15;
@@ -29,5 +30,5 @@ export const Link = styled.span`
   letter-spacing: 0;
   cursor: pointer;
   ${baseStyles};
-  color: #F39100;
+  color: #f39100;
 `

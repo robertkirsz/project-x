@@ -8,7 +8,7 @@ export default styled.button`
   font-family: inherit;
   width: 100%;
   height: 52px;
-  background: #CC0915;
+  background: #cc0915;
   border: none;
   outline: none;
   border-radius: 100px;

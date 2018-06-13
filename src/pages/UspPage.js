@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { Div } from 'styled-kit';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { Div } from 'styled-kit'
 
-import { Heading, Paragraph } from 'components/Typography';
-import Button from 'components/Button';
+import { Heading, Paragraph } from 'components/Typography'
+import Button from 'components/Button'
 
-import logo from 'assets/logo.svg';
-import image1 from 'assets/usp-1.png';
-import image2 from 'assets/usp-2.png';
-import image3 from 'assets/usp-3.png';
-import image4 from 'assets/usp-4.png';
+import logo from 'assets/logo.svg'
+import image1 from 'assets/usp-1.png'
+import image2 from 'assets/usp-2.png'
+import image3 from 'assets/usp-3.png'
+import image4 from 'assets/usp-4.png'
 
 export default class UspPage extends Component {
   state = {
-    currentSlide: 0,
-  };
+    currentSlide: 0
+  }
 
-  goToSlide = index => event => this.setState({ currentSlide: index });
+  goToSlide = index => event => this.setState({ currentSlide: index })
 
   render() {
-    const { currentSlide } = this.state;
+    const { currentSlide } = this.state
 
     return (
       <Div flex={1} column itemsCenter padding="0 16px 30px">
@@ -90,10 +90,11 @@ export default class UspPage extends Component {
 
         {currentSlide === 3 && <Button onClick={() => this.props.history.push('/first-login')}>Start now!</Button>}
       </Div>
-    );
+    )
   }
 }
 
+/* prettier-ignore */
 const Header = styled.header`
   flex: none;
   display: flex;
@@ -102,7 +103,7 @@ const Header = styled.header`
   height: 46px;
   background: url(${logo}) center center no-repeat;
   background-size: 78px;
-`;
+`
 
 const SkipButton = styled(Link)`
   font-size: 16px;
@@ -110,7 +111,7 @@ const SkipButton = styled(Link)`
   margin-left: auto;
   text-decoration: none;
   cursor: pointer;
-`;
+`
 
 const Pagination = styled.span`
   display: block;
@@ -118,7 +119,6 @@ const Pagination = styled.span`
   height: 10px;
   border-radius: 50%;
   background: ${props => (props.isActive ? 'black' : 'rgba(0, 0, 0, 0.2)')};
-
   transition: 0.3s;
   cursor: pointer;
-`;
+`

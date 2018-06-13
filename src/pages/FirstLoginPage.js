@@ -1,43 +1,43 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Div } from 'styled-kit';
-import MaskedInput from 'react-text-mask';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Div } from 'styled-kit'
+import MaskedInput from 'react-text-mask'
 
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
+import TextField from '@material-ui/core/TextField'
+import FormControl from '@material-ui/core/FormControl'
+import MenuItem from '@material-ui/core/MenuItem'
 
-import Button from 'components/Button';
-import { Heading, Paragraph, Link } from 'components/Typography';
+import Button from 'components/Button'
+import { Heading, Paragraph, Link } from 'components/Typography'
 
-import logo from 'assets/logo.svg';
+import logo from 'assets/logo.svg'
 
 const TextMaskCustom = props => {
-  const { inputRef, ...other } = props;
+  const { inputRef, ...other } = props
 
   return (
     <MaskedInput {...other} ref={inputRef} mask={[/\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/]} />
-  );
-};
+  )
+}
 
 export default class FirstLoginPage extends Component {
   static propTypes = {
-    children: PropTypes.node,
-  };
+    children: PropTypes.node
+  }
 
   state = {
-    phoneNumber: '',
-  };
+    phoneNumber: ''
+  }
 
   handleChange = name => event => {
     this.setState({
-      [name]: event.target.value,
-    });
-  };
+      [name]: event.target.value
+    })
+  }
 
-  validatePhoneNumber = value => value.length === 11 && value.indexOf('_') === -1;
+  validatePhoneNumber = value => value.length === 11 && value.indexOf('_') === -1
 
   render() {
     return (
@@ -77,6 +77,6 @@ export default class FirstLoginPage extends Component {
           Next step
         </Button>
       </Div>
-    );
+    )
   }
 }

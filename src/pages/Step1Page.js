@@ -20,15 +20,16 @@ export default class Step1Page extends Component {
         </Heading>
 
         <StepStatus>
-          <Step number="1" isDone>Personal data</Step>
-          <Step number="2" isActive>Video identification</Step>
+          <Step number="1" isDone>
+            Personal data
+          </Step>
+          <Step number="2" isActive>
+            Video identification
+          </Step>
           <Step number="3">PIN & password setup</Step>
         </StepStatus>
 
-        <Button
-          onClick={() => this.props.history.push('/404')}
-          style={{ marginTop: 'auto' }}
-        >
+        <Button onClick={() => this.props.history.push('/404')} style={{ marginTop: 'auto' }}>
           Next step
         </Button>
       </Div>

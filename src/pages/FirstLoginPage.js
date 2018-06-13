@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Div } from 'styled-kit'
 import MaskedInput from 'react-text-mask'
 
@@ -23,10 +22,6 @@ const TextMaskCustom = props => {
 }
 
 export default class FirstLoginPage extends Component {
-  static propTypes = {
-    children: PropTypes.node
-  }
-
   state = {
     phoneNumber: ''
   }
@@ -43,9 +38,11 @@ export default class FirstLoginPage extends Component {
     return (
       <Div flex={1} column itemsCenter padding="30px 16px">
         <img src={logo} alt="Logo" width="108" />
+
         <Heading center mTop={13}>
           Hi, Welcome!
         </Heading>
+
         <Paragraph center mTop={12}>
           To start please provide your mobile phone number
         </Paragraph>
@@ -54,12 +51,15 @@ export default class FirstLoginPage extends Component {
           <TextField select label="Country" value="+49" style={{ pointerEvents: 'none' }}>
             <MenuItem value="+49">+49</MenuItem>
           </TextField>
+
           <FormControl style={{ flex: 1 }}>
             <InputLabel htmlFor="phone-number-input">Phone number</InputLabel>
+
             <Input
               id="phone-number-input"
               value={this.state.phoneNumber}
               onChange={this.handleChange('phoneNumber')}
+              type="tel"
               inputComponent={TextMaskCustom}
             />
           </FormControl>
@@ -71,7 +71,7 @@ export default class FirstLoginPage extends Component {
 
         <Button
           disabled={!this.validatePhoneNumber(this.state.phoneNumber)}
-          onClick={() => this.props.history.push('/first-login')}
+          onClick={() => this.props.history.push('/step-1')}
           style={{ marginTop: 26 }}
         >
           Next step

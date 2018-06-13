@@ -10,6 +10,7 @@ import IntroPage from 'pages/IntroPage'
 import UspPage from 'pages/UspPage'
 import FirstLoginPage from 'pages/FirstLoginPage'
 import NotFoundPage from 'pages/NotFoundPage'
+import Step1Page from 'pages/Step1Page'
 
 import motife from 'assets/motife-collapsed.png'
 
@@ -47,11 +48,13 @@ export default class App extends Component {
             style={{ margin: 'auto' }}
           />
         )}
+
         {loggedIn && (
           <Switch>
             <Route path="/" exact component={IntroPage} />
             <Route path="/usp" component={UspPage} />
             <Route path="/first-login" component={FirstLoginPage} />
+            <Route path="/step-1" component={Step1Page} />
             <Route component={NotFoundPage} />
           </Switch>
         )}

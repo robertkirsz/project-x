@@ -14,7 +14,7 @@ import motife from 'assets/motife-collapsed.png'
 export default class App extends Component {
   state = {
     password: '',
-    loggedIn: false,
+    loggedIn: sessionStorage.getItem('loggedIn'),
     imagesLoaded: false
   }
 
@@ -24,6 +24,7 @@ export default class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (!this.state.loggedIn && this.state.imagesLoaded && this.state.password === 'test') {
+      sessionStorage.setItem('loggedIn', true);
       setTimeout(() => this.setState({ loggedIn: true }), 500)
     }
   }

@@ -20,7 +20,7 @@ export default styled.button`
   transition: 0.3s;
 
   &:disabled {
-    opacity: 40px;
+    opacity: 0.4;
     pointer-events: none;
   }
 `

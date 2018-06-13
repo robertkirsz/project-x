@@ -8,6 +8,8 @@ import TextField from '@material-ui/core/TextField'
 
 import IntroPage from 'pages/IntroPage'
 import UspPage from 'pages/UspPage'
+import FirstLoginPage from 'pages/FirstLoginPage'
+import NotFoundPage from 'pages/NotFoundPage'
 
 import motife from 'assets/motife-collapsed.png'
 
@@ -43,6 +45,8 @@ export default class App extends Component {
           <Switch>
             <Route path="/" exact component={IntroPage} />
             <Route path="/usp" component={UspPage} />
+            <Route path="/first-login" component={FirstLoginPage} />
+            <Route component={NotFoundPage} />
           </Switch>
         )}
       </Background>

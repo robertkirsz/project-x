@@ -23,3 +23,11 @@ export const Paragraph = styled.p`
   letter-spacing: 0;
   ${baseStyles};
 `
+
+export const Link = styled.span`
+  font: 300 14px Roboto, sans-serif;
+  letter-spacing: 0;
+  cursor: pointer;
+  ${baseStyles};
+  color: #F39100;
+`

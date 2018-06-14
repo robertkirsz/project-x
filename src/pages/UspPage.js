@@ -5,6 +5,7 @@ import { Div } from 'styled-kit'
 
 import { Heading, Paragraph } from 'components/Typography'
 import Button from 'components/Button'
+import Pagination from 'components/Pagination'
 
 import logo from 'assets/logo.svg'
 import image1 from 'assets/usp-1.png'
@@ -17,7 +18,7 @@ export default class UspPage extends Component {
     currentSlide: 0
   }
 
-  goToSlide = index => event => this.setState({ currentSlide: index })
+  goToSlide = index => this.setState({ currentSlide: index })
 
   render() {
     const { currentSlide } = this.state
@@ -80,13 +81,7 @@ export default class UspPage extends Component {
           )}
         </Div>
 
-        {currentSlide < 3 && (
-          <Div flex="none" itemsCenter listLeft={12}>
-            {[...Array(4)].map((value, index) => (
-              <Pagination key={index} isActive={currentSlide === index} onClick={this.goToSlide(index)} />
-            ))}
-          </Div>
-        )}
+        {currentSlide < 3 && <Pagination size={4} value={currentSlide} onChange={this.goToSlide} />}
 
         {currentSlide === 3 && <Button onClick={() => this.props.history.push('/first-login')}>Start now!</Button>}
       </Div>
@@ -110,15 +105,5 @@ const SkipButton = styled(Link)`
   color: #959595;
   margin-left: auto;
   text-decoration: none;
-  cursor: pointer;
-`
-
-const Pagination = styled.span`
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: ${props => (props.isActive ? 'black' : 'rgba(0, 0, 0, 0.2)')};
-  transition: 0.3s;
   cursor: pointer;
 `

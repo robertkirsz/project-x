@@ -15,7 +15,7 @@ export default ({ value, onChange }) => {
 
   return (
     <Wrapper>
-      <Swiper onSwipeLeft={() => onChange(move(value, 1, 3))} onSwipeRight={() => onChange(move(value, -1, 3))}>
+      <Swiper onSwipeLeft={handleChange(move(value, 1, 3))} onSwipeRight={handleChange(move(value, -1, 3))}>
         <Track offset={value}>
           <Card src={card1} isActive={value === 0} onClick={handleChange(0)} alt="Card 1" />
           <Card src={card2} isActive={value === 1} onClick={handleChange(1)} alt="Card 2" />
@@ -24,7 +24,7 @@ export default ({ value, onChange }) => {
         </Track>
       </Swiper>
 
-      <Pagination size={4} value={value} onChange={this.handleChange} />
+      <Pagination size={4} value={value} onChange={handleChange} />
     </Wrapper>
   )
 }

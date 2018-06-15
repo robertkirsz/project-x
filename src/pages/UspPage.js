@@ -17,11 +17,9 @@ import image3 from 'assets/usp-3.png'
 import image4 from 'assets/usp-4.png'
 
 export default class UspPage extends Component {
-  state = {
-    currentSlide: 0
-  }
+  state = { currentSlide: 0 }
 
-  goToSlide = index => this.setState({ currentSlide: index })
+  goToSlide = index => event => this.setState({ currentSlide: index })
 
   render() {
     const { currentSlide } = this.state
@@ -33,8 +31,8 @@ export default class UspPage extends Component {
         </Header>
 
         <Swiper
-          onSwipeLeft={() => this.goToSlide(move(currentSlide, 1, 3))}
-          onSwipeRight={() => this.goToSlide(move(currentSlide, -1, 3))}
+          onSwipeLeft={this.goToSlide(move(currentSlide, 1, 3))}
+          onSwipeRight={this.goToSlide(move(currentSlide, -1, 3))}
         >
           <Div flex={1}>
             {currentSlide === 0 && (

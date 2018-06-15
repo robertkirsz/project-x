@@ -13,7 +13,20 @@ import PhoneInput from 'components/PhoneInput'
 
 import logo from 'assets/logo.svg'
 
-const paths = ['/step-1/name', '/step-1/card', '/step-1/contact', '/step-1/birth', '/step-1/residential-address']
+const paths = [
+  '/step-1/name',
+  '/step-1/card',
+  '/step-1/contact',
+  '/step-1/birth',
+  '/step-1/residential-address',
+  '/step-1/correspondence-address',
+  '/step-1/tax-information',
+  '/step-1/occupational-status',
+  '/step-1/industry',
+  '/step-1/review',
+  '/step-1/consents',
+  '/step-1/finish'
+]
 
 export default class Step1Page extends Component {
   state = {
@@ -67,9 +80,7 @@ export default class Step1Page extends Component {
       <Div flex={1} column itemsCenter padding="30px 16px">
         <img src={logo} alt="Logo" width="108" />
 
-        <Heading mTop={13}>
-          Get your new mBank account in only 3 simple steps and start with...
-        </Heading>
+        <Heading mTop={13}>Get your new mBank account in only 3 simple steps and start with...</Heading>
 
         <StepStatus>
           <Step number="1" isActive>
@@ -127,9 +138,7 @@ export default class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <Paragraph>We need your contact information</Paragraph>
 
-        <Small mTop={8}>
-          We will use this phone number and email for login
-        </Small>
+        <Small mTop={8}>We will use this phone number and email for login</Small>
 
         <Div column listTop={12} mTop={8}>
           <PhoneInput value={this.state.phoneNumber} onChange={this.handleChange('phoneNumber')} />
@@ -161,11 +170,7 @@ export default class Step1Page extends Component {
 
           <TextField label="Birth place" value={this.state.birthPlace} onChange={this.handleChange('birthPlace')} />
 
-          <TextField
-            label="Citizenship"
-            value={this.state.citizenship}
-            onChange={this.handleChange('citizenship')}
-          />
+          <TextField label="Citizenship" value={this.state.citizenship} onChange={this.handleChange('citizenship')} />
         </Div>
 
         <Button
@@ -214,7 +219,11 @@ export default class Step1Page extends Component {
 
     return (
       <Fragment>
-        {!this.props.match.isExact && <Progress currentStep={currentStep} allSteps={paths.length}>Progress</Progress>}
+        {!this.props.match.isExact && (
+          <Progress currentStep={currentStep} allSteps={paths.length}>
+            Progress
+          </Progress>
+        )}
 
         <Route path="/step-1" exact render={() => intro} />
         <Route path="/step-1/name" render={() => name} />

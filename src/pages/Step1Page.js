@@ -1,29 +1,17 @@
 import React, { Component, Fragment } from 'react'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
-import MaskedInput from 'react-text-mask'
 
-import Input from '@material-ui/core/Input'
-import InputLabel from '@material-ui/core/InputLabel'
 import TextField from '@material-ui/core/TextField'
-import FormControl from '@material-ui/core/FormControl'
-import MenuItem from '@material-ui/core/MenuItem'
 
 import { Heading, Paragraph, Small } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button from 'components/Button'
 import CardCarousel from 'components/CardCarousel'
 import Progress from 'components/Progress'
+import PhoneInput from 'components/PhoneInput'
 
 import logo from 'assets/logo.svg'
-
-const TextMaskCustom = props => {
-  const { inputRef, ...other } = props
-
-  return (
-    <MaskedInput {...other} ref={inputRef} mask={[/\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/]} />
-  )
-}
 
 const paths = ['/step-1/name', '/step-1/card', '/step-1/contact', '/step-1/birth', '/step-1/residential-address']
 
@@ -64,6 +52,7 @@ export default class Step1Page extends Component {
   }
 
   handleChange = name => event => this.setState({ [name]: event.target.value })
+
   change = name => value => this.setState({ [name]: value })
 
   isValid = keys => {
@@ -145,23 +134,7 @@ export default class Step1Page extends Component {
         </Small>
 
         <Div column listTop={12} mTop={8}>
-          <Div itemsCenter listLeft={16} selfStretch mTop={12}>
-            <TextField select label="Country" value="+49" style={{ pointerEvents: 'none' }}>
-              <MenuItem value="+49">+49</MenuItem>
-            </TextField>
-
-            <FormControl style={{ flex: 1 }}>
-              <InputLabel htmlFor="phone-number-input">Phone number</InputLabel>
-
-              <Input
-                id="phone-number-input"
-                value={this.state.phoneNumber}
-                onChange={this.handleChange('phoneNumber')}
-                type="tel"
-                inputComponent={TextMaskCustom}
-              />
-            </FormControl>
-          </Div>
+          <PhoneInput value={this.state.phoneNumber} onChange={this.handleChange('phoneNumber')} />
 
           <TextField
             label="Email address"

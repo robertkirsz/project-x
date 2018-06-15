@@ -61,8 +61,6 @@ export default class Step1Page extends Component {
   }
 
   render() {
-    console.log(this.state)
-
     const currentStep = paths.findIndex(path => path === this.props.location.pathname)
 
     const intro = (
@@ -206,6 +204,14 @@ export default class Step1Page extends Component {
       </Div>
     )
 
+    const correspondenceAddress = residentialAddress
+    const taxInformation = residentialAddress
+    const occupationalStatus = residentialAddress
+    const industry = residentialAddress
+    const review = residentialAddress
+    const consents = residentialAddress
+    const finish = residentialAddress
+
     return (
       <Fragment>
         {!this.props.match.isExact && <Progress currentStep={currentStep} allSteps={paths.length}>Progress</Progress>}
@@ -216,6 +222,13 @@ export default class Step1Page extends Component {
         <Route path="/step-1/contact" render={() => contact} />
         <Route path="/step-1/birth" render={() => birth} />
         <Route path="/step-1/residential-address" render={() => residentialAddress} />
+        <Route path="/step-1/correspondence-address" render={() => correspondenceAddress} />
+        <Route path="/step-1/tax-information" render={() => taxInformation} />
+        <Route path="/step-1/occupational-status" render={() => occupationalStatus} />
+        <Route path="/step-1/industry" render={() => industry} />
+        <Route path="/step-1/review" render={() => review} />
+        <Route path="/step-1/consents" render={() => consents} />
+        <Route path="/step-1/finish" render={() => finish} />
       </Fragment>
     )
   }

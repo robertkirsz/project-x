@@ -21,12 +21,7 @@ export default props => (
     <FormControl style={{ flex: 1 }}>
       <InputLabel htmlFor="phone-number-input">Phone number</InputLabel>
 
-      <Input
-        id="phone-number-input"
-        type="tel"
-        inputComponent={TextMaskCustom}
-        {...props}
-      />
+      <Input id="phone-number-input" type="tel" inputComponent={TextMaskCustom} {...props} />
     </FormControl>
   </Div>
 )

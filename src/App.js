@@ -12,6 +12,8 @@ import FirstLoginPage from 'pages/FirstLoginPage'
 import NotFoundPage from 'pages/NotFoundPage'
 import Step1Page from 'pages/Step1Page'
 
+import RouteChanger from 'components/RouteChanger'
+
 import motife from 'assets/motife-collapsed.png'
 
 export default class App extends Component {
@@ -58,6 +60,8 @@ export default class App extends Component {
             <Route component={NotFoundPage} />
           </Switch>
         )}
+
+        <RouteChanger location={this.props.location} history={this.props.history} />
       </Background>
     )
   }

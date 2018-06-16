@@ -33,7 +33,7 @@ export const Paragraph = styled.p`
 export const Small = styled.p`
   ${baseStyles};
   font-size: 12px;
-  color: #0976BD;
+  color: #0976bd;
 `
 
 export const Link = styled.span`

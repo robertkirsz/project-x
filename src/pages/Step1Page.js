@@ -220,7 +220,7 @@ export default class Step1Page extends Component {
     return (
       <Fragment>
         {!this.props.match.isExact && (
-          <Progress currentStep={currentStep} allSteps={paths.length}>
+          <Progress currentStep={currentStep} paths={paths}>
             Progress
           </Progress>
         )}

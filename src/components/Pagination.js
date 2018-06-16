@@ -4,9 +4,7 @@ import { Div } from 'styled-kit'
 
 export default ({ size, value, onChange, ...props }) => (
   <Div flex="none" itemsCenter listLeft={12} {...props}>
-    {[...Array(size)].map((element, index) => (
-      <Dot key={index} isActive={value === index} onClick={onChange(index)} />
-    ))}
+    {[...Array(size)].map((element, index) => <Dot key={index} isActive={value === index} onClick={onChange(index)} />)}
   </Div>
 )
 

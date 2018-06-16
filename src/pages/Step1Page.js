@@ -480,7 +480,7 @@ export default class Step1Page extends Component {
       <Fragment>
         {!this.props.match.isExact && (
           <Progress currentStep={currentStep} paths={paths}>
-            Progress
+            {this.props.location.pathname === '/step-1/finish' ? 'Account opening' : 'Personal data'}
           </Progress>
         )}
 

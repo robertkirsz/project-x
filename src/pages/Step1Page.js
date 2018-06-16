@@ -9,6 +9,8 @@ import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
+import Radio from '@material-ui/core/Radio'
+import RadioGroup from '@material-ui/core/RadioGroup'
 
 import { Heading, Paragraph, Small, Link } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
@@ -439,10 +441,40 @@ export default class Step1Page extends Component {
       </Div>
     )
 
-    const industry = (<Div>industry</Div>)
-    const review = (<Div>review</Div>)
-    const consents = (<Div>consents</Div>)
-    const finish = (<Div>finish</Div>)
+    const industry = (
+      <Div flex={1} column padding="30px 16px">
+        <Paragraph>In which industry are you employed?</Paragraph>
+
+        <Small mTop={8}>That is the last one!</Small>
+
+        <Div column mTop={24} pLeft={24}>
+          <FormControl component="fieldset" required>
+            <RadioGroup name="industry" value={this.state.industry} onChange={this.handleChange('industry')}>
+              <FormControlLabel value="No information" control={<Radio color="primary" />} label="No information" />
+              <FormControlLabel value="Finance" control={<Radio color="primary" />} label="Finance" />
+              <FormControlLabel value="Manufacturing" control={<Radio color="primary" />} label="Manufacturing" />
+              <FormControlLabel value="Tourism" control={<Radio color="primary" />} label="Tourism" />
+            </RadioGroup>
+          </FormControl>
+        </Div>
+
+        <Link center mTop={16} style={{ alignSelf: 'center' }}>
+          + More options
+        </Link>
+
+        <Button
+          onClick={() => this.props.history.push('/step-1/review')}
+          disabled={!this.isValid(['industry'])}
+          style={{ marginTop: 'auto' }}
+        >
+          Next step
+        </Button>
+      </Div>
+    )
+
+    const review = <Div>review</Div>
+    const consents = <Div>consents</Div>
+    const finish = <Div>finish</Div>
 
     return (
       <Fragment>

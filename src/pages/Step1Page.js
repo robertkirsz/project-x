@@ -269,9 +269,6 @@ export default class Step1Page extends Component {
               onChange={this.handleChange('country')}
               inputProps={{ name: 'country', id: 'country' }}
             >
-              <MenuItem value="">
-                <em>Choose country</em>
-              </MenuItem>
               <MenuItem value="Germany">Germany</MenuItem>
               <MenuItem value="France">France</MenuItem>
               <MenuItem value="Belgium">Belgium</MenuItem>
@@ -350,9 +347,6 @@ export default class Step1Page extends Component {
               onChange={this.handleChange('country')}
               inputProps={{ name: 'country', id: 'country' }}
             >
-              <MenuItem value="">
-                <em>Choose country</em>
-              </MenuItem>
               <MenuItem value="Germany">Germany</MenuItem>
               <MenuItem value="France">France</MenuItem>
               <MenuItem value="Belgium">Belgium</MenuItem>
@@ -404,17 +398,51 @@ export default class Step1Page extends Component {
           />
         </Div>
 
+        <Link center mTop={16} style={{ alignSelf: 'center' }}>
+          + Add more
+        </Link>
+
         <Button onClick={() => this.props.history.push('/step-1/occupational-status')} style={{ marginTop: 'auto' }}>
           Next step
         </Button>
       </Div>
     )
 
-    const occupationalStatus = residentialAddress
-    const industry = residentialAddress
-    const review = residentialAddress
-    const consents = residentialAddress
-    const finish = residentialAddress
+    const occupationalStatus = (
+      <Div flex={1} column padding="30px 16px">
+        <Paragraph>What’s your occupational status?</Paragraph>
+
+        <Small mTop={8}>Again, we have to ask this for legal reasons</Small>
+
+        <Div column mTop={32}>
+          <FormControl>
+            <InputLabel htmlFor="jobSelect">Select job role</InputLabel>
+            <Select
+              value={this.state.job}
+              onChange={this.handleChange('job')}
+              inputProps={{ name: 'job', id: 'jobSelect' }}
+            >
+              <MenuItem value="Office manager">Office manager</MenuItem>
+              <MenuItem value="Creative director">Creative director</MenuItem>
+              <MenuItem value="Product manager">Product manager</MenuItem>
+            </Select>
+          </FormControl>
+        </Div>
+
+        <Button
+          onClick={() => this.props.history.push('/step-1/industry')}
+          disabled={!this.isValid(['job'])}
+          style={{ marginTop: 'auto' }}
+        >
+          Next step
+        </Button>
+      </Div>
+    )
+
+    const industry = (<Div>industry</Div>)
+    const review = (<Div>review</Div>)
+    const consents = (<Div>consents</Div>)
+    const finish = (<Div>finish</Div>)
 
     return (
       <Fragment>

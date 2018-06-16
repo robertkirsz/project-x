@@ -378,7 +378,38 @@ export default class Step1Page extends Component {
       </Div>
     )
 
-    const taxInformation = residentialAddress
+    const taxInformation = (
+      <Div flex={1} column padding="30px 16px">
+        <Paragraph>Do you want to add your tax information?</Paragraph>
+
+        <Small mTop={8}>
+          This is optional, but we have to ask this for legal reasons. You can also add this up to 90 days later.
+        </Small>
+
+        <Div column listTop={12} mTop={24}>
+          <TextField
+            label="Country of tax obligation"
+            value={this.state.countryOfTax}
+            onChange={this.handleChange('countryOfTax')}
+            placeholder="(optional)"
+            InputLabelProps={{ shrink: true }}
+          />
+
+          <TextField
+            label="Tax ID"
+            value={this.state.taxId}
+            onChange={this.handleChange('taxId')}
+            placeholder="(optional)"
+            InputLabelProps={{ shrink: true }}
+          />
+        </Div>
+
+        <Button onClick={() => this.props.history.push('/step-1/occupational-status')} style={{ marginTop: 'auto' }}>
+          Next step
+        </Button>
+      </Div>
+    )
+
     const occupationalStatus = residentialAddress
     const industry = residentialAddress
     const review = residentialAddress

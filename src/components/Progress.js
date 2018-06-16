@@ -1,34 +1,31 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Div } from 'styled-kit'
+import { withRouter } from 'react-router-dom'
 
-import { Heading } from 'components/Typography'
+import { Paragraph } from 'components/Typography'
 
-export default class Progress extends Component {
-  state = {}
+import arrow from 'assets/arrow-left.svg'
 
-  render() {
-    const percent = (this.props.currentStep / this.props.paths.length) * 100
+const Progress = props => (
+  <Wrapper>
+    <Div relative justifyAround itemsCenter>
+      <Arrow src={arrow} onClick={props.history.goBack} />
+      <Paragraph center>{props.children}</Paragraph>
+    </Div>
+    <Line>
+      <Fill style={{ width: `${((props.currentStep + 1) / props.paths.length) * 100}%` }} />
+    </Line>
+  </Wrapper>
+)
 
-    return (
-      <Wrapper>
-        <Div justifyAround itemsCenter>
-          <button>Prev</button>
-          <Heading center>{this.props.children}</Heading>
-          <button>Next</button>
-        </Div>
-        <Line>
-          <Fill style={{ width: `${percent}%` }} />
-        </Line>
-      </Wrapper>
-    )
-  }
-}
+export default withRouter(Progress)
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 8px 16px 24px;
+  margin-top: 8px;
+  padding: 0 16px;
 `
 
 const Line = styled.div`
@@ -44,4 +41,10 @@ const Fill = styled.div`
   background: #20a134;
   border-radius: 4px;
   transition: 0.3s;
+`
+
+const Arrow = styled.img`
+  position: absolute;
+  left: -14px;
+  padding: 8px;
 `

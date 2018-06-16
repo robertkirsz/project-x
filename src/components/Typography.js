@@ -4,6 +4,8 @@ const withUnit = value => (typeof value === 'number' ? `${value}px` : value)
 
 /* prettier-ignore */
 const baseStyles = css`
+  display: flex;
+  align-items: center;
   margin: 0;
   font-family: Roboto, sans-serif;
   font-weight: 300;
@@ -41,4 +43,5 @@ export const Link = styled.span`
   font-size: 14px;
   color: #f39100;
   cursor: pointer;
+  text-decoration: underline;
 `

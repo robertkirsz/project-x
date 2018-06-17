@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Div } from 'styled-kit'
 import { withRouter } from 'react-router-dom'
 
-import { Paragraph } from 'components/Typography'
+import { H2 } from 'components/Typography'
 
 import arrow from 'assets/arrow-left.svg'
 
@@ -11,7 +11,7 @@ const Progress = props => (
   <Wrapper>
     <Div relative justifyAround itemsCenter>
       <Arrow src={arrow} onClick={props.history.goBack} />
-      <Paragraph center>{props.children}</Paragraph>
+      <H2 center>{props.children}</H2>
     </Div>
     <Line>
       <Fill style={{ width: `${((props.currentStep + 1) / props.paths.length) * 100}%` }} />

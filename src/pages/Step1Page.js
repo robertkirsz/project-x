@@ -12,7 +12,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
 
-import { Heading, Paragraph, Small, Link } from 'components/Typography'
+import { H1, H2, Paragraph, Small, Link } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button from 'components/Button'
 import CardCarousel from 'components/CardCarousel'
@@ -21,6 +21,7 @@ import PhoneInput from 'components/PhoneInput'
 
 import logo from 'assets/logo.svg'
 import mapMarker from 'assets/map-marker.svg'
+import pdfIcon from 'assets/pdf-icon.svg'
 
 const paths = [
   '/step-1/name',
@@ -228,7 +229,7 @@ export default class Step1Page extends Component {
       <Div flex={1} column itemsCenter padding="30px 16px">
         <img src={logo} alt="Logo" width="108" />
 
-        <Heading mTop={13}>Get your new mBank account in only 3 simple steps and start with...</Heading>
+        <H1 mTop={13}>Get your new mBank account in only 3 simple steps and start with...</H1>
 
         <StepStatus>
           <Step number="1" isActive>
@@ -246,7 +247,7 @@ export default class Step1Page extends Component {
 
     const name = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>Please tell us something about yourself</Paragraph>
+        <H2>Please tell us something about yourself</H2>
 
         <Div column listTop={12} mTop={8}>
           <TextField label="First name" value={this.state.firstName} onChange={this.handleChange('firstName')} />
@@ -272,7 +273,7 @@ export default class Step1Page extends Component {
 
     const card = (
       <Div flex={1} column itemsCenter padding="30px 16px">
-        <Paragraph>Great, {this.state.firstName}! Select your card design</Paragraph>
+        <H2>Great, {this.state.firstName}! Select your card design</H2>
 
         <CardCarousel value={this.state.chosenCard} onChange={this.change('chosenCard')} />
 
@@ -284,7 +285,7 @@ export default class Step1Page extends Component {
 
     const contact = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>We need your contact information</Paragraph>
+        <H2>We need your contact information</H2>
 
         <Small mTop={8}>We will use this phone number and email for login</Small>
 
@@ -311,7 +312,7 @@ export default class Step1Page extends Component {
 
     const birth = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>Please enter your...</Paragraph>
+        <H2>Please enter your...</H2>
 
         <Div column listTop={12} mTop={8}>
           <TextField
@@ -339,7 +340,7 @@ export default class Step1Page extends Component {
 
     const residentialAddress = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>Please enter your address</Paragraph>
+        <H2>Please enter your address</H2>
 
         <Small mTop={8}>Make sure that this is the adress you are registered to</Small>
 
@@ -365,7 +366,7 @@ export default class Step1Page extends Component {
 
     const correspondenceAddress = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>Add your correspondence address</Paragraph>
+        <H2>Add your correspondence address</H2>
 
         <Link mTop={12} onClick={this.prefillCorrespondenceAddress}>
           <img src={mapMarker} alt="Map marker" style={{ marginRight: 8 }} />Use my current location
@@ -393,7 +394,7 @@ export default class Step1Page extends Component {
 
     const taxInformation = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>Do you want to add your tax information?</Paragraph>
+        <H2>Do you want to add your tax information?</H2>
 
         <Small mTop={8}>
           This is optional, but we have to ask this for legal reasons. You can also add this up to 90 days later.
@@ -429,7 +430,7 @@ export default class Step1Page extends Component {
 
     const occupationalStatus = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>What’s your occupational status?</Paragraph>
+        <H2>What’s your occupational status?</H2>
 
         <Small mTop={8}>Again, we have to ask this for legal reasons</Small>
 
@@ -460,7 +461,7 @@ export default class Step1Page extends Component {
 
     const industry = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>In which industry are you employed?</Paragraph>
+        <H2>In which industry are you employed?</H2>
 
         <Small mTop={8}>That is the last one!</Small>
 
@@ -491,7 +492,7 @@ export default class Step1Page extends Component {
 
     const review = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>Please review all you data carefully. In case of any mistakes you can edit it now.</Paragraph>
+        <H2>Please review all you data carefully. In case of any mistakes you can edit it now.</H2>
 
         <Div listLeft={16}>
           <TextField label="Name" value={this.state.name} onChange={this.handleChange('name')} style={{ flex: 1 }} />
@@ -556,7 +557,7 @@ export default class Step1Page extends Component {
 
     const consents = (
       <Div flex={1} column padding="30px 16px">
-        <Paragraph>Almost done! Only a few consents left</Paragraph>
+        <H2>Almost done! Only a few consents left</H2>
 
         <FormControlLabel
           label="Confirm all"
@@ -585,65 +586,80 @@ export default class Step1Page extends Component {
         />
 
         <Div column mLeft={16}>
-          <FormControlLabel
-            label="Electronic communication"
-            control={
-              <Checkbox
-                checked={this.state.consent1}
-                onChange={this.handleCheckboxChange('consent1')}
-                value="consent1"
-                color="primary"
-              />
-            }
-          />
+          <Div>
+            <FormControlLabel
+              label="Electronic communication"
+              control={
+                <Checkbox
+                  checked={this.state.consent1}
+                  onChange={this.handleCheckboxChange('consent1')}
+                  value="consent1"
+                  color="primary"
+                />
+              }
+            />
+            <Link mLeft="auto">Read</Link>
+          </Div>
 
-          <FormControlLabel
-            label="Terms of Service of mBank and IDNow"
-            control={
-              <Checkbox
-                checked={this.state.consent2}
-                onChange={this.handleCheckboxChange('consent2')}
-                value="consent2"
-                color="primary"
-              />
-            }
-          />
+          <Div>
+            <FormControlLabel
+              label="Terms of Service of mBank and IDNow"
+              control={
+                <Checkbox
+                  checked={this.state.consent2}
+                  onChange={this.handleCheckboxChange('consent2')}
+                  value="consent2"
+                  color="primary"
+                />
+              }
+            />
+            <Link mLeft="auto">Read</Link>
+          </Div>
 
-          <FormControlLabel
-            label="Advertisement of mBank partners"
-            control={
-              <Checkbox
-                checked={this.state.consent3}
-                onChange={this.handleCheckboxChange('consent3')}
-                value="consent3"
-                color="primary"
-              />
-            }
-          />
+          <Div>
+            <FormControlLabel
+              label="Advertisement of mBank partners"
+              control={
+                <Checkbox
+                  checked={this.state.consent3}
+                  onChange={this.handleCheckboxChange('consent3')}
+                  value="consent3"
+                  color="primary"
+                />
+              }
+            />
+            <Link mLeft="auto">Read</Link>
+          </Div>
 
-          <FormControlLabel
-            label="Data processing and usage"
-            control={
-              <Checkbox
-                checked={this.state.consent4}
-                onChange={this.handleCheckboxChange('consent4')}
-                value="consent4"
-                color="primary"
-              />
-            }
-          />
+          <Div>
+            <FormControlLabel
+              label="Data processing and usage"
+              control={
+                <Checkbox
+                  checked={this.state.consent4}
+                  onChange={this.handleCheckboxChange('consent4')}
+                  value="consent4"
+                  color="primary"
+                />
+              }
+            />
+            <Link mLeft="auto">Read</Link>
+          </Div>
 
-          <FormControlLabel
-            label="General Data Protection Regulation"
-            control={
-              <Checkbox
-                checked={this.state.consent5}
-                onChange={this.handleCheckboxChange('consent5')}
-                value="consent5"
-                color="primary"
-              />
-            }
-          />
+          <Div>
+            <FormControlLabel
+              label="General Data Protection Regulation"
+              control={
+                <Checkbox
+                  checked={this.state.consent5}
+                  onChange={this.handleCheckboxChange('consent5')}
+                  value="consent5"
+                  color="primary"
+                />
+              }
+            />
+            <Link mLeft="auto">Read</Link>
+          </Div>
         </Div>
 
         <Button
@@ -656,7 +672,41 @@ export default class Step1Page extends Component {
       </Div>
     )
 
-    const finish = <Div>finish</Div>
+    const finish = (
+      <Div flex={1} column padding="30px 16px">
+        <H2>Finally, let’s open your mBank account!</H2>
+
+        <Paragraph mTop={16}>
+          Below is a link to the contract.<br />
+          But you don’t need to download it now, as we already sent it to you by email.
+        </Paragraph>
+
+        <Link mTop={36} style={{ maxWidth: 260 }}>
+          <img src={pdfIcon} alt="PDF Icon" style={{ marginRight: 22 }} /> Download the full mBank Account Contract (PDF)
+        </Link>
+
+        <FormControlLabel
+          label={<div>I want to open an mBank account and confirm that I act on <Link>my own behalf</Link></div>}
+          style={{ marginTop: 'auto' }}
+          control={
+            <Checkbox
+              checked={this.state.consent6}
+              onChange={this.handleCheckboxChange('consent6')}
+              value="consent6"
+              color="primary"
+            />
+          }
+        />
+
+        <Button
+          onClick={() => this.props.history.push('/step-1/finish')}
+          disabled={!this.isValid(['consent6'])}
+          style={{ marginTop: 24 }}
+        >
+          Next step
+        </Button>
+      </Div>
+    )
 
     return (
       <Fragment>

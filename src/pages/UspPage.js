@@ -5,7 +5,7 @@ import { Div } from 'styled-kit'
 
 import move from 'utils/move'
 
-import { Heading, Paragraph } from 'components/Typography'
+import { H1, H2 } from 'components/Typography'
 import Button from 'components/Button'
 import Pagination from 'components/Pagination'
 import Swiper from 'components/Swiper'
@@ -38,50 +38,50 @@ export default class UspPage extends Component {
             {currentSlide === 0 && (
               <Div flex={1} column itemsCenter padding={30}>
                 <img src={image1} width="217" alt="" />
-                <Heading center mTop={24}>
+                <H1 center mTop={24}>
                   Transfer money for free worldwide
-                </Heading>
-                <Paragraph center mTop={16}>
+                </H1>
+                <H2 center mTop={16}>
                   Send money abroad for free in realtime with mBank Europe. Transfer money to any bank, business or
                   friend immediately.
-                </Paragraph>
+                </H2>
               </Div>
             )}
 
             {currentSlide === 1 && (
               <Div flex={1} column itemsCenter padding={30}>
                 <img src={image2} width="217" alt="" />
-                <Heading center mTop={24}>
+                <H1 center mTop={24}>
                   ATM for free worldwide
-                </Heading>
-                <Paragraph center mTop={16}>
+                </H1>
+                <H2 center mTop={16}>
                   Up to 500 Euro you can take cash from ATM for free in any country.
-                </Paragraph>
+                </H2>
               </Div>
             )}
 
             {currentSlide === 2 && (
               <Div flex={1} column itemsCenter padding={30}>
                 <img src={image3} width="217" alt="" />
-                <Heading center mTop={24}>
+                <H1 center mTop={24}>
                   Multicurrency contactless
-                </Heading>
-                <Paragraph center mTop={16}>
+                </H1>
+                <H2 center mTop={16}>
                   Pay in any country with your credit card with exchange rate 0,1%, the lowest on the market.
-                </Paragraph>
+                </H2>
               </Div>
             )}
 
             {currentSlide === 3 && (
               <Div flex={1} column itemsCenter padding={30}>
                 <img src={image4} width="217" alt="" />
-                <Heading center mTop={24}>
+                <H1 center mTop={24}>
                   …and many more!
-                </Heading>
-                <Paragraph center mTop={16}>
+                </H1>
+                <H2 center mTop={16}>
                   Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan
                   on one click process.
-                </Paragraph>
+                </H2>
               </Div>
             )}
           </Div>

@@ -58,7 +58,7 @@ export default class Step1Page extends Component {
     correspondencePostalCode: '',
     correspondenceCity: '',
     correspondenceStreetName: '',
-    correspondenceStreetNumber: '',
+    correspondenceBuildingNumber: '',
     correspondenceApartmentNumber: '',
     correspondenceCountry: 'Germany',
     countryOfTax: '',
@@ -70,7 +70,8 @@ export default class Step1Page extends Component {
     consent3: false,
     consent4: false,
     consent5: false,
-    consent6: false
+    consent6: false,
+    reviewEditMode: false
   }
 
   change = name => value => this.setState({ [name]: value })
@@ -80,8 +81,7 @@ export default class Step1Page extends Component {
   handleCheckboxChange = name => event => this.setState({ [name]: event.target.checked })
 
   isValid = keys => {
-    for (let index in keys) if (this.state[keys[index]] === '') return false
-    return true
+    for (let index in keys) return Boolean(this.state[keys[index]])
   }
 
   prefillResidentialAddress = () => {
@@ -100,14 +100,127 @@ export default class Step1Page extends Component {
       correspondencePostalCode: '10-329',
       correspondenceCity: 'Berlin',
       correspondenceStreetName: 'Sommerallee',
-      correspondenceStreetNumber: '23',
+      correspondenceBuildingNumber: '23',
       correspondenceApartmentNumber: '12',
       correspondenceCountry: 'Germany'
     })
   }
 
   render() {
-    console.log('this.state', this.state)
+    // console.log('this.state', this.state)
+
+    const residentialAddressForm = (
+      <Div column listTop={12} mTop={8}>
+        <Div listLeft={16}>
+          <TextField
+            label="Postal code"
+            value={this.state.postalCode}
+            onChange={this.handleChange('postalCode')}
+            style={{ flex: 1 }}
+          />
+          <TextField label="City" value={this.state.city} onChange={this.handleChange('city')} style={{ flex: 1 }} />
+        </Div>
+
+        <TextField label="Street name" value={this.state.streetName} onChange={this.handleChange('streetName')} />
+
+        <Div listLeft={16}>
+          <TextField
+            label="Building number"
+            type="number"
+            value={this.state.buildingNumber}
+            onChange={this.handleChange('buildingNumber')}
+            style={{ flex: 1 }}
+          />
+          <TextField
+            label="Apartment number"
+            type="number"
+            value={this.state.apartmentNumber}
+            onChange={this.handleChange('apartmentNumber')}
+            style={{ flex: 1 }}
+          />
+        </Div>
+
+        <FormControl style={{ width: 'calc(50% - 8px)' }}>
+          <InputLabel htmlFor="country">Country</InputLabel>
+          <Select
+            value={this.state.country}
+            onChange={this.handleChange('country')}
+            inputProps={{ name: 'country', id: 'country' }}
+          >
+            <MenuItem value="Germany">Germany</MenuItem>
+            <MenuItem value="France">France</MenuItem>
+            <MenuItem value="Belgium">Belgium</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControlLabel
+          label="My correspondence address is different"
+          control={
+            <Checkbox
+              checked={this.state.isCorrespondenceAddressDifferent}
+              onChange={this.handleCheckboxChange('isCorrespondenceAddressDifferent')}
+              value="isCorrespondenceAddressDifferent"
+              color="primary"
+            />
+          }
+        />
+      </Div>
+    )
+
+    const correspondenceAddressForm = (
+      <Div column listTop={12} mTop={8}>
+        <Div listLeft={16}>
+          <TextField
+            label="Postal code"
+            value={this.state.correspondencePostalCode}
+            onChange={this.handleChange('correspondencePostalCode')}
+            style={{ flex: 1 }}
+          />
+          <TextField
+            label="City"
+            value={this.state.correspondenceCity}
+            onChange={this.handleChange('correspondenceCity')}
+            style={{ flex: 1 }}
+          />
+        </Div>
+
+        <TextField
+          label="Street name"
+          value={this.state.correspondenceStreetName}
+          onChange={this.handleChange('correspondenceStreetName')}
+        />
+
+        <Div listLeft={16}>
+          <TextField
+            label="Building number"
+            type="number"
+            value={this.state.correspondenceBuildingNumber}
+            onChange={this.handleChange('correspondenceBuildingNumber')}
+            style={{ flex: 1 }}
+          />
+          <TextField
+            label="Apartment number"
+            type="number"
+            value={this.state.correspondenceApartmentNumber}
+            onChange={this.handleChange('correspondenceApartmentNumber')}
+            style={{ flex: 1 }}
+          />
+        </Div>
+
+        <FormControl style={{ width: 'calc(50% - 8px)' }}>
+          <InputLabel htmlFor="correspondenceCountry">Country</InputLabel>
+          <Select
+            value={this.state.correspondenceCountry}
+            onChange={this.handleChange('correspondenceCountry')}
+            inputProps={{ name: 'correspondenceCountry', id: 'correspondenceCountry' }}
+          >
+            <MenuItem value="Germany">Germany</MenuItem>
+            <MenuItem value="France">France</MenuItem>
+            <MenuItem value="Belgium">Belgium</MenuItem>
+          </Select>
+        </FormControl>
+      </Div>
+    )
 
     const currentStep = paths.findIndex(path => path === this.props.location.pathname)
 
@@ -234,61 +347,7 @@ export default class Step1Page extends Component {
           <img src={mapMarker} alt="Map marker" style={{ marginRight: 8 }} />Use my current location
         </Link>
 
-        <Div column listTop={12} mTop={8}>
-          <Div listLeft={16}>
-            <TextField
-              label="Postal code"
-              value={this.state.postalCode}
-              onChange={this.handleChange('postalCode')}
-              style={{ flex: 1 }}
-            />
-            <TextField label="City" value={this.state.city} onChange={this.handleChange('city')} style={{ flex: 1 }} />
-          </Div>
-
-          <TextField label="Street name" value={this.state.streetName} onChange={this.handleChange('streetName')} />
-
-          <Div listLeft={16}>
-            <TextField
-              label="Building number"
-              type="number"
-              value={this.state.buildingNumber}
-              onChange={this.handleChange('buildingNumber')}
-              style={{ flex: 1 }}
-            />
-            <TextField
-              label="Apartment number"
-              type="number"
-              value={this.state.apartmentNumber}
-              onChange={this.handleChange('apartmentNumber')}
-              style={{ flex: 1 }}
-            />
-          </Div>
-
-          <FormControl style={{ width: 'calc(50% - 8px)' }}>
-            <InputLabel htmlFor="country">Country</InputLabel>
-            <Select
-              value={this.state.country}
-              onChange={this.handleChange('country')}
-              inputProps={{ name: 'country', id: 'country' }}
-            >
-              <MenuItem value="Germany">Germany</MenuItem>
-              <MenuItem value="France">France</MenuItem>
-              <MenuItem value="Belgium">Belgium</MenuItem>
-            </Select>
-          </FormControl>
-
-          <FormControlLabel
-            label="My correspondence address is different"
-            control={
-              <Checkbox
-                checked={this.state.isCorrespondenceAddressDifferent}
-                onChange={this.handleCheckboxChange('isCorrespondenceAddressDifferent')}
-                value="isCorrespondenceAddressDifferent"
-                color="primary"
-              />
-            }
-          />
-        </Div>
+        {residentialAddressForm}
 
         <Button
           onClick={() =>
@@ -308,53 +367,11 @@ export default class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <Paragraph>Add your correspondence address</Paragraph>
 
-        <Link mTop={12} onClick={this.prefillResidentialAddress}>
+        <Link mTop={12} onClick={this.prefillCorrespondenceAddress}>
           <img src={mapMarker} alt="Map marker" style={{ marginRight: 8 }} />Use my current location
         </Link>
 
-        <Div column listTop={12} mTop={8}>
-          <Div listLeft={16}>
-            <TextField
-              label="Postal code"
-              value={this.state.postalCode}
-              onChange={this.handleChange('postalCode')}
-              style={{ flex: 1 }}
-            />
-            <TextField label="City" value={this.state.city} onChange={this.handleChange('city')} style={{ flex: 1 }} />
-          </Div>
-
-          <TextField label="Street name" value={this.state.streetName} onChange={this.handleChange('streetName')} />
-
-          <Div listLeft={16}>
-            <TextField
-              label="Building number"
-              type="number"
-              value={this.state.buildingNumber}
-              onChange={this.handleChange('buildingNumber')}
-              style={{ flex: 1 }}
-            />
-            <TextField
-              label="Apartment number"
-              type="number"
-              value={this.state.apartmentNumber}
-              onChange={this.handleChange('apartmentNumber')}
-              style={{ flex: 1 }}
-            />
-          </Div>
-
-          <FormControl style={{ width: 'calc(50% - 8px)' }}>
-            <InputLabel htmlFor="country">Country</InputLabel>
-            <Select
-              value={this.state.country}
-              onChange={this.handleChange('country')}
-              inputProps={{ name: 'country', id: 'country' }}
-            >
-              <MenuItem value="Germany">Germany</MenuItem>
-              <MenuItem value="France">France</MenuItem>
-              <MenuItem value="Belgium">Belgium</MenuItem>
-            </Select>
-          </FormControl>
-        </Div>
+        {correspondenceAddressForm}
 
         <Button
           onClick={() => this.props.history.push('/step-1/tax-information')}
@@ -472,8 +489,173 @@ export default class Step1Page extends Component {
       </Div>
     )
 
-    const review = <Div>review</Div>
-    const consents = <Div>consents</Div>
+    const review = (
+      <Div flex={1} column padding="30px 16px">
+        <Paragraph>Please review all you data carefully. In case of any mistakes you can edit it now.</Paragraph>
+
+        <Div listLeft={16}>
+          <TextField label="Name" value={this.state.name} onChange={this.handleChange('name')} style={{ flex: 1 }} />
+          <TextField
+            label="Last name"
+            value={this.state.lastName}
+            onChange={this.handleChange('lastName')}
+            style={{ flex: 1 }}
+          />
+        </Div>
+
+        <Div listLeft={16}>
+          <TextField
+            label="Date of birth"
+            value={this.state.birthDate}
+            onChange={this.handleChange('birthDate')}
+            style={{ flex: 1 }}
+          />
+          <TextField
+            label="Maiden name"
+            value={this.state.maidenName}
+            onChange={this.handleChange('maidenName')}
+            style={{ flex: 1 }}
+          />
+        </Div>
+
+        <Div listLeft={16}>
+          <TextField
+            label="Citizenship"
+            value={this.state.citizenship}
+            onChange={this.handleChange('citizenship')}
+            style={{ flex: 1 }}
+          />
+          <TextField
+            label="Place of birth"
+            value={this.state.birthPlace}
+            onChange={this.handleChange('birthPlace')}
+            style={{ flex: 1 }}
+          />
+        </Div>
+
+        {this.state.reviewEditMode ? (
+          residentialAddressForm
+        ) : (
+          <TextField label="Address" value={this.state.name} readOnly />
+        )}
+
+        {this.state.reviewEditMode ? (
+          correspondenceAddressForm
+        ) : (
+          <TextField label="Correspondence address" value={this.state.name} readOnly />
+        )}
+
+        <TextField label="Email address" value={this.state.email} onChange={this.handleChange('email')} />
+        <TextField
+          label="Phone number"
+          value={'+49 ' + this.state.phoneNumber}
+          onChange={this.handleChange('phoneNumber')}
+        />
+      </Div>
+    )
+
+    const consents = (
+      <Div flex={1} column padding="30px 16px">
+        <Paragraph>Almost done! Only a few consents left</Paragraph>
+
+        <FormControlLabel
+          label="Confirm all"
+          control={
+            <Checkbox
+              checked={
+                this.state.consent1 &&
+                this.state.consent2 &&
+                this.state.consent3 &&
+                this.state.consent4 &&
+                this.state.consent5
+              }
+              onChange={event => {
+                this.setState({
+                  consent1: event.target.checked,
+                  consent2: event.target.checked,
+                  consent3: event.target.checked,
+                  consent4: event.target.checked,
+                  consent5: event.target.checked
+                })
+              }}
+              value="isCorrespondenceAddressDifferent"
+              color="primary"
+            />
+          }
+        />
+
+        <Div column mLeft={16}>
+          <FormControlLabel
+            label="Electronic communication"
+            control={
+              <Checkbox
+                checked={this.state.consent1}
+                onChange={this.handleCheckboxChange('consent1')}
+                value="consent1"
+                color="primary"
+              />
+            }
+          />
+
+          <FormControlLabel
+            label="Terms of Service of mBank and IDNow"
+            control={
+              <Checkbox
+                checked={this.state.consent2}
+                onChange={this.handleCheckboxChange('consent2')}
+                value="consent2"
+                color="primary"
+              />
+            }
+          />
+
+          <FormControlLabel
+            label="Advertisement of mBank partners"
+            control={
+              <Checkbox
+                checked={this.state.consent3}
+                onChange={this.handleCheckboxChange('consent3')}
+                value="consent3"
+                color="primary"
+              />
+            }
+          />
+
+          <FormControlLabel
+            label="Data processing and usage"
+            control={
+              <Checkbox
+                checked={this.state.consent4}
+                onChange={this.handleCheckboxChange('consent4')}
+                value="consent4"
+                color="primary"
+              />
+            }
+          />
+
+          <FormControlLabel
+            label="General Data Protection Regulation"
+            control={
+              <Checkbox
+                checked={this.state.consent5}
+                onChange={this.handleCheckboxChange('consent5')}
+                value="consent5"
+                color="primary"
+              />
+            }
+          />
+        </Div>
+
+        <Button
+          onClick={() => this.props.history.push('/step-1/finish')}
+          disabled={!this.isValid(['consent1', 'consent2', 'consent3', 'consent4', 'consent5'])}
+          style={{ marginTop: 'auto' }}
+        >
+          Next step
+        </Button>
+      </Div>
+    )
+
     const finish = <Div>finish</Div>
 
     return (
@@ -481,6 +663,14 @@ export default class Step1Page extends Component {
         {!this.props.match.isExact && (
           <Progress currentStep={currentStep} paths={paths}>
             {this.props.location.pathname === '/step-1/finish' ? 'Account opening' : 'Personal data'}
+            {this.props.location.pathname === '/step-1/review' && (
+              <Link
+                onClick={() => this.setState({ reviewEditMode: !this.state.reviewEditMode })}
+                style={{ position: 'absolute', right: -8, padding: 8, textDecoration: 'none' }}
+              >
+                EDIT
+              </Link>
+            )}
           </Progress>
         )}
 

@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
+import uuid from 'utils/uuid'
+
 import TextField from '@material-ui/core/TextField'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -62,8 +64,13 @@ export default class Step1Page extends Component {
     correspondenceBuildingNumber: '',
     correspondenceApartmentNumber: '',
     correspondenceCountry: 'Germany',
-    countryOfTax: '',
-    taxId: '',
+    taxes: [
+      {
+        id: uuid(),
+        countryOfTax: '',
+        taxId: ''
+      }
+    ],
     job: '',
     industry: '',
     consent1: false,
@@ -107,9 +114,30 @@ export default class Step1Page extends Component {
     })
   }
 
-  render() {
-    // console.log('this.state', this.state)
+  addTax = () => {
+    this.setState(state => ({
+      ...state,
+      taxes: [
+        ...state.taxes,
+        {
+          id: uuid(),
+          countryOfTax: '',
+          taxId: ''
+        }
+      ]
+    }))
+  }
 
+  handleTaxChange = (id, name) => event => {
+    const value = event.target.value
+
+    this.setState(state => ({
+      ...state,
+      taxes: state.taxes.map(tax => (tax.id === id ? { ...tax, [name]: value } : tax))
+    }))
+  }
+
+  render() {
     const residentialAddressForm = (
       <Div column listTop={12} mTop={8}>
         <Div listLeft={16}>
@@ -396,37 +424,43 @@ export default class Step1Page extends Component {
 
     const taxInformation = (
       <Div flex={1} column padding="30px 16px">
-        <H2>Do you want to add your tax information?</H2>
+        <Div flex="none" column>
+          <H2>Do you want to add your tax information?</H2>
 
-        <Small mTop={8}>
-          This is optional, but we have to ask this for legal reasons. You can also add this up to 90 days later.
-        </Small>
-
-        <Div column listTop={12} mTop={24}>
-          <TextField
-            label="Country of tax obligation"
-            value={this.state.countryOfTax}
-            onChange={this.handleChange('countryOfTax')}
-            placeholder="(optional)"
-            InputLabelProps={{ shrink: true }}
-          />
-
-          <TextField
-            label="Tax ID"
-            value={this.state.taxId}
-            onChange={this.handleChange('taxId')}
-            placeholder="(optional)"
-            InputLabelProps={{ shrink: true }}
-          />
+          <Small mTop={8}>
+            This is optional, but we have to ask this for legal reasons. You can also add this up to 90 days later.
+          </Small>
         </Div>
 
-        <Link center mTop={16} style={{ alignSelf: 'center' }}>
-          + Add more
-        </Link>
+        <Div flex={1} column listTop={24} style={{ overflow: 'auto' }}>
+          {this.state.taxes.map(tax => (
+            <Div flex="none" key={tax.id} column listTop={12} mTop={24}>
+              <TextField
+                label="Country of tax obligation"
+                value={this.state.countryOfTax}
+                onChange={this.handleTaxChange(tax.id, 'countryOfTax')}
+                placeholder="(optional)"
+                InputLabelProps={{ shrink: true }}
+              />
+
+              <TextField
+                label="Tax ID"
+                value={this.state.taxId}
+                onChange={this.handleTaxChange(tax.id, 'taxId')}
+                placeholder="(optional)"
+                InputLabelProps={{ shrink: true }}
+              />
+            </Div>
+          ))}
+
+          <Link center style={{ alignSelf: 'center', margin: '24px 0' }} onClick={this.addTax}>
+            + Add more
+          </Link>
+        </Div>
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/occupational-status')}
-          style={{ marginTop: 'auto' }}
+          style={{ flex: 'none', marginTop: 'auto' }}
         >
           Next step
         </Button>

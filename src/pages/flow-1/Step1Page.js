@@ -40,6 +40,47 @@ const paths = [
   '/onboarding-1/step-1/finish'
 ]
 
+const prefilledData = {
+  firstName: 'John',
+  lastName: 'Rambo',
+  maidenName: 'Robert',
+  chosenCard: 1,
+  email: 'john.rambo@fake.mail',
+  phoneNumber: '123 456 789',
+  birthDate: '10-10-1970',
+  birthPlace: 'Houston',
+  citizenship: 'American',
+  postalCode: '02-345',
+  city: 'Houston',
+  streetName: 'Some Street',
+  buildingNumber: '1',
+  apartmentNumber: '23',
+  country: 'Germany',
+  isCorrespondenceAddressDifferent: true,
+  correspondencePostalCode: '03-489',
+  correspondenceCity: 'Somewhere',
+  correspondenceStreetName: 'Something',
+  correspondenceBuildingNumber: '9',
+  correspondenceApartmentNumber: '',
+  correspondenceCountry: 'Germany',
+  taxes: [
+    {
+      id: uuid(),
+      countryOfTax: 'Foo',
+      taxId: '123'
+    }
+  ],
+  job: '',
+  industry: '',
+  consent1: true,
+  consent2: true,
+  consent3: true,
+  consent4: true,
+  consent5: false,
+  consent6: false,
+  reviewEditMode: false
+}
+
 export default class Step1Page extends Component {
   state = {
     firstName: '',
@@ -80,6 +121,12 @@ export default class Step1Page extends Component {
     consent5: false,
     consent6: false,
     reviewEditMode: false
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.shouldPrefillData && this.props.shouldPrefillData) {
+      this.setState(prefilledData)
+    }
   }
 
   change = name => value => this.setState({ [name]: value })

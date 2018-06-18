@@ -29,7 +29,8 @@ class App extends Component {
   state = {
     password: '',
     loggedIn: Boolean(sessionStorage.getItem('loggedIn')),
-    imagesLoaded: false
+    imagesLoaded: false,
+    shouldPrefillData: false
   }
 
   componentDidMount() {
@@ -47,7 +48,7 @@ class App extends Component {
   }
 
   render() {
-    const { password, loggedIn, imagesLoaded } = this.state
+    const { password, loggedIn, imagesLoaded, shouldPrefillData } = this.state
 
     return (
       <Background flex={1} column loggedIn={loggedIn}>
@@ -88,7 +89,12 @@ class App extends Component {
           <PrivateRoute path="/onboarding-1/intro" isRestricted={!loggedIn} component={IntroPage} />
           <PrivateRoute path="/onboarding-1/usp" isRestricted={!loggedIn} component={UspPage} />
           <PrivateRoute path="/onboarding-1/first-login" isRestricted={!loggedIn} component={FirstLoginPage} />
-          <PrivateRoute path="/onboarding-1/step-1" isRestricted={!loggedIn} component={Step1Page} />
+          <PrivateRoute
+            path="/onboarding-1/step-1"
+            isRestricted={!loggedIn}
+            component={Step1Page}
+            shouldPrefillData={shouldPrefillData}
+          />
 
           {/* Flow 2 */}
           <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
@@ -98,7 +104,11 @@ class App extends Component {
         </Switch>
 
         {process.env.NODE_ENV === 'development' && (
-          <RouteChanger location={this.props.location} history={this.props.history} />
+          <RouteChanger
+            location={this.props.location}
+            history={this.props.history}
+            handlePrefill={() => this.setState({ shouldPrefillData: true })}
+          />
         )}
       </Background>
     )

@@ -48,6 +48,8 @@ export default props => {
           ))}
         </RoutesList>
       </Button>
+
+      <Button onClick={props.handlePrefill}>Prefill</Button>
     </Wrapper>
   )
 }

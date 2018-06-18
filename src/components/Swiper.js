@@ -1,3 +1,5 @@
+// A wrapper component that attaches touch/swipe listeners to it's child
+
 import { Component, Children, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 
@@ -17,35 +19,53 @@ export default class Swiper extends Component {
     onSwipeDown: () => {}
   }
 
-  xDown = null
-  yDown = null
+  touchStartX = null
+  touchStartY = null
+  touchMoveX = null
+  touchMoveY = null
 
-  handleTouchStart = event => {
-    this.xDown = event.touches[0].clientX
-    this.yDown = event.touches[0].clientY
+  // Saves touchStart coordinates
+  handleTouchStart = ({ touches }) => {
+    this.touchStartX = touches[0].clientX
+    this.touchStartY = touches[0].clientY
   }
 
-  handleTouchMove = event => {
-    if (!this.xDown || !this.yDown) return
+  // Saves touchMove coordinates
+  handleTouchMove = ({ touches }) => {
+    // Don't do anything if we didn't move the "cursor"
+    if (this.touchStartX === null || this.touchStartY === null) return
 
-    const xUp = event.touches[0].clientX
-    const yUp = event.touches[0].clientY
-    const xDiff = this.xDown - xUp
-    const yDiff = this.yDown - yUp
+    this.touchMoveX = touches[0].clientX
+    this.touchMoveY = touches[0].clientY
+  }
 
-    if (Math.abs(xDiff) > Math.abs(yDiff))
-      if (xDiff > 0) this.props.onSwipeLeft()
-      else this.props.onSwipeRight()
-    else if (yDiff > 0) this.props.onSwipeUp()
-    else this.props.onSwipeDown()
+  // Checks a difference between touchStart and touchMove coordinates
+  handleTouchEnd = () => {
+    // Calculate the distances between touchStart and touchMove points
+    const horizontalDifference = this.touchStartX - this.touchMoveX
+    const verticalDifference = this.touchStartY - this.touchMoveY
 
-    this.xDown = null
-    this.yDown = null
+    // If we're swiping horizontally (horizontal swipe distance is bigger than the vertical one)...
+    if (Math.abs(horizontalDifference) > Math.abs(verticalDifference)) {
+      // Call proper callback depending on the swipe direction
+      horizontalDifference > 0 ? this.props.onSwipeLeft() : this.props.onSwipeRight()
+    }
+
+    // If we're swiping vertically (horizontal swipe distance is smaller than the vertical one)...
+    if (Math.abs(horizontalDifference) < Math.abs(verticalDifference)) {
+      // Call proper callback depending on the swipe direction
+      verticalDifference > 0 ? this.props.onSwipeUp() : this.props.onSwipeDown()
+    }
+
+    // Clear touchStart coordinates so we can start measuring again
+    this.touchStartX = null
+    this.touchStartY = null
   }
 
   render = () =>
     cloneElement(Children.only(this.props.children), {
       onTouchStart: this.handleTouchStart,
-      onTouchMove: this.handleTouchMove
+      onTouchMove: this.handleTouchMove,
+      onTouchEnd: this.handleTouchEnd
     })
 }

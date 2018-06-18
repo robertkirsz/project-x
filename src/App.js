@@ -10,17 +10,19 @@ import Button from '@material-ui/core/Button'
 import RouteChanger from 'components/RouteChanger'
 import PrivateRoute from 'components/PrivateRoute'
 
+import motife from 'assets/motife-collapsed.png'
+
 // Flow 1
-import IntroPage from 'pages/IntroPage'
-import UspPage from 'pages/UspPage'
-import FirstLoginPage from 'pages/FirstLoginPage'
-import NotFoundPage from 'pages/NotFoundPage'
-import Step1Page from 'pages/Step1Page'
+import IntroPage from 'pages/flow-1/IntroPage'
+import UspPage from 'pages/flow-1/UspPage'
+import FirstLoginPage from 'pages/flow-1/FirstLoginPage'
+import Step1Page from 'pages/flow-1/Step1Page'
 
 // Flow 2
 import IntroPage2 from 'pages/flow-2/IntroPage'
 
-import motife from 'assets/motife-collapsed.png'
+// 404
+import NotFoundPage from 'pages/NotFoundPage'
 
 export default class App extends Component {
   state = {
@@ -65,7 +67,7 @@ export default class App extends Component {
                     onClick={this.startFlow(1)}
                     disabled={(!loggedIn && password !== 'test') || !imagesLoaded}
                   >
-                    {imagesLoaded ? 'Flow 1' : 'Loading...'}
+                    {imagesLoaded ? 'Onboarding 1' : 'Loading...'}
                   </Button>
 
                   <Button
@@ -74,7 +76,7 @@ export default class App extends Component {
                     onClick={this.startFlow(2)}
                     disabled={(!loggedIn && password !== 'test') || !imagesLoaded}
                   >
-                    {imagesLoaded ? 'Flow 2' : 'Loading...'}
+                    {imagesLoaded ? 'Onboarding 2' : 'Loading...'}
                   </Button>
                 </Div>
               </Div>

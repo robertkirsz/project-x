@@ -21,13 +21,15 @@ import Progress from 'components/Progress'
 import logo from 'assets/logo.svg'
 
 const paths = [
-  '/onboarding-1/step-3/pin-setup',
-  '/onboarding-1/step-3/pin-confirm',
-  '/onboarding-1/step-3/password-setup',
-  '/onboarding-1/step-3/email-confirm'
+  '/onboarding-1/step-2/prepare-to-video',
+  '/onboarding-1/step-2/connecting',
+  '/onboarding-1/step-2/conversation',
+  '/onboarding-1/step-2/sms-code',
+  '/onboarding-1/step-2/waiting',
+  '/onboarding-1/step-2/account-ready'
 ]
 
-export default class Step3Page extends Component {
+export default class Step2Page extends Component {
   state = {}
 
   change = name => value => this.setState({ [name]: value })
@@ -55,15 +57,13 @@ export default class Step3Page extends Component {
           <Step number="1" isDone>
             Personal data
           </Step>
-          <Step number="2" isDone>
+          <Step number="2" isActive>
             Video identification
           </Step>
-          <Step number="3" isActive>
-            PIN & password setup
-          </Step>
+          <Step number="3">PIN & password setup</Step>
         </StepStatus>
 
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/name')} disabled style={{ marginTop: 'auto' }}>
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-3')} style={{ marginTop: 'auto' }}>
           Next step
         </Button>
       </Div>
@@ -77,7 +77,7 @@ export default class Step3Page extends Component {
           </Progress>
         )}
 
-        <Route path="/onboarding-1/step-3" exact render={() => intro} />
+        <Route path="/onboarding-1/step-2" exact render={() => intro} />
       </Fragment>
     )
   }

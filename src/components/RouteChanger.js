@@ -20,7 +20,18 @@ const routes = [
   '/onboarding-1/step-1/industry',
   '/onboarding-1/step-1/review',
   '/onboarding-1/step-1/consents',
-  '/onboarding-1/step-1/finish'
+  '/onboarding-1/step-1/finish',
+  '/onboarding-1/step-2',
+  '/onboarding-1/step-2/prepare-to-video',
+  '/onboarding-1/step-2/connecting',
+  '/onboarding-1/step-2/conversation',
+  '/onboarding-1/step-2/sms-code',
+  '/onboarding-1/step-2/waiting',
+  '/onboarding-1/step-2/account-ready',
+  '/onboarding-1/step-3',
+  '/onboarding-1/step-3/pin-confirm',
+  '/onboarding-1/step-3/password-setup',
+  '/onboarding-1/step-3/email-confirm'
 ]
 
 export default props => {

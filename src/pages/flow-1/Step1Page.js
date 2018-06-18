@@ -830,7 +830,7 @@ export default class Step1Page extends Component {
         />
 
         <Button
-          onClick={() => this.props.history.push('/onboarding-1/step-1/finish')}
+          onClick={() => this.props.history.push('/onboarding-1/step-2')}
           disabled={!this.isValid(['consent6'])}
           style={{ marginTop: 24 }}
         >

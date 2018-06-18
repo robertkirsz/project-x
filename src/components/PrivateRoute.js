@@ -6,7 +6,7 @@ export default ({ component: Component, isRestricted, ...rest }) => (
     {...rest}
     render={props =>
       !isRestricted ? (
-        <Component {...props} shouldPrefillData={rest.shouldPrefillData} />
+        <Component {...props} shouldPrefillData={rest.shouldPrefillData} formData={rest.formData} />
       ) : (
         <Redirect
           to={{

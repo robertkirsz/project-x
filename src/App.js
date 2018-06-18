@@ -18,6 +18,8 @@ import IntroPage from 'pages/flow-1/IntroPage'
 import UspPage from 'pages/flow-1/UspPage'
 import FirstLoginPage from 'pages/flow-1/FirstLoginPage'
 import Step1Page from 'pages/flow-1/Step1Page'
+import Step2Page from 'pages/flow-1/Step2Page'
+import Step3Page from 'pages/flow-1/Step3Page'
 
 // Flow 2
 import IntroPage2 from 'pages/flow-2/IntroPage'
@@ -30,7 +32,8 @@ class App extends Component {
     password: '',
     loggedIn: Boolean(sessionStorage.getItem('loggedIn')),
     imagesLoaded: false,
-    shouldPrefillData: false
+    shouldPrefillData: false,
+    formData: {}
   }
 
   componentDidMount() {
@@ -48,7 +51,7 @@ class App extends Component {
   }
 
   render() {
-    const { password, loggedIn, imagesLoaded, shouldPrefillData } = this.state
+    const { password, loggedIn, imagesLoaded, shouldPrefillData, formData } = this.state
 
     return (
       <Background flex={1} column loggedIn={loggedIn}>
@@ -94,6 +97,18 @@ class App extends Component {
             isRestricted={!loggedIn}
             component={Step1Page}
             shouldPrefillData={shouldPrefillData}
+          />
+          <PrivateRoute
+            path="/onboarding-1/step-2"
+            isRestricted={!loggedIn}
+            component={Step2Page}
+            formData={formData}
+          />
+          <PrivateRoute
+            path="/onboarding-1/step-3"
+            isRestricted={!loggedIn}
+            component={Step3Page}
+            formData={formData}
           />
 
           {/* Flow 2 */}

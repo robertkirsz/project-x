@@ -5,21 +5,22 @@ import getAdjacentRoutePath from 'utils/getAdjacentRoutePath'
 
 const routes = [
   '/',
-  '/usp',
-  '/first-login',
-  '/step-1',
-  '/step-1/name',
-  '/step-1/card',
-  '/step-1/contact',
-  '/step-1/birth',
-  '/step-1/residential-address',
-  '/step-1/correspondence-address',
-  '/step-1/tax-information',
-  '/step-1/occupational-status',
-  '/step-1/industry',
-  '/step-1/review',
-  '/step-1/consents',
-  '/step-1/finish'
+  '/onboarding-1/intro',
+  '/onboarding-1/usp',
+  '/onboarding-1/first-login',
+  '/onboarding-1/step-1',
+  '/onboarding-1/step-1/name',
+  '/onboarding-1/step-1/card',
+  '/onboarding-1/step-1/contact',
+  '/onboarding-1/step-1/birth',
+  '/onboarding-1/step-1/residential-address',
+  '/onboarding-1/step-1/correspondence-address',
+  '/onboarding-1/step-1/tax-information',
+  '/onboarding-1/step-1/occupational-status',
+  '/onboarding-1/step-1/industry',
+  '/onboarding-1/step-1/review',
+  '/onboarding-1/step-1/consents',
+  '/onboarding-1/step-1/finish'
 ]
 
 export default props => {

@@ -34,7 +34,7 @@ export default class FirstLoginPage extends Component {
 
       <Button
         disabled={!this.validatePhoneNumber(this.state.phoneNumber)}
-        onClick={() => this.props.history.push('/step-1')}
+        onClick={() => this.props.history.push('/onboarding-1/step-1')}
         style={{ marginTop: 26 }}
       >
         Next step

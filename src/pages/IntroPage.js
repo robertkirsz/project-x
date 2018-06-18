@@ -5,7 +5,7 @@ import logo from 'assets/logo.svg'
 import motife from 'assets/motife-expanded.png'
 
 export default class IntroPage extends Component {
-  goNext = () => this.props.history.push('/usp')
+  goNext = () => this.props.history.push('/onboarding-1/usp')
 
   render = () => <Background onClick={this.goNext} />
 }

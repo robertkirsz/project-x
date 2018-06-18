@@ -24,18 +24,18 @@ import mapMarker from 'assets/map-marker.svg'
 import pdfIcon from 'assets/pdf-icon.svg'
 
 const paths = [
-  '/step-1/name',
-  '/step-1/card',
-  '/step-1/contact',
-  '/step-1/birth',
-  '/step-1/residential-address',
-  '/step-1/correspondence-address',
-  '/step-1/tax-information',
-  '/step-1/occupational-status',
-  '/step-1/industry',
-  '/step-1/review',
-  '/step-1/consents',
-  '/step-1/finish'
+  '/onboarding-1/step-1/name',
+  '/onboarding-1/step-1/card',
+  '/onboarding-1/step-1/contact',
+  '/onboarding-1/step-1/birth',
+  '/onboarding-1/step-1/residential-address',
+  '/onboarding-1/step-1/correspondence-address',
+  '/onboarding-1/step-1/tax-information',
+  '/onboarding-1/step-1/occupational-status',
+  '/onboarding-1/step-1/industry',
+  '/onboarding-1/step-1/review',
+  '/onboarding-1/step-1/consents',
+  '/onboarding-1/step-1/finish'
 ]
 
 export default class Step1Page extends Component {
@@ -239,7 +239,7 @@ export default class Step1Page extends Component {
           <Step number="3">PIN & password setup</Step>
         </StepStatus>
 
-        <Button onClick={() => this.props.history.push('/step-1/name')} style={{ marginTop: 'auto' }}>
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-1/name')} style={{ marginTop: 'auto' }}>
           Next step
         </Button>
       </Div>
@@ -262,7 +262,7 @@ export default class Step1Page extends Component {
         </Div>
 
         <Button
-          onClick={() => this.props.history.push('/step-1/card')}
+          onClick={() => this.props.history.push('/onboarding-1/step-1/card')}
           disabled={!this.isValid(['firstName', 'lastName'])}
           style={{ marginTop: 'auto' }}
         >
@@ -277,7 +277,7 @@ export default class Step1Page extends Component {
 
         <CardCarousel value={this.state.chosenCard} onChange={this.change('chosenCard')} />
 
-        <Button onClick={() => this.props.history.push('/step-1/contact')} style={{ marginTop: 'auto' }}>
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-1/contact')} style={{ marginTop: 'auto' }}>
           Next step
         </Button>
       </Div>
@@ -301,7 +301,7 @@ export default class Step1Page extends Component {
         </Div>
 
         <Button
-          onClick={() => this.props.history.push('/step-1/birth')}
+          onClick={() => this.props.history.push('/onboarding-1/step-1/birth')}
           disabled={!this.isValid(['email', 'phoneNumber'])}
           style={{ marginTop: 'auto' }}
         >
@@ -329,7 +329,7 @@ export default class Step1Page extends Component {
         </Div>
 
         <Button
-          onClick={() => this.props.history.push('/step-1/residential-address')}
+          onClick={() => this.props.history.push('/onboarding-1/step-1/residential-address')}
           disabled={!this.isValid(['birthDate', 'birthPlace', 'citizenship'])}
           style={{ marginTop: 'auto' }}
         >
@@ -353,7 +353,9 @@ export default class Step1Page extends Component {
         <Button
           onClick={() =>
             this.props.history.push(
-              this.state.isCorrespondenceAddressDifferent ? '/step-1/correspondence-address' : '/step-1/tax-information'
+              this.state.isCorrespondenceAddressDifferent
+                ? '/onboarding-1/step-1/correspondence-address'
+                : '/onboarding-1/step-1/tax-information'
             )
           }
           disabled={!this.isValid(['postalCode', 'city', 'streetName', 'buildingNumber', 'country'])}
@@ -375,7 +377,7 @@ export default class Step1Page extends Component {
         {correspondenceAddressForm}
 
         <Button
-          onClick={() => this.props.history.push('/step-1/tax-information')}
+          onClick={() => this.props.history.push('/onboarding-1/step-1/tax-information')}
           disabled={
             !this.isValid([
               'correspondencePostalCode',
@@ -422,7 +424,10 @@ export default class Step1Page extends Component {
           + Add more
         </Link>
 
-        <Button onClick={() => this.props.history.push('/step-1/occupational-status')} style={{ marginTop: 'auto' }}>
+        <Button
+          onClick={() => this.props.history.push('/onboarding-1/step-1/occupational-status')}
+          style={{ marginTop: 'auto' }}
+        >
           Next step
         </Button>
       </Div>
@@ -450,7 +455,7 @@ export default class Step1Page extends Component {
         </Div>
 
         <Button
-          onClick={() => this.props.history.push('/step-1/industry')}
+          onClick={() => this.props.history.push('/onboarding-1/step-1/industry')}
           disabled={!this.isValid(['job'])}
           style={{ marginTop: 'auto' }}
         >
@@ -481,7 +486,7 @@ export default class Step1Page extends Component {
         </Link>
 
         <Button
-          onClick={() => this.props.history.push('/step-1/review')}
+          onClick={() => this.props.history.push('/onboarding-1/step-1/review')}
           disabled={!this.isValid(['industry'])}
           style={{ marginTop: 'auto' }}
         >
@@ -663,7 +668,7 @@ export default class Step1Page extends Component {
         </Div>
 
         <Button
-          onClick={() => this.props.history.push('/step-1/finish')}
+          onClick={() => this.props.history.push('/onboarding-1/step-1/finish')}
           disabled={!this.isValid(['consent1', 'consent2', 'consent3', 'consent4', 'consent5'])}
           style={{ marginTop: 'auto' }}
         >
@@ -682,11 +687,16 @@ export default class Step1Page extends Component {
         </Paragraph>
 
         <Link mTop={36} style={{ maxWidth: 260 }}>
-          <img src={pdfIcon} alt="PDF Icon" style={{ marginRight: 22 }} /> Download the full mBank Account Contract (PDF)
+          <img src={pdfIcon} alt="PDF Icon" style={{ marginRight: 22 }} /> Download the full mBank Account Contract
+          (PDF)
         </Link>
 
         <FormControlLabel
-          label={<div>I want to open an mBank account and confirm that I act on <Link>my own behalf</Link></div>}
+          label={
+            <div>
+              I want to open an mBank account and confirm that I act on <Link>my own behalf</Link>
+            </div>
+          }
           style={{ marginTop: 'auto' }}
           control={
             <Checkbox
@@ -699,7 +709,7 @@ export default class Step1Page extends Component {
         />
 
         <Button
-          onClick={() => this.props.history.push('/step-1/finish')}
+          onClick={() => this.props.history.push('/onboarding-1/step-1/finish')}
           disabled={!this.isValid(['consent6'])}
           style={{ marginTop: 24 }}
         >
@@ -712,8 +722,8 @@ export default class Step1Page extends Component {
       <Fragment>
         {!this.props.match.isExact && (
           <Progress currentStep={currentStep} paths={paths}>
-            {this.props.location.pathname === '/step-1/finish' ? 'Account opening' : 'Personal data'}
-            {this.props.location.pathname === '/step-1/review' && (
+            {this.props.location.pathname === '/onboarding-1/step-1/finish' ? 'Account opening' : 'Personal data'}
+            {this.props.location.pathname === '/onboarding-1/step-1/review' && (
               <Link
                 onClick={() => this.setState({ reviewEditMode: !this.state.reviewEditMode })}
                 style={{ position: 'absolute', right: -8, padding: 8, textDecoration: 'none' }}
@@ -724,19 +734,19 @@ export default class Step1Page extends Component {
           </Progress>
         )}
 
-        <Route path="/step-1" exact render={() => intro} />
-        <Route path="/step-1/name" render={() => name} />
-        <Route path="/step-1/card" render={() => card} />
-        <Route path="/step-1/contact" render={() => contact} />
-        <Route path="/step-1/birth" render={() => birth} />
-        <Route path="/step-1/residential-address" render={() => residentialAddress} />
-        <Route path="/step-1/correspondence-address" render={() => correspondenceAddress} />
-        <Route path="/step-1/tax-information" render={() => taxInformation} />
-        <Route path="/step-1/occupational-status" render={() => occupationalStatus} />
-        <Route path="/step-1/industry" render={() => industry} />
-        <Route path="/step-1/review" render={() => review} />
-        <Route path="/step-1/consents" render={() => consents} />
-        <Route path="/step-1/finish" render={() => finish} />
+        <Route path="/onboarding-1/step-1" exact render={() => intro} />
+        <Route path="/onboarding-1/step-1/name" render={() => name} />
+        <Route path="/onboarding-1/step-1/card" render={() => card} />
+        <Route path="/onboarding-1/step-1/contact" render={() => contact} />
+        <Route path="/onboarding-1/step-1/birth" render={() => birth} />
+        <Route path="/onboarding-1/step-1/residential-address" render={() => residentialAddress} />
+        <Route path="/onboarding-1/step-1/correspondence-address" render={() => correspondenceAddress} />
+        <Route path="/onboarding-1/step-1/tax-information" render={() => taxInformation} />
+        <Route path="/onboarding-1/step-1/occupational-status" render={() => occupationalStatus} />
+        <Route path="/onboarding-1/step-1/industry" render={() => industry} />
+        <Route path="/onboarding-1/step-1/review" render={() => review} />
+        <Route path="/onboarding-1/step-1/consents" render={() => consents} />
+        <Route path="/onboarding-1/step-1/finish" render={() => finish} />
       </Fragment>
     )
   }

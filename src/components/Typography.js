@@ -6,7 +6,6 @@ const withUnit = value => (typeof value === 'number' ? `${value}px` : value)
 const baseStyles = css`
   display: flex;
   align-items: center;
-  align-self: flex-start;
   margin: 0;
   font-family: Roboto, sans-serif;
   font-weight: 300;

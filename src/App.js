@@ -61,7 +61,9 @@ export default class App extends Component {
           </Switch>
         )}
 
-        <RouteChanger location={this.props.location} history={this.props.history} />
+        {process.env.NODE_ENV === 'development' && (
+          <RouteChanger location={this.props.location} history={this.props.history} />
+        )}
       </Background>
     )
   }

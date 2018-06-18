@@ -45,7 +45,7 @@ export const Small = styled.p`
   color: #0976bd;
 `
 
-export const Link = styled.span`
+export const Link = styled.a`
   ${baseStyles};
   display: inline-flex;
   font-size: 14px;

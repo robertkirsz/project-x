@@ -24,6 +24,7 @@ import PhoneInput from 'components/PhoneInput'
 import logo from 'assets/logo.svg'
 import mapMarker from 'assets/map-marker.svg'
 import pdfIcon from 'assets/pdf-icon.svg'
+import contractPdf from 'assets/Contract.pdf'
 
 const paths = [
   '/onboarding-1/step-1/name',
@@ -806,7 +807,7 @@ export default class Step1Page extends Component {
           But you don’t need to download it now, as we already sent it to you by email.
         </Paragraph>
 
-        <Link mTop={36} style={{ maxWidth: 260 }}>
+        <Link mTop={36} style={{ maxWidth: 260 }} href={contractPdf} download="Contract.pdf">
           <img src={pdfIcon} alt="PDF Icon" style={{ marginRight: 22 }} /> Download the full mBank Account Contract
           (PDF)
         </Link>

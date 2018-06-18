@@ -186,7 +186,7 @@ export default class Step1Page extends Component {
 
   render() {
     const residentialAddressForm = (
-      <Div column listTop={12} mTop={8}>
+      <Div flex="none" column listTop={12} mTop={8}>
         <Div listLeft={16}>
           <TextField
             label="Postal code"
@@ -244,7 +244,7 @@ export default class Step1Page extends Component {
     )
 
     const correspondenceAddressForm = (
-      <Div column listTop={12} mTop={8}>
+      <Div flex="none" column listTop={12} mTop={8}>
         <Div listLeft={16}>
           <TextField
             label="Postal code"
@@ -578,66 +578,105 @@ export default class Step1Page extends Component {
 
     const review = (
       <Div flex={1} column padding="30px 16px">
-        <H2>Please review all you data carefully. In case of any mistakes you can edit it now.</H2>
+        <Div flex={1} column pBottom={16} style={{ overflow: 'auto' }}>
+          <H2 style={{ flex: 'none' }}>
+            Please review all you data carefully. In case of any mistakes you can edit it now.
+          </H2>
 
-        <Div listLeft={16}>
-          <TextField label="Name" value={this.state.name} onChange={this.handleChange('name')} style={{ flex: 1 }} />
-          <TextField
-            label="Last name"
-            value={this.state.lastName}
-            onChange={this.handleChange('lastName')}
-            style={{ flex: 1 }}
-          />
+          <Div flex="none" column mTop={8} listTop={16} style={{ pointerEvents: !this.state.reviewEditMode && 'none' }}>
+            <Div listLeft={16}>
+              <TextField
+                label="Name"
+                value={this.state.firstName}
+                onChange={this.handleChange('firstName')}
+                style={{ flex: 1 }}
+              />
+              <TextField
+                label="Last name"
+                value={this.state.lastName}
+                onChange={this.handleChange('lastName')}
+                style={{ flex: 1 }}
+              />
+            </Div>
+
+            <Div listLeft={16}>
+              <TextField
+                label="Date of birth"
+                value={this.state.birthDate}
+                onChange={this.handleChange('birthDate')}
+                style={{ flex: 1 }}
+              />
+              <TextField
+                label="Maiden name"
+                value={this.state.maidenName}
+                onChange={this.handleChange('maidenName')}
+                style={{ flex: 1 }}
+              />
+            </Div>
+
+            <Div listLeft={16}>
+              <TextField
+                label="Citizenship"
+                value={this.state.citizenship}
+                onChange={this.handleChange('citizenship')}
+                style={{ flex: 1 }}
+              />
+              <TextField
+                label="Place of birth"
+                value={this.state.birthPlace}
+                onChange={this.handleChange('birthPlace')}
+                style={{ flex: 1 }}
+              />
+            </Div>
+          </Div>
+
+          <Div flex="none" column listTop={16} mTop={16}>
+            {this.state.reviewEditMode ? (
+              residentialAddressForm
+            ) : (
+              <TextField
+                label="Address"
+                value={`${this.state.streetName} ${this.state.buildingNumber}${
+                  this.state.apartmentNumber ? ' ' + this.state.apartmentNumber : ''
+                }, ${this.state.postalCode} ${this.state.city}, ${this.state.country}`}
+              />
+            )}
+
+            {this.state.isCorrespondenceAddressDifferent ? (
+              this.state.reviewEditMode ? (
+                correspondenceAddressForm
+              ) : (
+                <TextField
+                  label="Correspondence address"
+                  value={`${this.state.correspondenceStreetName} ${this.state.correspondenceBuildingNumber}${
+                    this.state.correspondenceApartmentNumber ? ' ' + this.state.correspondenceApartmentNumber : ''
+                  }, ${this.state.correspondencePostalCode} ${this.state.correspondenceCity}, ${
+                    this.state.correspondenceCountry
+                  }`}
+                />
+              )
+            ) : null}
+          </Div>
+
+          <Div
+            flex="none"
+            column
+            listTop={16}
+            mTop={16}
+            style={{ pointerEvents: !this.state.reviewEditMode && 'none' }}
+          >
+            <TextField label="Email address" value={this.state.email} onChange={this.handleChange('email')} />
+            <TextField
+              label="Phone number"
+              value={'+49 ' + this.state.phoneNumber}
+              onChange={this.handleChange('phoneNumber')}
+            />
+          </Div>
         </Div>
 
-        <Div listLeft={16}>
-          <TextField
-            label="Date of birth"
-            value={this.state.birthDate}
-            onChange={this.handleChange('birthDate')}
-            style={{ flex: 1 }}
-          />
-          <TextField
-            label="Maiden name"
-            value={this.state.maidenName}
-            onChange={this.handleChange('maidenName')}
-            style={{ flex: 1 }}
-          />
-        </Div>
-
-        <Div listLeft={16}>
-          <TextField
-            label="Citizenship"
-            value={this.state.citizenship}
-            onChange={this.handleChange('citizenship')}
-            style={{ flex: 1 }}
-          />
-          <TextField
-            label="Place of birth"
-            value={this.state.birthPlace}
-            onChange={this.handleChange('birthPlace')}
-            style={{ flex: 1 }}
-          />
-        </Div>
-
-        {this.state.reviewEditMode ? (
-          residentialAddressForm
-        ) : (
-          <TextField label="Address" value={this.state.name} readOnly />
-        )}
-
-        {this.state.reviewEditMode ? (
-          correspondenceAddressForm
-        ) : (
-          <TextField label="Correspondence address" value={this.state.name} readOnly />
-        )}
-
-        <TextField label="Email address" value={this.state.email} onChange={this.handleChange('email')} />
-        <TextField
-          label="Phone number"
-          value={'+49 ' + this.state.phoneNumber}
-          onChange={this.handleChange('phoneNumber')}
-        />
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-1/consents')} style={{ marginTop: 'auto' }}>
+          Next step
+        </Button>
       </Div>
     )
 

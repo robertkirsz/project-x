@@ -89,7 +89,9 @@ export default class UspPage extends Component {
 
         {currentSlide < 3 && <Pagination size={4} value={currentSlide} onChange={this.goToSlide} />}
 
-        {currentSlide === 3 && <Button onClick={() => this.props.history.push('/onboarding-1/first-login')}>Start now!</Button>}
+        {currentSlide === 3 && (
+          <Button onClick={() => this.props.history.push('/onboarding-1/first-login')}>Start now!</Button>
+        )}
       </Div>
     )
   }

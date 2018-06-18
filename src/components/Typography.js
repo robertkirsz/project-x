@@ -36,7 +36,7 @@ export const H2 = styled.h2`
 export const Paragraph = styled.p`
   ${baseStyles};
   font-size: 16px;
-  color: #3B3B3B;
+  color: #3b3b3b;
   line-height: 1.5;
 `
 

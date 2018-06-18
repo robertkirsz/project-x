@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { Div } from 'styled-kit'
 
@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
 import RouteChanger from 'components/RouteChanger'
+import PrivateRoute from 'components/PrivateRoute'
 
 // Flow 1
 import IntroPage from 'pages/IntroPage'
@@ -15,6 +16,7 @@ import UspPage from 'pages/UspPage'
 import FirstLoginPage from 'pages/FirstLoginPage'
 import NotFoundPage from 'pages/NotFoundPage'
 import Step1Page from 'pages/Step1Page'
+
 // Flow 2
 import IntroPage2 from 'pages/flow-2/IntroPage'
 
@@ -52,7 +54,9 @@ export default class App extends Component {
             exact
             render={() => (
               <Div column itemsCenter margin="auto">
-                {!loggedIn && <TextField label="Password" value={password} onChange={this.changePassword} />}
+                {!loggedIn && (
+                  <TextField label="Password" type="password" value={password} onChange={this.changePassword} />
+                )}
 
                 <Div listLeft={16} mTop={32}>
                   <Button
@@ -77,17 +81,14 @@ export default class App extends Component {
             )}
           />
 
-          {loggedIn && (
-            <Fragment>
-              {/* Flow 1 */}
-              <Route path="/onboarding-1/intro" component={IntroPage} />
-              <Route path="/onboarding-1/usp" component={UspPage} />
-              <Route path="/onboarding-1/first-login" component={FirstLoginPage} />
-              <Route path="/onboarding-1/step-1" component={Step1Page} />
-              {/* Flow 2 */}
-              <Route path="/onboarding-2/intro" component={IntroPage2} />
-            </Fragment>
-          )}
+          {/* Flow 1 */}
+          <PrivateRoute path="/onboarding-1/intro" isRestricted={!loggedIn} component={IntroPage} />
+          <PrivateRoute path="/onboarding-1/usp" isRestricted={!loggedIn} component={UspPage} />
+          <PrivateRoute path="/onboarding-1/first-login" isRestricted={!loggedIn} component={FirstLoginPage} />
+          <PrivateRoute path="/onboarding-1/step-1" isRestricted={!loggedIn} component={Step1Page} />
+
+          {/* Flow 2 */}
+          <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
 
           {/* 404 */}
           <Route component={NotFoundPage} />

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { hot } from 'react-hot-loader'
 import { Switch, Route } from 'react-router-dom'
 import { Div } from 'styled-kit'
 
@@ -24,7 +25,7 @@ import IntroPage2 from 'pages/flow-2/IntroPage'
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-export default class App extends Component {
+class App extends Component {
   state = {
     password: '',
     loggedIn: Boolean(sessionStorage.getItem('loggedIn')),
@@ -103,6 +104,8 @@ export default class App extends Component {
     )
   }
 }
+
+export default hot(module)(App)
 
 /* prettier-ignore */
 const Background = Div.extend`

@@ -14,7 +14,7 @@ import { Route } from 'react-router-dom'
 
 import { H1, H2, Paragraph } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
-import Button from 'components/Button'
+import Button, { ButtonSpinner } from 'components/Button'
 import Progress from 'components/Progress'
 
 import logo from 'assets/logo.svg'
@@ -103,8 +103,8 @@ export default class Step2Page extends Component {
 
         <img src={video4} alt="" style={{ marginTop: 66 }} />
 
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-2/connecting')} style={{ marginTop: 'auto' }}>
-          Next step
+        <Button disabled style={{ marginTop: 'auto' }}>
+          <ButtonSpinner />
         </Button>
       </Div>
     )

@@ -63,9 +63,38 @@ export default class Step3Page extends Component {
           </Step>
         </StepStatus>
 
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/name')} disabled style={{ marginTop: 'auto' }}>
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/pin-setup')} disabled style={{ marginTop: 'auto' }}>
           Next step
         </Button>
+      </Div>
+    )
+
+    const pinSetup = (
+      <Div flex={1} column itemsCenter padding="30px 16px">
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/pin-confirm')} disabled style={{ marginTop: 'auto' }}>
+          Next step
+        </Button>
+      </Div>
+    )
+
+    const pinConfirm = (
+      <Div flex={1} column itemsCenter padding="30px 16px">
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/password-setup')} disabled style={{ marginTop: 'auto' }}>
+          Next step
+        </Button>
+      </Div>
+    )
+
+    const passwordSetup = (
+      <Div flex={1} column itemsCenter padding="30px 16px">
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/email-confirm')} disabled style={{ marginTop: 'auto' }}>
+          Next step
+        </Button>
+      </Div>
+    )
+
+    const emailConfirm = (
+      <Div flex={1} column itemsCenter padding="30px 16px">
       </Div>
     )
 
@@ -78,6 +107,10 @@ export default class Step3Page extends Component {
         )}
 
         <Route path="/onboarding-1/step-3" exact render={() => intro} />
+        <Route path="/onboarding-1/step-3/pin-setup" render={() => pinSetup} />
+        <Route path="/onboarding-1/step-3/pin-confirm" render={() => pinConfirm} />
+        <Route path="/onboarding-1/step-3/password-setup" render={() => passwordSetup} />
+        <Route path="/onboarding-1/step-3/email-confirm" render={() => emailConfirm} />
       </Fragment>
     )
   }

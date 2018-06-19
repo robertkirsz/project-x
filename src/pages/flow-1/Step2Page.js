@@ -3,15 +3,6 @@ import styled from 'styled-components'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
-// import TextField from '@material-ui/core/TextField'
-// import InputLabel from '@material-ui/core/InputLabel'
-// import MenuItem from '@material-ui/core/MenuItem'
-// import FormControl from '@material-ui/core/FormControl'
-// import Select from '@material-ui/core/Select'
-// import FormControlLabel from '@material-ui/core/FormControlLabel'
-// import Checkbox from '@material-ui/core/Checkbox'
-// import Radio from '@material-ui/core/Radio'
-// import RadioGroup from '@material-ui/core/RadioGroup'
 import MuiButton from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
@@ -40,9 +31,7 @@ const paths = [
 export default class Step2Page extends Component {
   timeout = null
 
-  state = {
-    showAllowCameraModal: false
-  }
+  state = { showAllowCameraModal: false }
 
   componentDidMount() {
     if (this.props.location.pathname === '/onboarding-1/step-2/connecting') {

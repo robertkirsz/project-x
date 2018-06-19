@@ -12,13 +12,17 @@ import { Route } from 'react-router-dom'
 // import Radio from '@material-ui/core/Radio'
 // import RadioGroup from '@material-ui/core/RadioGroup'
 
-import { H1 } from 'components/Typography'
+import { H1, Paragraph } from 'components/Typography'
 // import { H1, H2, Paragraph, Small, Link } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button from 'components/Button'
 import Progress from 'components/Progress'
 
 import logo from 'assets/logo.svg'
+import video1 from 'assets/video-identification-1.svg'
+import video2 from 'assets/video-identification-2.svg'
+import video3 from 'assets/video-identification-3.svg'
+import video4 from 'assets/video-identification-4.svg'
 
 const paths = [
   '/onboarding-1/step-2/prepare-to-video',
@@ -63,7 +67,30 @@ export default class Step2Page extends Component {
           <Step number="3">PIN & password setup</Step>
         </StepStatus>
 
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-3')} style={{ marginTop: 'auto' }}>
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-2/prepare-to-video')} style={{ marginTop: 'auto' }}>
+          Next step
+        </Button>
+      </Div>
+    )
+
+    const prepareToVideo = (
+      <Div flex={1} column itemsCenter padding="30px 16px">
+        <Div column selfStart listTop={40} mTop={24}>
+          <Div listLeft={48} itemsCenter>
+            <img src={video1} alt="" />
+            <Paragraph>Prepare an<br />ID document</Paragraph>
+          </Div>
+          <Div listLeft={48} itemsCenter>
+            <img src={video2} alt="" />
+            <Paragraph>Look fo a quiet place</Paragraph>
+          </Div>
+          <Div listLeft={48} itemsCenter>
+            <img src={video3} alt="" />
+            <Paragraph>Keep your signal<br />strong</Paragraph>
+          </Div>
+        </Div>
+
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-2/connecting')} style={{ marginTop: 'auto' }}>
           Next step
         </Button>
       </Div>
@@ -73,11 +100,12 @@ export default class Step2Page extends Component {
       <Fragment>
         {!this.props.match.isExact && (
           <Progress currentStep={currentStep} paths={paths}>
-            Lorem ipsum
+            Video identification
           </Progress>
         )}
 
         <Route path="/onboarding-1/step-2" exact render={() => intro} />
+        <Route path="/onboarding-1/step-2/prepare-to-video" render={() => prepareToVideo} />
       </Fragment>
     )
   }

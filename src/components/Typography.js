@@ -13,6 +13,7 @@ const baseStyles = css`
   letter-spacing: 0;
   color: #1F1A15;
   ${({ center }) => center && 'text-align: center;'}
+  ${({ maxWidth }) => maxWidth && typeof maxWidth !== 'boolean' && css`max-width: ${withUnit(maxWidth)};`}
   ${({ mTop }) => mTop && typeof mTop !== 'boolean' && css`margin-top: ${withUnit(mTop)};`}
   ${({ mRight }) => mRight && typeof mRight !== 'boolean' && css`margin-right: ${withUnit(mRight)};`}
   ${({ mBottom }) => mBottom && typeof mBottom !== 'boolean' && css`margin-bottom: ${withUnit(mBottom)};`}

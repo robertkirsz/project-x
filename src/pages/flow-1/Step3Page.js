@@ -2,23 +2,18 @@ import React, { Component, Fragment } from 'react'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
-import TextField from '@material-ui/core/TextField'
-// import InputLabel from '@material-ui/core/InputLabel'
-// import MenuItem from '@material-ui/core/MenuItem'
-// import FormControl from '@material-ui/core/FormControl'
-// import Select from '@material-ui/core/Select'
-// import FormControlLabel from '@material-ui/core/FormControlLabel'
-// import Checkbox from '@material-ui/core/Checkbox'
-// import Radio from '@material-ui/core/Radio'
-// import RadioGroup from '@material-ui/core/RadioGroup'
+import isPasswordValid from 'utils/isPasswordValid'
 
-import { H1, H2, Paragraph, Small } from 'components/Typography'
+import TextField from '@material-ui/core/TextField'
+
+import { H1, H2, Small } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button from 'components/Button'
 import Progress from 'components/Progress'
 import PinInput from 'components/PinInput'
 
 import logo from 'assets/logo.svg'
+import mail from 'assets/mail.svg'
 
 const paths = [
   '/onboarding-1/step-3/pin-setup',
@@ -26,19 +21,6 @@ const paths = [
   '/onboarding-1/step-3/password-setup',
   '/onboarding-1/step-3/email-confirm'
 ]
-
-const isPasswordValid = value => {
-  // Minimum length
-  if (value.length < 6) return false
-  // Various case
-  if (value.toLowerCase() === value) return false
-  // Numbers
-  if (!/\d/.test(value)) return false
-  // Special characters
-  if (!/[ !@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(value)) return false
-
-  return true
-}
 
 export default class Step3Page extends Component {
   state = {
@@ -160,7 +142,19 @@ export default class Step3Page extends Component {
       </Div>
     )
 
-    const emailConfirm = <Div flex={1} column itemsCenter padding="30px 16px" />
+    const emailConfirm = (
+      <Div flex={1} column itemsCenter padding="30px 16px">
+        <H1 center maxWidth={250}>
+          Please open the<br />confirmation email
+        </H1>
+
+        <H2 center maxWidth={280} mTop={16}>
+          …and continue the process by clicking on the link inside the email
+        </H2>
+
+        <img src={mail} alt="" style={{ marginTop: 26 }} />
+      </Div>
+    )
 
     return (
       <Fragment>
@@ -169,7 +163,7 @@ export default class Step3Page extends Component {
             {this.props.location.pathname === '/onboarding-1/step-3/pin-setup' && 'Setup your PIN'}
             {this.props.location.pathname === '/onboarding-1/step-3/pin-confirm' && 'Confirm your PIN'}
             {this.props.location.pathname === '/onboarding-1/step-3/password-setup' && 'Password setup'}
-            {this.props.location.pathname === '/onboarding-1/step-3/email-cnfirm' && 'Mail confirmation'}
+            {this.props.location.pathname === '/onboarding-1/step-3/email-confirm' && 'Mail confirmation'}
           </Progress>
         )}
 

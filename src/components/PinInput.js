@@ -67,7 +67,8 @@ const Dot = styled.span`
 
 const Keyboard = Div.extend`
   > button {
-    width: 32%;
+    width: 60px;
     min-width: 0;
+    margin: 6px;
   }
 `

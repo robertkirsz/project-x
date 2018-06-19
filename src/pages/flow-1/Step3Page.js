@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
-// import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField'
 // import InputLabel from '@material-ui/core/InputLabel'
 // import MenuItem from '@material-ui/core/MenuItem'
 // import FormControl from '@material-ui/core/FormControl'
@@ -12,8 +12,7 @@ import { Route } from 'react-router-dom'
 // import Radio from '@material-ui/core/Radio'
 // import RadioGroup from '@material-ui/core/RadioGroup'
 
-import { H1, Small } from 'components/Typography'
-// import { H1, H2, Paragraph, Small, Link } from 'components/Typography'
+import { H1, Paragraph, Small } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button from 'components/Button'
 import Progress from 'components/Progress'
@@ -28,10 +27,25 @@ const paths = [
   '/onboarding-1/step-3/email-confirm'
 ]
 
+const isPasswordValid = value => {
+  // Minimum length
+  if (value.length < 6) return false
+  // Various case
+  if (value.toLowerCase() === value) return false
+  // Numbers
+  if (!/\d/.test(value)) return false
+  // Special characters
+  if (!/[ !@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(value)) return false
+
+  return true
+}
+
 export default class Step3Page extends Component {
   state = {
     pin: '',
-    pinConfirm: ''
+    pinConfirm: '',
+    password: '',
+    passwordConfirm: ''
   }
 
   change = name => value => this.setState({ [name]: value })
@@ -79,7 +93,7 @@ export default class Step3Page extends Component {
           This PIN is used for all in-app authorisations on this device. We won’t use any other method for this.
         </Small>
 
-        <PinInput value={this.state.pin} onChange={pin => this.setState({ pin })}>
+        <PinInput value={this.state.pin} onChange={this.change('pin')}>
           Choose 5 - 8
         </PinInput>
 
@@ -99,7 +113,7 @@ export default class Step3Page extends Component {
           Enter the same digits again
         </Small>
 
-        <PinInput value={this.state.pinConfirm} onChange={pinConfirm => this.setState({ pinConfirm })} />
+        <PinInput value={this.state.pinConfirm} onChange={this.change('pinConfirm')} />
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-3/password-setup')}
@@ -113,11 +127,34 @@ export default class Step3Page extends Component {
 
     const passwordSetup = (
       <Div flex={1} column itemsCenter padding="30px 16px">
+        <Paragraph>We need your contact information</Paragraph>
+
+        <Small mTop={8}>
+          This password is required for the login to your account. For best password strenght use at least 6 characters,
+          at least one uppercase, special character and numbers.
+        </Small>
+
+        <TextField
+          label="Password"
+          value={this.state.password}
+          onChange={this.handleChange('password')}
+          style={{ marginTop: 16 }}
+        />
+
+        <TextField
+          label="Confirm password"
+          value={this.state.passwordConfirm}
+          onChange={this.handleChange('passwordConfirm')}
+          style={{ marginTop: 16 }}
+        />
+
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-3/email-confirm')}
+          // disabled={!isPasswordValid(this.state.password) || this.state.password !== this.state.passwordConfirm}
+          disabled={!isPasswordValid(this.state.password)}
           style={{ marginTop: 'auto' }}
         >
-          Next step
+          Confirm
         </Button>
       </Div>
     )

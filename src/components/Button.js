@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components'
 
 const dotAnimation = keyframes`
   0%, 80%, 100% {
@@ -11,7 +11,7 @@ const dotAnimation = keyframes`
     opacity: 1;
     transform: scale(1.0);
   }
-`;
+`
 
 export const ButtonSpinner = props => (
   <ButtonSpinnerWrapper {...props}>
@@ -19,7 +19,7 @@ export const ButtonSpinner = props => (
     <Dot />
     <Dot />
   </ButtonSpinnerWrapper>
-);
+)
 
 const ButtonSpinnerWrapper = styled.span`
   display: flex;
@@ -27,7 +27,7 @@ const ButtonSpinnerWrapper = styled.span`
   justify-content: center;
 
   width: 100%;
-`;
+`
 
 export const Dot = styled.span`
   display: block;

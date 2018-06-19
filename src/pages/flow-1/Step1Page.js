@@ -802,10 +802,9 @@ export default class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>Finally, let’s open your mBank account!</H2>
 
-        <Paragraph mTop={16}>
-          Below is a link to the contract.<br />
-          But you don’t need to download it now, as we already sent it to you by email.
-        </Paragraph>
+        <Paragraph mTop={16}>Below is a link to the contract.</Paragraph>
+
+        <Paragraph>But you don’t need to download it now, as we already sent it to you by email.</Paragraph>
 
         <Link mTop={36} style={{ maxWidth: 260 }} href={contractPdf} download="Contract.pdf">
           <img src={pdfIcon} alt="PDF Icon" style={{ marginRight: 22 }} /> Download the full mBank Account Contract

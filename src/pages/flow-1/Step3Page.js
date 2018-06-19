@@ -34,12 +34,6 @@ export default class Step3Page extends Component {
 
   handleChange = name => event => this.setState({ [name]: event.target.value })
 
-  handleCheckboxChange = name => event => this.setState({ [name]: event.target.checked })
-
-  isValid = keys => {
-    for (let index in keys) return Boolean(this.state[keys[index]])
-  }
-
   render() {
     const currentStep = paths.findIndex(path => path === this.props.location.pathname)
 
@@ -145,7 +139,7 @@ export default class Step3Page extends Component {
     const emailConfirm = (
       <Div flex={1} column itemsCenter padding="30px 16px">
         <H1 center maxWidth={250}>
-          Please open the<br />confirmation email
+          Please open the confirmation email
         </H1>
 
         <H2 center maxWidth={280} mTop={16}>

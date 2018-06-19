@@ -50,16 +50,6 @@ export default class Step2Page extends Component {
 
   componentWillUnmount = () => clearTimeout(this.timeout)
 
-  change = name => value => this.setState({ [name]: value })
-
-  handleChange = name => event => this.setState({ [name]: event.target.value })
-
-  handleCheckboxChange = name => event => this.setState({ [name]: event.target.checked })
-
-  isValid = keys => {
-    for (let index in keys) return Boolean(this.state[keys[index]])
-  }
-
   handleAllowCameraModalShow = () => this.setState({ showAllowCameraModal: true })
 
   handleAllowCameraModalClose = () => this.setState({ showAllowCameraModal: false })
@@ -104,19 +94,17 @@ export default class Step2Page extends Component {
         <Div column selfStart listTop={40} mTop={24}>
           <Div listLeft={48} itemsCenter>
             <img src={video1} alt="" />
-            <Paragraph>
-              Prepare an<br />ID document
-            </Paragraph>
+            <Paragraph>Prepare an ID document</Paragraph>
           </Div>
+
           <Div listLeft={48} itemsCenter>
             <img src={video2} alt="" />
             <Paragraph>Look fo a quiet place</Paragraph>
           </Div>
+
           <Div listLeft={48} itemsCenter>
             <img src={video3} alt="" />
-            <Paragraph>
-              Keep your signal<br />strong
-            </Paragraph>
+            <Paragraph>Keep your signal strong</Paragraph>
           </Div>
         </Div>
 
@@ -135,8 +123,8 @@ export default class Step2Page extends Component {
           Please wait a moment
         </H1>
 
-        <H2 center mTop={24}>
-          Establishing connection with<br />our consultant
+        <H2 center mTop={24} maxWidth={230}>
+          Establishing connection with our consultant
         </H2>
 
         <img

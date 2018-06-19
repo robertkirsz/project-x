@@ -12,7 +12,7 @@ import TextField from '@material-ui/core/TextField'
 // import Radio from '@material-ui/core/Radio'
 // import RadioGroup from '@material-ui/core/RadioGroup'
 
-import { H1, Paragraph, Small } from 'components/Typography'
+import { H1, H2, Paragraph, Small } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button from 'components/Button'
 import Progress from 'components/Progress'
@@ -126,8 +126,8 @@ export default class Step3Page extends Component {
     )
 
     const passwordSetup = (
-      <Div flex={1} column itemsCenter padding="30px 16px">
-        <Paragraph>We need your contact information</Paragraph>
+      <Div flex={1} column padding="30px 16px">
+        <H2>We need your contact information</H2>
 
         <Small mTop={8}>
           This password is required for the login to your account. For best password strenght use at least 6 characters,
@@ -136,13 +136,15 @@ export default class Step3Page extends Component {
 
         <TextField
           label="Password"
+          type="password"
           value={this.state.password}
           onChange={this.handleChange('password')}
-          style={{ marginTop: 16 }}
+          style={{ marginTop: 24 }}
         />
 
         <TextField
           label="Confirm password"
+          type="password"
           value={this.state.passwordConfirm}
           onChange={this.handleChange('passwordConfirm')}
           style={{ marginTop: 16 }}
@@ -150,8 +152,7 @@ export default class Step3Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-3/email-confirm')}
-          // disabled={!isPasswordValid(this.state.password) || this.state.password !== this.state.passwordConfirm}
-          disabled={!isPasswordValid(this.state.password)}
+          disabled={!isPasswordValid(this.state.password) || this.state.password !== this.state.passwordConfirm}
           style={{ marginTop: 'auto' }}
         >
           Confirm
@@ -167,7 +168,7 @@ export default class Step3Page extends Component {
           <Progress currentStep={currentStep} paths={paths}>
             {this.props.location.pathname === '/onboarding-1/step-3/pin-setup' && 'Setup your PIN'}
             {this.props.location.pathname === '/onboarding-1/step-3/pin-confirm' && 'Confirm your PIN'}
-            {this.props.location.pathname === '/onboarding-1/step-3/password-setup' && 'Passworw setup'}
+            {this.props.location.pathname === '/onboarding-1/step-3/password-setup' && 'Password setup'}
             {this.props.location.pathname === '/onboarding-1/step-3/email-cnfirm' && 'Mail confirmation'}
           </Progress>
         )}

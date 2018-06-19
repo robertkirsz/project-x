@@ -12,8 +12,7 @@ import { Route } from 'react-router-dom'
 // import Radio from '@material-ui/core/Radio'
 // import RadioGroup from '@material-ui/core/RadioGroup'
 
-import { H1, Paragraph } from 'components/Typography'
-// import { H1, H2, Paragraph, Small, Link } from 'components/Typography'
+import { H1, H2, Paragraph } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button from 'components/Button'
 import Progress from 'components/Progress'
@@ -96,6 +95,20 @@ export default class Step2Page extends Component {
       </Div>
     )
 
+    const connecting = (
+      <Div flex={1} column itemsCenter padding="30px 16px">
+        <H1 center mTop={44}>Please wait a moment</H1>
+
+        <H2 center mTop={24}>Establishing connection with<br />our consultant</H2>
+
+        <img src={video4} alt="" style={{ marginTop: 66 }} />
+
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-2/connecting')} style={{ marginTop: 'auto' }}>
+          Next step
+        </Button>
+      </Div>
+    )
+
     return (
       <Fragment>
         {!this.props.match.isExact && (
@@ -106,6 +119,7 @@ export default class Step2Page extends Component {
 
         <Route path="/onboarding-1/step-2" exact render={() => intro} />
         <Route path="/onboarding-1/step-2/prepare-to-video" render={() => prepareToVideo} />
+        <Route path="/onboarding-1/step-2/connecting" render={() => connecting} />
       </Fragment>
     )
   }

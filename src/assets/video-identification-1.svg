@@ -1,0 +1,53 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="96"
+  height="97"
+  viewBox="0 0 96 97"
+>
+  <defs>
+    <filter id="a" width="161.3%" height="163.3%" x="-30.6%" y="-22.2%" filterUnits="objectBoundingBox">
+      <feOffset dy="5" in="SourceAlpha" result="shadowOffsetOuter1" />
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5" />
+      <feColorMatrix
+        in="shadowBlurOuter1"
+        result="shadowMatrixOuter1"
+        values="0 0 0 0 0.0352941176 0 0 0 0 0.462745098 0 0 0 0 0.741176471 0 0 0 0.2 0"
+      />
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <path id="b" d="M0 .3h4.3v55H0z" />
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="47.8" cy="48.1" r="47.6" fill="#F6F6F6" />
+    <g filter="url(#a)" transform="rotate(-30 72 -9.8)">
+      <path
+        fill="#B73743"
+        d="M.6 54c0 1 .7 1.6 1.6 1.6h31.5c2.6 0 4.7-2 4.7-4.7V5.3c0-2.6-2-4.7-4.7-4.7H2.2C1.3.6.6 1.3.6 2.2V54z"
+      />
+      <g transform="translate(.6 .3)">
+        <mask id="c" fill="#fff">
+          <use xlink:href="#b" />
+        </mask>
+        <path fill="#962D3F" d="M4.3 55.3H1.6c-.9 0-1.6-.7-1.6-1.6V2C0 1 .7.3 1.6.3h2.7v55z" mask="url(#c)" />
+      </g>
+      <path fill="#F2F2F2" d="M10.6 12.5h20.5A1.8 1.8 0 0 0 31 9H10.6a1.8 1.8 0 0 0 0 3.6z" opacity=".2" />
+      <g>
+        <path
+          fill="#F2F2F2"
+          d="M25.7 21.3c-1.1 0-2.1 1-2.1 2.1V42c0 1.2 1 2.1 2.1 2.1H54c1.2 0 2.2-1 2.2-2.1V23.4c0-1.1-1-2.1-2.2-2.1H25.7z"
+        />
+        <path
+          fill="#0976BD"
+          d="M40.5 38.7h10.8v-12H40.5zM28.4 29.7h4.8v-1.2h-4.8zM28.4 32h8.4V31h-8.4zM28.4 34.5h8.4v-1.2h-8.4zM28.4 36.9h8.4v-1.2h-8.4z"
+          opacity=".2"
+        />
+        <path fill="#0976BD" d="M40.4 38.7a5.4 5.4 0 0 1 10.8 0H40.4z" />
+        <path fill="#0976BD" d="M48.5 30.5a2.7 2.7 0 1 0-5.4 0 2.7 2.7 0 0 0 5.4 0" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="50"
+  height="50"
+  viewBox="0 0 50 50"
+>
+  <defs>
+    <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF" />
+      <stop offset="100%" stop-color="#E8E8E8" />
+    </linearGradient>
+    <path
+      id="b"
+      d="M27.5 0c-1.5 0-2.6.5-3.2 1.4-.5.6-.7 1.7-.7 3v7.3c0 1.1 0 2-.5 2.6-.5.6-1.3 1-2.2 1-1 0-1.7-.4-2.3-1.1-.5-.7-.7-1.6-.7-3.1V.3h-5v11.4c0 1.1 0 2-.6 2.6-.4.6-1.2 1-2.1 1-1 0-1.8-.4-2.3-1.1-.5-.7-.7-1.6-.7-3.1V.3h-5v14.9H0V19h5.2l.8-2.3v.1a6.7 6.7 0 0 0 5.6 2.5c2.4 0 4.2-.8 5.3-2.4.8 1 2.4 2.4 5.4 2.4 2.4 0 4.3-.8 5.3-2.3.7-1.1 1-2.5 1-4.6V4.7c0-1 .4-1 .8-1s1 .2 1.3.4l.2.1-.1-3.1c-.7-.5-2-1-3.3-1z"
+    />
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+    <circle cx="24" cy="24" r="24" fill="url(#a)" stroke="#E8E8E8" stroke-width="2" />
+    <g transform="matrix(1 0 0 -1 8.9 33.7)">
+      <mask id="c" fill="#fff">
+        <use xlink:href="#b" />
+      </mask>
+      <use fill="#1F1A15" fill-rule="nonzero" xlink:href="#b" />
+      <g fill-rule="nonzero" mask="url(#c)">
+        <path fill="#E41509" d="M2.9 38h-16.4v-57.3H2.9z" />
+        <path fill="#F39100" d="M18.3-19.3H5.2V38h13z" />
+        <path fill="#CC0915" d="M27.7-19.3h-9.4V38h9.4z" />
+        <path fill="#20A134" d="M44.9-19.3h-15V38h15z" />
+        <path fill="#0976BD" d="M30-19.3h-2.3V38H30z" />
+        <path fill="#1F1A15" d="M5.2-19.3H2.9V38h2.3z" />
+      </g>
+    </g>
+  </g>
+</svg>

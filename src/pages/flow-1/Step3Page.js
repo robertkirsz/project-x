@@ -12,11 +12,12 @@ import { Route } from 'react-router-dom'
 // import Radio from '@material-ui/core/Radio'
 // import RadioGroup from '@material-ui/core/RadioGroup'
 
-import { H1 } from 'components/Typography'
+import { H1, Small } from 'components/Typography'
 // import { H1, H2, Paragraph, Small, Link } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button from 'components/Button'
 import Progress from 'components/Progress'
+import PinInput from 'components/PinInput'
 
 import logo from 'assets/logo.svg'
 
@@ -28,7 +29,10 @@ const paths = [
 ]
 
 export default class Step3Page extends Component {
-  state = {}
+  state = {
+    pin: '',
+    pinConfirm: ''
+  }
 
   change = name => value => this.setState({ [name]: value })
 
@@ -63,7 +67,7 @@ export default class Step3Page extends Component {
           </Step>
         </StepStatus>
 
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/pin-setup')} disabled style={{ marginTop: 'auto' }}>
+        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/pin-setup')} style={{ marginTop: 'auto' }}>
           Next step
         </Button>
       </Div>
@@ -71,7 +75,19 @@ export default class Step3Page extends Component {
 
     const pinSetup = (
       <Div flex={1} column itemsCenter padding="30px 16px">
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/pin-confirm')} disabled style={{ marginTop: 'auto' }}>
+        <Small center style={{ display: 'block', height: 28 }}>
+          This PIN is used for all in-app authorisations on this device. We won’t use any other method for this.
+        </Small>
+
+        <PinInput value={this.state.pin} onChange={pin => this.setState({ pin })}>
+          Choose 5 - 8
+        </PinInput>
+
+        <Button
+          onClick={() => this.props.history.push('/onboarding-1/step-3/pin-confirm')}
+          disabled={this.state.pin.length < 5}
+          style={{ marginTop: 'auto' }}
+        >
           Next step
         </Button>
       </Div>
@@ -79,7 +95,17 @@ export default class Step3Page extends Component {
 
     const pinConfirm = (
       <Div flex={1} column itemsCenter padding="30px 16px">
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/password-setup')} disabled style={{ marginTop: 'auto' }}>
+        <Small center style={{ display: 'block', height: 28 }}>
+          Enter the same digits again
+        </Small>
+
+        <PinInput value={this.state.pinConfirm} onChange={pinConfirm => this.setState({ pinConfirm })} />
+
+        <Button
+          onClick={() => this.props.history.push('/onboarding-1/step-3/password-setup')}
+          disabled={this.state.pin !== this.state.pinConfirm}
+          style={{ marginTop: 'auto' }}
+        >
           Next step
         </Button>
       </Div>
@@ -87,22 +113,25 @@ export default class Step3Page extends Component {
 
     const passwordSetup = (
       <Div flex={1} column itemsCenter padding="30px 16px">
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-3/email-confirm')} disabled style={{ marginTop: 'auto' }}>
+        <Button
+          onClick={() => this.props.history.push('/onboarding-1/step-3/email-confirm')}
+          style={{ marginTop: 'auto' }}
+        >
           Next step
         </Button>
       </Div>
     )
 
-    const emailConfirm = (
-      <Div flex={1} column itemsCenter padding="30px 16px">
-      </Div>
-    )
+    const emailConfirm = <Div flex={1} column itemsCenter padding="30px 16px" />
 
     return (
       <Fragment>
         {!this.props.match.isExact && (
           <Progress currentStep={currentStep} paths={paths}>
-            Lorem ipsum
+            {this.props.location.pathname === '/onboarding-1/step-3/pin-setup' && 'Setup your PIN'}
+            {this.props.location.pathname === '/onboarding-1/step-3/pin-confirm' && 'Confirm your PIN'}
+            {this.props.location.pathname === '/onboarding-1/step-3/password-setup' && 'Passworw setup'}
+            {this.props.location.pathname === '/onboarding-1/step-3/email-cnfirm' && 'Mail confirmation'}
           </Progress>
         )}
 

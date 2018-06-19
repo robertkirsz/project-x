@@ -29,6 +29,7 @@ const routes = [
   '/onboarding-1/step-2/waiting',
   '/onboarding-1/step-2/account-ready',
   '/onboarding-1/step-3',
+  '/onboarding-1/step-3/pin-setup',
   '/onboarding-1/step-3/pin-confirm',
   '/onboarding-1/step-3/password-setup',
   '/onboarding-1/step-3/email-confirm'

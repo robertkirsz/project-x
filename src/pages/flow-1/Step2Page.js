@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import styled from 'styled-components'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
@@ -11,6 +12,9 @@ import { Route } from 'react-router-dom'
 // import Checkbox from '@material-ui/core/Checkbox'
 // import Radio from '@material-ui/core/Radio'
 // import RadioGroup from '@material-ui/core/RadioGroup'
+import MuiButton from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
 
 import { H1, H2, Paragraph } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
@@ -18,6 +22,7 @@ import Button, { ButtonSpinner } from 'components/Button'
 import Progress from 'components/Progress'
 
 import logo from 'assets/logo.svg'
+import camera from 'assets/camera.svg'
 import video1 from 'assets/video-identification-1.svg'
 import video2 from 'assets/video-identification-2.svg'
 import video3 from 'assets/video-identification-3.svg'
@@ -33,7 +38,28 @@ const paths = [
 ]
 
 export default class Step2Page extends Component {
-  state = {}
+  timeout = null
+
+  state = {
+    showAllowCameraModal: false
+  }
+
+  componentDidMount() {
+    if (this.props.location.pathname === '/onboarding-1/step-2/connecting') {
+      this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.location.pathname !== '/onboarding-1/step-2/connecting' &&
+      this.props.location.pathname === '/onboarding-1/step-2/connecting'
+    ) {
+      this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
+    }
+  }
+
+  componentWillUnmount = () => clearTimeout(this.timeout)
 
   change = name => value => this.setState({ [name]: value })
 
@@ -43,6 +69,15 @@ export default class Step2Page extends Component {
 
   isValid = keys => {
     for (let index in keys) return Boolean(this.state[keys[index]])
+  }
+
+  handleAllowCameraModalShow = () => this.setState({ showAllowCameraModal: true })
+
+  handleAllowCameraModalClose = () => this.setState({ showAllowCameraModal: false })
+
+  handleAllowCameraModalConfirm = () => {
+    this.handleAllowCameraModalClose()
+    this.timeout = setTimeout(() => this.props.history.push('/onboarding-1/step-2/conversation'), 800)
   }
 
   render() {
@@ -66,7 +101,10 @@ export default class Step2Page extends Component {
           <Step number="3">PIN & password setup</Step>
         </StepStatus>
 
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-2/prepare-to-video')} style={{ marginTop: 'auto' }}>
+        <Button
+          onClick={() => this.props.history.push('/onboarding-1/step-2/prepare-to-video')}
+          style={{ marginTop: 'auto' }}
+        >
           Next step
         </Button>
       </Div>
@@ -77,7 +115,9 @@ export default class Step2Page extends Component {
         <Div column selfStart listTop={40} mTop={24}>
           <Div listLeft={48} itemsCenter>
             <img src={video1} alt="" />
-            <Paragraph>Prepare an<br />ID document</Paragraph>
+            <Paragraph>
+              Prepare an<br />ID document
+            </Paragraph>
           </Div>
           <Div listLeft={48} itemsCenter>
             <img src={video2} alt="" />
@@ -85,11 +125,16 @@ export default class Step2Page extends Component {
           </Div>
           <Div listLeft={48} itemsCenter>
             <img src={video3} alt="" />
-            <Paragraph>Keep your signal<br />strong</Paragraph>
+            <Paragraph>
+              Keep your signal<br />strong
+            </Paragraph>
           </Div>
         </Div>
 
-        <Button onClick={() => this.props.history.push('/onboarding-1/step-2/connecting')} style={{ marginTop: 'auto' }}>
+        <Button
+          onClick={() => this.props.history.push('/onboarding-1/step-2/connecting')}
+          style={{ marginTop: 'auto' }}
+        >
           Next step
         </Button>
       </Div>
@@ -97,15 +142,38 @@ export default class Step2Page extends Component {
 
     const connecting = (
       <Div flex={1} column itemsCenter padding="30px 16px">
-        <H1 center mTop={44}>Please wait a moment</H1>
+        <H1 center mTop={44}>
+          Please wait a moment
+        </H1>
 
-        <H2 center mTop={24}>Establishing connection with<br />our consultant</H2>
+        <H2 center mTop={24}>
+          Establishing connection with<br />our consultant
+        </H2>
 
-        <img src={video4} alt="" style={{ marginTop: 66 }} />
+        <img
+          src={video4}
+          alt=""
+          style={{ marginTop: 66 }}
+          onClick={() => this.setState({ showAllowCameraModal: true })}
+        />
 
         <Button disabled style={{ marginTop: 'auto' }}>
           <ButtonSpinner />
         </Button>
+
+        <Dialog open={this.state.showAllowCameraModal} onClose={this.handleAllowCameraModalClose}>
+          <Div listLeft={35} itemsStart padding="36px 24px 0">
+            <img src={camera} alt="" />
+            <DialogText>Allow mBank Europe app to take pictures and record video?</DialogText>
+          </Div>
+
+          <DialogActions>
+            <MuiButton onClick={this.handleAllowCameraModalClose}>Deny</MuiButton>
+            <MuiButton onClick={this.handleAllowCameraModalConfirm} style={{ color: '#4DB6AC' }}>
+              Allow
+            </MuiButton>
+          </DialogActions>
+        </Dialog>
       </Div>
     )
 
@@ -124,3 +192,10 @@ export default class Step2Page extends Component {
     )
   }
 }
+
+const DialogText = styled.div`
+  font-size: 16px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 20px;
+`

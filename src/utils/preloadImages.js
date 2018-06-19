@@ -18,6 +18,7 @@ import video3 from 'assets/video-identification-3.svg'
 import video4 from 'assets/video-identification-4.svg'
 import pinLogo from 'assets/pin-logo.svg'
 import mail from 'assets/mail.svg'
+import camera from 'assets/camera.svg'
 
 const images = [
   arrowLeft,
@@ -39,7 +40,8 @@ const images = [
   video3,
   video4,
   pinLogo,
-  mail
+  mail,
+  camera
 ]
 
 export default () =>

@@ -30,7 +30,7 @@ import IntroPage2 from 'pages/flow-2/IntroPage'
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-const VERSION = 'v0.2'
+const VERSION = 'v0.3'
 
 class App extends Component {
   state = {
@@ -65,7 +65,7 @@ class App extends Component {
 
     return (
       <TextProvider language={language}>
-        <Background flex={1} column loggedIn={loggedIn}>
+        <Background flex={1} column show={loggedIn && !this.props.match.isExact}>
           <Switch>
             <Route
               path="/"
@@ -73,7 +73,13 @@ class App extends Component {
               render={() => (
                 <Div column itemsCenter margin="auto">
                   {!loggedIn && (
-                    <TextField label="Password" type="password" value={password} onChange={this.changePassword} />
+                    <TextField
+                      label="Password"
+                      type="password"
+                      autocomplete="new-password"
+                      value={password}
+                      onChange={this.changePassword}
+                    />
                   )}
 
                   <Div listLeft={16} mTop={32}>
@@ -156,7 +162,7 @@ export default hot(module)(App)
 
 /* prettier-ignore */
 const Background = Div.extend`
-  ${props => props.loggedIn && `
+  ${props => props.show && `
     background: url(${motife}) center bottom no-repeat;
     background-size: contain;
   `}

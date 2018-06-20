@@ -5,6 +5,14 @@ import logo from 'assets/logo.svg'
 import motife from 'assets/motife-expanded.png'
 
 export default class IntroPage extends Component {
+  timeout = null
+
+  componentDidMount() {
+    this.timeout = setTimeout(this.goNext, 2500)
+  }
+
+  componentWillUnmount = () => clearTimeout(this.timeout)
+
   goNext = () => this.props.history.push('/onboarding-1/usp')
 
   render = () => <Background onClick={this.goNext} />

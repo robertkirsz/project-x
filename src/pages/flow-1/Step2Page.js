@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
+import { withTexts } from 'providers/TextProvider'
+import parseValues from 'utils/parseValues'
+
 import MuiButton from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
-
-import { withTexts } from 'providers/TextProvider'
 
 import { H1, H2, Paragraph } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
@@ -80,10 +81,7 @@ class Step2Page extends Component {
       <Div flex={1} column itemsCenter padding="30px 16px">
         <img src={logo} alt="" width="108" />
 
-        <H1 mTop={13}>
-          {/* TODO: this.props.formData.firstName */}
-          {t.intro[0]}
-        </H1>
+        <H1 mTop={13}>{parseValues(t.intro[0], { userName: this.props.formData.firstName })}</H1>
 
         <StepStatus>
           <Step number="1" isDone>

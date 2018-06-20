@@ -3,6 +3,7 @@ import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
 import isPasswordValid from 'utils/isPasswordValid'
+import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
 
 import TextField from '@material-ui/core/TextField'
@@ -47,10 +48,7 @@ class Step3Page extends Component {
       <Div flex={1} column itemsCenter padding="30px 16px">
         <img src={logo} alt="" width="108" />
 
-        <H1 mTop={13}>
-          {/* TODO: this.props.formData.firstName */}
-          {t.intro[0]}
-        </H1>
+        <H1 mTop={13}>{parseValues(t.intro[0], { userName: this.props.formData.firstName })}</H1>
 
         <StepStatus>
           <Step number="1" isDone>

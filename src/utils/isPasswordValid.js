@@ -1,4 +1,5 @@
 export default value => {
+  if (value === null || value === undefined) return false
   // Minimum length
   if (value.length < 6) return false
   // Various case

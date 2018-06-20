@@ -4,6 +4,7 @@ import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
 import uuid from 'utils/uuid'
+import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
 
 import TextField from '@material-ui/core/TextField'
@@ -366,7 +367,7 @@ class Step1Page extends Component {
 
     const card = (
       <Div flex={1} column itemsCenter padding="30px 16px">
-        <H2>{t.card[0]}</H2>
+        <H2>{parseValues(t.card[0], { userName: this.state.firstName })}</H2>
 
         <CardCarousel value={this.state.chosenCard} onChange={this.change('chosenCard')} />
 

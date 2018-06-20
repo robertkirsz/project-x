@@ -30,6 +30,7 @@ import Button from 'components/Button'
 import CardCarousel from 'components/CardCarousel'
 import Progress from 'components/Progress'
 import PhoneInput from 'components/PhoneInput'
+import NativeModal from 'components/NativeModal'
 
 import logo from 'assets/logo.svg'
 import mapMarker from 'assets/map-marker.svg'
@@ -133,7 +134,10 @@ class Step1Page extends Component {
     consent6: false,
     reviewEditMode: false,
     showConsentModal: false,
-    showConsentModalId: 'consent1'
+    showConsentModalId: 'consent1',
+    showLocationModal: false,
+    allowLocation: false,
+    locationModalCallback: null
   }
 
   componentDidUpdate(prevProps) {
@@ -155,25 +159,31 @@ class Step1Page extends Component {
   handleCheckboxChange = name => event => this.setState({ [name]: event.target.checked })
 
   prefillResidentialAddress = () => {
-    this.setState({
+    const data = {
       postalCode: '23-946',
       city: 'Hamburg',
       streetName: 'Parkstr',
       buildingNumber: '25',
       apartmentNumber: '23',
       country: 'Germany'
-    })
+    }
+
+    if (this.state.allowLocation) this.setState(data)
+    else this.handleLocationModalOpen(() => this.setState(data))
   }
 
   prefillCorrespondenceAddress = () => {
-    this.setState({
+    const data = {
       correspondencePostalCode: '10-329',
       correspondenceCity: 'Berlin',
       correspondenceStreetName: 'Sommerallee',
       correspondenceBuildingNumber: '23',
       correspondenceApartmentNumber: '12',
       correspondenceCountry: 'Germany'
-    })
+    }
+
+    if (this.state.allowLocation) this.setState(data)
+    else this.handleLocationModalOpen(() => this.setState(data))
   }
 
   addTax = () => {
@@ -203,6 +213,15 @@ class Step1Page extends Component {
     this.setState({ showConsentModal: true, showConsentModalId: consentId })
 
   handleConsentModalClose = () => this.setState({ showConsentModal: false })
+
+  handleLocationModalOpen = callback => this.setState({ showLocationModal: true, locationModalCallback: callback })
+
+  handleLocationModalClose = () => this.setState({ showLocationModal: false })
+
+  handleLocationModalConfirm = () => {
+    this.setState({ showLocationModal: false, allowLocation: true })
+    if (this.state.locationModalCallback) this.state.locationModalCallback()
+  }
 
   render() {
     const { texts } = this.props
@@ -601,6 +620,8 @@ class Step1Page extends Component {
           </FormControl>
         </Div>
 
+        {/* TODO: Make ''+ More options' work on '/onboarding-1/step-1/industry' */}
+
         <Link center mTop={16} style={{ alignSelf: 'center' }}>
           {t.industry[2]}
         </Link>
@@ -877,6 +898,13 @@ class Step1Page extends Component {
             </MuiButton>
           </DialogActions>
         </Dialog>
+
+        <NativeModal
+          type="location"
+          open={this.state.showLocationModal}
+          onClose={this.handleLocationModalClose}
+          onConfirm={this.handleLocationModalConfirm}
+        />
       </Fragment>
     )
   }

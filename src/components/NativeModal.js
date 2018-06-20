@@ -9,15 +9,16 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 
 import camera from 'assets/camera.svg'
+import mapMarker from 'assets/native-map-marker.svg'
 
 const iconsMap = {
   camera: camera,
-  location: camera
+  location: mapMarker
 }
 
 const textsMap = {
   camera: 'allowCamera',
-  location: 'allowCamera'
+  location: 'allowLocation'
 }
 
 const NativeModal = props => (

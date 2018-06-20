@@ -50,7 +50,7 @@ export default {
     },
     step1: {
       intro: {
-        0: 'Get your new mBank account in only 3 simple steps and start with...'
+        0: 'Get your new mBank account in only 3 simple steps and start with…'
       },
       name: {
         0: 'Please tell us something about yourself',
@@ -66,7 +66,7 @@ export default {
         1: 'We will use this phone number and email for login'
       },
       birth: {
-        0: 'Please enter your...'
+        0: 'Please enter your…'
       },
       residentialAddress: {
         0: 'Please enter your address',

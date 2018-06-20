@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Div } from 'styled-kit'
 
 import move from 'utils/move'
+import { withTexts } from 'providers/TextProvider'
 
 import { H1, H2 } from 'components/Typography'
 import Button from 'components/Button'
@@ -16,18 +17,21 @@ import image2 from 'assets/usp-2.png'
 import image3 from 'assets/usp-3.png'
 import image4 from 'assets/usp-4.png'
 
-export default class UspPage extends Component {
+class UspPage extends Component {
   state = { currentSlide: 0 }
 
   goToSlide = index => event => this.setState({ currentSlide: index })
 
   render() {
+    const { texts } = this.props
     const { currentSlide } = this.state
+
+    const t = texts.onboarding1.usp
 
     return (
       <Div flex={1} column itemsCenter padding="0 16px 30px">
         <Header>
-          <SkipButton to="/onboarding-1/step-1">SKIP</SkipButton>
+          <SkipButton to="/onboarding-1/step-1">{texts.misc.skip}</SkipButton>
         </Header>
 
         <Swiper
@@ -37,50 +41,48 @@ export default class UspPage extends Component {
           <Div flex={1}>
             {currentSlide === 0 && (
               <Div flex={1} column itemsCenter padding={30}>
-                <img src={image1} width="217" alt="" />
+                <Image src={image1} />
                 <H1 center mTop={24}>
-                  Transfer money for free worldwide
+                  {t[0]}
                 </H1>
                 <H2 center mTop={16}>
-                  Send money abroad for free in realtime with mBank Europe. Transfer money to any bank, business or
-                  friend immediately.
+                  {t[1]}
                 </H2>
               </Div>
             )}
 
             {currentSlide === 1 && (
               <Div flex={1} column itemsCenter padding={30}>
-                <img src={image2} width="217" alt="" />
+                <Image src={image2} />
                 <H1 center mTop={24}>
-                  ATM for free worldwide
+                  {t[2]}
                 </H1>
                 <H2 center mTop={16}>
-                  Up to 500 Euro you can take cash from ATM for free in any country.
+                  {t[3]}
                 </H2>
               </Div>
             )}
 
             {currentSlide === 2 && (
               <Div flex={1} column itemsCenter padding={30}>
-                <img src={image3} width="217" alt="" />
+                <Image src={image3} />
                 <H1 center mTop={24}>
-                  Multicurrency contactless
+                  {t[4]}
                 </H1>
                 <H2 center mTop={16}>
-                  Pay in any country with your credit card with exchange rate 0,1%, the lowest on the market.
+                  {t[5]}
                 </H2>
               </Div>
             )}
 
             {currentSlide === 3 && (
               <Div flex={1} column itemsCenter padding={30}>
-                <img src={image4} width="217" alt="" />
+                <Image src={image4} />
                 <H1 center mTop={24}>
-                  …and many more!
+                  {t[6]}
                 </H1>
                 <H2 center mTop={16}>
-                  Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan
-                  on one click process.
+                  {t[7]}
                 </H2>
               </Div>
             )}
@@ -89,13 +91,13 @@ export default class UspPage extends Component {
 
         {currentSlide < 3 && <Pagination size={4} value={currentSlide} onChange={this.goToSlide} />}
 
-        {currentSlide === 3 && (
-          <Button onClick={() => this.props.history.push('/onboarding-1/step-1')}>Start now!</Button>
-        )}
+        {currentSlide === 3 && <Button onClick={() => this.props.history.push('/onboarding-1/step-1')}>{t[8]}</Button>}
       </Div>
     )
   }
 }
+
+export default withTexts(UspPage)
 
 /* prettier-ignore */
 const Header = styled.header`
@@ -113,5 +115,12 @@ const SkipButton = styled(Link)`
   color: #959595;
   margin-left: auto;
   text-decoration: none;
+  text-transform: uppercase;
   cursor: pointer;
+`
+
+const Image = styled.img.attrs({ alt: '' })`
+  display: block;
+  width: 100%;
+  max-width: 217px;
 `

@@ -101,7 +101,7 @@ class Step2Page extends Component {
       <Div flex={1} column itemsCenter padding="30px 16px">
         <img src={logo} alt="" width="108" />
 
-        <H1 mTop={13}>{parseValues(t.intro[0], { userName: this.props.formData.firstName })}</H1>
+        <H1 mTop={13}>{parseValues(t.intro[0], { userName: sessionStorage.getItem('firstName') })}</H1>
 
         <StepStatus>
           <Step number="1" isDone>

@@ -58,12 +58,12 @@ export default styled.button`
   font-family: inherit;
   width: 100%;
   height: 52px;
-  background: ${({ theme }) => theme.darkMode ? 'white' : '#cc0915'};
+  background: ${({ theme }) => (theme.darkMode ? 'white' : '#cc0915')};
   border: none;
   outline: none;
   border-radius: 100px;
   font-size: 18px;
-  color: ${({ theme }) => theme.darkMode ? '#20A134' : 'white'};
+  color: ${({ theme }) => (theme.darkMode ? '#20A134' : 'white')};
   letter-spacing: 0;
   text-align: center;
   cursor: pointer;

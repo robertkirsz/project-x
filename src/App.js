@@ -38,7 +38,6 @@ class App extends Component {
     loggedIn: Boolean(sessionStorage.getItem('loggedIn')),
     imagesLoaded: false,
     shouldPrefillData: false,
-    formData: {},
     language: sessionStorage.getItem('language') || 'english'
   }
 
@@ -61,7 +60,7 @@ class App extends Component {
   }
 
   render() {
-    const { password, loggedIn, imagesLoaded, shouldPrefillData, formData, language } = this.state
+    const { password, loggedIn, imagesLoaded, shouldPrefillData, language } = this.state
 
     return (
       <TextProvider language={language}>
@@ -115,7 +114,9 @@ class App extends Component {
 
             {/* Flow 1 */}
             <PrivateRoute path="/onboarding-1/intro" isRestricted={!loggedIn} component={IntroPage} />
+
             <PrivateRoute path="/onboarding-1/usp" isRestricted={!loggedIn} component={UspPage} />
+
             <PrivateRoute path="/onboarding-1/first-login" isRestricted={!loggedIn} component={FirstLoginPage} />
 
             <PrivateRoute
@@ -124,18 +125,10 @@ class App extends Component {
               component={Step1Page}
               shouldPrefillData={shouldPrefillData}
             />
-            <PrivateRoute
-              path="/onboarding-1/step-2"
-              isRestricted={!loggedIn}
-              component={Step2Page}
-              formData={formData}
-            />
-            <PrivateRoute
-              path="/onboarding-1/step-3"
-              isRestricted={!loggedIn}
-              component={Step3Page}
-              formData={formData}
-            />
+
+            <PrivateRoute path="/onboarding-1/step-2" isRestricted={!loggedIn} component={Step2Page} />
+
+            <PrivateRoute path="/onboarding-1/step-3" isRestricted={!loggedIn} component={Step3Page} />
 
             {/* Flow 2 */}
             <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />

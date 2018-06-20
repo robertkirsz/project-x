@@ -144,7 +144,13 @@ class Step1Page extends Component {
 
   change = name => value => this.setState({ [name]: value })
 
-  handleChange = name => event => this.setState({ [name]: event.target.value })
+  handleChange = name => event => {
+    if (name === 'firstName') {
+      sessionStorage.setItem('firstName', event.target.value)
+    }
+
+    this.setState({ [name]: event.target.value })
+  }
 
   handleCheckboxChange = name => event => this.setState({ [name]: event.target.checked })
 

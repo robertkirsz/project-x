@@ -3,9 +3,16 @@ export default {
     'nextStep': 'Next step',
     'edit': 'Edit',
     'skip': 'Skip',
-    'okay': 'Okay'
+    'okay': 'Okay',
+    'country': 'Country',
+    'phoneNumber': 'Phone number'
   },
   onboarding1: {
+    firstLogin: {
+      0: 'Hi, Welcome!',
+      1: 'To start please provide your mobile phone number',
+      2: 'Already have an account'
+    },
     usp: {
       0: 'Transfer money for free worldwide',
       1: 'Send money abroad for free in realtime with mBank Europe. Transfer money to any bank, business or friend immediately.',

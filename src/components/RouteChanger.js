@@ -7,8 +7,7 @@ const routes = [
   '/',
   '/onboarding-1/intro',
   '/onboarding-1/usp',
-  // NOTE: the route below will be used in the Onboarding 2
-  // '/onboarding-1/first-login',
+  '/onboarding-1/first-login',
   '/onboarding-1/step-1',
   '/onboarding-1/step-1/name',
   '/onboarding-1/step-1/card',

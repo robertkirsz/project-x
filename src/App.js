@@ -18,8 +18,7 @@ import motife from 'assets/motife-collapsed.png'
 // Flow 1
 import IntroPage from 'pages/flow-1/IntroPage'
 import UspPage from 'pages/flow-1/UspPage'
-// NOTE: the route below will be used in the Onboarding 2
-// import FirstLoginPage from 'pages/flow-1/FirstLoginPage'
+import FirstLoginPage from 'pages/flow-1/FirstLoginPage'
 import Step1Page from 'pages/flow-1/Step1Page'
 import Step2Page from 'pages/flow-1/Step2Page'
 import Step3Page from 'pages/flow-1/Step3Page'
@@ -106,8 +105,7 @@ class App extends Component {
             {/* Flow 1 */}
             <PrivateRoute path="/onboarding-1/intro" isRestricted={!loggedIn} component={IntroPage} />
             <PrivateRoute path="/onboarding-1/usp" isRestricted={!loggedIn} component={UspPage} />
-            {/* NOTE: the route below will be used in the Onboarding 2 */}
-            {/* <PrivateRoute path="/onboarding-1/first-login" isRestricted={!loggedIn} component={FirstLoginPage} /> */}
+            <PrivateRoute path="/onboarding-1/first-login" isRestricted={!loggedIn} component={FirstLoginPage} />
 
             <PrivateRoute
               path="/onboarding-1/step-1"

@@ -1,4 +1,5 @@
 import { css, injectGlobal } from 'styled-components'
+import Lola from 'fonts/FSLola-Medium.woff'
 
 // [0 - smallOnly - 639]
 // [0 ------ mediumDown ------ 1023]
@@ -26,12 +27,17 @@ export const sizes = queries.reduce(
 )
 
 injectGlobal`
+  @font-face {
+    font-family: 'Lola';
+    src: url(${Lola}) format('woff');
+  }
+
   html {
     height: 100%;
   }
 
   body {
-    font-family: Roboto, sans-serif;
+    font-family: Lola, sans-serif;
     height: 100%;
     cursor: default;
   }

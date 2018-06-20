@@ -30,7 +30,7 @@ import IntroPage2 from 'pages/flow-2/IntroPage'
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-const VERSION = 'v0.4'
+const VERSION = 'v0.5'
 
 class App extends Component {
   state = {

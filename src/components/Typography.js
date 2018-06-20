@@ -7,7 +7,7 @@ const baseStyles = css`
   display: flex;
   align-items: center;
   margin: 0;
-  font-family: Roboto, sans-serif;
+  font-family: Lola, sans-serif;
   font-weight: 300;
   line-height: 1;
   letter-spacing: 0;

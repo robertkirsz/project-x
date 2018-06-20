@@ -3,6 +3,7 @@ import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
 import isPasswordValid from 'utils/isPasswordValid'
+import { withTexts } from 'providers/TextProvider'
 
 import TextField from '@material-ui/core/TextField'
 
@@ -22,7 +23,7 @@ const paths = [
   '/onboarding-1/step-3/email-confirm'
 ]
 
-export default class Step3Page extends Component {
+class Step3Page extends Component {
   state = {
     pin: '',
     pinConfirm: '',
@@ -35,6 +36,11 @@ export default class Step3Page extends Component {
   handleChange = name => event => this.setState({ [name]: event.target.value })
 
   render() {
+    const { texts } = this.props
+
+    const titles = texts.onboarding1.stepTitles
+    const t = texts.onboarding1.step3
+
     const currentStep = paths.findIndex(path => path === this.props.location.pathname)
 
     const intro = (
@@ -42,23 +48,24 @@ export default class Step3Page extends Component {
         <img src={logo} alt="Logo" width="108" />
 
         <H1 mTop={13}>
-          Great {this.props.formData.firstName}! Continue with video identification and verify your account
+          {/* TODO: this.props.formData.firstName */}
+          {t.intro[0]}
         </H1>
 
         <StepStatus>
           <Step number="1" isDone>
-            Personal data
+            {titles[0]}
           </Step>
           <Step number="2" isDone>
-            Video identification
+            {titles[1]}
           </Step>
           <Step number="3" isActive>
-            PIN & password setup
+            {titles[2]}
           </Step>
         </StepStatus>
 
         <Button onClick={() => this.props.history.push('/onboarding-1/step-3/pin-setup')} style={{ marginTop: 'auto' }}>
-          Next step
+          {texts.misc.nextStep}
         </Button>
       </Div>
     )
@@ -66,11 +73,11 @@ export default class Step3Page extends Component {
     const pinSetup = (
       <Div flex={1} column itemsCenter padding="30px 16px">
         <Small center style={{ display: 'block', height: 28 }}>
-          This PIN is used for all in-app authorisations on this device. We won’t use any other method for this.
+          {t.pinSetup[0]}
         </Small>
 
         <PinInput value={this.state.pin} onChange={this.change('pin')}>
-          Choose 5 - 8
+          {t.pinSetup[1]}
         </PinInput>
 
         <Button
@@ -78,7 +85,7 @@ export default class Step3Page extends Component {
           disabled={this.state.pin.length < 5}
           style={{ marginTop: 'auto' }}
         >
-          Next step
+          {texts.misc.nextStep}
         </Button>
       </Div>
     )
@@ -86,7 +93,7 @@ export default class Step3Page extends Component {
     const pinConfirm = (
       <Div flex={1} column itemsCenter padding="30px 16px">
         <Small center style={{ display: 'block', height: 28 }}>
-          Enter the same digits again
+          {t.pinConfirm[0]}
         </Small>
 
         <PinInput value={this.state.pinConfirm} onChange={this.change('pinConfirm')} />
@@ -96,22 +103,21 @@ export default class Step3Page extends Component {
           disabled={this.state.pin !== this.state.pinConfirm}
           style={{ marginTop: 'auto' }}
         >
-          Next step
+          {texts.misc.nextStep}
         </Button>
       </Div>
     )
 
     const passwordSetup = (
       <Div flex={1} column padding="30px 16px">
-        <H2>We need your contact information</H2>
+        <H2>{t.passwordSetup[0]}</H2>
 
         <Small mTop={8}>
-          This password is required for the login to your account. For best password strenght use at least 6 characters,
-          at least one uppercase, special character and numbers.
+          {t.passwordSetup[1]}
         </Small>
 
         <TextField
-          label="Password"
+          label={texts.misc.password}
           type="password"
           value={this.state.password}
           onChange={this.handleChange('password')}
@@ -119,7 +125,7 @@ export default class Step3Page extends Component {
         />
 
         <TextField
-          label="Confirm password"
+          label={texts.misc.confirmPassword}
           type="password"
           value={this.state.passwordConfirm}
           onChange={this.handleChange('passwordConfirm')}
@@ -131,7 +137,7 @@ export default class Step3Page extends Component {
           disabled={!isPasswordValid(this.state.password) || this.state.password !== this.state.passwordConfirm}
           style={{ marginTop: 'auto' }}
         >
-          Confirm
+          {texts.misc.confirm}
         </Button>
       </Div>
     )
@@ -139,11 +145,11 @@ export default class Step3Page extends Component {
     const emailConfirm = (
       <Div flex={1} column itemsCenter padding="30px 16px">
         <H1 center maxWidth={250}>
-          Please open the confirmation email
+          {t.emailConfirm[0]}
         </H1>
 
         <H2 center maxWidth={280} mTop={16}>
-          …and continue the process by clicking on the link inside the email
+          {t.emailConfirm[1]}
         </H2>
 
         <img src={mail} alt="" style={{ marginTop: 26 }} />
@@ -154,10 +160,10 @@ export default class Step3Page extends Component {
       <Fragment>
         {!this.props.match.isExact && (
           <Progress currentStep={currentStep} paths={paths}>
-            {this.props.location.pathname === '/onboarding-1/step-3/pin-setup' && 'Setup your PIN'}
-            {this.props.location.pathname === '/onboarding-1/step-3/pin-confirm' && 'Confirm your PIN'}
-            {this.props.location.pathname === '/onboarding-1/step-3/password-setup' && 'Password setup'}
-            {this.props.location.pathname === '/onboarding-1/step-3/email-confirm' && 'Mail confirmation'}
+            {this.props.location.pathname === '/onboarding-1/step-3/pin-setup' && t.pinSetup.title}
+            {this.props.location.pathname === '/onboarding-1/step-3/pin-confirm' && t.pinConfirm.title}
+            {this.props.location.pathname === '/onboarding-1/step-3/password-setup' && t.passwordSetup.title}
+            {this.props.location.pathname === '/onboarding-1/step-3/email-confirm' && t.emailConfirm.title}
           </Progress>
         )}
 
@@ -170,3 +176,5 @@ export default class Step3Page extends Component {
     )
   }
 }
+
+export default withTexts(Step3Page)

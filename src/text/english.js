@@ -1,11 +1,14 @@
 export default {
   misc: {
-    'nextStep': 'Next step',
-    'edit': 'Edit',
-    'skip': 'Skip',
-    'okay': 'Okay',
-    'country': 'Country',
-    'phoneNumber': 'Phone number'
+    nextStep: 'Next step',
+    edit: 'Edit',
+    skip: 'Skip',
+    okay: 'Okay',
+    country: 'Country',
+    phoneNumber: 'Phone number',
+    confirm: 'Confirm',
+    password: 'Password',
+    confirmPassword: 'Confirm password',
   },
   onboarding1: {
     firstLogin: {
@@ -24,17 +27,39 @@ export default {
       7: 'Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan on one click process.',
       8: 'Start now!',
     },
+    stepTitles: {
+      0: 'Personal data',
+      1: 'Video identification',
+      2: 'PIN & password setup'
+    },
     step1: {
-      titles: [
-        'Account opening',
-        'Personal data'
-      ],
       intro: [
-        'Get your new mBank account in only 3 simple steps and start with...',
-        'Personal data',
-        'Video identification',
-        'PIN & password setup'
+        'Get your new mBank account in only 3 simple steps and start with...'
       ]
+    },
+    step3: {
+      intro: {
+        0: 'Great {userName}! Continue with video identification and verify your account'
+      },
+      pinSetup: {
+        title: 'Setup your PIN',
+        0: 'This PIN is used for all in-app authorisations on this device. We won’t use any other method for this.',
+        1: 'Choose 5 - 8'
+      },
+      pinConfirm: {
+        title: 'Confirm your PIN',
+        0: 'Enter the same digits again'
+      },
+      passwordSetup: {
+        title: 'Password setup',
+        0: 'We need your contact information',
+        1: 'This password is required for the login to your account. For best password strenght use at least 6 characters, at least one uppercase, special character and numbers.'
+      },
+      emailConfirm: {
+        title: 'Mail confirmation',
+        0: 'Please open the confirmation email',
+        1: '…and continue the process by clicking on the link inside the email',
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
@@ -10,7 +10,7 @@ import MuiButton from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 
-import { H1, H2, Paragraph } from 'components/Typography'
+import { H1, H2, Paragraph, Link } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button, { ButtonSpinner } from 'components/Button'
 import Progress from 'components/Progress'
@@ -22,6 +22,7 @@ import video2 from 'assets/video-identification-2.svg'
 import video3 from 'assets/video-identification-3.svg'
 import video4 from 'assets/video-identification-4.svg'
 import accountCreating from 'assets/account-creating.svg'
+import accountReadyIcon from 'assets/account-ready.svg'
 
 const paths = [
   '/onboarding-1/step-2/prepare-to-video',
@@ -194,17 +195,43 @@ class Step2Page extends Component {
     )
 
     const accountReady = (
-      <Div flex={1} column itemsCenter padding="30px 16px">
-      </Div>
+      <ThemeProvider theme={{ darkMode: true }}>
+        <Div flex={1} column itemsCenter padding="30px 16px" background="#20A134">
+          <H1 center mTop={80} maxWidth={280}>
+            Your new mBank account is ready!
+          </H1>
+
+          <img src={accountReadyIcon} alt="" style={{ marginTop: 38 }} />
+
+          <Div mTop={48} listLeft={24}>
+            <Div column>
+              <Label>IBAN</Label>
+              <Value>DE12 1234 5678 9876 54</Value>
+            </Div>
+
+            <Div column>
+              <Label>BIC</Label>
+              <Value>ABCDE123XXX</Value>
+            </Div>
+          </Div>
+
+          <Link mTop="auto">Forward account data</Link>
+
+          <Button onClick={() => this.props.history.push('/onboarding-1/step-3')} style={{ marginTop: 24 }}>
+            {texts.misc.nextStep}
+          </Button>
+        </Div>
+      </ThemeProvider>
     )
 
     return (
       <Fragment>
-        {!this.props.match.isExact && (
-          <Progress currentStep={currentStep} paths={paths}>
-            {t.prepareToVideo.title}
-          </Progress>
-        )}
+        {!this.props.match.isExact &&
+          this.props.location.pathname !== '/onboarding-1/step-2/account-ready' && (
+            <Progress currentStep={currentStep} paths={paths}>
+              {t.prepareToVideo.title}
+            </Progress>
+          )}
 
         <Route path="/onboarding-1/step-2" exact render={() => intro} />
         <Route path="/onboarding-1/step-2/prepare-to-video" render={() => prepareToVideo} />
@@ -223,4 +250,17 @@ const DialogText = styled.div`
   color: #666666;
   letter-spacing: 0;
   line-height: 20px;
+`
+
+const Label = styled.span`
+  font-size: 12px;
+  color: white;
+  letter-spacing: 0;
+`
+
+const Value = styled.span`
+  font-size: 16px;
+  color: white;
+  letter-spacing: 0;
+  line-height: 26px;
 `

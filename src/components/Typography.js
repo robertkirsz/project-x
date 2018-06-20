@@ -11,7 +11,7 @@ const baseStyles = css`
   font-weight: 300;
   line-height: 1;
   letter-spacing: 0;
-  color: #1F1A15;
+  color: ${({ theme }) => theme.darkMode ? 'white' : '#1F1A15'};
   ${({ center }) => center && 'text-align: center;'}
   ${({ maxWidth }) => maxWidth && typeof maxWidth !== 'boolean' && css`max-width: ${withUnit(maxWidth)};`}
   ${({ mTop }) => mTop && typeof mTop !== 'boolean' && css`margin-top: ${withUnit(mTop)};`}
@@ -50,7 +50,7 @@ export const Link = styled.a`
   ${baseStyles};
   display: inline-flex;
   font-size: 14px;
-  color: #f39100;
+  color: ${({ theme }) => (theme.darkMode ? 'white' : '#f39100')};
   cursor: pointer;
   text-decoration: underline;
 `

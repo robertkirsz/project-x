@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import { hot } from 'react-hot-loader'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { Div } from 'styled-kit'
@@ -28,6 +29,8 @@ import IntroPage2 from 'pages/flow-2/IntroPage'
 
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
+
+const VERSION = 'v0.2'
 
 class App extends Component {
   state = {
@@ -98,6 +101,8 @@ class App extends Component {
                     <MuiSwitch checked={language === 'german'} onChange={this.changeLanguage} color="default" />
                     <span>German</span>
                   </Div>
+
+                  <AppVersion>{VERSION}</AppVersion>
                 </Div>
               )}
             />
@@ -155,4 +160,14 @@ const Background = Div.extend`
     background: url(${motife}) center bottom no-repeat;
     background-size: contain;
   `}
+`
+
+const AppVersion = styled.span`
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  font-size: 16px;
+  color: #aaa;
+  font-weight: bold;
+  pointer-events: none;
 `

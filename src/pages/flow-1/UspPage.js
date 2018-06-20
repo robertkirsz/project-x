@@ -27,7 +27,7 @@ export default class UspPage extends Component {
     return (
       <Div flex={1} column itemsCenter padding="0 16px 30px">
         <Header>
-          <SkipButton to="/first-login">SKIP</SkipButton>
+          <SkipButton to="/onboarding-1/step-1">SKIP</SkipButton>
         </Header>
 
         <Swiper
@@ -90,7 +90,7 @@ export default class UspPage extends Component {
         {currentSlide < 3 && <Pagination size={4} value={currentSlide} onChange={this.goToSlide} />}
 
         {currentSlide === 3 && (
-          <Button onClick={() => this.props.history.push('/onboarding-1/first-login')}>Start now!</Button>
+          <Button onClick={() => this.props.history.push('/onboarding-1/step-1')}>Start now!</Button>
         )}
       </Div>
     )

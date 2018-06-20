@@ -4,9 +4,11 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { Div } from 'styled-kit'
 
 import preloadImages from 'utils/preloadImages'
+import TextProvider from 'providers/TextProvider'
 
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import MuiSwitch from '@material-ui/core/Switch'
 
 import RouteChanger from 'components/RouteChanger'
 import PrivateRoute from 'components/PrivateRoute'
@@ -34,12 +36,11 @@ class App extends Component {
     loggedIn: Boolean(sessionStorage.getItem('loggedIn')),
     imagesLoaded: false,
     shouldPrefillData: false,
-    formData: {}
+    formData: {},
+    language: sessionStorage.getItem('language') || 'english'
   }
 
-  componentDidMount() {
-    preloadImages().then(() => this.setState({ imagesLoaded: true }))
-  }
+  componentDidMount = () => preloadImages().then(() => this.setState({ imagesLoaded: true }))
 
   changePassword = event => this.setState({ password: event.target.value })
 
@@ -51,84 +52,99 @@ class App extends Component {
     this.props.history.push(`/onboarding-${number}/intro`)
   }
 
+  changeLanguage = event => {
+    const language = event.target.checked ? 'german' : 'english'
+    this.setState({ language })
+    sessionStorage.setItem('language', language)
+  }
+
   render() {
-    const { password, loggedIn, imagesLoaded, shouldPrefillData, formData } = this.state
+    const { password, loggedIn, imagesLoaded, shouldPrefillData, formData, language } = this.state
 
     return (
-      <Background flex={1} column loggedIn={loggedIn}>
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={() => (
-              <Div column itemsCenter margin="auto">
-                {!loggedIn && (
-                  <TextField label="Password" type="password" value={password} onChange={this.changePassword} />
-                )}
+      <TextProvider language={language}>
+        <Background flex={1} column loggedIn={loggedIn}>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={() => (
+                <Div column itemsCenter margin="auto">
+                  {!loggedIn && (
+                    <TextField label="Password" type="password" value={password} onChange={this.changePassword} />
+                  )}
 
-                <Div listLeft={16} mTop={32}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={this.startFlow(1)}
-                    disabled={(!loggedIn && password !== 'test') || !imagesLoaded}
-                  >
-                    {imagesLoaded ? 'Onboarding 1' : 'Loading...'}
-                  </Button>
+                  <Div listLeft={16} mTop={32}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={this.startFlow(1)}
+                      disabled={(!loggedIn && password !== 'test') || !imagesLoaded}
+                    >
+                      {imagesLoaded ? 'Onboarding 1' : 'Loading...'}
+                    </Button>
 
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={this.startFlow(2)}
-                    disabled={(!loggedIn && password !== 'test') || !imagesLoaded}
-                  >
-                    {imagesLoaded ? 'Onboarding 2' : 'Loading...'}
-                  </Button>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={this.startFlow(2)}
+                      disabled={(!loggedIn && password !== 'test') || !imagesLoaded}
+                    >
+                      {imagesLoaded ? 'Onboarding 2' : 'Loading...'}
+                    </Button>
+                  </Div>
+
+                  <Div listLeft mTop={32} itemsCenter>
+                    <span>English</span>
+                    <MuiSwitch checked={language === 'german'} onChange={this.changeLanguage} color="default" />
+                    <span>German</span>
+                  </Div>
                 </Div>
-              </Div>
-            )}
-          />
+              )}
+            />
 
-          {/* Flow 1 */}
-          <PrivateRoute path="/onboarding-1/intro" isRestricted={!loggedIn} component={IntroPage} />
-          <PrivateRoute path="/onboarding-1/usp" isRestricted={!loggedIn} component={UspPage} />
-          {/* NOTE: the route below will be used in the Onboarding 2 */}
-          {/* <PrivateRoute path="/onboarding-1/first-login" isRestricted={!loggedIn} component={FirstLoginPage} /> */}
-          <PrivateRoute
-            path="/onboarding-1/step-1"
-            isRestricted={!loggedIn}
-            component={Step1Page}
-            shouldPrefillData={shouldPrefillData}
-          />
-          <PrivateRoute
-            path="/onboarding-1/step-2"
-            isRestricted={!loggedIn}
-            component={Step2Page}
-            formData={formData}
-          />
-          <PrivateRoute
-            path="/onboarding-1/step-3"
-            isRestricted={!loggedIn}
-            component={Step3Page}
-            formData={formData}
-          />
+            {/* Flow 1 */}
+            <PrivateRoute path="/onboarding-1/intro" isRestricted={!loggedIn} component={IntroPage} />
+            <PrivateRoute path="/onboarding-1/usp" isRestricted={!loggedIn} component={UspPage} />
+            {/* NOTE: the route below will be used in the Onboarding 2 */}
+            {/* <PrivateRoute path="/onboarding-1/first-login" isRestricted={!loggedIn} component={FirstLoginPage} /> */}
 
-          {/* Flow 2 */}
-          <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
+            <PrivateRoute
+              path="/onboarding-1/step-1"
+              isRestricted={!loggedIn}
+              component={Step1Page}
+              shouldPrefillData={shouldPrefillData}
+            />
+            <PrivateRoute
+              path="/onboarding-1/step-2"
+              isRestricted={!loggedIn}
+              component={Step2Page}
+              formData={formData}
+            />
+            <PrivateRoute
+              path="/onboarding-1/step-3"
+              isRestricted={!loggedIn}
+              component={Step3Page}
+              formData={formData}
+            />
 
-          {/* 404 */}
-          <Redirect from="/index.html" to="/" />
-          <Route component={NotFoundPage} />
-        </Switch>
+            {/* Flow 2 */}
+            <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
 
-        {process.env.NODE_ENV === 'development' && (
-          <RouteChanger
-            location={this.props.location}
-            history={this.props.history}
-            handlePrefill={() => this.setState({ shouldPrefillData: true })}
-          />
-        )}
-      </Background>
+            {/* 404 */}
+            <Redirect from="/index.html" to="/" />
+            <Route component={NotFoundPage} />
+          </Switch>
+
+          {process.env.NODE_ENV === 'development' && (
+            <RouteChanger
+              location={this.props.location}
+              history={this.props.history}
+              handlePrefill={() => this.setState({ shouldPrefillData: true })}
+            />
+          )}
+        </Background>
+      </TextProvider>
     )
   }
 }

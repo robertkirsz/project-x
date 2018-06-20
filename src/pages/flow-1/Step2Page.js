@@ -21,6 +21,7 @@ import video1 from 'assets/video-identification-1.svg'
 import video2 from 'assets/video-identification-2.svg'
 import video3 from 'assets/video-identification-3.svg'
 import video4 from 'assets/video-identification-4.svg'
+import accountCreating from 'assets/account-creating.svg'
 
 const paths = [
   '/onboarding-1/step-2/prepare-to-video',
@@ -40,6 +41,10 @@ class Step2Page extends Component {
     if (this.props.location.pathname === '/onboarding-1/step-2/connecting') {
       this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
     }
+
+    if (this.props.location.pathname === '/onboarding-1/step-2/waiting') {
+      this.timeout = setTimeout(() => this.props.history.push('/onboarding-1/step-2/account-ready'), 2500)
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -53,6 +58,20 @@ class Step2Page extends Component {
     if (
       prevProps.location.pathname === '/onboarding-1/step-2/connecting' &&
       this.props.location.pathname !== '/onboarding-1/step-2/connecting'
+    ) {
+      clearTimeout(this.timeout)
+    }
+
+    if (
+      prevProps.location.pathname !== '/onboarding-1/step-2/waiting' &&
+      this.props.location.pathname === '/onboarding-1/step-2/waiting'
+    ) {
+      this.timeout = setTimeout(() => this.props.history.push('/onboarding-1/step-2/account-ready'), 2500)
+    }
+
+    if (
+      prevProps.location.pathname === '/onboarding-1/step-2/waiting' &&
+      this.props.location.pathname !== '/onboarding-1/step-2/waiting'
     ) {
       clearTimeout(this.timeout)
     }
@@ -167,6 +186,18 @@ class Step2Page extends Component {
       </Div>
     )
 
+    const waiting = (
+      <Div flex={1} column itemsCenter padding="30px 16px">
+        <H1 mTop={16}>Please wait a moment</H1>
+        <img src={accountCreating} alt="" style={{ marginTop: 38 }} />
+      </Div>
+    )
+
+    const accountReady = (
+      <Div flex={1} column itemsCenter padding="30px 16px">
+      </Div>
+    )
+
     return (
       <Fragment>
         {!this.props.match.isExact && (
@@ -178,6 +209,8 @@ class Step2Page extends Component {
         <Route path="/onboarding-1/step-2" exact render={() => intro} />
         <Route path="/onboarding-1/step-2/prepare-to-video" render={() => prepareToVideo} />
         <Route path="/onboarding-1/step-2/connecting" render={() => connecting} />
+        <Route path="/onboarding-1/step-2/waiting" render={() => waiting} />
+        <Route path="/onboarding-1/step-2/account-ready" render={() => accountReady} />
       </Fragment>
     )
   }

@@ -33,3 +33,6 @@ ReactDOM.render(
 )
 
 registerServiceWorker()
+
+// TODO: Add location promt modal to '/onboarding-1/step-1/residential-address' and '/onboarding-1/step-1/correspondence-address'
+// TODO: Make ''+ More options' work on '/onboarding-1/step-1/industry'

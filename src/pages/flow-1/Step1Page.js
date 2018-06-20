@@ -793,7 +793,7 @@ class Step1Page extends Component {
         </Link>
 
         <FormControlLabel
-          label={<WithEm dangerouslySetInnerHTML={{ _html: t.finish[4] }} />}
+          label={<WithEm dangerouslySetInnerHTML={{ __html: t.finish[4] }} />}
           style={{ marginTop: 'auto' }}
           control={
             <Checkbox
@@ -879,6 +879,7 @@ export default withTexts(Step1Page)
 
 const WithEm = styled.div`
   em {
+    font-style: normal;
     color: #f39100;
   }
 `

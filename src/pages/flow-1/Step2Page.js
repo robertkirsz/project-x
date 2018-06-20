@@ -47,7 +47,12 @@ class Step2Page extends Component {
       this.props.location.pathname === '/onboarding-1/step-2/connecting'
     ) {
       this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
-    } else {
+    }
+
+    if (
+      prevProps.location.pathname === '/onboarding-1/step-2/connecting' &&
+      this.props.location.pathname !== '/onboarding-1/step-2/connecting'
+    ) {
       clearTimeout(this.timeout)
     }
   }

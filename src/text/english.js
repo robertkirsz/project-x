@@ -9,6 +9,10 @@ export default {
     confirm: 'Confirm',
     password: 'Password',
     confirmPassword: 'Confirm password',
+    deny: 'Deny',
+    allow: 'Allow',
+    allowLocation: 'Allow mBank Europe to access this device’s location?',
+    allowCamera: 'Allow mBank Europe app to take pictures and record video?'
   },
   onboarding1: {
     firstLogin: {
@@ -33,9 +37,24 @@ export default {
       2: 'PIN & password setup'
     },
     step1: {
-      intro: [
-        'Get your new mBank account in only 3 simple steps and start with...'
-      ]
+      intro: {
+        0: 'Get your new mBank account in only 3 simple steps and start with...'
+      }
+    },
+    step2: {
+      intro: {
+        0: 'Great {userName}! Continue with video identification and verify your account'
+      },
+      prepareToVideo: {
+        title: 'Video identification',
+        0: 'Prepare an ID document',
+        1: 'Look fo a quiet place',
+        2: 'Keep your signal strong'
+      },
+      connecting: {
+        0: 'Please wait a moment',
+        1: 'Establishing connection with our consultant'
+      }
     },
     step3: {
       intro: {

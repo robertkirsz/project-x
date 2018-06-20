@@ -7,6 +7,8 @@ import MuiButton from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 
+import { withTexts } from 'providers/TextProvider'
+
 import { H1, H2, Paragraph } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button, { ButtonSpinner } from 'components/Button'
@@ -28,7 +30,7 @@ const paths = [
   '/onboarding-1/step-2/account-ready'
 ]
 
-export default class Step2Page extends Component {
+class Step2Page extends Component {
   timeout = null
 
   state = { showAllowCameraModal: false }
@@ -45,6 +47,8 @@ export default class Step2Page extends Component {
       this.props.location.pathname === '/onboarding-1/step-2/connecting'
     ) {
       this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
+    } else {
+      clearTimeout(this.timeout)
     }
   }
 
@@ -60,6 +64,11 @@ export default class Step2Page extends Component {
   }
 
   render() {
+    const { texts } = this.props
+
+    const titles = texts.onboarding1.stepTitles
+    const t = texts.onboarding1.step2
+
     const currentStep = paths.findIndex(path => path === this.props.location.pathname)
 
     const intro = (
@@ -67,24 +76,25 @@ export default class Step2Page extends Component {
         <img src={logo} alt="Logo" width="108" />
 
         <H1 mTop={13}>
-          Great {this.props.formData.firstName}! Continue with video identification and verify your account
+          {/* TODO: this.props.formData.firstName */}
+          {t.intro[0]}
         </H1>
 
         <StepStatus>
           <Step number="1" isDone>
-            Personal data
+            {titles[0]}
           </Step>
           <Step number="2" isActive>
-            Video identification
+            {titles[1]}
           </Step>
-          <Step number="3">PIN & password setup</Step>
+          <Step number="3">{titles[2]}</Step>
         </StepStatus>
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-2/prepare-to-video')}
           style={{ marginTop: 'auto' }}
         >
-          Next step
+          {texts.misc.nextStep}
         </Button>
       </Div>
     )
@@ -94,17 +104,17 @@ export default class Step2Page extends Component {
         <Div column selfStart listTop={40} mTop={24}>
           <Div listLeft={48} itemsCenter>
             <img src={video1} alt="" />
-            <Paragraph>Prepare an ID document</Paragraph>
+            <Paragraph>{t.prepareToVideo[0]}</Paragraph>
           </Div>
 
           <Div listLeft={48} itemsCenter>
             <img src={video2} alt="" />
-            <Paragraph>Look fo a quiet place</Paragraph>
+            <Paragraph>{t.prepareToVideo[1]}</Paragraph>
           </Div>
 
           <Div listLeft={48} itemsCenter>
             <img src={video3} alt="" />
-            <Paragraph>Keep your signal strong</Paragraph>
+            <Paragraph>{t.prepareToVideo[2]}</Paragraph>
           </Div>
         </Div>
 
@@ -112,7 +122,7 @@ export default class Step2Page extends Component {
           onClick={() => this.props.history.push('/onboarding-1/step-2/connecting')}
           style={{ marginTop: 'auto' }}
         >
-          Next step
+          {texts.misc.nextStep}
         </Button>
       </Div>
     )
@@ -120,11 +130,11 @@ export default class Step2Page extends Component {
     const connecting = (
       <Div flex={1} column itemsCenter padding="30px 16px">
         <H1 center mTop={44}>
-          Please wait a moment
+          {t.connecting[0]}
         </H1>
 
         <H2 center mTop={24} maxWidth={230}>
-          Establishing connection with our consultant
+          {t.connecting[1]}
         </H2>
 
         <img
@@ -141,13 +151,13 @@ export default class Step2Page extends Component {
         <Dialog open={this.state.showAllowCameraModal} onClose={this.handleAllowCameraModalClose}>
           <Div listLeft={35} itemsStart padding="36px 24px 0">
             <img src={camera} alt="" />
-            <DialogText>Allow mBank Europe app to take pictures and record video?</DialogText>
+            <DialogText>{texts.misc.allowCamera}</DialogText>
           </Div>
 
           <DialogActions>
-            <MuiButton onClick={this.handleAllowCameraModalClose}>Deny</MuiButton>
+            <MuiButton onClick={this.handleAllowCameraModalClose}>{texts.misc.deny}</MuiButton>
             <MuiButton onClick={this.handleAllowCameraModalConfirm} style={{ color: '#4DB6AC' }}>
-              Allow
+              {texts.misc.allow}
             </MuiButton>
           </DialogActions>
         </Dialog>
@@ -158,7 +168,7 @@ export default class Step2Page extends Component {
       <Fragment>
         {!this.props.match.isExact && (
           <Progress currentStep={currentStep} paths={paths}>
-            Video identification
+            {t.prepareToVideo.title}
           </Progress>
         )}
 
@@ -169,6 +179,8 @@ export default class Step2Page extends Component {
     )
   }
 }
+
+export default withTexts(Step2Page)
 
 const DialogText = styled.div`
   font-size: 16px;

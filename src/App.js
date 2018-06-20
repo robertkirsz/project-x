@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import { Div } from 'styled-kit'
 
 import preloadImages from 'utils/preloadImages'
@@ -117,6 +117,7 @@ class App extends Component {
           <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
 
           {/* 404 */}
+          <Redirect from="/index.html" to="/" />
           <Route component={NotFoundPage} />
         </Switch>
 

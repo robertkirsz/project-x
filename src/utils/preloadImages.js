@@ -21,6 +21,7 @@ import img20 from 'assets/mail.svg'
 import img21 from 'assets/camera.svg'
 import img22 from 'assets/account-creating.svg'
 import img23 from 'assets/account-ready.svg'
+import img24 from 'assets/native-map-marker.svg'
 
 const images = [
   img01,
@@ -45,7 +46,8 @@ const images = [
   img20,
   img21,
   img22,
-  img23
+  img23,
+  img24
 ]
 
 export default () =>

@@ -4,15 +4,27 @@ export default {
     edit: 'Edit',
     skip: 'Skip',
     okay: 'Okay',
-    country: 'Country',
+    residentialAddress: 'Residential address',
+    correspondenceAddress: 'Correspondence address',
     phoneNumber: 'Phone number',
+    emailAddress: 'Email address',
+    birthDate: 'Birth date',
+    birthPlace: 'Birth place',
+    citizenship: 'Citizenship',
+    postalCode: 'Postal code',
+    city: 'City',
+    country: 'Country',
+    streetName: 'Street name',
+    buildingNumber: 'Building number',
+    apartmentNumber: 'Apartment number',
     confirm: 'Confirm',
     password: 'Password',
     confirmPassword: 'Confirm password',
     deny: 'Deny',
     allow: 'Allow',
     allowLocation: 'Allow mBank Europe to access this device’s location?',
-    allowCamera: 'Allow mBank Europe app to take pictures and record video?'
+    allowCamera: 'Allow mBank Europe app to take pictures and record video?',
+    germany: 'Germany'
   },
   onboarding1: {
     firstLogin: {
@@ -29,7 +41,7 @@ export default {
       5: 'Pay in any country with your credit card with exchange rate 0,1%, the lowest on the market.',
       6: '…and many more!',
       7: 'Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan on one click process.',
-      8: 'Start now!',
+      8: 'Start now!'
     },
     stepTitles: {
       0: 'Personal data',
@@ -39,6 +51,70 @@ export default {
     step1: {
       intro: {
         0: 'Get your new mBank account in only 3 simple steps and start with...'
+      },
+      name: {
+        0: 'Please tell us something about yourself',
+        1: 'First name',
+        2: 'Last name',
+        3: 'Maiden name (if has)'
+      },
+      card: {
+        0: 'Great, {userName}! Select your card design'
+      },
+      contact: {
+        0: 'We need your contact information',
+        1: 'We will use this phone number and email for login'
+      },
+      birth: {
+        0: 'Please enter your...'
+      },
+      residentialAddress: {
+        0: 'Please enter your address',
+        1: 'Make sure that this is the adress you are registered to',
+        2: 'Use my current location',
+        3: 'My correspondence address is different'
+      },
+      correspondenceAddress: {
+        0: 'Add your correspondence address'
+      },
+      taxInformation: {
+        0: 'Do you want to add your tax information?',
+        1: 'This is optional, but we have to ask this for legal reasons. You can also add this up to 90 days later.',
+        2: 'Country of tax obligation',
+        3: 'Tax ID',
+        4: '+ Add more',
+        5: '(optional)'
+      },
+      occupationalStatus: {
+        0: 'What’s your occupational status?',
+        1: 'Again, we have to ask this for legal reasons',
+        2: 'Select job role',
+        roles: ['Office manager', 'Creative director', 'Product manager']
+      },
+      industry: {
+        0: 'In which industry are you employed?',
+        1: 'That is the last one!',
+        2: '+ More options',
+        industries: ['No information', 'Finance', 'Manufacturing', 'Tourism']
+      },
+      review: {
+        0: 'Please review all you data carefully. In case of any mistakes you can edit it now.'
+      },
+      consents: {
+        0: 'Almost done! Only a few consents left',
+        1: 'Confirm all',
+        2: 'Electronic communication',
+        3: 'Terms of Service of mBank and IDNow',
+        4: 'Advertisement of mBank partners',
+        5: 'Data processing and usage',
+        6: 'General Data Protection Regulation'
+      },
+      finish: {
+        0: 'Finally, let’s open your mBank account!',
+        1: 'Below is a link to the contract.',
+        2: 'But you don’t need to download it now, as we already sent it to you by email.',
+        3: 'Download the full mBank Account Contract (PDF)',
+        4: 'I want to open an mBank account and confirm that I act on <em>my own behalf</em>'
       }
     },
     step2: {
@@ -77,7 +153,7 @@ export default {
       emailConfirm: {
         title: 'Mail confirmation',
         0: 'Please open the confirmation email',
-        1: '…and continue the process by clicking on the link inside the email',
+        1: '…and continue the process by clicking on the link inside the email'
       }
     }
   }

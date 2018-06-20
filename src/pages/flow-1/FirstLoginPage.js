@@ -24,7 +24,7 @@ class FirstLoginPage extends Component {
 
     return (
       <Div flex={1} column itemsCenter padding="30px 16px">
-        <img src={logo} alt="Logo" width="108" />
+        <img src={logo} alt="" width="108" />
 
         <H1 center mTop={13}>
           {t[0]}

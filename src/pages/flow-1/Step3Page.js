@@ -45,7 +45,7 @@ class Step3Page extends Component {
 
     const intro = (
       <Div flex={1} column itemsCenter padding="30px 16px">
-        <img src={logo} alt="Logo" width="108" />
+        <img src={logo} alt="" width="108" />
 
         <H1 mTop={13}>
           {/* TODO: this.props.formData.firstName */}
@@ -112,9 +112,7 @@ class Step3Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>{t.passwordSetup[0]}</H2>
 
-        <Small mTop={8}>
-          {t.passwordSetup[1]}
-        </Small>
+        <Small mTop={8}>{t.passwordSetup[1]}</Small>
 
         <TextField
           label={texts.misc.password}

@@ -15,7 +15,7 @@ export default props => {
 
   return (
     <Wrapper column itemsCenter mTop={32} padding="0 28px 14px">
-      <Logo src={logo} alt="Logo" />
+      <Logo src={logo} alt="" />
 
       <Div listLeft={20} mTop={23} height={14}>
         {props.value.split('').map((dot, index) => <Dot key={index} />)}

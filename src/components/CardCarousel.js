@@ -17,10 +17,10 @@ export default ({ value, onChange }) => {
     <Wrapper>
       <Swiper onSwipeLeft={handleChange(move(value, 1, 3))} onSwipeRight={handleChange(move(value, -1, 3))}>
         <Track offset={value}>
-          <Card src={card1} isActive={value === 0} onClick={handleChange(0)} alt="Card 1" />
-          <Card src={card2} isActive={value === 1} onClick={handleChange(1)} alt="Card 2" />
-          <Card src={card3} isActive={value === 2} onClick={handleChange(2)} alt="Card 3" />
-          <Card src={card1} isActive={value === 3} onClick={handleChange(3)} alt="Card 4" />
+          <Card src={card1} isActive={value === 0} onClick={handleChange(0)} />
+          <Card src={card2} isActive={value === 1} onClick={handleChange(1)} />
+          <Card src={card3} isActive={value === 2} onClick={handleChange(2)} />
+          <Card src={card1} isActive={value === 3} onClick={handleChange(3)} />
         </Track>
       </Swiper>
 
@@ -48,7 +48,7 @@ const Track = styled.div`
   transition: 0.3s;
 `
 
-const Card = styled.img`
+const Card = styled.img.attrs({ alt: '' })`
   flex: none;
   display: block;
   width: 296px;

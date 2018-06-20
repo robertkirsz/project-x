@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 
 import uuid from 'utils/uuid'
 import parseValues from 'utils/parseValues'
+import allValid from 'utils/allValid'
 import { withTexts } from 'providers/TextProvider'
 
 import TextField from '@material-ui/core/TextField'
@@ -146,10 +147,6 @@ class Step1Page extends Component {
   handleChange = name => event => this.setState({ [name]: event.target.value })
 
   handleCheckboxChange = name => event => this.setState({ [name]: event.target.checked })
-
-  isValid = keys => {
-    for (let index in keys) return Boolean(this.state[keys[index]])
-  }
 
   prefillResidentialAddress = () => {
     this.setState({
@@ -357,7 +354,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/card')}
-          disabled={!this.isValid(['firstName', 'lastName'])}
+          disabled={!allValid(['firstName', 'lastName'], this.state)}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -396,7 +393,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/birth')}
-          disabled={!this.isValid(['email', 'phoneNumber'])}
+          disabled={!allValid(['email', 'phoneNumber'], this.state)}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -432,7 +429,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/residential-address')}
-          disabled={!this.isValid(['birthDate', 'birthPlace', 'citizenship'])}
+          disabled={!allValid(['birthDate', 'birthPlace', 'citizenship'], this.state)}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -461,7 +458,7 @@ class Step1Page extends Component {
                 : '/onboarding-1/step-1/tax-information'
             )
           }
-          disabled={!this.isValid(['postalCode', 'city', 'streetName', 'buildingNumber', 'country'])}
+          disabled={!allValid(['postalCode', 'city', 'streetName', 'buildingNumber', 'country'], this.state)}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -483,13 +480,16 @@ class Step1Page extends Component {
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/tax-information')}
           disabled={
-            !this.isValid([
-              'correspondencePostalCode',
-              'correspondenceCity',
-              'correspondenceStreetName',
-              'correspondenceBuildingNumber',
-              'correspondenceCountry'
-            ])
+            !allValid(
+              [
+                'correspondencePostalCode',
+                'correspondenceCity',
+                'correspondenceStreetName',
+                'correspondenceBuildingNumber',
+                'correspondenceCountry'
+              ],
+              this.state
+            )
           }
           style={{ marginTop: 'auto' }}
         >
@@ -566,7 +566,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/industry')}
-          disabled={!this.isValid(['job'])}
+          disabled={!allValid(['job'], this.state)}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -601,7 +601,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/review')}
-          disabled={!this.isValid(['industry'])}
+          disabled={!allValid(['industry'], this.state)}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -772,7 +772,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/finish')}
-          disabled={!this.isValid(consentData.map(item => item.id))}
+          disabled={!allValid(consentData.map(item => item.id), this.state)}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -808,7 +808,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-2')}
-          disabled={!this.isValid(['consent6'])}
+          disabled={!allValid(['consent6'], this.state)}
           style={{ marginTop: 24 }}
         >
           {texts.misc.nextStep}

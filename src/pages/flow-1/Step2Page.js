@@ -6,17 +6,13 @@ import { Route } from 'react-router-dom'
 import { withTexts } from 'providers/TextProvider'
 import parseValues from 'utils/parseValues'
 
-import MuiButton from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-
 import { H1, H2, Paragraph, Link } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
 import Button, { ButtonSpinner } from 'components/Button'
 import Progress from 'components/Progress'
+import NativeModal from 'components/NativeModal'
 
 import logo from 'assets/logo.svg'
-import camera from 'assets/camera.svg'
 import video1 from 'assets/video-identification-1.svg'
 import video2 from 'assets/video-identification-2.svg'
 import video3 from 'assets/video-identification-3.svg'
@@ -171,19 +167,12 @@ class Step2Page extends Component {
           <ButtonSpinner />
         </Button>
 
-        <Dialog open={this.state.showAllowCameraModal} onClose={this.handleAllowCameraModalClose}>
-          <Div listLeft={35} itemsStart padding="36px 24px 0">
-            <img src={camera} alt="" />
-            <DialogText>{texts.misc.allowCamera}</DialogText>
-          </Div>
-
-          <DialogActions>
-            <MuiButton onClick={this.handleAllowCameraModalClose}>{texts.misc.deny}</MuiButton>
-            <MuiButton onClick={this.handleAllowCameraModalConfirm} style={{ color: '#4DB6AC' }}>
-              {texts.misc.allow}
-            </MuiButton>
-          </DialogActions>
-        </Dialog>
+        <NativeModal
+          type="camera"
+          open={this.state.showAllowCameraModal}
+          onClose={this.handleAllowCameraModalClose}
+          onConfirm={this.handleAllowCameraModalConfirm}
+        />
       </Div>
     )
 
@@ -244,13 +233,6 @@ class Step2Page extends Component {
 }
 
 export default withTexts(Step2Page)
-
-const DialogText = styled.div`
-  font-size: 16px;
-  color: #666666;
-  letter-spacing: 0;
-  line-height: 20px;
-`
 
 const Label = styled.span`
   font-size: 12px;

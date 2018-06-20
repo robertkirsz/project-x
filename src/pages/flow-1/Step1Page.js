@@ -13,6 +13,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
+import MuiButton from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 import { H1, H2, Paragraph, Small, Link } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
@@ -121,7 +127,9 @@ export default class Step1Page extends Component {
     consent4: false,
     consent5: false,
     consent6: false,
-    reviewEditMode: false
+    reviewEditMode: false,
+    showConsentModal: false,
+    showConsentModalId: 'consent1'
   }
 
   componentDidUpdate(prevProps) {
@@ -184,6 +192,11 @@ export default class Step1Page extends Component {
       taxes: state.taxes.map(tax => (tax.id === id ? { ...tax, [name]: value } : tax))
     }))
   }
+
+  handleConsentModalOpen = consentId => event =>
+    this.setState({ showConsentModal: true, showConsentModalId: consentId })
+
+  handleConsentModalClose = () => this.setState({ showConsentModal: false })
 
   render() {
     const residentialAddressForm = (
@@ -681,6 +694,14 @@ export default class Step1Page extends Component {
       </Div>
     )
 
+    const consentData = [
+      { id: 'consent1', label: 'Electronic communication' },
+      { id: 'consent2', label: 'Terms of Service of mBank and IDNow' },
+      { id: 'consent3', label: 'Advertisement of mBank partners' },
+      { id: 'consent4', label: 'Data processing and usage' },
+      { id: 'consent5', label: 'General Data Protection Regulation' }
+    ]
+
     const consents = (
       <Div flex={1} column padding="30px 16px">
         <H2>Almost done! Only a few consents left</H2>
@@ -712,85 +733,29 @@ export default class Step1Page extends Component {
         />
 
         <Div column mLeft={16}>
-          <Div>
-            <FormControlLabel
-              label="Electronic communication"
-              control={
-                <Checkbox
-                  checked={this.state.consent1}
-                  onChange={this.handleCheckboxChange('consent1')}
-                  value="consent1"
-                  color="primary"
-                />
-              }
-            />
-            <Link mLeft="auto">Read</Link>
-          </Div>
-
-          <Div>
-            <FormControlLabel
-              label="Terms of Service of mBank and IDNow"
-              control={
-                <Checkbox
-                  checked={this.state.consent2}
-                  onChange={this.handleCheckboxChange('consent2')}
-                  value="consent2"
-                  color="primary"
-                />
-              }
-            />
-            <Link mLeft="auto">Read</Link>
-          </Div>
-
-          <Div>
-            <FormControlLabel
-              label="Advertisement of mBank partners"
-              control={
-                <Checkbox
-                  checked={this.state.consent3}
-                  onChange={this.handleCheckboxChange('consent3')}
-                  value="consent3"
-                  color="primary"
-                />
-              }
-            />
-            <Link mLeft="auto">Read</Link>
-          </Div>
-
-          <Div>
-            <FormControlLabel
-              label="Data processing and usage"
-              control={
-                <Checkbox
-                  checked={this.state.consent4}
-                  onChange={this.handleCheckboxChange('consent4')}
-                  value="consent4"
-                  color="primary"
-                />
-              }
-            />
-            <Link mLeft="auto">Read</Link>
-          </Div>
-
-          <Div>
-            <FormControlLabel
-              label="General Data Protection Regulation"
-              control={
-                <Checkbox
-                  checked={this.state.consent5}
-                  onChange={this.handleCheckboxChange('consent5')}
-                  value="consent5"
-                  color="primary"
-                />
-              }
-            />
-            <Link mLeft="auto">Read</Link>
-          </Div>
+          {consentData.map(item => (
+            <Div key={item.id}>
+              <FormControlLabel
+                label={item.label}
+                control={
+                  <Checkbox
+                    checked={this.state[item.id]}
+                    onChange={this.handleCheckboxChange(item.id)}
+                    value={item.id}
+                    color="primary"
+                  />
+                }
+              />
+              <Link mLeft="auto" onClick={this.handleConsentModalOpen(item.id)}>
+                Read
+              </Link>
+            </Div>
+          ))}
         </Div>
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/finish')}
-          disabled={!this.isValid(['consent1', 'consent2', 'consent3', 'consent4', 'consent5'])}
+          disabled={!this.isValid(consentData.map(item => item.id))}
           style={{ marginTop: 'auto' }}
         >
           Next step
@@ -867,6 +832,26 @@ export default class Step1Page extends Component {
         <Route path="/onboarding-1/step-1/review" render={() => review} />
         <Route path="/onboarding-1/step-1/consents" render={() => consents} />
         <Route path="/onboarding-1/step-1/finish" render={() => finish} />
+
+        <Dialog open={Boolean(this.state.showConsentModal)} onClose={this.handleConsentModalClose}>
+          <DialogTitle>{consentData.find(item => item.id === this.state.showConsentModalId).label}</DialogTitle>
+
+          <DialogContent>
+            <DialogContentText>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
+            </DialogContentText>
+          </DialogContent>
+
+          <DialogActions>
+            <MuiButton onClick={this.handleConsentModalClose} color="primary">
+              Okay
+            </MuiButton>
+          </DialogActions>
+        </Dialog>
       </Fragment>
     )
   }

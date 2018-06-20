@@ -189,7 +189,7 @@ class Step2Page extends Component {
 
     const waiting = (
       <Div flex={1} column itemsCenter padding="30px 16px">
-        <H1 mTop={16}>Please wait a moment</H1>
+        <H1 mTop={16}>{t.waiting[0]}</H1>
         <img src={accountCreating} alt="" style={{ marginTop: 38 }} />
       </Div>
     )
@@ -198,24 +198,24 @@ class Step2Page extends Component {
       <ThemeProvider theme={{ darkMode: true }}>
         <Div flex={1} column itemsCenter padding="30px 16px" background="#20A134">
           <H1 center mTop={80} maxWidth={280}>
-            Your new mBank account is ready!
+            {t.accountReady[0]}
           </H1>
 
           <img src={accountReadyIcon} alt="" style={{ marginTop: 38 }} />
 
           <Div mTop={48} listLeft={24}>
             <Div column>
-              <Label>IBAN</Label>
-              <Value>DE12 1234 5678 9876 54</Value>
+              <Label>{t.accountReady[2]}</Label>
+              <Value>{t.accountReady[3]}</Value>
             </Div>
 
             <Div column>
-              <Label>BIC</Label>
-              <Value>ABCDE123XXX</Value>
+              <Label>{t.accountReady[4]}</Label>
+              <Value>{t.accountReady[5]}</Value>
             </Div>
           </Div>
 
-          <Link mTop="auto">Forward account data</Link>
+          <Link mTop="auto">{t.accountReady[1]}</Link>
 
           <Button onClick={() => this.props.history.push('/onboarding-1/step-3')} style={{ marginTop: 24 }}>
             {texts.misc.nextStep}

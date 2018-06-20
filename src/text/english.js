@@ -130,6 +130,17 @@ export default {
       connecting: {
         0: 'Please wait a moment',
         1: 'Establishing connection with our consultant'
+      },
+      waiting: {
+        0: 'Please wait a moment'
+      },
+      accountReady: {
+        0: 'Your new mBank account is ready!',
+        1: 'Forward account data',
+        2: 'IBAN',
+        3: 'DE12 1234 5678 9876 54',
+        4: 'BIC',
+        5: 'ABCDE123XXX'
       }
     },
     step3: {

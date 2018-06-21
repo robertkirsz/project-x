@@ -9,7 +9,7 @@ export default class IntroPage2 extends Component {
   render = () => (
     <Div flex={1} onClick={this.goNext}>
       <H1 center style={{ margin: 'auto' }}>
-        <strong>Work in progress</strong>
+        <strong style={{ color: 'white' }}>Work in progress</strong>
       </H1>
     </Div>
   )

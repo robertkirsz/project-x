@@ -75,6 +75,8 @@ export default props => {
 const RoutesList = styled.div`
   padding: 2px 4px;
 
+  max-height: calc(100vh - 60px);
+
   position: absolute;
   left: -1px;
   bottom: 100%;
@@ -90,6 +92,8 @@ const RoutesList = styled.div`
 
   opacity: 0;
   pointer-events: none;
+
+  overflow: auto;
 
   &:hover {
     opacity: 1;

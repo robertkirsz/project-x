@@ -5,7 +5,6 @@ import img04 from 'assets/card-3.png'
 import img05 from 'assets/check.svg'
 import img06 from 'assets/logo.svg'
 import img07 from 'assets/map-marker.svg'
-import img08 from 'assets/motife-collapsed.png'
 import img09 from 'assets/motife-expanded.png'
 import img10 from 'assets/pdf-icon.svg'
 import img11 from 'assets/usp-1.png'
@@ -31,7 +30,6 @@ const images = [
   img05,
   img06,
   img07,
-  img08,
   img09,
   img10,
   img11,

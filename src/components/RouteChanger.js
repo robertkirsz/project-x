@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import getAdjacentRoutePath from 'utils/getAdjacentRoutePath'
 
-const routes = [
+export const routes = [
   '/',
   '/onboarding-1/intro',
   '/onboarding-1/usp',
@@ -32,7 +32,12 @@ const routes = [
   '/onboarding-1/step-3/pin-setup',
   '/onboarding-1/step-3/pin-confirm',
   '/onboarding-1/step-3/password-setup',
-  '/onboarding-1/step-3/email-confirm'
+  '/onboarding-1/step-3/email-confirm',
+  '/onboarding-2/intro',
+  '/onboarding-2/usp/1',
+  '/onboarding-2/usp/2',
+  '/onboarding-2/usp/3',
+  '/onboarding-2/usp/4',
 ]
 
 export default props => {

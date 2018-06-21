@@ -25,6 +25,7 @@ import Step3Page from 'pages/flow-1/Step3Page'
 
 // Flow 2
 import IntroPage2 from 'pages/flow-2/IntroPage'
+import UspPage2 from 'pages/flow-2/UspPage'
 
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
@@ -63,7 +64,7 @@ class App extends Component {
 
     return (
       <TextProvider language={language}>
-        <Background isVisible={loggedIn && !this.props.match.isExact}>
+        <Background>
           <Switch>
             <Route
               path="/"
@@ -113,9 +114,7 @@ class App extends Component {
 
             {/* Flow 1 */}
             <PrivateRoute path="/onboarding-1/intro" isRestricted={!loggedIn} component={IntroPage} />
-
             <PrivateRoute path="/onboarding-1/usp" isRestricted={!loggedIn} component={UspPage} />
-
             <PrivateRoute path="/onboarding-1/first-login" isRestricted={!loggedIn} component={FirstLoginPage} />
 
             <PrivateRoute
@@ -126,11 +125,11 @@ class App extends Component {
             />
 
             <PrivateRoute path="/onboarding-1/step-2" isRestricted={!loggedIn} component={Step2Page} />
-
             <PrivateRoute path="/onboarding-1/step-3" isRestricted={!loggedIn} component={Step3Page} />
 
             {/* Flow 2 */}
             <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
+            <PrivateRoute path="/onboarding-2/usp" isRestricted={!loggedIn} component={UspPage2} />
 
             {/* 404 */}
             <Redirect from="/index.html" to="/" />

@@ -19,19 +19,21 @@ class Background extends Component {
   }
 
   render() {
-    const { children, ...props } = this.props
+    const { children, location } = this.props
     const [red, black, orange, darkRed, blue, green] = this.state.heights
 
+    const isIntroPage = location.pathname === '/onboarding-2/intro'
+
     return (
-      <Wrapper {...props}>
+      <Wrapper>
         <Content>{children}</Content>
         <Stripes>
-          <Red style={{ height: red }} />
-          <Black style={{ height: black }} />
-          <Orange style={{ height: orange }} />
-          <DarkRed style={{ height: darkRed }} />
-          <Blue style={{ height: blue }} />
-          <Green style={{ height: green }} />
+          <Red style={{ height: isIntroPage ? '100%' : red }} />
+          <Black style={{ height: isIntroPage ? '100%' : black }} />
+          <Orange style={{ height: isIntroPage ? '100%' : orange }} />
+          <DarkRed style={{ height: isIntroPage ? '100%' : darkRed }} />
+          <Blue style={{ height: isIntroPage ? '100%' : blue }} />
+          <Green style={{ height: isIntroPage ? '100%' : green }} />
         </Stripes>
       </Wrapper>
     )

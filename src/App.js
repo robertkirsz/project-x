@@ -11,10 +11,9 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import MuiSwitch from '@material-ui/core/Switch'
 
+import Background from 'components/Background'
 import RouteChanger from 'components/RouteChanger'
 import PrivateRoute from 'components/PrivateRoute'
-
-import motife from 'assets/motife-collapsed.png'
 
 // Flow 1
 import IntroPage from 'pages/flow-1/IntroPage'
@@ -64,7 +63,7 @@ class App extends Component {
 
     return (
       <TextProvider language={language}>
-        <Background flex={1} column show={loggedIn && !this.props.match.isExact}>
+        <Background isVisible={loggedIn && !this.props.match.isExact}>
           <Switch>
             <Route
               path="/"
@@ -75,7 +74,7 @@ class App extends Component {
                     <TextField
                       label="Password"
                       type="password"
-                      autocomplete="new-password"
+                      autoComplete="new-password"
                       value={password}
                       onChange={this.changePassword}
                     />
@@ -154,13 +153,6 @@ class App extends Component {
 export default hot(module)(App)
 
 /* prettier-ignore */
-const Background = Div.extend`
-  ${props => props.show && `
-    background: url(${motife}) center bottom no-repeat;
-    background-size: contain;
-  `}
-`
-
 const AppVersion = styled.span`
   position: fixed;
   bottom: 8px;

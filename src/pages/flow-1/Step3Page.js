@@ -115,7 +115,7 @@ class Step3Page extends Component {
         <TextField
           label={texts.misc.password}
           type="password"
-          autocomplete="new-password"
+          autoComplete="new-password"
           value={this.state.password}
           onChange={this.handleChange('password')}
           style={{ marginTop: 24 }}
@@ -124,7 +124,7 @@ class Step3Page extends Component {
         <TextField
           label={texts.misc.confirmPassword}
           type="password"
-          autocomplete="new-password"
+          autoComplete="new-password"
           value={this.state.passwordConfirm}
           onChange={this.handleChange('passwordConfirm')}
           style={{ marginTop: 16 }}

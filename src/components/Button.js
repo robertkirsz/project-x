@@ -54,9 +54,9 @@ export default styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: stretch;
   flex: none;
   font-family: inherit;
-  width: 100%;
   height: 52px;
   background: ${({ theme }) => (theme.darkMode ? 'white' : '#cc0915')};
   border: none;

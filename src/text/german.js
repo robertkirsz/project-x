@@ -1,108 +1,108 @@
 export default {
   misc: {
-    nextStep: 'Next step',
-    edit: 'Edit',
-    skip: 'Skip',
+    nextStep: 'Nächster Schritt',
+    edit: 'Bearbeiten',
+    skip: 'Überspringen',
     okay: 'Okay',
-    residentialAddress: 'Residential address',
-    correspondenceAddress: 'Correspondence address',
-    phoneNumber: 'Phone number',
-    emailAddress: 'Email address',
-    birthDate: 'Birth date',
-    birthPlace: 'Birth place',
-    citizenship: 'Citizenship',
-    postalCode: 'Postal code',
-    city: 'City',
-    country: 'Country',
-    streetName: 'Street name',
-    buildingNumber: 'Building number',
-    apartmentNumber: 'Apartment number',
-    confirm: 'Confirm',
-    password: 'Password',
-    confirmPassword: 'Confirm password',
-    deny: 'Deny',
-    allow: 'Allow',
-    allowLocation: 'Allow mBank Europe to access this device’s location?',
-    allowCamera: 'Allow mBank Europe app to take pictures and record video?',
-    germany: 'Germany'
+    residentialAddress: 'Wohnanschrift',
+    correspondenceAddress: 'Korrespondenzanschrift',
+    phoneNumber: 'Telefonnummer',
+    emailAddress: 'E-Mail Adresse',
+    birthDate: 'Geburtsdatum',
+    birthPlace: 'Geburtsort',
+    citizenship: 'Nationalität',
+    postalCode: 'Postleitzahl',
+    city: 'Stadt',
+    country: 'Land',
+    streetName: 'Straße',
+    buildingNumber: 'Hausnummer',
+    apartmentNumber: 'Apartmentnummer',
+    confirm: 'Bestätigen',
+    password: 'Passwort',
+    confirmPassword: 'Passwort bestätigen',
+    deny: 'Ablehnen',
+    allow: 'Erlauben',
+    allowLocation: 'Erlaube mBank Europe auf den Standort deines Geräts zuzugreifen',
+    allowCamera: 'Erlaube der mBank Europe App, Bilder und Videos aufzunehmen',
+    germany: 'Deutschland'
   },
   onboarding1: {
     firstLogin: {
-      0: 'Hi, Welcome!',
-      1: 'To start please provide your mobile phone number',
-      2: 'Already have an account'
+      0: 'Hi, willkommen!',
+      1: 'Gib bitte deine Handynummer ein um zu starten',
+      2: 'Ich habe bereits ein Konto'
     },
     usp: {
-      0: 'Transfer money for free worldwide',
-      1: 'Send money abroad for free in realtime with mBank Europe. Transfer money to any bank, business or friend immediately.',
-      2: 'ATM for free worldwide',
-      3: 'Up to 500 Euro you can take cash from ATM for free in any country.',
-      4: 'Multicurrency contactless',
-      5: 'Pay in any country with your credit card with exchange rate 0,1%, the lowest on the market.',
-      6: '…and many more!',
-      7: 'Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan on one click process.',
-      8: 'Start now!'
+      0: 'Überweise weltweit kostenlos Geld',
+      1: 'Transferiere mit mBank Europe gebührenfrei Geld ins Ausland - in Echtzeit. Sofortige Geldtransfers an jede Bank, jede Firma oder an Freunde.',
+      2: 'Weltweit kostenfrei an Automaten Geld abheben',
+      3: 'Du kannst in jedem Land bis zu 500 Euro kostenlos abheben.',
+      4: 'Kontaktloses Bezahlen in verschiedenen Währungen',
+      5: 'Bezahle mit deiner Kreditkarte in jedem Land mit einem Wechselkurs von 0,1%, dem niedrigsten auf dem Markt.',
+      6: '…und vieles mehr!',
+      7: 'Kredite, Versicherungen, Geldanlagen und mehr: Versichere deine Reisen, nutze einfache Investment Tools. Fordere deinen Kredit mit nur einem Klick an.',
+      8: 'Starte jetzt!'
     },
     stepTitles: {
-      0: 'Personal data',
-      1: 'Video identification',
-      2: 'PIN & password setup'
+      0: 'Persönliche Daten',
+      1: 'Video Identifikation',
+      2: 'PIN & Passwort einrichten'
     },
     step1: {
       intro: {
-        0: 'Get your new mBank account in only 3 simple steps and start with…'
+        0: 'Eröffne dein neues mBank Konto in 3 einfachen Schritten und beginne mit…'
       },
       name: {
-        0: 'Please tell us something about yourself',
-        1: 'First name',
-        2: 'Last name',
-        3: 'Maiden name (if has)'
+        0: 'Bitte erzähle uns etwas über dich',
+        1: 'Vorname',
+        2: 'Nachname',
+        3: 'Geburtsname (optional)'
       },
       card: {
-        0: 'Great, {userName}! Select your card design'
+        0: 'Super, {userName}! Wähle dein Kartendesign aus'
       },
       contact: {
-        0: 'We need your contact information',
-        1: 'We will use this phone number and email for login'
+        0: 'Wir benötigen deine Kontaktinformationen',
+        1: 'Wir verwenden diese Telefonnummer und die E-Mail Adresse für den Login'
       },
       birth: {
-        0: 'Please enter your…'
+        0: 'Bitte gib folgende Daten ein…'
       },
       residentialAddress: {
-        0: 'Please enter your address',
-        1: 'Make sure that this is the adress you are registered to',
-        2: 'Use my current location',
-        3: 'My correspondence address is different'
+        0: 'Bitte gib deine Adresse ein',
+        1: 'Gehe sicher, dass diese Adresse deine Meldeadresse ist',
+        2: 'Verwende meinen aktuellen Standort',
+        3: 'Ich habe eine andere Korrespondenzanschrift'
       },
       correspondenceAddress: {
-        0: 'Add your correspondence address'
+        0: 'Füge deine Korrespondenzanschrift hinzu'
       },
       taxInformation: {
-        0: 'Do you want to add your tax information?',
-        1: 'This is optional, but we have to ask this for legal reasons. You can also add this up to 90 days later.',
-        2: 'Country of tax obligation',
-        3: 'Tax ID',
-        4: '+ Add more',
+        0: 'Möchtest du deine Steuerinformationen angeben?',
+        1: 'Diese Angaben sind optional, aber wir müssen dich das aus rechtlichen Gründen fragen. Du kannst diese Daten auch in bis zu 90 Tagen hinterlegen.',
+        2: 'In welchem Land bist du steuerpflichtig?',
+        3: 'Steuer ID',
+        4: '+ Weitere hinzufügen',
         5: '(optional)'
       },
       occupationalStatus: {
-        0: 'What’s your occupational status?',
-        1: 'Again, we have to ask this for legal reasons',
-        2: 'Select job role',
-        roles: ['Office manager', 'Creative director', 'Product manager']
+        0: 'Was machst du beruflich?',
+        1: 'Wir müssen dir die Frage erneut aus rechtlichen Gründen stellen',
+        2: 'Wähle deine Position aus',
+        roles: ['Geschäftsstellenleiter', 'Creative director', 'Produktmanager']
       },
       industry: {
-        0: 'In which industry are you employed?',
-        1: 'That is the last one!',
-        2: '+ More options',
-        industries: ['No information', 'Finance', 'Manufacturing', 'Tourism']
+        0: 'In welcher Branche arbeitest du?',
+        1: 'Das ist die letzte Frage!',
+        2: '+ Weitere Optionen',
+        industries: ['Keine Angabe', 'Finanzen', 'Fertigungsindustrie', 'Tourismus']
       },
       review: {
-        0: 'Please review all you data carefully. In case of any mistakes you can edit it now.'
+        0: 'Bitte überprüfe deine Daten sorgfältig. Du kannst deine Eingaben jetzt nochmal bearbeiten.'
       },
       consents: {
-        0: 'Almost done! Only a few consents left',
-        1: 'Confirm all',
+        0: 'Fast geschafft! Nur folgende Einwilligungen fehlen noch',
+        1: 'Alle bestätigen',
         2: 'Electronic communication',
         3: 'Terms of Service of mBank and IDNow',
         4: 'Advertisement of mBank partners',
@@ -110,33 +110,33 @@ export default {
         6: 'General Data Protection Regulation'
       },
       finish: {
-        0: 'Finally, let’s open your mBank account!',
-        1: 'Below is a link to the contract.',
-        2: 'But you don’t need to download it now, as we already sent it to you by email.',
-        3: 'Download the full mBank Account Contract (PDF)',
-        4: 'I want to open an mBank account and confirm that I act on <em>my own behalf</em>'
+        0: 'Geschafft! Lass und jetzt dein mBank Konto eröffnen!',
+        1: 'Unten findest du den Link zum Kontokorrentvertrag.',
+        2: 'Du musst ihn jetzt nicht herunterladen, wir haben ihn dir bereits per E-Mail geschickt.',
+        3: 'Lade den kompletten mBank Account Contract herunter (PDF)',
+        4: 'Ich möchte ein mBank Konto eröffnen und bestätige, dass ich <em>für mich selbst handle</em>'
       }
     },
     step2: {
       intro: {
-        0: 'Great {userName}! Continue with video identification and verify your account'
+        0: 'Prima{userName}! Fahre mit der Video Identifikation fort und verifiziere dein Konto'
       },
       prepareToVideo: {
-        title: 'Video identification',
-        0: 'Prepare an ID document',
-        1: 'Look fo a quiet place',
-        2: 'Keep your signal strong'
+        title: 'Video Identifikation',
+        0: 'Lege dein Ausweisdokument bereit',
+        1: 'Suche dir einen ruhigen Platz',
+        2: 'Stelle eine gute Internetverbindung sicher'
       },
       connecting: {
-        0: 'Please wait a moment',
-        1: 'Establishing connection with our consultant'
+        0: 'Bitte warte einen Moment',
+        1: 'Wir stellen die Verbindung mit einem unserer Berater her'
       },
       waiting: {
-        0: 'Please wait a moment'
+        0: 'Bitte warte einen Moment'
       },
       accountReady: {
-        0: 'Your new mBank account is ready!',
-        1: 'Forward account data',
+        0: 'Dein neues mBank Konto ist angelegt!',
+        1: 'Hier sind deine Kontodaten',
         2: 'IBAN',
         3: 'DE12 1234 5678 9876 54',
         4: 'BIC',
@@ -145,26 +145,26 @@ export default {
     },
     step3: {
       intro: {
-        0: 'Great {userName}! Continue with video identification and verify your account'
+        0: 'Toll {userName}! Fahre mit der Video Identifikation fort und verifiziere dein Konto'
       },
       pinSetup: {
-        title: 'Setup your PIN',
-        0: 'This PIN is used for all in-app authorisations on this device. We won’t use any other method for this.',
-        1: 'Choose 5 - 8'
+        title: 'Lege deine PIN fest',
+        0: 'Du benötigst diese PIN für alle Autorisierungen innerhalb der App auf diesem Gerät. Wir verwenden keine andere Autorisierungs-Methode.',
+        1: 'Wähle 5 - 8'
       },
       pinConfirm: {
-        title: 'Confirm your PIN',
-        0: 'Enter the same digits again'
+        title: 'Bestätige deine PIN',
+        0: 'Gib dieselben Ziffern erneut ein'
       },
       passwordSetup: {
-        title: 'Password setup',
-        0: 'We need your contact information',
-        1: 'This password is required for the login to your account. For best password strenght use at least 6 characters, at least one uppercase, special character and numbers.'
+        title: 'Passwort Einstellungen',
+        0: 'Wir benötigen deine Kontaktinformationen',
+        1: 'Du benötigst dieses Passwort um dich in deinen Account einzuloggen. Für eine gute Passwortstärke verwendest du am besten mindestens 6 Buchstaben, einer davon sollte groß sein, Zeichen und Zahlen.'
       },
       emailConfirm: {
-        title: 'Mail confirmation',
-        0: 'Please open the confirmation email',
-        1: '…and continue the process by clicking on the link inside the email'
+        title: 'E-Mail Bestätigung',
+        0: 'Bitte öffne die Bestätigungs-E-Mail',
+        1: '…und setze den Prozess mit einem Klick auf den Link in der E-Mail fort'
       }
     }
   }

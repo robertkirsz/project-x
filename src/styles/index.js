@@ -1,10 +1,14 @@
 import { css, injectGlobal } from 'styled-components'
 import Lola from 'fonts/FSLola-Medium.woff'
 
+import './transitions'
+
 // [0 - smallOnly - 639]
 // [0 ------ mediumDown ------ 1023]
 //                     [640 - mediumUp - ∞]
 //                                 [1024 - largeUp - ∞]
+
+// TODO: remove?
 
 export const queries = [
   { name: 'smallOnly', value: '(max-width: 639px)' },

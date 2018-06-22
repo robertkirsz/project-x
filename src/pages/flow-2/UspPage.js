@@ -51,14 +51,14 @@ class UspPage2 extends PureComponent {
   handleButtonClick = () => {
     this.state.currentSlide === 3
       ? this.props.history.push('/onboarding-2/step-1')
-      : this.goToSlide(move(this.state.currentSlide, 1, 3))
+      : this.props.history.replace(`/onboarding-2/usp/${this.state.currentSlide + 2}`)
   }
 
   render() {
     const { texts, location } = this.props
     const { currentSlide, direction } = this.state
 
-    const t = texts.onboarding1.usp
+    const t = texts.onboarding2.usp
 
     return (
       <Swiper
@@ -91,7 +91,7 @@ class UspPage2 extends PureComponent {
           </TransitionGroup>
 
           <Button onClick={this.handleButtonClick} style={{ margin: 'auto 16px 48px' }}>
-            {t[8]}
+            {this.state.currentSlide === 3 ? t[8] : texts.misc.continue}
           </Button>
         </Div>
       </Swiper>

@@ -32,15 +32,15 @@ export default class Swiper extends Component {
 
   // Saves touchMove coordinates
   handleTouchMove = ({ touches }) => {
-    // Don't do anything if we didn't move the "cursor"
-    if (this.touchStartX === null || this.touchStartY === null) return
-
     this.touchMoveX = touches[0].clientX
     this.touchMoveY = touches[0].clientY
   }
 
   // Checks a difference between touchStart and touchMove coordinates
   handleTouchEnd = () => {
+    // Don't do anything if we didn't move the "cursor"
+    if (this.touchMoveX === null || this.touchMoveY === null) return
+
     // Calculate the distances between touchStart and touchMove points
     const horizontalDifference = this.touchStartX - this.touchMoveX
     const verticalDifference = this.touchStartY - this.touchMoveY
@@ -57,9 +57,11 @@ export default class Swiper extends Component {
       verticalDifference > 0 ? this.props.onSwipeUp() : this.props.onSwipeDown()
     }
 
-    // Clear touchStart coordinates so we can start measuring again
+    // Clear touch coordinates so we can start measuring again
     this.touchStartX = null
     this.touchStartY = null
+    this.touchMoveX = null
+    this.touchMoveY = null
   }
 
   render = () =>

@@ -43,6 +43,7 @@ injectGlobal`
   body {
     font-family: Lola, sans-serif;
     height: 100%;
+    background: white !important; /* TODO */
     cursor: default;
   }
 

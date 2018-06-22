@@ -21,10 +21,10 @@ import img21 from 'assets/camera.svg'
 import img22 from 'assets/account-creating.svg'
 import img23 from 'assets/account-ready.svg'
 import img24 from 'assets/native-map-marker.svg'
-import img25 from 'assets/2/usp-1.png'
-import img26 from 'assets/2/usp-2.png'
-import img27 from 'assets/2/usp-3.png'
-import img28 from 'assets/2/usp-4.png'
+import img25 from 'assets/2/usp-1.gif'
+import img26 from 'assets/2/usp-2.gif'
+import img27 from 'assets/2/usp-3.gif'
+import img28 from 'assets/2/usp-4.gif'
 
 const images = [
   img01,

@@ -12,24 +12,20 @@ import Button from 'components/Button'
 import Pagination from 'components/Pagination'
 import Swiper from 'components/Swiper'
 
-import image1 from 'assets/2/usp-1.png'
-import image2 from 'assets/2/usp-2.png'
-import image3 from 'assets/2/usp-3.png'
-import image4 from 'assets/2/usp-4.png'
+import image1 from 'assets/2/usp-1.gif'
+import image2 from 'assets/2/usp-2.gif'
+import image3 from 'assets/2/usp-3.gif'
+import image4 from 'assets/2/usp-4.gif'
 
 const getSlideIndex = pathname => parseInt(pathname.slice(-1), 10) - 1
 
 const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 const Screen = ({ image, title, subtitle }) => (
-  <Div flex={1} column itemsCenter padding="0 16px">
+  <Div flex={1} listTop column itemsCenter padding="0 16px">
     <Image src={image} />
-    <H1 center mTop={16}>
-      {title}
-    </H1>
-    <H2 center mTop={8}>
-      {subtitle}
-    </H2>
+    <H1 center>{title}</H1>
+    <H2 center>{subtitle}</H2>
   </Div>
 )
 
@@ -49,10 +45,14 @@ class UspPage2 extends PureComponent {
   goToSlide = index => event => {
     if (index === this.state.currentSlide) return
 
-    this.props.history.push(`/onboarding-2/usp/${index + 1}`)
+    this.props.history.replace(`/onboarding-2/usp/${index + 1}`)
   }
 
-  goToRoute = path => event => this.props.history.push(path)
+  handleButtonClick = () => {
+    this.state.currentSlide === 3
+      ? this.props.history.push('/onboarding-2/step-1')
+      : this.goToSlide(move(this.state.currentSlide, 1, 3))
+  }
 
   render() {
     const { texts, location } = this.props
@@ -90,12 +90,7 @@ class UspPage2 extends PureComponent {
             </CSSTransition>
           </TransitionGroup>
 
-          <Button
-            onClick={
-              currentSlide === 3 ? this.goToRoute('/onboarding-2/step-1') : this.goToSlide(move(currentSlide, 1, 3))
-            }
-            style={{ margin: 'auto 16px 48px' }}
-          >
+          <Button onClick={this.handleButtonClick} style={{ margin: 'auto 16px 48px' }}>
             {t[8]}
           </Button>
         </Div>
@@ -111,11 +106,11 @@ const AnimationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 24px 0;
+  margin-bottom: 24px;
   position: relative;
   overflow: hidden;
 `
 
 const Image = styled.img.attrs({ alt: '' })`
-  height: 200px;
+  height: 230px;
 `

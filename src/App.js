@@ -26,11 +26,12 @@ import Step3Page from 'pages/flow-1/Step3Page'
 // Flow 2
 import IntroPage2 from 'pages/flow-2/IntroPage'
 import UspPage2 from 'pages/flow-2/UspPage'
+import Step1Page2 from 'pages/flow-2/Step1Page'
 
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-const VERSION = 'v0.6.2'
+const VERSION = 'v0.6.3'
 
 class App extends Component {
   state = {
@@ -130,6 +131,7 @@ class App extends Component {
             {/* Flow 2 */}
             <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
             <PrivateRoute path="/onboarding-2/usp" isRestricted={!loggedIn} component={UspPage2} />
+            <PrivateRoute path="/onboarding-2/step-1" isRestricted={!loggedIn} component={Step1Page2} />
 
             {/* 404 */}
             <Redirect from="/index.html" to="/" />

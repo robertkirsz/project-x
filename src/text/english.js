@@ -24,7 +24,8 @@ export default {
     allow: 'Allow',
     allowLocation: 'Allow mBank Europe to access this device’s location?',
     allowCamera: 'Allow mBank Europe app to take pictures and record video?',
-    germany: 'Germany'
+    germany: 'Germany',
+    continue: 'Continue'
   },
   onboarding1: {
     firstLogin: {
@@ -166,6 +167,19 @@ export default {
         0: 'Please open the confirmation email',
         1: '…and continue the process by clicking on the link inside the email'
       }
+    }
+  },
+  onboarding2: {
+    usp: {
+      0: 'Euro money transfer for free and in real time',
+      1: 'Transfer money to any bank, business or friend immediately.',
+      2: 'ATM for free worldwide',
+      3: 'Up to 500 Euro you can take cash from ATM for free in any country.',
+      4: 'Multicurrency contactless',
+      5: 'Pay in any country with your credit card with exchange rate 0,1%, the lowest on the market.',
+      6: '…and many more!',
+      7: 'Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan on one click process.',
+      8: 'Start now!'
     }
   }
 }

@@ -25,6 +25,8 @@ import img25 from 'assets/2/usp-1.gif'
 import img26 from 'assets/2/usp-2.gif'
 import img27 from 'assets/2/usp-3.gif'
 import img28 from 'assets/2/usp-4.gif'
+import img29 from 'assets/2/step-info-back.svg'
+import img30 from 'assets/2/step-info-check.svg'
 
 const images = [
   img01,
@@ -53,7 +55,9 @@ const images = [
   img25,
   img26,
   img27,
-  img28
+  img28,
+  img29,
+  img30
 ]
 
 export default () =>

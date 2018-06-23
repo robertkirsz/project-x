@@ -1,5 +1,9 @@
+import english from './english'
+
 export default {
+  ...english,
   misc: {
+    ...english.misc,
     nextStep: 'Nächster Schritt',
     edit: 'Bearbeiten',
     skip: 'Überspringen',

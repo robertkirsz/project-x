@@ -38,6 +38,18 @@ export const routes = [
   '/onboarding-2/usp/2',
   '/onboarding-2/usp/3',
   '/onboarding-2/usp/4',
+  '/onboarding-2/step-1/name',
+  '/onboarding-2/step-1/card',
+  '/onboarding-2/step-1/contact',
+  '/onboarding-2/step-1/birth',
+  '/onboarding-2/step-1/residential-address',
+  '/onboarding-2/step-1/correspondence-address',
+  '/onboarding-2/step-1/tax-information',
+  '/onboarding-2/step-1/occupational-status',
+  '/onboarding-2/step-1/industry',
+  '/onboarding-2/step-1/review',
+  '/onboarding-2/step-1/consents',
+  '/onboarding-2/step-1/finish'
 ]
 
 export default props => {

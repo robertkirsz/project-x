@@ -29,7 +29,7 @@ const Screen = ({ image, title, subtitle }) => (
   </Div>
 )
 
-class UspPage2 extends PureComponent {
+class UspPage extends PureComponent {
   static getDerivedStateFromProps(props, state) {
     const currentSlide = getSlideIndex(props.location.pathname)
     const direction = currentSlide > state.currentSlide ? 'right' : 'left'
@@ -50,7 +50,7 @@ class UspPage2 extends PureComponent {
 
   handleButtonClick = () => {
     this.state.currentSlide === 3
-      ? this.props.history.push('/onboarding-2/step-1')
+      ? this.props.history.push('/onboarding-2/step-1/name')
       : this.props.history.replace(`/onboarding-2/usp/${this.state.currentSlide + 2}`)
   }
 
@@ -99,7 +99,7 @@ class UspPage2 extends PureComponent {
   }
 }
 
-export default withTexts(UspPage2)
+export default withTexts(UspPage)
 
 const AnimationWrapper = styled.div`
   flex: 1;

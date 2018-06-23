@@ -2,29 +2,35 @@ import React from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
 
+import CircularProgress from 'components/CircularProgress'
+
 import arrow from 'assets/2/step-info-back.svg'
 import check from 'assets/2/step-info-check.svg'
 
-const StepInfo = props => (
+export default props => (
   <Wrapper>
-    <Title><Back />{props.children}</Title>
+    <Title>
+      <Back />
+      {props.children}
+    </Title>
+
     <Steps>
-      <Step isDone>1</Step>
-      <Step isActive>2</Step>
-      <Step>3</Step>
-      <Step>4</Step>
+      {[1, 2, 3, 4].map(number => (
+        <Step key={number} isActive={false} isDone={false}>
+          <CircularProgress value={0} />
+          {number}
+        </Step>
+      ))}
     </Steps>
   </Wrapper>
 )
-
-export default StepInfo
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 120px;
-  background: #20A134;
+  background: #20a134;
   color: white;
 `
 
@@ -63,7 +69,7 @@ const Step = styled.div`
   background: ${props => rgba('white', props.isDone ? 1 : props.isActive ? 0.4 : 0)};
   border: 1px solid ${props => rgba('white', props.isDone || props.isActive ? 1 : 0.4)};
   border-radius: 50%;
-  box-shadow: 0 0 0 ${props => props.isActive ? '6px' : 0} ${rgba('white', 0.2)};
+  box-shadow: 0 0 0 ${props => (props.isActive ? '6px' : 0)} ${rgba('white', 0.2)};
 
   position: relative;
 
@@ -77,8 +83,8 @@ const Step = styled.div`
     position: absolute;
     top: 4px;
     transition: 0.3s;
-    opacity: ${props => props.isDone ? 1 : 0};
-    transform: scale(${props => props.isDone ? 1 : 0.5});
+    opacity: ${props => (props.isDone ? 1 : 0)};
+    transform: scale(${props => (props.isDone ? 1 : 0.5)});
   }
 
   &:not(:last-child) {
@@ -102,7 +108,7 @@ const Step = styled.div`
   }
 `
 
-const Back = styled.img.attrs({ src: arrow, alt: ''})`
+const Back = styled.img.attrs({ src: arrow, alt: '' })`
   position: absolute;
   top: 4px;
   left: 18px;

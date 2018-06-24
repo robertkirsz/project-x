@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { Div } from 'styled-kit'
 import { withRouter } from 'react-router-dom'
 
+import { colors } from 'styles'
+
 import { H2 } from 'components/Typography'
 
 import arrow from 'assets/arrow-left.svg'
@@ -38,7 +40,7 @@ const Line = styled.div`
 
 const Fill = styled.div`
   height: 100%;
-  background: #20a134;
+  background: ${colors.green};
   border-radius: 4px;
   transition: 0.3s;
 `

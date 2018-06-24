@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import { withRouter } from 'react-router-dom'
 
+import { colors } from 'styles'
+
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 const isUspPage = pathname => pathname.indexOf('/onboarding-2/usp/') === 0
 const getRandomHeights = () => [...Array(6)].map(() => getRandomInt(12, 40))
@@ -43,21 +45,24 @@ class Background extends Component {
 export default withRouter(Background)
 
 const Content = styled.main`
-  position: relative;
-  display: flex;
   flex: 1;
+  display: flex;
   flex-direction: column;
+
+  position: relative;
   z-index: 2;
 `
 
 const Stripes = styled.div`
+  display: flex;
+  align-items: flex-end;
+
+  width: 100vw;
+  height: 100vh;
+
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
-  align-items: flex-end;
-  width: 100vw;
-  height: 100vh;
   z-index: 1;
 `
 
@@ -71,41 +76,35 @@ const Wrapper = styled.div`
   flex: 1;
   flex-direction: column;
 
-  ${props =>
-    props.fullScreen &&
-    css`
-      ${Stripe} {
-        height: 100%;
-      }
-    `};
+  ${props => props.fullScreen && css`${Stripe} { height: 100%; }`};
 `
 
 const Red = styled(Stripe)`
   width: 28%;
-  background: #e41509;
+  background: ${colors.red};
 `
 
 const Black = styled(Stripe)`
   width: 4%;
-  background: #1f1a15;
+  background: ${colors.black};
 `
 
 const Orange = styled(Stripe)`
   width: 22%;
-  background: #f39100;
+  background: ${colors.orange};
 `
 
 const DarkRed = styled(Stripe)`
   width: 16%;
-  background: #cc0915;
+  background: ${colors.darkRed};
 `
 
 const Blue = styled(Stripe)`
   width: 4%;
-  background: #0976bd;
+  background: ${colors.blue};
 `
 
 const Green = styled(Stripe)`
   width: 26%;
-  background: #20a134;
+  background: ${colors.green};
 `

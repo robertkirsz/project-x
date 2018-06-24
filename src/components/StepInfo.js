@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { rgba } from 'polished'
 
 import routes from 'routes'
+import { colors } from 'styles'
 
 import CircularProgress from 'components/CircularProgress'
 
@@ -13,28 +14,27 @@ const pathToTitleMap = {
   'step-1': 'Personal information',
   'step-2': 'Video identification',
   'step-3': 'Account opening',
-  'step-4': 'Set up profile picture',
+  'step-4': 'Set up profile picture'
 }
 
-export default props => {
-  const { location } = props
+export default ({ history, location, props }) => {
   const step = location.pathname.split('/')[2]
   const stepNumber = parseInt(step.slice(-1), 10)
   const paths = routes.filter(route => route.includes('onboarding-2')).filter(route => route.includes(step + '/'))
   const pathIndex = paths.findIndex(item => item === location.pathname)
-  const percent = parseInt((pathIndex / paths.length) * 100, 10)
+  const percent = parseInt(((pathIndex + 1) / paths.length) * 100, 10)
 
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Title>
-        <Back onClick={props.history.goBack} />
+        <Back onClick={history.goBack} />
         {pathToTitleMap[step]}
       </Title>
 
       <Steps>
         {[1, 2, 3, 4].map(number => (
           <Step key={number} isActive={stepNumber === number} isDone={stepNumber > number}>
-            <CircularProgress value={stepNumber === number && percent} />
+            <CircularProgress value={(stepNumber === number && percent) || 0} />
             {number}
           </Step>
         ))}
@@ -50,7 +50,8 @@ const Wrapper = styled.div`
 
   height: 120px;
 
-  background: #20a134;
+  background: ${colors.green};
+  border-radius: 50% 50% 40% 40% / 0 0 10% 10%;
 
   color: white;
 `

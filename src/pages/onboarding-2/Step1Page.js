@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import styled from 'styled-components'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
@@ -15,20 +14,9 @@ import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import MuiButton from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
 
-import { H2, Paragraph, Small, Link } from 'components/Typography'
+import { H2, Small, Link } from 'components/Typography'
 import Button from 'components/Button'
-
-import pdfIcon from 'assets/pdf-icon.svg'
-import contractPdf from 'assets/Contract.pdf'
 
 class Step1Page extends Component {
   state = {
@@ -59,22 +47,8 @@ class Step1Page extends Component {
       }
     ],
     job: '',
-    industry: '',
-    consent1: false,
-    consent2: false,
-    consent3: false,
-    consent4: false,
-    consent5: false,
-    consent6: false,
-    reviewEditMode: false,
-    showConsentModal: false,
-    showConsentModalId: 'consent1',
-    showLocationModal: false,
-    allowLocation: false,
-    locationModalCallback: null
+    industry: ''
   }
-
-  change = name => value => this.setState({ [name]: value })
 
   handleChange = name => event => {
     if (name === 'firstName') {
@@ -109,123 +83,10 @@ class Step1Page extends Component {
     }))
   }
 
-  handleConsentModalOpen = consentId => event =>
-    this.setState({ showConsentModal: true, showConsentModalId: consentId })
-
-  handleConsentModalClose = () => this.setState({ showConsentModal: false })
-
   render() {
     const { texts } = this.props
 
     const t = texts.onboarding1.step1
-
-    const residentialAddressForm = (
-      <Div flex="none" column listTop={12} mTop={8}>
-        <Div listLeft={16}>
-          <TextField
-            label={texts.misc.postalCode}
-            value={this.state.postalCode}
-            onChange={this.handleChange('postalCode')}
-            style={{ flex: 1 }}
-          />
-
-          <TextField
-            label={texts.misc.city}
-            value={this.state.city}
-            onChange={this.handleChange('city')}
-            style={{ flex: 1 }}
-          />
-        </Div>
-
-        <Div listLeft={16}>
-          <TextField
-            label={texts.misc.streetName}
-            value={this.state.streetName}
-            onChange={this.handleChange('streetName')}
-            style={{ flex: 1 }}
-          />
-
-          <TextField
-            label={t.residentialAddress[4]}
-            value={this.state.streetNumber}
-            onChange={this.handleChange('streetNumber')}
-            style={{ flex: 1 }}
-          />
-        </Div>
-
-        <FormControl style={{ width: 'calc(50% - 8px)' }}>
-          <InputLabel htmlFor="country">{texts.misc.country}</InputLabel>
-
-          <Select
-            value={this.state.country}
-            onChange={this.handleChange('country')}
-            inputProps={{ name: 'country', id: 'country' }}
-          >
-            <MenuItem value="Germany">{texts.misc.germany}</MenuItem>
-          </Select>
-        </FormControl>
-
-        <FormControlLabel
-          label={t.residentialAddress[3]}
-          control={
-            <Checkbox
-              checked={this.state.isCorrespondenceAddressDifferent}
-              onChange={this.handleCheckboxChange('isCorrespondenceAddressDifferent')}
-              value="isCorrespondenceAddressDifferent"
-              color="primary"
-            />
-          }
-        />
-      </Div>
-    )
-
-    const correspondenceAddressForm = (
-      <Div flex="none" column listTop={12} mTop={8}>
-        <Div listLeft={16}>
-          <TextField
-            label={texts.misc.postalCode}
-            value={this.state.correspondencePostalCode}
-            onChange={this.handleChange('correspondencePostalCode')}
-            style={{ flex: 1 }}
-          />
-
-          <TextField
-            label={texts.misc.city}
-            value={this.state.correspondenceCity}
-            onChange={this.handleChange('correspondenceCity')}
-            style={{ flex: 1 }}
-          />
-        </Div>
-
-        <Div listLeft={16}>
-          <TextField
-            label={texts.misc.streetName}
-            value={this.state.correspondenceStreetName}
-            onChange={this.handleChange('correspondenceStreetName')}
-            style={{ flex: 1 }}
-          />
-
-          <TextField
-            label={t.residentialAddress[4]}
-            value={this.state.correspondenceStreetNumber}
-            onChange={this.handleChange('correspondenceStreetNumber')}
-            style={{ flex: 1 }}
-          />
-        </Div>
-
-        <FormControl style={{ width: 'calc(50% - 8px)' }}>
-          <InputLabel htmlFor="correspondenceCountry">{texts.misc.country}</InputLabel>
-
-          <Select
-            value={this.state.correspondenceCountry}
-            onChange={this.handleChange('correspondenceCountry')}
-            inputProps={{ name: 'correspondenceCountry', id: 'correspondenceCountry' }}
-          >
-            <MenuItem value="Germany">{texts.misc.germany}</MenuItem>
-          </Select>
-        </FormControl>
-      </Div>
-    )
 
     const name = (
       <Div flex={1} column padding="30px 16px">
@@ -299,7 +160,63 @@ class Step1Page extends Component {
 
         <Small mTop={8}>{t.residentialAddress[1]}</Small>
 
-        {residentialAddressForm}
+        <Div flex="none" column listTop={12} mTop={8}>
+          <Div listLeft={16}>
+            <TextField
+              label={texts.misc.postalCode}
+              value={this.state.postalCode}
+              onChange={this.handleChange('postalCode')}
+              style={{ flex: 1 }}
+            />
+
+            <TextField
+              label={texts.misc.city}
+              value={this.state.city}
+              onChange={this.handleChange('city')}
+              style={{ flex: 1 }}
+            />
+          </Div>
+
+          <Div listLeft={16}>
+            <TextField
+              label={texts.misc.streetName}
+              value={this.state.streetName}
+              onChange={this.handleChange('streetName')}
+              style={{ flex: 1 }}
+            />
+
+            <TextField
+              label={t.residentialAddress[4]}
+              value={this.state.streetNumber}
+              onChange={this.handleChange('streetNumber')}
+              style={{ flex: 1 }}
+            />
+          </Div>
+
+          <FormControl style={{ width: 'calc(50% - 8px)' }}>
+            <InputLabel htmlFor="country">{texts.misc.country}</InputLabel>
+
+            <Select
+              value={this.state.country}
+              onChange={this.handleChange('country')}
+              inputProps={{ name: 'country', id: 'country' }}
+            >
+              <MenuItem value="Germany">{texts.misc.germany}</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControlLabel
+            label={t.residentialAddress[3]}
+            control={
+              <Checkbox
+                checked={this.state.isCorrespondenceAddressDifferent}
+                onChange={this.handleCheckboxChange('isCorrespondenceAddressDifferent')}
+                value="isCorrespondenceAddressDifferent"
+                color="primary"
+              />
+            }
+          />
+        </Div>
 
         <Button
           onClick={() =>
@@ -321,7 +238,51 @@ class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>{t.correspondenceAddress[0]}</H2>
 
-        {correspondenceAddressForm}
+        <Div flex="none" column listTop={12} mTop={8}>
+          <Div listLeft={16}>
+            <TextField
+              label={texts.misc.postalCode}
+              value={this.state.correspondencePostalCode}
+              onChange={this.handleChange('correspondencePostalCode')}
+              style={{ flex: 1 }}
+            />
+
+            <TextField
+              label={texts.misc.city}
+              value={this.state.correspondenceCity}
+              onChange={this.handleChange('correspondenceCity')}
+              style={{ flex: 1 }}
+            />
+          </Div>
+
+          <Div listLeft={16}>
+            <TextField
+              label={texts.misc.streetName}
+              value={this.state.correspondenceStreetName}
+              onChange={this.handleChange('correspondenceStreetName')}
+              style={{ flex: 1 }}
+            />
+
+            <TextField
+              label={t.residentialAddress[4]}
+              value={this.state.correspondenceStreetNumber}
+              onChange={this.handleChange('correspondenceStreetNumber')}
+              style={{ flex: 1 }}
+            />
+          </Div>
+
+          <FormControl style={{ width: 'calc(50% - 8px)' }}>
+            <InputLabel htmlFor="correspondenceCountry">{texts.misc.country}</InputLabel>
+
+            <Select
+              value={this.state.correspondenceCountry}
+              onChange={this.handleChange('correspondenceCountry')}
+              inputProps={{ name: 'correspondenceCountry', id: 'correspondenceCountry' }}
+            >
+              <MenuItem value="Germany">{texts.misc.germany}</MenuItem>
+            </Select>
+          </FormControl>
+        </Div>
 
         <Button
           onClick={() => this.props.history.push('/onboarding-2/step-1/tax-information')}
@@ -391,9 +352,11 @@ class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>{t.occupationalStatus[0]}</H2>
 
-        <Small mTop={8}>{t.occupationalStatus[1]}</Small>
+        <Small mTop={8}>
+          {t.occupationalStatus[1]} {t.occupationalStatus[3]}
+        </Small>
 
-        <Div column mTop={32}>
+        <Div column mTop={24}>
           <FormControl>
             <InputLabel htmlFor="jobSelect">{t.occupationalStatus[2]}</InputLabel>
             <Select
@@ -408,233 +371,27 @@ class Step1Page extends Component {
               ))}
             </Select>
           </FormControl>
+
+          <FormControl>
+            <InputLabel htmlFor="industrySelect">{t.occupationalStatus[3]}</InputLabel>
+            <Select
+              value={this.state.industry}
+              onChange={this.handleChange('industry')}
+              inputProps={{ name: 'industry', id: 'industrySelect' }}
+            >
+              {t.industry.industries.map(industry => (
+                <MenuItem key={industry} value={industry}>
+                  {industry}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Div>
 
         <Button
           onClick={() => this.props.history.push('/onboarding-2/step-1/industry')}
-          disabled={!allValid(['job'], this.state)}
+          disabled={!allValid(['job', 'industry'], this.state)}
           style={{ marginTop: 'auto' }}
-        >
-          {texts.misc.nextStep}
-        </Button>
-      </Div>
-    )
-
-    const industry = (
-      <Div flex={1} column padding="30px 16px">
-        <H2>{t.industry[0]}</H2>
-
-        <Small mTop={8}>{t.industry[1]}</Small>
-
-        <Div column mTop={24} pLeft={24}>
-          <FormControl component="fieldset" required>
-            <RadioGroup name="industry" value={this.state.industry} onChange={this.handleChange('industry')}>
-              {t.industry.industries.map(industry => (
-                <FormControlLabel
-                  key={industry}
-                  value={industry}
-                  control={<Radio color="primary" />}
-                  label={industry}
-                />
-              ))}
-            </RadioGroup>
-          </FormControl>
-        </Div>
-
-        {/* TODO: Make ''+ More options' work on '/onboarding-2/step-1/industry' */}
-
-        <Link center mTop={16} style={{ alignSelf: 'center' }}>
-          {t.industry[2]}
-        </Link>
-
-        <Button
-          onClick={() => this.props.history.push('/onboarding-2/step-1/review')}
-          disabled={!allValid(['industry'], this.state)}
-          style={{ marginTop: 'auto' }}
-        >
-          {texts.misc.nextStep}
-        </Button>
-      </Div>
-    )
-
-    const review = (
-      <Div flex={1} column padding="30px 16px">
-        <Div flex={1} column pBottom={16} style={{ overflow: 'auto' }}>
-          <H2 style={{ flex: 'none' }}>{t.review[0]}</H2>
-
-          <Div flex="none" column mTop={8} listTop={16} style={{ pointerEvents: !this.state.reviewEditMode && 'none' }}>
-            <Div listLeft={16}>
-              <TextField
-                label={t.name[1]}
-                value={this.state.firstName}
-                onChange={this.handleChange('firstName')}
-                style={{ flex: 1 }}
-              />
-              <TextField
-                label={t.name[2]}
-                value={this.state.lastName}
-                onChange={this.handleChange('lastName')}
-                style={{ flex: 1 }}
-              />
-            </Div>
-
-            <Div listLeft={16}>
-              <TextField
-                label={texts.misc.birthDate}
-                value={this.state.birthDate}
-                onChange={this.handleChange('birthDate')}
-                style={{ flex: 1 }}
-              />
-            </Div>
-
-            <Div listLeft={16}>
-              <TextField
-                label={texts.misc.citizenship}
-                value={this.state.citizenship}
-                onChange={this.handleChange('citizenship')}
-                style={{ flex: 1 }}
-              />
-              <TextField
-                label={texts.misc.birthPlace}
-                value={this.state.birthPlace}
-                onChange={this.handleChange('birthPlace')}
-                style={{ flex: 1 }}
-              />
-            </Div>
-          </Div>
-
-          <Div flex="none" column listTop={16} mTop={16}>
-            {this.state.reviewEditMode ? (
-              residentialAddressForm
-            ) : (
-              <TextField
-                label={texts.misc.residentialAddress}
-                value={`${this.state.streetName} ${this.state.streetNumber}, ${this.state.postalCode} ${
-                  this.state.city
-                }, ${this.state.country}`}
-              />
-            )}
-
-            {this.state.isCorrespondenceAddressDifferent ? (
-              this.state.reviewEditMode ? (
-                correspondenceAddressForm
-              ) : (
-                <TextField
-                  label={texts.misc.correspondenceAddress}
-                  value={`${this.state.correspondenceStreetName} ${this.state.correspondenceStreetNumber}, ${
-                    this.state.correspondencePostalCode
-                  } ${this.state.correspondenceCity}, ${this.state.correspondenceCountry}`}
-                />
-              )
-            ) : null}
-          </Div>
-        </Div>
-
-        <Button onClick={() => this.props.history.push('/onboarding-2/step-1/consents')} style={{ marginTop: 'auto' }}>
-          {texts.misc.nextStep}
-        </Button>
-      </Div>
-    )
-
-    const consentData = [
-      { id: 'consent1', label: t.consents[2] },
-      { id: 'consent2', label: t.consents[3] },
-      { id: 'consent3', label: t.consents[4] },
-      { id: 'consent4', label: t.consents[5] },
-      { id: 'consent5', label: t.consents[6] }
-    ]
-
-    const consents = (
-      <Div flex={1} column padding="30px 16px">
-        <H2>{t.consents[0]}</H2>
-
-        <FormControlLabel
-          label={t.consents[1]}
-          control={
-            <Checkbox
-              checked={
-                this.state.consent1 &&
-                this.state.consent2 &&
-                this.state.consent3 &&
-                this.state.consent4 &&
-                this.state.consent5
-              }
-              onChange={event => {
-                this.setState({
-                  consent1: event.target.checked,
-                  consent2: event.target.checked,
-                  consent3: event.target.checked,
-                  consent4: event.target.checked,
-                  consent5: event.target.checked
-                })
-              }}
-              value="isCorrespondenceAddressDifferent"
-              color="primary"
-            />
-          }
-        />
-
-        <Div column mLeft={16}>
-          {consentData.map(item => (
-            <Div key={item.id}>
-              <FormControlLabel
-                label={item.label}
-                control={
-                  <Checkbox
-                    checked={this.state[item.id]}
-                    onChange={this.handleCheckboxChange(item.id)}
-                    value={item.id}
-                    color="primary"
-                  />
-                }
-              />
-              <Link mLeft="auto" onClick={this.handleConsentModalOpen(item.id)}>
-                Read
-              </Link>
-            </Div>
-          ))}
-        </Div>
-
-        <Button
-          onClick={() => this.props.history.push('/onboarding-2/step-1/finish')}
-          disabled={!allValid(consentData.map(item => item.id), this.state)}
-          style={{ marginTop: 'auto' }}
-        >
-          {texts.misc.nextStep}
-        </Button>
-      </Div>
-    )
-
-    const finish = (
-      <Div flex={1} column padding="30px 16px">
-        <H2>{t.finish[0]}</H2>
-
-        <Paragraph mTop={16}>{t.finish[1]}</Paragraph>
-
-        <Paragraph>{t.finish[2]}</Paragraph>
-
-        <Link mTop={36} style={{ maxWidth: 260 }} href={contractPdf} download="Contract.pdf">
-          <img src={pdfIcon} alt="" style={{ marginRight: 22 }} />
-          {t.finish[3]}
-        </Link>
-
-        <FormControlLabel
-          label={<WithEm dangerouslySetInnerHTML={{ __html: t.finish[4] }} />}
-          style={{ marginTop: 'auto' }}
-          control={
-            <Checkbox
-              checked={this.state.consent6}
-              onChange={this.handleCheckboxChange('consent6')}
-              value="consent6"
-              color="primary"
-            />
-          }
-        />
-
-        <Button
-          onClick={() => this.props.history.push('/onboarding-2/step-2')}
-          disabled={!allValid(['consent6'], this.state)}
-          style={{ marginTop: 24 }}
         >
           {texts.misc.nextStep}
         </Button>
@@ -649,40 +406,9 @@ class Step1Page extends Component {
         <Route path="/onboarding-2/step-1/correspondence-address" render={() => correspondenceAddress} />
         <Route path="/onboarding-2/step-1/tax-information" render={() => taxInformation} />
         <Route path="/onboarding-2/step-1/occupational-status" render={() => occupationalStatus} />
-        <Route path="/onboarding-2/step-1/industry" render={() => industry} />
-        <Route path="/onboarding-2/step-1/review" render={() => review} />
-        <Route path="/onboarding-2/step-1/consents" render={() => consents} />
-        <Route path="/onboarding-2/step-1/finish" render={() => finish} />
-
-        <Dialog open={Boolean(this.state.showConsentModal)} onClose={this.handleConsentModalClose}>
-          <DialogTitle>{consentData.find(item => item.id === this.state.showConsentModalId).label}</DialogTitle>
-
-          <DialogContent>
-            <DialogContentText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </DialogContentText>
-          </DialogContent>
-
-          <DialogActions>
-            <MuiButton onClick={this.handleConsentModalClose} color="primary">
-              Okay
-            </MuiButton>
-          </DialogActions>
-        </Dialog>
       </Fragment>
     )
   }
 }
 
 export default withTexts(Step1Page)
-
-const WithEm = styled.div`
-  em {
-    font-style: normal;
-    color: #f39100;
-  }
-`

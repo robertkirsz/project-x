@@ -92,13 +92,15 @@ export default {
       occupationalStatus: {
         0: 'What’s your occupational status?',
         1: 'Again, we have to ask this for legal reasons',
-        2: 'Select job role',
+        2: 'Select your job role',
+        3: 'and type of industry',
         roles: ['Office manager', 'Creative director', 'Product manager']
       },
       industry: {
         0: 'In which industry are you employed?',
         1: 'That is the last one!',
         2: '+ More options',
+        3: 'We have to ask this for legal reasons',
         industries: ['No information', 'Finance', 'Manufacturing', 'Tourism']
       },
       review: {

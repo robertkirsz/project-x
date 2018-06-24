@@ -9,5 +9,5 @@ it('allValid() properly validates all keys', () => {
   expect(allValid(['name', 'age'], { name: 'John', age: 30 }, { age: value => value > 18 })).toBeTruthy()
   expect(allValid(['name', 'age'], { name: 'John', age: null })).toBeFalsy()
   expect(allValid(['checked'], { checked: true })).toBeTruthy()
-  expect(allValid(['checked'], { checked: false })).toBeFalsy()
+  expect(allValid(['checked'], { checked: false })).toBeTruthy()
 })

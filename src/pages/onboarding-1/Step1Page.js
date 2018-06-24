@@ -234,7 +234,11 @@ class Step1Page extends Component {
           />
         </Div>
 
-        <TextField label={texts.misc.city} value={this.state.city} onChange={this.handleChange('streetName')} />
+        <TextField
+          label={texts.misc.streetName}
+          value={this.state.streetName}
+          onChange={this.handleChange('streetName')}
+        />
 
         <Div listLeft={16}>
           <TextField

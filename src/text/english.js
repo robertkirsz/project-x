@@ -25,7 +25,8 @@ export default {
     allowLocation: 'Allow mBank Europe to access this device’s location?',
     allowCamera: 'Allow mBank Europe app to take pictures and record video?',
     germany: 'Germany',
-    continue: 'Continue'
+    continue: 'Continue',
+    thanks: 'Thanks!'
   },
   onboarding1: {
     firstLogin: {
@@ -67,13 +68,15 @@ export default {
         1: 'We will use this phone number and email for login'
       },
       birth: {
-        0: 'Please enter your…'
+        0: 'Please enter your…',
+        1: 'Great! Now we will try not to forget about your birthday!'
       },
       residentialAddress: {
         0: 'Please enter your address',
         1: 'Make sure that this is the adress you are registered to',
         2: 'Use my current location',
-        3: 'My correspondence address is different'
+        3: 'My correspondence address is different',
+        4: 'Building / Apartment'
       },
       correspondenceAddress: {
         0: 'Add your correspondence address'

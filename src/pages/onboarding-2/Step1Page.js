@@ -4,8 +4,8 @@ import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
 import uuid from 'utils/uuid'
-import parseValues from 'utils/parseValues'
 import allValid from 'utils/allValid'
+import validateEmail from 'utils/validateEmail'
 import { withTexts } from 'providers/TextProvider'
 
 import TextField from '@material-ui/core/TextField'
@@ -26,77 +26,29 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 import { H2, Paragraph, Small, Link } from 'components/Typography'
 import Button from 'components/Button'
-import CardCarousel from 'components/CardCarousel'
-import PhoneInput from 'components/PhoneInput'
-import NativeModal from 'components/NativeModal'
 
-import mapMarker from 'assets/map-marker.svg'
 import pdfIcon from 'assets/pdf-icon.svg'
 import contractPdf from 'assets/Contract.pdf'
-
-const prefilledData = {
-  firstName: 'John',
-  lastName: 'Rambo',
-  maidenName: 'Robert',
-  chosenCard: 1,
-  email: 'john.rambo@fake.mail',
-  phoneNumber: '123 456 789',
-  birthDate: '10-10-1970',
-  birthPlace: 'Houston',
-  citizenship: 'American',
-  postalCode: '02-345',
-  city: 'Houston',
-  streetName: 'Some Street',
-  buildingNumber: '1',
-  apartmentNumber: '23',
-  country: 'Germany',
-  isCorrespondenceAddressDifferent: true,
-  correspondencePostalCode: '03-489',
-  correspondenceCity: 'Somewhere',
-  correspondenceStreetName: 'Something',
-  correspondenceBuildingNumber: '9',
-  correspondenceApartmentNumber: '',
-  correspondenceCountry: 'Germany',
-  taxes: [
-    {
-      id: uuid(),
-      countryOfTax: 'Foo',
-      taxId: '123'
-    }
-  ],
-  job: '',
-  industry: '',
-  consent1: true,
-  consent2: true,
-  consent3: true,
-  consent4: true,
-  consent5: false,
-  consent6: false,
-  reviewEditMode: false
-}
 
 class Step1Page extends Component {
   state = {
     firstName: '',
     lastName: '',
-    maidenName: '',
-    chosenCard: 0,
     email: '',
-    phoneNumber: '',
     birthDate: '',
     birthPlace: '',
     citizenship: '',
     postalCode: '',
     city: '',
     streetName: '',
-    buildingNumber: '',
+    streetNumber: '',
     apartmentNumber: '',
     country: 'Germany',
     isCorrespondenceAddressDifferent: false,
     correspondencePostalCode: '',
     correspondenceCity: '',
     correspondenceStreetName: '',
-    correspondenceBuildingNumber: '',
+    correspondenceStreetNumber: '',
     correspondenceApartmentNumber: '',
     correspondenceCountry: 'Germany',
     taxes: [
@@ -122,12 +74,6 @@ class Step1Page extends Component {
     locationModalCallback: null
   }
 
-  componentDidUpdate(prevProps) {
-    if (!prevProps.shouldPrefillData && this.props.shouldPrefillData) {
-      this.setState(prefilledData)
-    }
-  }
-
   change = name => value => this.setState({ [name]: value })
 
   handleChange = name => event => {
@@ -139,34 +85,6 @@ class Step1Page extends Component {
   }
 
   handleCheckboxChange = name => event => this.setState({ [name]: event.target.checked })
-
-  prefillResidentialAddress = () => {
-    const data = {
-      postalCode: '23-946',
-      city: 'Hamburg',
-      streetName: 'Parkstr',
-      buildingNumber: '25',
-      apartmentNumber: '23',
-      country: 'Germany'
-    }
-
-    if (this.state.allowLocation) this.setState(data)
-    else this.handleLocationModalOpen(() => this.setState(data))
-  }
-
-  prefillCorrespondenceAddress = () => {
-    const data = {
-      correspondencePostalCode: '10-329',
-      correspondenceCity: 'Berlin',
-      correspondenceStreetName: 'Sommerallee',
-      correspondenceBuildingNumber: '23',
-      correspondenceApartmentNumber: '12',
-      correspondenceCountry: 'Germany'
-    }
-
-    if (this.state.allowLocation) this.setState(data)
-    else this.handleLocationModalOpen(() => this.setState(data))
-  }
 
   addTax = () => {
     this.setState(state => ({
@@ -196,15 +114,6 @@ class Step1Page extends Component {
 
   handleConsentModalClose = () => this.setState({ showConsentModal: false })
 
-  handleLocationModalOpen = callback => this.setState({ showLocationModal: true, locationModalCallback: callback })
-
-  handleLocationModalClose = () => this.setState({ showLocationModal: false })
-
-  handleLocationModalConfirm = () => {
-    this.setState({ showLocationModal: false, allowLocation: true })
-    if (this.state.locationModalCallback) this.state.locationModalCallback()
-  }
-
   render() {
     const { texts } = this.props
 
@@ -219,6 +128,7 @@ class Step1Page extends Component {
             onChange={this.handleChange('postalCode')}
             style={{ flex: 1 }}
           />
+
           <TextField
             label={texts.misc.city}
             value={this.state.city}
@@ -227,27 +137,25 @@ class Step1Page extends Component {
           />
         </Div>
 
-        <TextField label={texts.misc.city} value={this.state.city} onChange={this.handleChange('streetName')} />
-
         <Div listLeft={16}>
           <TextField
-            label={texts.misc.buildingNumber}
-            type="number"
-            value={this.state.buildingNumber}
-            onChange={this.handleChange('buildingNumber')}
+            label={texts.misc.streetName}
+            value={this.state.streetName}
+            onChange={this.handleChange('streetName')}
             style={{ flex: 1 }}
           />
+
           <TextField
-            label={texts.misc.apartmentNumber}
-            type="number"
-            value={this.state.apartmentNumber}
-            onChange={this.handleChange('apartmentNumber')}
+            label={t.residentialAddress[4]}
+            value={this.state.streetNumber}
+            onChange={this.handleChange('streetNumber')}
             style={{ flex: 1 }}
           />
         </Div>
 
         <FormControl style={{ width: 'calc(50% - 8px)' }}>
           <InputLabel htmlFor="country">{texts.misc.country}</InputLabel>
+
           <Select
             value={this.state.country}
             onChange={this.handleChange('country')}
@@ -280,6 +188,7 @@ class Step1Page extends Component {
             onChange={this.handleChange('correspondencePostalCode')}
             style={{ flex: 1 }}
           />
+
           <TextField
             label={texts.misc.city}
             value={this.state.correspondenceCity}
@@ -288,31 +197,25 @@ class Step1Page extends Component {
           />
         </Div>
 
-        <TextField
-          label={texts.misc.streetName}
-          value={this.state.correspondenceStreetName}
-          onChange={this.handleChange('correspondenceStreetName')}
-        />
-
         <Div listLeft={16}>
           <TextField
-            label={texts.misc.buildingNumber}
-            type="number"
-            value={this.state.correspondenceBuildingNumber}
-            onChange={this.handleChange('correspondenceBuildingNumber')}
+            label={texts.misc.streetName}
+            value={this.state.correspondenceStreetName}
+            onChange={this.handleChange('correspondenceStreetName')}
             style={{ flex: 1 }}
           />
+
           <TextField
-            label={texts.misc.apartmentNumber}
-            type="number"
-            value={this.state.correspondenceApartmentNumber}
-            onChange={this.handleChange('correspondenceApartmentNumber')}
+            label={t.residentialAddress[4]}
+            value={this.state.correspondenceStreetNumber}
+            onChange={this.handleChange('correspondenceStreetNumber')}
             style={{ flex: 1 }}
           />
         </Div>
 
         <FormControl style={{ width: 'calc(50% - 8px)' }}>
           <InputLabel htmlFor="correspondenceCountry">{texts.misc.country}</InputLabel>
+
           <Select
             value={this.state.correspondenceCountry}
             onChange={this.handleChange('correspondenceCountry')}
@@ -328,56 +231,23 @@ class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>{t.name[0]}</H2>
 
-        <Div column listTop={12} mTop={8}>
+        <Div listLeft={12} mTop={8}>
           <TextField label={t.name[1]} value={this.state.firstName} onChange={this.handleChange('firstName')} />
 
           <TextField label={t.name[2]} value={this.state.lastName} onChange={this.handleChange('lastName')} />
-
-          <TextField label={t.name[3]} value={this.state.maidenName} onChange={this.handleChange('maidenName')} />
         </Div>
 
-        <Button
-          onClick={() => this.props.history.push('/onboarding-2/step-1/card')}
-          disabled={!allValid(['firstName', 'lastName'], this.state)}
-          style={{ marginTop: 'auto' }}
-        >
-          {texts.misc.nextStep}
-        </Button>
-      </Div>
-    )
-
-    const card = (
-      <Div flex={1} column itemsCenter padding="30px 16px">
-        <H2>{parseValues(t.card[0], { userName: this.state.firstName })}</H2>
-
-        <CardCarousel value={this.state.chosenCard} onChange={this.change('chosenCard')} />
-
-        <Button onClick={() => this.props.history.push('/onboarding-2/step-1/contact')} style={{ marginTop: 'auto' }}>
-          {texts.misc.nextStep}
-        </Button>
-      </Div>
-    )
-
-    const contact = (
-      <Div flex={1} column padding="30px 16px">
-        <H2>{t.contact[0]}</H2>
-
-        <Small mTop={8}>{t.contact[1]}</Small>
-
-        <Div column listTop={12} mTop={8}>
-          <PhoneInput value={this.state.phoneNumber} onChange={this.handleChange('phoneNumber')} />
-
-          <TextField
-            label={texts.misc.emailAddress}
-            type="email"
-            value={this.state.email}
-            onChange={this.handleChange('email')}
-          />
-        </Div>
+        <TextField
+          label={texts.misc.emailAddress}
+          type="email"
+          value={this.state.email}
+          onChange={this.handleChange('email')}
+          style={{ marginTop: 12 }}
+        />
 
         <Button
           onClick={() => this.props.history.push('/onboarding-2/step-1/birth')}
-          disabled={!allValid(['email', 'phoneNumber'], this.state)}
+          disabled={!allValid(['firstName', 'lastName', 'email'], this.state, { email: validateEmail })}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -387,7 +257,7 @@ class Step1Page extends Component {
 
     const birth = (
       <Div flex={1} column padding="30px 16px">
-        <H2>{t.birth[0]}</H2>
+        <H2>{t.birth[1]}</H2>
 
         <Div column listTop={12} mTop={8}>
           <TextField
@@ -423,14 +293,11 @@ class Step1Page extends Component {
 
     const residentialAddress = (
       <Div flex={1} column padding="30px 16px">
-        <H2>{t.residentialAddress[0]}</H2>
+        <H2>
+          {texts.misc.thanks} {t.residentialAddress[0]}
+        </H2>
 
         <Small mTop={8}>{t.residentialAddress[1]}</Small>
-
-        <Link mTop={12} onClick={this.prefillResidentialAddress}>
-          <img src={mapMarker} alt="" style={{ marginRight: 8 }} />
-          {t.residentialAddress[2]}
-        </Link>
 
         {residentialAddressForm}
 
@@ -442,7 +309,7 @@ class Step1Page extends Component {
                 : '/onboarding-2/step-1/tax-information'
             )
           }
-          disabled={!allValid(['postalCode', 'city', 'streetName', 'buildingNumber', 'country'], this.state)}
+          disabled={!allValid(['postalCode', 'city', 'streetName', 'streetNumber', 'country'], this.state)}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -454,11 +321,6 @@ class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>{t.correspondenceAddress[0]}</H2>
 
-        <Link mTop={12} onClick={this.prefillCorrespondenceAddress}>
-          <img src={mapMarker} alt="" style={{ marginRight: 8 }} />
-          {t.residentialAddress[2]}
-        </Link>
-
         {correspondenceAddressForm}
 
         <Button
@@ -469,7 +331,7 @@ class Step1Page extends Component {
                 'correspondencePostalCode',
                 'correspondenceCity',
                 'correspondenceStreetName',
-                'correspondenceBuildingNumber',
+                'correspondenceStreetNumber',
                 'correspondenceCountry'
               ],
               this.state
@@ -623,12 +485,6 @@ class Step1Page extends Component {
                 onChange={this.handleChange('birthDate')}
                 style={{ flex: 1 }}
               />
-              <TextField
-                label={t.name[3]}
-                value={this.state.maidenName}
-                onChange={this.handleChange('maidenName')}
-                style={{ flex: 1 }}
-              />
             </Div>
 
             <Div listLeft={16}>
@@ -653,9 +509,9 @@ class Step1Page extends Component {
             ) : (
               <TextField
                 label={texts.misc.residentialAddress}
-                value={`${this.state.streetName} ${this.state.buildingNumber}${
-                  this.state.apartmentNumber ? ' ' + this.state.apartmentNumber : ''
-                }, ${this.state.postalCode} ${this.state.city}, ${this.state.country}`}
+                value={`${this.state.streetName} ${this.state.streetNumber}, ${this.state.postalCode} ${
+                  this.state.city
+                }, ${this.state.country}`}
               />
             )}
 
@@ -665,29 +521,12 @@ class Step1Page extends Component {
               ) : (
                 <TextField
                   label={texts.misc.correspondenceAddress}
-                  value={`${this.state.correspondenceStreetName} ${this.state.correspondenceBuildingNumber}${
-                    this.state.correspondenceApartmentNumber ? ' ' + this.state.correspondenceApartmentNumber : ''
-                  }, ${this.state.correspondencePostalCode} ${this.state.correspondenceCity}, ${
-                    this.state.correspondenceCountry
-                  }`}
+                  value={`${this.state.correspondenceStreetName} ${this.state.correspondenceStreetNumber}, ${
+                    this.state.correspondencePostalCode
+                  } ${this.state.correspondenceCity}, ${this.state.correspondenceCountry}`}
                 />
               )
             ) : null}
-          </Div>
-
-          <Div
-            flex="none"
-            column
-            listTop={16}
-            mTop={16}
-            style={{ pointerEvents: !this.state.reviewEditMode && 'none' }}
-          >
-            <TextField label={texts.misc.emailAddress} value={this.state.email} onChange={this.handleChange('email')} />
-            <TextField
-              label={texts.misc.phoneNumber}
-              value={'+49 ' + this.state.phoneNumber}
-              onChange={this.handleChange('phoneNumber')}
-            />
           </Div>
         </Div>
 
@@ -805,8 +644,6 @@ class Step1Page extends Component {
     return (
       <Fragment>
         <Route path="/onboarding-2/step-1/name" render={() => name} />
-        <Route path="/onboarding-2/step-1/card" render={() => card} />
-        <Route path="/onboarding-2/step-1/contact" render={() => contact} />
         <Route path="/onboarding-2/step-1/birth" render={() => birth} />
         <Route path="/onboarding-2/step-1/residential-address" render={() => residentialAddress} />
         <Route path="/onboarding-2/step-1/correspondence-address" render={() => correspondenceAddress} />
@@ -836,13 +673,6 @@ class Step1Page extends Component {
             </MuiButton>
           </DialogActions>
         </Dialog>
-
-        <NativeModal
-          type="location"
-          open={this.state.showLocationModal}
-          onClose={this.handleLocationModalClose}
-          onConfirm={this.handleLocationModalConfirm}
-        />
       </Fragment>
     )
   }

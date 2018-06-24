@@ -35,8 +35,6 @@ export default [
   '/onboarding-2/usp/4',
   '/onboarding-2/first-login',
   '/onboarding-2/step-1/name',
-  '/onboarding-2/step-1/card',
-  '/onboarding-2/step-1/contact',
   '/onboarding-2/step-1/birth',
   '/onboarding-2/step-1/residential-address',
   '/onboarding-2/step-1/correspondence-address',

@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 
 import { withTexts } from 'providers/TextProvider'
 import parseValues from 'utils/parseValues'
+import routes from 'routes'
 
 import { H1, H2, Paragraph, Link } from 'components/Typography'
 import StepStatus, { Step } from 'components/StepStatus'
@@ -20,14 +21,7 @@ import video4 from 'assets/video-identification-4.svg'
 import accountCreating from 'assets/account-creating.svg'
 import accountReadyIcon from 'assets/account-ready.svg'
 
-const paths = [
-  '/onboarding-1/step-2/prepare-to-video',
-  '/onboarding-1/step-2/connecting',
-  '/onboarding-1/step-2/conversation',
-  '/onboarding-1/step-2/sms-code',
-  '/onboarding-1/step-2/waiting',
-  '/onboarding-1/step-2/account-ready'
-]
+const paths = routes.filter(route => route.includes('/onboarding-1/step-2/'))
 
 class Step2Page extends Component {
   timeout = null

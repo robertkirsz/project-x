@@ -2,11 +2,12 @@ import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
+import registerServiceWorker from 'utils/registerServiceWorker'
+
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
-import App from './App'
-import registerServiceWorker from './registerServiceWorker'
+import App from 'components/App'
 
 import 'styles'
 

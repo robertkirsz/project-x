@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import isPasswordValid from 'utils/isPasswordValid'
 import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
+import routes from 'routes'
 
 import TextField from '@material-ui/core/TextField'
 
@@ -17,12 +18,7 @@ import PinInput from 'components/PinInput'
 import logo from 'assets/logo.svg'
 import mail from 'assets/mail.svg'
 
-const paths = [
-  '/onboarding-1/step-3/pin-setup',
-  '/onboarding-1/step-3/pin-confirm',
-  '/onboarding-1/step-3/password-setup',
-  '/onboarding-1/step-3/email-confirm'
-]
+const paths = routes.filter(route => route.includes('/onboarding-1/step-3/'))
 
 class Step3Page extends Component {
   state = {

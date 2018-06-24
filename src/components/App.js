@@ -16,17 +16,20 @@ import RouteChanger from 'components/RouteChanger'
 import PrivateRoute from 'components/PrivateRoute'
 
 // Flow 1
-import IntroPage from 'pages/flow-1/IntroPage'
-import UspPage from 'pages/flow-1/UspPage'
-import FirstLoginPage from 'pages/flow-1/FirstLoginPage'
-import Step1Page from 'pages/flow-1/Step1Page'
-import Step2Page from 'pages/flow-1/Step2Page'
-import Step3Page from 'pages/flow-1/Step3Page'
+import IntroPage from 'pages/onboarding-1/IntroPage'
+import UspPage from 'pages/onboarding-1/UspPage'
+import FirstLoginPage from 'pages/onboarding-1/FirstLoginPage'
+import Step1Page from 'pages/onboarding-1/Step1Page'
+import Step2Page from 'pages/onboarding-1/Step2Page'
+import Step3Page from 'pages/onboarding-1/Step3Page'
 
 // Flow 2
-import IntroPage2 from 'pages/flow-2/IntroPage'
-import UspPage2 from 'pages/flow-2/UspPage'
-import Step1Page2 from 'pages/flow-2/Step1Page'
+import IntroPage2 from 'pages/onboarding-2/IntroPage'
+import UspPage2 from 'pages/onboarding-2/UspPage'
+import Step1Page2 from 'pages/onboarding-2/Step1Page'
+import Step2Page2 from 'pages/onboarding-2/Step2Page'
+import Step3Page2 from 'pages/onboarding-2/Step3Page'
+import Step4Page2 from 'pages/onboarding-2/Step4Page'
 
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
@@ -132,6 +135,9 @@ class App extends Component {
             <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
             <PrivateRoute path="/onboarding-2/usp" isRestricted={!loggedIn} component={UspPage2} />
             <PrivateRoute path="/onboarding-2/step-1" isRestricted={!loggedIn} component={Step1Page2} />
+            <PrivateRoute path="/onboarding-2/step-2" isRestricted={!loggedIn} component={Step2Page2} />
+            <PrivateRoute path="/onboarding-2/step-3" isRestricted={!loggedIn} component={Step3Page2} />
+            <PrivateRoute path="/onboarding-2/step-4" isRestricted={!loggedIn} component={Step4Page2} />
 
             {/* 404 */}
             <Redirect from="/index.html" to="/" />

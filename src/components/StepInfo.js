@@ -7,23 +7,29 @@ import CircularProgress from 'components/CircularProgress'
 import arrow from 'assets/2/step-info-back.svg'
 import check from 'assets/2/step-info-check.svg'
 
-export default props => (
-  <Wrapper>
-    <Title>
-      <Back />
-      {props.children}
-    </Title>
+export default props => {
+  const { step, path, paths, children } = props
+  const pathIndex = paths.findIndex(item => item === path)
+  const percent = parseInt(pathIndex / paths.length * 100, 10);
 
-    <Steps>
-      {[1, 2, 3, 4].map(number => (
-        <Step key={number} isActive={false} isDone={false}>
-          <CircularProgress value={0} />
-          {number}
-        </Step>
-      ))}
-    </Steps>
-  </Wrapper>
-)
+  return (
+    <Wrapper>
+      <Title>
+        <Back />
+        {children}
+      </Title>
+
+      <Steps>
+        {[1, 2, 3, 4].map(number => (
+          <Step key={number} isActive={step === number} isDone={step > number}>
+            <CircularProgress value={step === number && percent} />
+            {number}
+          </Step>
+        ))}
+      </Steps>
+    </Wrapper>
+  )
+}
 
 const Wrapper = styled.div`
   display: flex;

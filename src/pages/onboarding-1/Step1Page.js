@@ -7,6 +7,7 @@ import uuid from 'utils/uuid'
 import parseValues from 'utils/parseValues'
 import allValid from 'utils/allValid'
 import { withTexts } from 'providers/TextProvider'
+import routes from 'routes'
 
 import TextField from '@material-ui/core/TextField'
 import InputLabel from '@material-ui/core/InputLabel'
@@ -37,20 +38,7 @@ import mapMarker from 'assets/map-marker.svg'
 import pdfIcon from 'assets/pdf-icon.svg'
 import contractPdf from 'assets/Contract.pdf'
 
-const paths = [
-  '/onboarding-1/step-1/name',
-  '/onboarding-1/step-1/card',
-  '/onboarding-1/step-1/contact',
-  '/onboarding-1/step-1/birth',
-  '/onboarding-1/step-1/residential-address',
-  '/onboarding-1/step-1/correspondence-address',
-  '/onboarding-1/step-1/tax-information',
-  '/onboarding-1/step-1/occupational-status',
-  '/onboarding-1/step-1/industry',
-  '/onboarding-1/step-1/review',
-  '/onboarding-1/step-1/consents',
-  '/onboarding-1/step-1/finish'
-]
+const paths = routes.filter(route => route.includes('/onboarding-1/step-1/'))
 
 const prefilledData = {
   firstName: 'John',

@@ -14,6 +14,7 @@ import MuiSwitch from '@material-ui/core/Switch'
 import Background from 'components/Background'
 import RouteChanger from 'components/RouteChanger'
 import PrivateRoute from 'components/PrivateRoute'
+import StepInfo from 'components/StepInfo'
 
 // Flow 1
 import IntroPage from 'pages/onboarding-1/IntroPage'
@@ -69,6 +70,8 @@ class App extends Component {
     return (
       <TextProvider language={language}>
         <Background>
+          <Route path='/onboarding-2/step-(.*)' component={StepInfo} />
+
           <Switch>
             <Route
               path="/"
@@ -133,7 +136,7 @@ class App extends Component {
 
             {/* Flow 2 */}
             <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
-            <PrivateRoute path="/onboarding-2/usp" isRestricted={!loggedIn} component={UspPage2} />
+            <PrivateRoute path="/onboarding-2/usp/:index" isRestricted={!loggedIn} component={UspPage2} />
             <PrivateRoute path="/onboarding-2/step-1" isRestricted={!loggedIn} component={Step1Page2} />
             <PrivateRoute path="/onboarding-2/step-2" isRestricted={!loggedIn} component={Step2Page2} />
             <PrivateRoute path="/onboarding-2/step-3" isRestricted={!loggedIn} component={Step3Page2} />

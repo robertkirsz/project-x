@@ -17,8 +17,6 @@ import image2 from 'assets/2/usp-2.gif'
 import image3 from 'assets/2/usp-3.gif'
 import image4 from 'assets/2/usp-4.gif'
 
-const getSlideIndex = pathname => parseInt(pathname.slice(-1), 10) - 1
-
 const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 const Screen = ({ image, title, subtitle }) => (
@@ -31,14 +29,14 @@ const Screen = ({ image, title, subtitle }) => (
 
 class UspPage extends PureComponent {
   static getDerivedStateFromProps(props, state) {
-    const currentSlide = getSlideIndex(props.location.pathname)
+    const currentSlide = parseInt(props.match.params.index, 10) - 1
     const direction = currentSlide > state.currentSlide ? 'right' : 'left'
 
     return currentSlide !== state.currentSlide ? { currentSlide, direction } : null
   }
 
   state = {
-    currentSlide: getSlideIndex(this.props.location.pathname),
+    currentSlide: parseInt(this.props.match.params.index, 10) - 1,
     direction: 'right'
   }
 

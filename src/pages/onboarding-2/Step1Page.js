@@ -7,7 +7,6 @@ import uuid from 'utils/uuid'
 import parseValues from 'utils/parseValues'
 import allValid from 'utils/allValid'
 import { withTexts } from 'providers/TextProvider'
-import routes from 'routes'
 
 import TextField from '@material-ui/core/TextField'
 import InputLabel from '@material-ui/core/InputLabel'
@@ -28,15 +27,12 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import { H2, Paragraph, Small, Link } from 'components/Typography'
 import Button from 'components/Button'
 import CardCarousel from 'components/CardCarousel'
-import StepInfo from 'components/StepInfo'
 import PhoneInput from 'components/PhoneInput'
 import NativeModal from 'components/NativeModal'
 
 import mapMarker from 'assets/map-marker.svg'
 import pdfIcon from 'assets/pdf-icon.svg'
 import contractPdf from 'assets/Contract.pdf'
-
-const paths = routes.filter(route => route.includes('/onboarding-2/step-1/'))
 
 const prefilledData = {
   firstName: 'John',
@@ -808,8 +804,6 @@ class Step1Page extends Component {
 
     return (
       <Fragment>
-        <StepInfo step={1} path={this.props.location.pathname} paths={paths}>personal information</StepInfo>
-
         <Route path="/onboarding-2/step-1/name" render={() => name} />
         <Route path="/onboarding-2/step-1/card" render={() => card} />
         <Route path="/onboarding-2/step-1/contact" render={() => contact} />

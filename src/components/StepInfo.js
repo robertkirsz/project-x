@@ -2,27 +2,39 @@ import React from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
 
+import routes from 'routes'
+
 import CircularProgress from 'components/CircularProgress'
 
 import arrow from 'assets/2/step-info-back.svg'
 import check from 'assets/2/step-info-check.svg'
 
+const pathToTitleMap = {
+  'step-1': 'Personal information',
+  'step-2': 'Video identification',
+  'step-3': 'Account opening',
+  'step-4': 'Set up profile picture',
+}
+
 export default props => {
-  const { step, path, paths, children } = props
-  const pathIndex = paths.findIndex(item => item === path)
-  const percent = parseInt(pathIndex / paths.length * 100, 10);
+  const { location } = props
+  const step = location.pathname.split('/')[2]
+  const stepNumber = parseInt(step.slice(-1), 10)
+  const paths = routes.filter(route => route.includes('onboarding-2')).filter(route => route.includes(step + '/'))
+  const pathIndex = paths.findIndex(item => item === location.pathname)
+  const percent = parseInt((pathIndex / paths.length) * 100, 10)
 
   return (
     <Wrapper>
       <Title>
-        <Back />
-        {children}
+        <Back onClick={props.history.goBack} />
+        {pathToTitleMap[step]}
       </Title>
 
       <Steps>
         {[1, 2, 3, 4].map(number => (
-          <Step key={number} isActive={step === number} isDone={step > number}>
-            <CircularProgress value={step === number && percent} />
+          <Step key={number} isActive={stepNumber === number} isDone={stepNumber > number}>
+            <CircularProgress value={stepNumber === number && percent} />
             {number}
           </Step>
         ))}
@@ -35,8 +47,11 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   height: 120px;
+
   background: #20a134;
+
   color: white;
 `
 
@@ -54,6 +69,9 @@ const Title = styled.div`
   text-align: center;
   line-height: 24px;
   text-shadow: 0 1px 1px ${rgba('black', 0.2)};
+  text-transform: lowercase;
+
+  user-select: none;
 `
 
 const Steps = styled.div`
@@ -118,5 +136,6 @@ const Back = styled.img.attrs({ src: arrow, alt: '' })`
   position: absolute;
   top: 4px;
   left: 18px;
+
   cursor: pointer;
 `

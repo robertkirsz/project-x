@@ -49,9 +49,7 @@ export default [
   '/onboarding-2/step-2/name',
   '/onboarding-2/step-2/card',
   '/onboarding-2/step-2/contact',
-  '/onboarding-2/step-3/name',
-  '/onboarding-2/step-3/card',
-  '/onboarding-2/step-3/contact',
+  '/onboarding-2/step-3',
   '/onboarding-2/step-4/name',
   '/onboarding-2/step-4/card',
   '/onboarding-2/step-4/contact'

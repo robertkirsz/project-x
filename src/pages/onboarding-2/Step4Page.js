@@ -17,13 +17,14 @@ class Step4Page extends Component {
     const { texts } = this.props
 
     return (
-      <Div flex={1} column itemsCenter padding="150px 16px 30px" relative>
-        <Content column itemsCenter>
+      <Div flex={1} column itemsCenter padding="128px 16px 24px" relative>
+        <Content flex={1} column itemsCenter>
           <Text>{texts.onboarding2.other[10]}</Text>
-          <Text>{texts.onboarding2.other[11]}</Text>
+          <Text style={{ marginTop: 'auto' }}>{texts.onboarding2.other[11]}</Text>
+          <CameraButton onClick={() => this.props.history.push('/onboarding-2/finish')} />
         </Content>
 
-        <Picture></Picture>
+        <Picture />
       </Div>
     )
   }
@@ -44,6 +45,7 @@ const Picture = Div.extend`
   height: 100%;
   background: url(${photoMask}) no-repeat, url(${person}) no-repeat;
   background-size: cover;
+  background-position: center 70px, center 80px;
   z-index: 1;
 `
 
@@ -56,4 +58,9 @@ const Text = styled.p`
   line-height: 20px;
   padding: 0;
   margin: 0;
+`
+
+const CameraButton = styled.img.attrs({ src: cameraButton, alt: '' })`
+  margin: 16px auto 0;
+  cursor: pointer;
 `

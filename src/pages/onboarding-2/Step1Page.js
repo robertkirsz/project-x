@@ -89,7 +89,7 @@ class Step1Page extends Component {
     const t = texts.onboarding1.step1
 
     const name = (
-      <Div flex={1} column padding="30px 16px">
+      <Div flex={1} column padding="150px 16px 30px">
         <H2>{t.name[0]}</H2>
 
         <Div listLeft={12} mTop={8}>
@@ -117,7 +117,7 @@ class Step1Page extends Component {
     )
 
     const birth = (
-      <Div flex={1} column padding="30px 16px">
+      <Div flex={1} column padding="150px 16px 30px">
         <H2>{t.birth[1]}</H2>
 
         <Div column listTop={12} mTop={8}>
@@ -153,7 +153,7 @@ class Step1Page extends Component {
     )
 
     const residentialAddress = (
-      <Div flex={1} column padding="30px 16px">
+      <Div flex={1} column padding="150px 16px 30px">
         <H2>
           {texts.misc.thanks} {t.residentialAddress[0]}
         </H2>
@@ -235,7 +235,7 @@ class Step1Page extends Component {
     )
 
     const correspondenceAddress = (
-      <Div flex={1} column padding="30px 16px">
+      <Div flex={1} column padding="150px 16px 30px">
         <H2>{t.correspondenceAddress[0]}</H2>
 
         <Div flex="none" column listTop={12} mTop={8}>
@@ -306,7 +306,7 @@ class Step1Page extends Component {
     )
 
     const taxInformation = (
-      <Div flex={1} column padding="30px 16px">
+      <Div flex={1} column padding="150px 16px 30px">
         <Div flex="none" column>
           <H2>{t.taxInformation[0]}</H2>
 
@@ -349,7 +349,7 @@ class Step1Page extends Component {
     )
 
     const occupationalStatus = (
-      <Div flex={1} column padding="30px 16px">
+      <Div flex={1} column padding="150px 16px 30px">
         <H2>{t.occupationalStatus[0]}</H2>
 
         <Small mTop={8}>

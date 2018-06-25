@@ -191,7 +191,7 @@ class Step1Page extends Component {
     const t = texts.onboarding1.step1
 
     const name = (
-      <Div flex={1} column padding="30px 16px">
+      <Div flex={1} column padding="150px 16px 30px">
         <H2>{t.name[0]}</H2>
 
         <Div column listTop={12} mTop={8}>
@@ -213,7 +213,7 @@ class Step1Page extends Component {
     )
 
     const card = (
-      <Div flex={1} column itemsCenter padding="30px 16px">
+      <Div flex={1} column itemsCenter padding="150px 16px 30px">
         <H2>{parseValues(t.card[0], { userName: this.state.firstName })}</H2>
 
         <CardCarousel value={this.state.chosenCard} onChange={this.change('chosenCard')} />
@@ -225,7 +225,7 @@ class Step1Page extends Component {
     )
 
     const contact = (
-      <Div flex={1} column padding="30px 16px">
+      <Div flex={1} column padding="150px 16px 30px">
         <H2>{t.contact[0]}</H2>
 
         <Small mTop={8}>{t.contact[1]}</Small>

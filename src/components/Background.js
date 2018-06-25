@@ -50,7 +50,6 @@ const Content = styled.main`
   flex-direction: column;
 
   position: relative;
-  z-index: 2;
 `
 
 const Stripes = styled.div`
@@ -64,6 +63,8 @@ const Stripes = styled.div`
   top: 0;
   left: 0;
   z-index: 1;
+
+  pointer-events: none;
 `
 
 const Stripe = styled.div`

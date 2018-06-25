@@ -25,7 +25,7 @@ class Step1Page extends Component {
     const t = texts.onboarding1.step1
 
     return (
-      <Div flex={1} column itemsCenter padding="30px 16px">
+      <Div flex={1} column itemsCenter padding="150px 16px 30px">
         <H1 center>{t.finish[0]}</H1>
 
         <H2 center mTop={24}>

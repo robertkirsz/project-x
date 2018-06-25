@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react'
+import styled from 'styled-components'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 import _random from 'lodash/random'
 
 import isPhoneNumberValid from 'utils/isPhoneNumberValid'
-import allValid from 'utils/allValid'
 import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
 
@@ -12,6 +12,12 @@ import { withStyles } from '@material-ui/core/styles'
 import Switch from '@material-ui/core/Switch'
 import green from '@material-ui/core/colors/green'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import MuiButton from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 import { H1, H2, Paragraph, Link } from 'components/Typography'
 import Button from 'components/Button'
@@ -24,6 +30,7 @@ import logo from 'assets/logo.svg'
 import editNumber from 'assets/2/edit-phone-number.svg'
 import consentLogo from 'assets/2/consent-logo.svg'
 import consentLogo2 from 'assets/2/consent-logo-2.svg'
+import arrow from 'assets/arrow-left.svg'
 
 const PIN_LENGTH = 6
 
@@ -226,6 +233,8 @@ class FirstLoginPage extends Component {
 
     const consents1 = (
       <Div flex={1} itemsCenter column padding="30px 16px">
+        <Arrow src={arrow} onClick={this.props.history.goBack} />
+
         <img src={logo} alt="" width="108" />
 
         <img src={consentLogo} alt="" style={{ marginTop: 16 }} />
@@ -238,9 +247,10 @@ class FirstLoginPage extends Component {
           {texts.onboarding2.other[7]}
         </H2>
 
-        <Div column selfStretch listTop={19} mTop={19}>
+        <Div column selfStretch mTop={19}>
           <Div itemsCenter>
             <FormControlLabel
+              label={texts.onboarding1.step1.consents[3]}
               control={
                 <Switch
                   checked={this.state.consent1}
@@ -253,7 +263,6 @@ class FirstLoginPage extends Component {
                   }}
                 />
               }
-              label={texts.onboarding1.step1.consents[3]}
             />
 
             <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent1')}>
@@ -263,6 +272,7 @@ class FirstLoginPage extends Component {
 
           <Div itemsCenter>
             <FormControlLabel
+              label={texts.onboarding1.step1.consents[5]}
               control={
                 <Switch
                   checked={this.state.consent2}
@@ -275,7 +285,6 @@ class FirstLoginPage extends Component {
                   }}
                 />
               }
-              label={texts.onboarding1.step1.consents[5]}
             />
 
             <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent2')}>
@@ -285,6 +294,7 @@ class FirstLoginPage extends Component {
 
           <Div itemsCenter>
             <FormControlLabel
+              label={texts.onboarding1.step1.consents[6]}
               control={
                 <Switch
                   checked={this.state.consent3}
@@ -297,7 +307,6 @@ class FirstLoginPage extends Component {
                   }}
                 />
               }
-              label={texts.onboarding1.step1.consents[6]}
             />
 
             <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent3')}>
@@ -318,6 +327,8 @@ class FirstLoginPage extends Component {
 
     const consents2 = (
       <Div flex={1} itemsCenter column padding="30px 16px">
+        <Arrow src={arrow} onClick={this.props.history.goBack} />
+
         <img src={logo} alt="" width="108" />
 
         <img src={consentLogo2} alt="" style={{ marginTop: 16 }} />
@@ -330,9 +341,10 @@ class FirstLoginPage extends Component {
           {texts.onboarding2.other[9]}
         </H2>
 
-        <Div column selfStretch listTop={19} mTop={19}>
+        <Div column selfStretch mTop={19}>
           <Div itemsCenter>
             <FormControlLabel
+              label={texts.onboarding1.step1.consents[2]}
               control={
                 <Switch
                   checked={this.state.consent4}
@@ -345,7 +357,6 @@ class FirstLoginPage extends Component {
                   }}
                 />
               }
-              label={texts.onboarding1.step1.consents[2]}
             />
 
             <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent4')}>
@@ -355,6 +366,7 @@ class FirstLoginPage extends Component {
 
           <Div itemsCenter>
             <FormControlLabel
+              label={texts.onboarding1.step1.consents[4]}
               control={
                 <Switch
                   checked={this.state.consent5}
@@ -367,7 +379,6 @@ class FirstLoginPage extends Component {
                   }}
                 />
               }
-              label={texts.onboarding1.step1.consents[4]}
             />
 
             <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent5')}>
@@ -378,7 +389,7 @@ class FirstLoginPage extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-2/step-1/name')}
-          disabled={!allValid(['firstName'], this.state)}
+          disabled={!this.state.consent4 || !this.state.consent4}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.start}
@@ -386,8 +397,21 @@ class FirstLoginPage extends Component {
       </Div>
     )
 
+    const consentData = [
+      { id: 'consent1', label: texts.onboarding1.step1.consents[3] },
+      { id: 'consent2', label: texts.onboarding1.step1.consents[5] },
+      { id: 'consent3', label: texts.onboarding1.step1.consents[6] },
+      { id: 'consent4', label: texts.onboarding1.step1.consents[2] },
+      { id: 'consent5', label: texts.onboarding1.step1.consents[4] }
+    ]
+
     return (
       <Fragment>
+        <Route path="/onboarding-2/first-login/phone-number" render={() => phoneNumber} />
+        <Route path="/onboarding-2/first-login/pin-number" render={() => pinNumber} />
+        <Route path="/onboarding-2/first-login/consents-1" render={() => consents1} />
+        <Route path="/onboarding-2/first-login/consents-2" render={() => consents2} />
+
         <SmsDialog
           isVisible={this.state.showSmsDialog}
           pin={this.state.generatedPin}
@@ -401,10 +425,25 @@ class FirstLoginPage extends Component {
           onConfirm={this.handleLocationModalConfirm}
         />
 
-        <Route path="/onboarding-2/first-login/phone-number" render={() => phoneNumber} />
-        <Route path="/onboarding-2/first-login/pin-number" render={() => pinNumber} />
-        <Route path="/onboarding-2/first-login/consents-1" render={() => consents1} />
-        <Route path="/onboarding-2/first-login/consents-2" render={() => consents2} />
+        <Dialog open={Boolean(this.state.showConsentModal)} onClose={this.handleConsentModalClose}>
+          <DialogTitle>{consentData.find(item => item.id === this.state.showConsentModalId).label}</DialogTitle>
+
+          <DialogContent>
+            <DialogContentText>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum.
+            </DialogContentText>
+          </DialogContent>
+
+          <DialogActions>
+            <MuiButton onClick={this.handleConsentModalClose} color="primary">
+              {texts.misc.okay}
+            </MuiButton>
+          </DialogActions>
+        </Dialog>
       </Fragment>
     )
   }
@@ -415,4 +454,11 @@ export default withStyles(styles)(withTexts(FirstLoginPage))
 const ConsentLink = Link.extend`
   font-family: Roboto;
   text-decoration: none;
+`
+
+const Arrow = styled.img`
+  position: absolute;
+  left: 0;
+  left: 8px;
+  padding: 8px;
 `

@@ -886,7 +886,7 @@ class Step1Page extends Component {
 
           <DialogActions>
             <MuiButton onClick={this.handleConsentModalClose} color="primary">
-              Okay
+              {texts.misc.okay}
             </MuiButton>
           </DialogActions>
         </Dialog>

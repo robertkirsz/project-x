@@ -8,8 +8,8 @@ export default () => <Background />
 
 const Background = Div.extend`
   flex: 1;
-  background-image: url(${dashboard1}), url(${dashboard2});
+  background-image: url(${dashboard2}), url(${dashboard1});
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center top, center bottom;
+  background-position: center bottom, center top;
 `

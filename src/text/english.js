@@ -142,6 +142,16 @@ export default {
       waiting: {
         0: 'Please wait a moment'
       },
+      conversation: {
+        0: 'Name and Photo',
+        1: 'Please look into camera and state your first names and surname in full.',
+        2: 'Front Side of Identity Document',
+        3: 'Please hold the front side of your identity document into the camera, so we can read the details.',
+        4: 'Back Side of Identity Document',
+        5: 'Please hold the back side of your identity document into the camera, so we can read the details.',
+        6: 'One moment please…',
+        7: 'Please wait while our identification Expert checks your data.'
+      },
       accountReady: {
         0: 'Your new mBank account is ready!',
         1: 'Forward account data',

@@ -12,6 +12,7 @@ import StepStatus, { Step } from 'components/StepStatus'
 import Button, { ButtonSpinner } from 'components/Button'
 import Progress from 'components/Progress'
 import NativeModal from 'components/NativeModal'
+import ConversationDemo from 'components/ConversationDemo1'
 
 import logo from 'assets/logo.svg'
 import video1 from 'assets/video-identification-1.svg'
@@ -170,6 +171,12 @@ class Step2Page extends Component {
       </Div>
     )
 
+    const conversation = (
+      <Div flex={1} column>
+        <ConversationDemo texts={texts.onboarding1.step2.conversation} onFinish={() => this.props.history.push('/onboarding-1/step-2/sms-code')} />
+      </Div>
+    )
+
     const waiting = (
       <Div flex={1} column itemsCenter padding="30px 16px">
         <H1 mTop={16}>{t.waiting[0]}</H1>
@@ -219,6 +226,7 @@ class Step2Page extends Component {
         <Route path="/onboarding-1/step-2" exact render={() => intro} />
         <Route path="/onboarding-1/step-2/prepare-to-video" render={() => prepareToVideo} />
         <Route path="/onboarding-1/step-2/connecting" render={() => connecting} />
+        <Route path="/onboarding-1/step-2/conversation" render={() => conversation} />
         <Route path="/onboarding-1/step-2/waiting" render={() => waiting} />
         <Route path="/onboarding-1/step-2/account-ready" render={() => accountReady} />
       </Fragment>

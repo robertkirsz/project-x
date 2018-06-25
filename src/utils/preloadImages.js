@@ -39,6 +39,12 @@ import img39 from 'assets/person.jpg'
 import img40 from 'assets/2/photo-preview.png'
 import img41 from 'assets/2/dashboard1.png'
 import img42 from 'assets/2/dashboard2.png'
+import img43 from 'assets/person2.jpg'
+import img44 from 'assets/photo-front.png'
+import img45 from 'assets/photo-front-2.png'
+import img46 from 'assets/photo-back.png'
+import img47 from 'assets/photo-back-2.png'
+import img48 from 'assets/id-now-logo.svg'
 
 const images = [
   img01,
@@ -81,7 +87,13 @@ const images = [
   img39,
   img40,
   img41,
-  img42
+  img42,
+  img43,
+  img44,
+  img45,
+  img46,
+  img47,
+  img48
 ]
 
 export default () =>

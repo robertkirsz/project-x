@@ -25,6 +25,7 @@ export const H1 = styled.h1`
   font-size: 24px;
   line-height: 1.5;
   letter-spacing: -0.57px;
+  font-weight: bold;
 `
 
 export const H2 = styled.h2`

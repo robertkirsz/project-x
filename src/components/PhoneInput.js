@@ -14,8 +14,8 @@ const phoneNumberMask = [/\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d
 
 const TextMaskCustom = ({ inputRef, ...other }) => <MaskedInput {...other} ref={inputRef} mask={phoneNumberMask} />
 
-export default withTexts(({ texts, ...props }) => (
-  <Div itemsCenter listLeft={16} selfStretch mTop={12}>
+export default withTexts(({ texts, style, ...props }) => (
+  <Div itemsCenter listLeft={16} selfStretch mTop={12} style={style}>
     <TextField select label={texts.misc.country} value="+49" style={{ pointerEvents: 'none' }}>
       <MenuItem value="+49">+49</MenuItem>
     </TextField>

@@ -48,7 +48,7 @@ class UspPage extends PureComponent {
 
   handleButtonClick = () => {
     this.state.currentSlide === 3
-      ? this.props.history.push('/onboarding-2/step-1/name')
+      ? this.props.history.push('/onboarding-2/first-login/phone-number')
       : this.props.history.replace(`/onboarding-2/usp/${this.state.currentSlide + 2}`)
   }
 

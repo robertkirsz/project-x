@@ -185,6 +185,9 @@ export default {
       6: '…and many more!',
       7: 'Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan on one click process.',
       8: 'Start now!'
+    },
+    other: {
+      0: 'Open account in 8 minutes!'
     }
   }
 }

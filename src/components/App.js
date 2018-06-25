@@ -27,6 +27,7 @@ import Step3Page from 'pages/onboarding-1/Step3Page'
 // Flow 2
 import IntroPage2 from 'pages/onboarding-2/IntroPage'
 import UspPage2 from 'pages/onboarding-2/UspPage'
+import FirstLoginPage2 from 'pages/onboarding-2/FirstLoginPage'
 import Step1Page2 from 'pages/onboarding-2/Step1Page'
 import Step2Page2 from 'pages/onboarding-2/Step2Page'
 import Step3Page2 from 'pages/onboarding-2/Step3Page'
@@ -137,6 +138,7 @@ class App extends Component {
             {/* Flow 2 */}
             <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
             <PrivateRoute path="/onboarding-2/usp/:index" isRestricted={!loggedIn} component={UspPage2} />
+            <PrivateRoute path="/onboarding-2/first-login" isRestricted={!loggedIn} component={FirstLoginPage2} />
             <PrivateRoute path="/onboarding-2/step-1" isRestricted={!loggedIn} component={Step1Page2} />
             <PrivateRoute path="/onboarding-2/step-2" isRestricted={!loggedIn} component={Step2Page2} />
             <PrivateRoute path="/onboarding-2/step-3" isRestricted={!loggedIn} component={Step3Page2} />

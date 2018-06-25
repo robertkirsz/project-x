@@ -6,7 +6,7 @@ import { CSSTransition } from 'react-transition-group'
 const now = new Date()
 
 export default ({ pin, isVisible, ...props }) => (
-  <CSSTransition in={isVisible} classNames="transition" timeout={500} mountOnEnter unmountOnExit>
+  <CSSTransition in={isVisible} classNames="transition" timeout={500} mountOnEnter unmountOnExit {...props}>
     <Wrapper itemsCenter>
       <Avatar>me</Avatar>
 

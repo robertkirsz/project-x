@@ -1,11 +1,11 @@
-import { injectGlobal } from 'styled-components';
+import { injectGlobal } from 'styled-components'
 
 const layerStyles = `
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
-`;
+`
 
 injectGlobal`
   .fade {
@@ -73,4 +73,4 @@ injectGlobal`
       }
     }
   }
-`;
+`

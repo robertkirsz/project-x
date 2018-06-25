@@ -19,7 +19,7 @@ const Svg = styled.svg`
   top: -1px;
   left: -1px;
 
-  opacity: ${props => props.hasValue ? 1 : 0};
+  opacity: ${props => (props.hasValue ? 1 : 0)};
   transform: rotate(-180deg);
   overflow: visible;
   transition: 0.3s;

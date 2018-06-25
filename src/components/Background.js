@@ -76,7 +76,13 @@ const Wrapper = styled.div`
   flex: 1;
   flex-direction: column;
 
-  ${props => props.fullScreen && css`${Stripe} { height: 100%; }`};
+  ${props =>
+    props.fullScreen &&
+    css`
+      ${Stripe} {
+        height: 100%;
+      }
+    `};
 `
 
 const Red = styled(Stripe)`

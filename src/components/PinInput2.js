@@ -122,7 +122,7 @@ export default class PinInput2 extends Component {
   }
 }
 
-const Input = styled.input`
+const Input = styled.input.attrs({ type: 'number' })`
   display: flex;
   justify-content: center;
   align-items: center;

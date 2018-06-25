@@ -36,7 +36,7 @@ import Step4Page2 from 'pages/onboarding-2/Step4Page'
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-const VERSION = 'v0.6.3'
+const VERSION = 'v0.7.0'
 
 class App extends Component {
   state = {
@@ -71,7 +71,7 @@ class App extends Component {
     return (
       <TextProvider language={language}>
         <Background>
-          <Route path='/onboarding-2/step-(.*)' component={StepInfo} />
+          <Route path="/onboarding-2/step-(.*)" component={StepInfo} />
 
           <Switch>
             <Route

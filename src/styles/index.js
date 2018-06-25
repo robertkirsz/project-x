@@ -9,7 +9,7 @@ export const colors = {
   green: '#20a134',
   blue: '#0976bd',
   black: '#1f1a15',
-  orange: '#f39100',
+  orange: '#f39100'
 }
 
 // [0 - smallOnly - 639]

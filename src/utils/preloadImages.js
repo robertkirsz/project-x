@@ -30,6 +30,10 @@ import img30 from 'assets/2/step-info-check.svg'
 import img31 from 'assets/2/edit-phone-number.svg'
 import img32 from 'assets/2/consent-logo.svg'
 import img33 from 'assets/2/consent-logo-2.svg'
+import img34 from 'assets/2/background-pattern.svg'
+import img35 from 'assets/2/camera-button.svg'
+import img36 from 'assets/2/card-sample.svg'
+import img37 from 'assets/2/photo-mask.svg'
 
 const images = [
   img01,
@@ -63,7 +67,11 @@ const images = [
   img30,
   img31,
   img32,
-  img33
+  img33,
+  img34,
+  img35,
+  img36,
+  img37
 ]
 
 export default () =>

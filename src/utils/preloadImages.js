@@ -18,7 +18,6 @@ import img18 from 'assets/video-identification-4.svg'
 import img19 from 'assets/pin-logo.svg'
 import img20 from 'assets/mail.svg'
 import img21 from 'assets/camera.svg'
-import img22 from 'assets/account-creating.svg'
 import img23 from 'assets/account-ready.svg'
 import img24 from 'assets/native-map-marker.svg'
 import img25 from 'assets/2/usp-1.gif'
@@ -45,6 +44,7 @@ import img45 from 'assets/photo-front-2.png'
 import img46 from 'assets/photo-back.png'
 import img47 from 'assets/photo-back-2.png'
 import img48 from 'assets/id-now-logo.svg'
+import img49 from 'assets/loader.gif'
 
 const images = [
   img01,
@@ -67,7 +67,6 @@ const images = [
   img19,
   img20,
   img21,
-  img22,
   img23,
   img24,
   img25,
@@ -93,7 +92,8 @@ const images = [
   img45,
   img46,
   img47,
-  img48
+  img48,
+  img49
 ]
 
 export default () =>

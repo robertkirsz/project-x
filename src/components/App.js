@@ -39,7 +39,7 @@ import DashboardPage from 'pages/onboarding-2/DashboardPage'
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-const VERSION = 'v0.7.1'
+const VERSION = 'v0.7.4'
 
 class App extends Component {
   state = {

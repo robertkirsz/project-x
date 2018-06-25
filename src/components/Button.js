@@ -71,13 +71,13 @@ export default styled.button`
   cursor: pointer;
   transition: 0.3s;
 
-  ${props => props.secondary && css`
-    color: ${colors.darkRed};
-    border: 2px solid ${colors.darkRed};
-    background: white;
-  `}
-
-  &:disabled {
+  ${props =>
+    props.secondary &&
+    css`
+      color: ${colors.darkRed};
+      border: 2px solid ${colors.darkRed};
+      background: white;
+    `} &:disabled {
     opacity: 0.4;
     pointer-events: none;
   }

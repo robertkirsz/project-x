@@ -35,11 +35,7 @@ class FinishPage extends Component {
           <H2>{texts.onboarding2.other[13]}</H2>
         </Div>
 
-        <Button
-          onClick={() => this.props.history.push('/dashboard')}
-          style={{ marginTop: 37 }}
-          secondary
-        >
+        <Button onClick={() => this.props.history.push('/dashboard')} style={{ marginTop: 37 }} secondary>
           {texts.onboarding2.other[14]}
         </Button>
       </Background>

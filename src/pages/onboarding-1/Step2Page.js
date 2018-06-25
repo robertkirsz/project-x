@@ -20,8 +20,8 @@ import video1 from 'assets/video-identification-1.svg'
 import video2 from 'assets/video-identification-2.svg'
 import video3 from 'assets/video-identification-3.svg'
 import video4 from 'assets/video-identification-4.svg'
-import accountCreating from 'assets/account-creating.svg'
 import accountReadyIcon from 'assets/account-ready.svg'
+import loader from 'assets/loader.gif'
 
 const paths = routes.filter(route => route.includes('/onboarding-1/step-2/'))
 
@@ -174,20 +174,26 @@ class Step2Page extends Component {
 
     const conversation = (
       <Div flex={1} column>
-        <ConversationDemo texts={texts.onboarding1.step2.conversation} onFinish={() => this.props.history.push('/onboarding-1/step-2/sms-code')} />
+        <ConversationDemo
+          texts={texts.onboarding1.step2.conversation}
+          onFinish={() => this.props.history.push('/onboarding-1/step-2/sms-code')}
+        />
       </Div>
     )
 
     const smsCode = (
       <Div flex={1} column>
-        <SmsVerificationDemo texts={texts.onboarding1.step2.conversation} onFinish={() => this.props.history.push('/onboarding-1/step-2/waiting')} />
+        <SmsVerificationDemo
+          texts={texts.onboarding1.step2.conversation}
+          onFinish={() => this.props.history.push('/onboarding-1/step-2/waiting')}
+        />
       </Div>
     )
 
     const waiting = (
-      <Div flex={1} column itemsCenter padding="30px 16px">
+      <Div flex={1} column itemsCenter padding="30px 16px" style={{ overflow: 'hidden' }}>
         <H1 mTop={16}>{t.waiting[0]}</H1>
-        <img src={accountCreating} alt="" style={{ marginTop: 38 }} />
+        <img src={loader} alt="" style={{ marginTop: 38 }} />
       </Div>
     )
 

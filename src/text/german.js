@@ -1,9 +1,5 @@
-import english from './english'
-
 export default {
-  ...english,
   misc: {
-    ...english.misc,
     nextStep: 'Nächster Schritt',
     edit: 'Bearbeiten',
     skip: 'Überspringen',
@@ -28,7 +24,12 @@ export default {
     allow: 'Erlauben',
     allowLocation: 'Erlaube mBank Europe auf den Standort deines Geräts zuzugreifen',
     allowCamera: 'Erlaube der mBank Europe App, Bilder und Videos aufzunehmen',
-    germany: 'Deutschland'
+    germany: 'Deutschland',
+    continue: 'Continue',
+    thanks: 'Thanks!',
+    start: "Let's start!",
+    read: 'Read',
+    enter: 'Enter'
   },
   onboarding1: {
     firstLogin: {
@@ -37,15 +38,17 @@ export default {
       2: 'Ich habe bereits ein Konto'
     },
     usp: {
-      0: 'Überweise weltweit kostenlos Geld',
-      1: 'Transferiere mit mBank Europe gebührenfrei Geld ins Ausland - in Echtzeit. Sofortige Geldtransfers an jede Bank, jede Firma oder an Freunde.',
-      2: 'Weltweit kostenfrei an Automaten Geld abheben',
-      3: 'Du kannst in jedem Land bis zu 500 Euro kostenlos abheben.',
-      4: 'Kontaktloses Bezahlen in verschiedenen Währungen',
-      5: 'Bezahle mit deiner Kreditkarte in jedem Land mit einem Wechselkurs von 0,1%, dem niedrigsten auf dem Markt.',
-      6: '…und vieles mehr!',
-      7: 'Kredite, Versicherungen, Geldanlagen und mehr: Versichere deine Reisen, nutze einfache Investment Tools. Fordere deinen Kredit mit nur einem Klick an.',
-      8: 'Starte jetzt!'
+      0: 'Weltweit kostenfrei Geld abheben',
+      1: 'In Deutschland kannst du in mehr als 15.000 Stores unserer Partner kostenlos Geld abheben. Im Ausland kannst du bis zu 500 Euro kostenlos abheben',
+      2: 'Überweise in Deutschland & in Europa in Echtzeit',
+      3: 'Sofortige Benachrichtigung über all deine Kontobewegungen',
+      4: 'Regelmäßige Sparmöglichkeit - ganz einfach sparen ohne Aufwand',
+      5: 'Sparen war noch nie so einfach! Spare ohne dass du es merkst.',
+      6: 'Kontakt zu unserem Support-Team rund um die Uhr, an jedem Tag der Woche',
+      7: 'Alles unter Kontrolle - manage deine Karten in der App und passe Limits individuell an, wann immer du möchtest',
+      8: '…und vieles mehr!',
+      9: 'Kredite, Versicherungen, Geldanlagen und mehr: Versichere deine Reisen, nutze einfache Investment Tools, fordere deinen Kredit mit nur einem Klick an.',
+      10: 'Starte jetzt!'
     },
     stepTitles: {
       0: 'Persönliche Daten',
@@ -54,7 +57,7 @@ export default {
     },
     step1: {
       intro: {
-        0: 'Eröffne dein neues mBank Konto in 3 einfachen Schritten und beginne mit…'
+        0: 'Eröffne dein mBank europe Konto in 3 einfachen Schritten und beginne mit…'
       },
       name: {
         0: 'Bitte erzähle uns etwas über dich',
@@ -67,16 +70,17 @@ export default {
       },
       contact: {
         0: 'Wir benötigen deine Kontaktinformationen',
-        1: 'Wir verwenden diese Telefonnummer und die E-Mail Adresse für den Login'
+        1: 'Deine Telefonnummer und E-Mail Adresse werden für die Registrierung gebraucht'
       },
       birth: {
-        0: 'Bitte gib folgende Daten ein…'
+        0: 'Bitte gib folgende Daten ein…',
+        1: 'Great! Now we will try not to forget about your birthday!'
       },
       residentialAddress: {
-        0: 'Bitte gib deine Adresse ein',
-        1: 'Gehe sicher, dass diese Adresse deine Meldeadresse ist',
+        0: 'Bitte gib deine Meldedresse ein',
         2: 'Verwende meinen aktuellen Standort',
-        3: 'Ich habe eine andere Korrespondenzanschrift'
+        3: 'Ich habe eine andere Korrespondenzanschrift',
+        4: 'Building / Apartment'
       },
       correspondenceAddress: {
         0: 'Füge deine Korrespondenzanschrift hinzu'
@@ -92,54 +96,73 @@ export default {
       occupationalStatus: {
         0: 'Was machst du beruflich?',
         1: 'Wir müssen dir die Frage erneut aus rechtlichen Gründen stellen',
-        2: 'Wähle deine Position aus',
+        2: 'Wähle deinen derzeit ausgeübten Beruf aus',
+        3: 'and type of industry',
         roles: ['Geschäftsstellenleiter', 'Creative director', 'Produktmanager']
       },
       industry: {
         0: 'In welcher Branche arbeitest du?',
         1: 'Das ist die letzte Frage!',
         2: '+ Weitere Optionen',
+        3: 'We have to ask this for legal reasons',
         industries: ['Keine Angabe', 'Finanzen', 'Fertigungsindustrie', 'Tourismus']
       },
       review: {
-        0: 'Bitte überprüfe deine Daten sorgfältig. Du kannst deine Eingaben jetzt nochmal bearbeiten.'
+        0: 'Bitte überprüfe deine Daten sorgfältig. Du kannst deine Eingaben jetzt nochmal bearbeiten'
       },
       consents: {
         0: 'Fast geschafft! Nur folgende Einwilligungen fehlen noch',
         1: 'Alle bestätigen',
-        2: 'Electronic communication',
-        3: 'Terms of Service of mBank and IDNow',
-        4: 'Advertisement of mBank partners',
-        5: 'Data processing and usage',
-        6: 'General Data Protection Regulation'
+        2: 'Fernsabsatzgesetz',
+        3: 'Nutzungsbedingungen der mBank und von IDNow',
+        4: 'Werbliche Informationen der mBank-Partner',
+        5: 'Datenverarbeitung und Datennutzung',
+        6: 'Datenschutz-Grundverordnung'
       },
       finish: {
-        0: 'Geschafft! Lass und jetzt dein mBank Konto eröffnen!',
-        1: 'Unten findest du den Link zum Kontokorrentvertrag.',
-        2: 'Du musst ihn jetzt nicht herunterladen, wir haben ihn dir bereits per E-Mail geschickt.',
-        3: 'Lade den kompletten mBank Account Contract herunter (PDF)',
-        4: 'Ich möchte ein mBank Konto eröffnen und bestätige, dass ich <em>für mich selbst handle</em>'
+        0: 'Geschafft! Lass und jetzt dein mBank europe Konto eröffnen!',
+        1: 'Unten findest du den Link zu deinem Kontovertrag.',
+        2: 'Du musst ihn jetzt nicht herunterladen, wir haben ihn dir bereits per E-Mail geschickt',
+        3: 'Lade den kompletten mBank Kontovertrag herunter (PDF)',
+        4: 'Ich möchte ein mBank europe Konto eröffnen und bestätige, dass ich <em>für mich selbst handle</em>'
       }
     },
     step2: {
       intro: {
-        0: 'Prima{userName}! Fahre mit der Video Identifikation fort und verifiziere dein Konto'
+        0: 'Prima {userName}! Fahre mit der Video-Identifikation fort und verifiziere dein Konto'
       },
       prepareToVideo: {
-        title: 'Video Identifikation',
-        0: 'Lege dein Ausweisdokument bereit',
+        title: 'Video-Identifikation',
+        0: 'Lege deinen Personalausweis oder Reisepass bereit',
         1: 'Suche dir einen ruhigen Platz',
         2: 'Stelle eine gute Internetverbindung sicher'
       },
       connecting: {
         0: 'Bitte warte einen Moment',
-        1: 'Wir stellen die Verbindung mit einem unserer Berater her'
+        1: 'Wir stellen die Verbindung mit einem/einer unserer Berater(innen) her'
       },
       waiting: {
         0: 'Bitte warte einen Moment'
       },
+      conversation: {
+        0: 'Name and Photo',
+        1: 'Please look into camera and state your first names and surname in full.',
+        2: 'Front Side of Identity Document',
+        3: 'Please hold the front side of your identity document into the camera, so we can read the details.',
+        4: 'Back Side of Identity Document',
+        5: 'Please hold the back side of your identity document into the camera, so we can read the details.',
+        6: 'One moment please…',
+        7: 'Please wait while our identification Expert checks your data.'
+      },
+      smsCode: {
+        0: 'Your validation code is {code}',
+        1: 'SMS Code',
+        2: 'Finally, you now have to enter the ident code. This code has been received as a SMS to the number {phoneNumber}.',
+        3: 'Haven’t received an SMS?',
+        4: 'We can send it again'
+      },
       accountReady: {
-        0: 'Dein neues mBank Konto ist angelegt!',
+        0: 'Dein neues mBank Konto ist eröffnet!',
         1: 'Hier sind deine Kontodaten',
         2: 'IBAN',
         3: 'DE12 1234 5678 9876 54',
@@ -149,26 +172,68 @@ export default {
     },
     step3: {
       intro: {
-        0: 'Toll {userName}! Fahre mit der Video Identifikation fort und verifiziere dein Konto'
+        0: 'Toll {userName}! Fahre mit der Video-Identifikation fort und verifiziere dein Konto'
       },
       pinSetup: {
-        title: 'Lege deine PIN fest',
-        0: 'Du benötigst diese PIN für alle Autorisierungen innerhalb der App auf diesem Gerät. Wir verwenden keine andere Autorisierungs-Methode.',
-        1: 'Wähle 5 - 8'
+        title: 'Lege deinen PIN fest',
+        0: 'Du benötigst diesen PIN für alle Freigaben (z.B. Überweisungen) innerhalb der App. Wir verwenden keine andere Autorisierungs-Methode.',
+        1: 'Wähle 5 - 8 individuelle Ziffern'
       },
       pinConfirm: {
-        title: 'Bestätige deine PIN',
-        0: 'Gib dieselben Ziffern erneut ein'
+        title: 'Bestätige deinen PIN',
+        0: 'Gib deine ausgewählten Ziffern erneut ein'
       },
       passwordSetup: {
         title: 'Passwort Einstellungen',
         0: 'Wir benötigen deine Kontaktinformationen',
-        1: 'Du benötigst dieses Passwort um dich in deinen Account einzuloggen. Für eine gute Passwortstärke verwendest du am besten mindestens 6 Buchstaben, einer davon sollte groß sein, Zeichen und Zahlen.'
+        1: 'Du benötigst dieses Passwort um dich in deinen Account einzuloggen. Für eine sichere Passwortstärke verwendest du am besten mindestens 6 Buchstaben, einer davon sollte groß sein, Zeichen und Zahlen'
       },
       emailConfirm: {
         title: 'E-Mail Bestätigung',
         0: 'Bitte öffne die Bestätigungs-E-Mail',
-        1: '…und setze den Prozess mit einem Klick auf den Link in der E-Mail fort'
+        1: '…und schließe den Registrierungsvorgang mit einem Klick auf den Link in der E-Mail ab'
+      }
+    },
+    onboarding2: {
+      titles: {
+        0: 'Personal information',
+        1: 'Video identification',
+        2: 'Account opening',
+        3: 'Set up profile picture',
+        4: 'Congratulations!'
+      },
+      usp: {
+        0: 'Euro money transfer for free and in real time',
+        1: 'Transfer money to any bank, business or friend immediately.',
+        2: 'ATM for free worldwide',
+        3: 'Up to 500 Euro you can take cash from ATM for free in any country.',
+        4: 'Multicurrency contactless',
+        5: 'Pay in any country with your credit card with exchange rate 0,1%, the lowest on the market.',
+        6: '…and many more!',
+        7: 'Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan on one click process.',
+        8: 'Start now!'
+      },
+      other: {
+        0: 'Open account in 8 minutes!',
+        1: 'Enter the 6-digit code',
+        2: "We've send it to {phoneNumber}",
+        3: "Wait for {time} and resend if the code didn't arrive",
+        4: 'Resend the code',
+        5: 'Confirm & Pair',
+        6: 'Data processing consents',
+        7: 'They are necessary so we can provide you the best possible services in accordance with European law',
+        8: 'Communication consents',
+        9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!',
+        10: 'To be sure that you log in to the right place, you will recognize it with your profile pic.',
+        11: 'Don’t forget to smile!',
+        12: '{userName} your mBank Europe account is ready to use!',
+        13: 'Your MasterCard Debit PayPass card is on its way to the address provided in the form',
+        14: "Let's go there!",
+        15: '{userName}, before we start',
+        16: 'Select country of your official ID issuance',
+        17: 'Hi, please state your first name and familyname',
+        18: 'Please hold the camera on the front of your ID card. Read out your ID number - it’s in the top right corner.',
+        19: 'Now, please show the back side adn read out the address.'
       }
     }
   }

@@ -166,8 +166,6 @@ class Step1Page extends Component {
           {texts.misc.thanks} {t.residentialAddress[0]}
         </H2>
 
-        <Small mTop={8}>{t.residentialAddress[1]}</Small>
-
         <Div flex="none" column listTop={12} mTop={8}>
           <Div listLeft={16}>
             <TextField

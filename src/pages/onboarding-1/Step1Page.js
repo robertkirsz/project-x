@@ -466,8 +466,6 @@ class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>{t.residentialAddress[0]}</H2>
 
-        <Small mTop={8}>{t.residentialAddress[1]}</Small>
-
         <Link mTop={12} onClick={this.prefillResidentialAddress}>
           <img src={mapMarker} alt="" style={{ marginRight: 8 }} />
           {t.residentialAddress[2]}

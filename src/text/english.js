@@ -28,7 +28,8 @@ export default {
     continue: 'Continue',
     thanks: 'Thanks!',
     start: "Let's start!",
-    read: 'Read'
+    read: 'Read',
+    enter: 'Enter'
   },
   onboarding1: {
     firstLogin: {
@@ -75,7 +76,6 @@ export default {
       },
       residentialAddress: {
         0: 'Please enter your address',
-        1: 'Make sure that this is the adress you are registered to',
         2: 'Use my current location',
         3: 'My correspondence address is different',
         4: 'Building / Apartment'
@@ -152,7 +152,13 @@ export default {
         6: 'One moment please…',
         7: 'Please wait while our identification Expert checks your data.'
       },
-      smsCode: {},
+      smsCode: {
+        0: 'Your validation code is {code}',
+        1: 'SMS Code',
+        2: 'Finally, you now have to enter the ident code. This code has been received as a SMS to the number {phoneNumber}.',
+        3: 'Haven’t received an SMS?',
+        4: 'We can send it again'
+      },
       accountReady: {
         0: 'Your new mBank account is ready!',
         1: 'Forward account data',

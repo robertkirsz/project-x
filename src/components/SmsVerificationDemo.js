@@ -4,6 +4,8 @@ import { Div } from 'styled-kit'
 import _random from 'lodash/random'
 import { placeholder } from 'polished'
 
+import { withTexts } from 'providers/TextProvider'
+
 import SmsDialog from 'components/SmsDialog'
 import { Link } from 'components/Typography'
 
@@ -12,7 +14,7 @@ import logo from 'assets/id-now-logo.svg'
 
 const PIN_LENGTH = 6
 
-export default class SmsVerificationDemo extends Component {
+class SmsVerificationDemo extends Component {
   timeout = null
 
   state = {
@@ -47,6 +49,8 @@ export default class SmsVerificationDemo extends Component {
   }
 
   render() {
+    const { texts } = this.props
+
     const pinInvalid =
       this.state.pin === '' || this.state.generatedPin === '' || this.state.pin !== this.state.generatedPin
 
@@ -57,15 +61,18 @@ export default class SmsVerificationDemo extends Component {
         <Logo />
 
         <Div column listTop={16} itemsStart mTop="auto">
-          <Title>SMS Code</Title>
+          <Title>{texts.onboarding1.step2.smsCode[1]}</Title>
 
           <Body>
+            {/* TODO {texts.onboarding1.step2.smsCode[1]} */}
             Finally, you now have to enter the ident code. This code has been received as a SMS to the number
             +491234567899.
           </Body>
 
           <Body>
-            Haven’t recieved an SMS? <Link onClick={this.resendPin}>We can send it again</Link>
+            {/* TODO {texts.onboarding1.step2.smsCode[3]} */}
+            {/* TODO {texts.onboarding1.step2.smsCode[4]} */}
+            Haven’t received an SMS? <Link onClick={this.resendPin}>We can send it again</Link>
           </Body>
         </Div>
 
@@ -82,7 +89,7 @@ export default class SmsVerificationDemo extends Component {
           }}
           disabled={pinInvalid}
         >
-          Enter
+          {texts.misc.enter}
         </Button>
 
         <SmsDialog
@@ -94,6 +101,8 @@ export default class SmsVerificationDemo extends Component {
     )
   }
 }
+
+export default withTexts(SmsVerificationDemo)
 
 const Wrapper = Div.extend`
   flex: 1;

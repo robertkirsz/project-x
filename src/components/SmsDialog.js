@@ -3,9 +3,11 @@ import styled from 'styled-components'
 import { Div } from 'styled-kit'
 import { CSSTransition } from 'react-transition-group'
 
+import { withTexts } from 'providers/TextProvider'
+
 const now = new Date()
 
-export default ({ pin, isVisible, withDash, ...props }) => {
+const SmsDialog = ({ pin, isVisible, withDash, texts, ...props }) => {
   const sign = withDash ? '-' : ''
 
   return (
@@ -17,6 +19,7 @@ export default ({ pin, isVisible, withDash, ...props }) => {
           <Title>mBank Europe</Title>
 
           <Subtitle>
+            {/*  TODO: texts.onboarding1.step2.smsCode[0] */}
             Your validation code is {pin.slice(0, pin.length / 2) + sign + pin.slice(pin.length / 2, pin.length)}
           </Subtitle>
         </Div>
@@ -28,6 +31,8 @@ export default ({ pin, isVisible, withDash, ...props }) => {
     </CSSTransition>
   )
 }
+
+export default withTexts(SmsDialog)
 
 const Wrapper = Div.extend`
   position: fixed;

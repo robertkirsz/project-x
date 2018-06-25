@@ -2,13 +2,10 @@ import React, { Component, Fragment } from 'react'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
-import parseValues from 'utils/parseValues'
+// import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
 
-import TextField from '@material-ui/core/TextField'
-
-import PhoneInput from 'components/PhoneInput'
-import { H1, H2, Paragraph, Link } from 'components/Typography'
+import { H1, H2, Paragraph } from 'components/Typography'
 import Button, { ButtonSpinner } from 'components/Button'
 import NativeModal from 'components/NativeModal'
 import ConversationDemo from 'components/ConversationDemo1'

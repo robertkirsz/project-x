@@ -221,7 +221,12 @@ export default {
       11: 'Don’t forget to smile!',
       12: '{userName} your mBank Europe account is ready to use!',
       13: 'Your MasterCard Debit PayPass card is on its way to the address provided in the form',
-      14: "Let's go there!"
+      14: "Let's go there!",
+      15: '{userName}, before we start',
+      16: 'Select country of your official ID issuance',
+      17: 'Hi, please state your first name and familyname',
+      18: 'Please hold the camera on the front of your ID card. Read out your ID number - it’s in the top right corner.',
+      19: 'Now, please show the back side adn read out the address.'
     }
   }
 }

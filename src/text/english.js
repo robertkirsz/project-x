@@ -177,6 +177,13 @@ export default {
     }
   },
   onboarding2: {
+    titles: {
+      0: 'Personal information',
+      1: 'Video identification',
+      2: 'Account opening',
+      3: 'Set up profile picture',
+      4: 'Congratulations!'
+    },
     usp: {
       0: 'Euro money transfer for free and in real time',
       1: 'Transfer money to any bank, business or friend immediately.',
@@ -200,7 +207,8 @@ export default {
       8: 'Communication consents',
       9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!',
       10: 'To be sure that you log in to the right place, you will recognize it with your profile pic.',
-      11: 'Don’t forget to smile!'
+      11: 'Don’t forget to smile!',
+      12: "Let's go there!"
     }
   }
 }

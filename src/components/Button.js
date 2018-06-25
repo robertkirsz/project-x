@@ -1,5 +1,7 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
+
+import { colors } from 'styles'
 
 const dotAnimation = keyframes`
   0%, 80%, 100% {
@@ -58,16 +60,22 @@ export default styled.button`
   flex: none;
   font-family: inherit;
   height: 52px;
-  background: ${({ theme }) => (theme.darkMode ? 'white' : '#cc0915')};
+  background: ${({ theme }) => (theme.darkMode ? 'white' : colors.darkRed)};
   border: none;
   outline: none;
   border-radius: 100px;
   font-size: 18px;
-  color: ${({ theme }) => (theme.darkMode ? '#20A134' : 'white')};
+  color: ${({ theme }) => (theme.darkMode ? colors.green : 'white')};
   letter-spacing: 0;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+
+  ${props => props.secondary && css`
+    color: ${colors.darkRed};
+    border: 2px solid ${colors.darkRed};
+    background: white;
+  `}
 
   &:disabled {
     opacity: 0.4;

@@ -1,47 +1,53 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 
 import routes from 'routes'
 import { colors } from 'styles'
+import { withTexts } from 'providers/TextProvider'
 
 import CircularProgress from 'components/CircularProgress'
 
 import arrow from 'assets/2/step-info-back.svg'
 import check from 'assets/2/step-info-check.svg'
 
-const pathToTitleMap = {
-  'step-1': 'Personal information',
-  'step-2': 'Video identification',
-  'step-3': 'Account opening',
-  'step-4': 'Set up profile picture'
-}
-
-export default ({ history, location, props }) => {
+const StepInfo = ({ history, location, texts, ...props }) => {
   const step = location.pathname.split('/')[2]
   const stepNumber = parseInt(step.slice(-1), 10)
   const paths = routes.filter(route => route.includes('onboarding-2')).filter(route => route.includes(step + '/'))
   const pathIndex = paths.findIndex(item => item === location.pathname)
   const percent = parseInt(((pathIndex + 1) / paths.length) * 100, 10)
 
-  return (
-    <Wrapper {...props}>
-      <Title>
-        <Back onClick={history.goBack} />
-        {pathToTitleMap[step]}
-      </Title>
+  const pathToTitleMap = {
+    'step-1': texts.onboarding2.titles[0],
+    'step-2': texts.onboarding2.titles[1],
+    'step-3': texts.onboarding2.titles[2],
+    'step-4': texts.onboarding2.titles[3],
+    'finish': texts.onboarding2.titles[4]
+  }
 
-      <Steps>
-        {[1, 2, 3, 4].map(number => (
-          <Step key={number} isActive={stepNumber === number} isDone={stepNumber > number}>
-            <CircularProgress value={(stepNumber === number && percent) || 0} />
-            {number}
-          </Step>
-        ))}
-      </Steps>
-    </Wrapper>
+  console.log(step, stepNumber, pathIndex, percent);
+
+  return (
+      <Wrapper {...props} isActive={Object.keys(pathToTitleMap).includes(step)}>
+        <Title>
+          <Back onClick={history.goBack} />
+          {pathToTitleMap[step]}
+        </Title>
+
+        <Steps isActive={step !== 'finish'}>
+          {[1, 2, 3, 4].map(number => (
+            <Step key={number} isActive={stepNumber === number} isDone={stepNumber > number}>
+              <CircularProgress value={(stepNumber === number && percent) || 0} />
+              {number}
+            </Step>
+          ))}
+        </Steps>
+      </Wrapper>
   )
 }
+
+export default withTexts(StepInfo)
 
 const Wrapper = styled.div`
   display: flex;
@@ -49,7 +55,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   width: 100%;
-  height: 120px;
+  padding-bottom: 14px;
 
   position: absolute;
   z-index: 10;
@@ -58,12 +64,17 @@ const Wrapper = styled.div`
   border-radius: 50% 50% 40% 40% / 0 0 10% 10%;
 
   color: white;
+
+  transition: opacity 0.2s ease, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: ${props => (props.isActive ? 1 : 0)};
+  transform: translateY(${props => (props.isActive ? 0 : '-100%')});
+  pointer-events: ${props => (props.isActive ? 'all' : 'none')};
 `
 
 const Title = styled.div`
   align-self: stretch;
 
-  margin-top: 33px;
+  margin: 33px 0 14px;
   padding: 0 18px;
 
   position: relative;
@@ -83,7 +94,11 @@ const Steps = styled.div`
   display: flex;
   align-items: center;
   height: 40px;
-  margin: 14px auto;
+  margin: 0 auto;
+
+  height: ${props => (props.isActive ? 40 : 0)}px;
+  opacity: ${props => (props.isActive ? 1 : 0)};
+  transition: opacity 0.2s ease, height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 `
 
 const Step = styled.div`

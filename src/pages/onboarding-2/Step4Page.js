@@ -20,7 +20,9 @@ class Step4Page extends Component {
       <Div flex={1} column itemsCenter padding="128px 16px 24px" relative>
         <Content flex={1} column itemsCenter>
           <Text>{texts.onboarding2.other[10]}</Text>
+
           <Text style={{ marginTop: 'auto' }}>{texts.onboarding2.other[11]}</Text>
+
           <CameraButton onClick={() => this.props.history.push('/onboarding-2/finish')} />
         </Content>
 

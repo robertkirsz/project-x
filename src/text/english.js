@@ -198,7 +198,9 @@ export default {
       6: 'Data processing consents',
       7: 'They are necessary so we can provide you the best possible services in accordance with European law',
       8: 'Communication consents',
-      9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!'
+      9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!',
+      10: 'To be sure that you log in to the right place, you will recognize it with your profile pic.',
+      11: 'Don’t forget to smile!'
     }
   }
 }

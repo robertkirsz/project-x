@@ -25,6 +25,7 @@ import img25 from 'assets/2/usp-1.gif'
 import img26 from 'assets/2/usp-2.gif'
 import img27 from 'assets/2/usp-3.gif'
 import img28 from 'assets/2/usp-4.gif'
+import img38 from 'assets/2/usp-5.gif'
 import img29 from 'assets/2/step-info-back.svg'
 import img30 from 'assets/2/step-info-check.svg'
 import img31 from 'assets/2/edit-phone-number.svg'
@@ -34,6 +35,7 @@ import img34 from 'assets/2/background-pattern.svg'
 import img35 from 'assets/2/camera-button.svg'
 import img36 from 'assets/2/card-sample.svg'
 import img37 from 'assets/2/photo-mask.svg'
+import img39 from 'assets/2/person.jpg'
 
 const images = [
   img01,
@@ -71,7 +73,9 @@ const images = [
   img34,
   img35,
   img36,
-  img37
+  img37,
+  img38,
+  img39
 ]
 
 export default () =>

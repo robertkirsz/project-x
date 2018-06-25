@@ -38,7 +38,18 @@ export default class SmsVerificationDemo extends Component {
     this.setState({ showSmsDialog: true, generatedPin })
   }
 
+  resendPin = () => {
+    this.setState({ showSmsDialog: false, resendTime: 30 })
+
+    this.timeout = setTimeout(() => {
+      this.generatePin()
+    }, 1000)
+  }
+
   render() {
+    const pinInvalid =
+      this.state.pin === '' || this.state.generatedPin === '' || this.state.pin !== this.state.generatedPin
+
     return (
       <Wrapper>
         <Picture />
@@ -54,13 +65,25 @@ export default class SmsVerificationDemo extends Component {
           </Body>
 
           <Body>
-            Haven’t recieved an SMS? <Link>We can send it again</Link>
+            Haven’t recieved an SMS? <Link onClick={this.resendPin}>We can send it again</Link>
           </Body>
         </Div>
 
-        <Input placeholder="type an indent code" />
+        <Input
+          placeholder="type an indent code"
+          value={this.state.pin}
+          onChange={event => this.setState({ pin: event.target.value })}
+        />
 
-        <Button>Enter</Button>
+        <Button
+          onClick={() => {
+            if (pinInvalid) return
+            this.props.onFinish()
+          }}
+          disabled={pinInvalid}
+        >
+          Enter
+        </Button>
 
         <SmsDialog
           isVisible={this.state.showSmsDialog}
@@ -79,7 +102,7 @@ const Wrapper = Div.extend`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 16px;
+  padding: 16px 16px 32px;
 `
 
 const Input = styled.input`
@@ -140,4 +163,9 @@ const Button = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+
+  &:disabled {
+    background: #cacaca;
+    pointer-events: none;
+  }
 `

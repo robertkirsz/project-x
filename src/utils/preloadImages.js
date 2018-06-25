@@ -29,6 +29,7 @@ import img29 from 'assets/2/step-info-back.svg'
 import img30 from 'assets/2/step-info-check.svg'
 import img31 from 'assets/2/edit-phone-number.svg'
 import img32 from 'assets/2/consent-logo.svg'
+import img33 from 'assets/2/consent-logo-2.svg'
 
 const images = [
   img01,
@@ -61,7 +62,8 @@ const images = [
   img29,
   img30,
   img31,
-  img32
+  img32,
+  img33
 ]
 
 export default () =>

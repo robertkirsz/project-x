@@ -783,7 +783,7 @@ class Step1Page extends Component {
                 }
               />
               <Link mLeft="auto" onClick={this.handleConsentModalOpen(item.id)}>
-                Read
+                {texts.misc.read}
               </Link>
             </Div>
           ))}

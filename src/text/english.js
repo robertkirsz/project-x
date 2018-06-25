@@ -26,7 +26,9 @@ export default {
     allowCamera: 'Allow mBank Europe app to take pictures and record video?',
     germany: 'Germany',
     continue: 'Continue',
-    thanks: 'Thanks!'
+    thanks: 'Thanks!',
+    start: "Let's start!",
+    read: 'Read'
   },
   onboarding1: {
     firstLogin: {
@@ -187,7 +189,16 @@ export default {
       8: 'Start now!'
     },
     other: {
-      0: 'Open account in 8 minutes!'
+      0: 'Open account in 8 minutes!',
+      1: 'Enter the 6-digit code',
+      2: "We've send it to {phoneNumber}",
+      3: "Wait for {time} and resend if the code didn't arrive",
+      4: 'Resend the code',
+      5: 'Confirm & Pair',
+      6: 'Data processing consents',
+      7: 'They are necessary so we can provide you the best possible services in accordance with European law',
+      8: 'Communication consents',
+      9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!'
     }
   }
 }

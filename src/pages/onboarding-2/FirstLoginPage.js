@@ -5,10 +5,10 @@ import _random from 'lodash/random'
 
 import isPhoneNumberValid from 'utils/isPhoneNumberValid'
 import allValid from 'utils/allValid'
+import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
 
 import { withStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
 import Switch from '@material-ui/core/Switch'
 import green from '@material-ui/core/colors/green'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
@@ -23,6 +23,7 @@ import NativeModal from 'components/NativeModal'
 import logo from 'assets/logo.svg'
 import editNumber from 'assets/2/edit-phone-number.svg'
 import consentLogo from 'assets/2/consent-logo.svg'
+import consentLogo2 from 'assets/2/consent-logo-2.svg'
 
 const PIN_LENGTH = 6
 
@@ -53,7 +54,7 @@ class FirstLoginPage extends Component {
     consent4: false,
     consent5: false,
     showSmsDialog: false,
-    resendTime: 10,
+    resendTime: 30,
     showConsentModal: false,
     showConsentModalId: 'consent1',
     showLocationModal: false,
@@ -104,7 +105,7 @@ class FirstLoginPage extends Component {
   }
 
   resendPin = () => {
-    this.setState({ showSmsDialog: false, resendTime: 10 })
+    this.setState({ showSmsDialog: false, resendTime: 30 })
 
     this.timeout = setTimeout(() => {
       this.interval = setInterval(this.resendInterval, 1000)
@@ -136,8 +137,6 @@ class FirstLoginPage extends Component {
 
   render() {
     const { texts, classes } = this.props
-
-    const t = texts.onboarding1.step1
 
     const pinIsValid =
       this.state.pin !== '' && this.state.generatedPin !== '' && this.state.pin === this.state.generatedPin
@@ -175,7 +174,7 @@ class FirstLoginPage extends Component {
         <img src={logo} alt="" width="108" />
 
         <H1 center mTop={13}>
-          Enter the 6-digit code
+          {texts.onboarding2.other[1]}
         </H1>
 
         <PinInput2
@@ -187,7 +186,7 @@ class FirstLoginPage extends Component {
         />
 
         <H2 center>
-          We've send it to +49 {this.state.phoneNumber}{' '}
+          {parseValues(texts.onboarding2.other[2], { phoneNumber: '+49 ' + this.state.phoneNumber })}
           <img
             src={editNumber}
             alt=""
@@ -203,13 +202,14 @@ class FirstLoginPage extends Component {
           style={{ transition: '0.3s', opacity: pinIsValid ? 0 : 1, pointerEvents: pinIsValid && 'none' }}
         >
           <Paragraph center maxWidth={170}>
-            Wait for 0:{this.state.resendTime < 10 ? `0${this.state.resendTime}` : this.state.resendTime} and resend if
-            the code didn't arrive
+            {parseValues(texts.onboarding2.other[3], {
+              time: '0:' + (this.state.resendTime < 10 ? `0${this.state.resendTime}` : this.state.resendTime)
+            })}
           </Paragraph>
 
           {this.state.resendTime === 0 && (
             <Link center mTop={8} onClick={this.resendPin}>
-              Resend the code
+              {texts.onboarding2.other[4]}
             </Link>
           )}
         </Div>
@@ -219,7 +219,7 @@ class FirstLoginPage extends Component {
           disabled={!pinIsValid}
           style={{ marginTop: 25 }}
         >
-          Confirm & Pair
+          {texts.onboarding2.other[5]}
         </Button>
       </Div>
     )
@@ -231,14 +231,14 @@ class FirstLoginPage extends Component {
         <img src={consentLogo} alt="" style={{ marginTop: 16 }} />
 
         <H1 center mTop={8}>
-          Data processing consents
+          {texts.onboarding2.other[6]}
         </H1>
 
         <H2 center mTop={6}>
-          They are necessary so we can provide you the best possible services in accordance with European law
+          {texts.onboarding2.other[7]}
         </H2>
 
-        <Div column listTop={19} mTop={19}>
+        <Div column selfStretch listTop={19} mTop={19}>
           <Div itemsCenter>
             <FormControlLabel
               control={
@@ -253,11 +253,11 @@ class FirstLoginPage extends Component {
                   }}
                 />
               }
-              label="Terms of Service of mBank and IDNow"
+              label={texts.onboarding1.step1.consents[3]}
             />
 
             <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent1')}>
-              Read
+              {texts.misc.read}
             </ConsentLink>
           </Div>
 
@@ -275,11 +275,11 @@ class FirstLoginPage extends Component {
                   }}
                 />
               }
-              label="Data processing and usage"
+              label={texts.onboarding1.step1.consents[5]}
             />
 
-            <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent1')}>
-              Read
+            <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent2')}>
+              {texts.misc.read}
             </ConsentLink>
           </Div>
 
@@ -297,11 +297,11 @@ class FirstLoginPage extends Component {
                   }}
                 />
               }
-              label="General Data Protection Regulation"
+              label={texts.onboarding1.step1.consents[6]}
             />
 
             <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent3')}>
-              Read
+              {texts.misc.read}
             </ConsentLink>
           </Div>
         </Div>
@@ -317,11 +317,63 @@ class FirstLoginPage extends Component {
     )
 
     const consents2 = (
-      <Div flex={1} column padding="30px 16px">
-        <H2>{t.name[0]}</H2>
+      <Div flex={1} itemsCenter column padding="30px 16px">
+        <img src={logo} alt="" width="108" />
 
-        <Div column listTop={12} mTop={8}>
-          <TextField label={t.name[1]} value={this.state.firstName} onChange={this.handleChange('firstName')} />
+        <img src={consentLogo2} alt="" style={{ marginTop: 16 }} />
+
+        <H1 center mTop={8}>
+          {texts.onboarding2.other[8]}
+        </H1>
+
+        <H2 center mTop={6}>
+          {texts.onboarding2.other[9]}
+        </H2>
+
+        <Div column selfStretch listTop={19} mTop={19}>
+          <Div itemsCenter>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={this.state.consent4}
+                  onChange={this.handleCheckboxChange('consent4')}
+                  value="consent4"
+                  classes={{
+                    switchBase: classes.colorSwitchBase,
+                    checked: classes.colorChecked,
+                    bar: classes.colorBar
+                  }}
+                />
+              }
+              label={texts.onboarding1.step1.consents[2]}
+            />
+
+            <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent4')}>
+              {texts.misc.read}
+            </ConsentLink>
+          </Div>
+
+          <Div itemsCenter>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={this.state.consent5}
+                  onChange={this.handleCheckboxChange('consent5')}
+                  value="consent5"
+                  classes={{
+                    switchBase: classes.colorSwitchBase,
+                    checked: classes.colorChecked,
+                    bar: classes.colorBar
+                  }}
+                />
+              }
+              label={texts.onboarding1.step1.consents[4]}
+            />
+
+            <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent5')}>
+              {texts.misc.read}
+            </ConsentLink>
+          </Div>
         </Div>
 
         <Button
@@ -329,7 +381,7 @@ class FirstLoginPage extends Component {
           disabled={!allValid(['firstName'], this.state)}
           style={{ marginTop: 'auto' }}
         >
-          {texts.misc.nextStep}
+          {texts.misc.start}
         </Button>
       </Div>
     )

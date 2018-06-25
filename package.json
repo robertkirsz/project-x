@@ -26,6 +26,7 @@
     "styled-kit": "^0.1.2"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.5.1",
     "prettier": "^1.13.5"
   }
 }

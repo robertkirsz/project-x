@@ -30,12 +30,12 @@ class Background extends Component {
       <Wrapper>
         <Content>{children}</Content>
         <Stripes>
-          <Red style={{ height: isIntroPage ? '100%' : red }} />
-          <Black style={{ height: isIntroPage ? '100%' : black }} />
-          <Orange style={{ height: isIntroPage ? '100%' : orange }} />
-          <DarkRed style={{ height: isIntroPage ? '100%' : darkRed }} />
-          <Blue style={{ height: isIntroPage ? '100%' : blue }} />
-          <Green style={{ height: isIntroPage ? '100%' : green }} />
+          <Red style={{ height: isIntroPage ? 0 : red }} />
+          <Black style={{ height: isIntroPage ? 0 : black }} />
+          <Orange style={{ height: isIntroPage ? 0 : orange }} />
+          <DarkRed style={{ height: isIntroPage ? 0 : darkRed }} />
+          <Blue style={{ height: isIntroPage ? 0 : blue }} />
+          <Green style={{ height: isIntroPage ? 0 : green }} />
         </Stripes>
       </Wrapper>
     )

@@ -49,4 +49,5 @@ export default [
   '/onboarding-2/step-3',
   '/onboarding-2/step-4',
   '/onboarding-2/finish',
+  '/dashboard'
 ]

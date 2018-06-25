@@ -34,6 +34,8 @@ import Step3Page2 from 'pages/onboarding-2/Step3Page'
 import Step4Page2 from 'pages/onboarding-2/Step4Page'
 import FinishPage2 from 'pages/onboarding-2/FinishPage'
 
+import DashboardPage from 'pages/onboarding-2/DashboardPage'
+
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
@@ -145,6 +147,8 @@ class App extends Component {
             <PrivateRoute path="/onboarding-2/step-3" isRestricted={!loggedIn} component={Step3Page2} />
             <PrivateRoute path="/onboarding-2/step-4" isRestricted={!loggedIn} component={Step4Page2} />
             <PrivateRoute path="/onboarding-2/finish" isRestricted={!loggedIn} component={FinishPage2} />
+
+            <PrivateRoute path="/dashboard" isRestricted={!loggedIn} component={DashboardPage} />
 
             {/* 404 */}
             <Redirect from="/index.html" to="/" />

@@ -208,7 +208,9 @@ export default {
       9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!',
       10: 'To be sure that you log in to the right place, you will recognize it with your profile pic.',
       11: 'Don’t forget to smile!',
-      12: "Let's go there!"
+      12: '{userName} your mBank Europe account is ready to use!',
+      13: 'Your MasterCard Debit PayPass card is on its way to the address provided in the form',
+      14: "Let's go there!"
     }
   }
 }

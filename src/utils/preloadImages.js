@@ -36,6 +36,9 @@ import img35 from 'assets/2/camera-button.svg'
 import img36 from 'assets/2/card-sample.svg'
 import img37 from 'assets/2/photo-mask.svg'
 import img39 from 'assets/person.jpg'
+import img40 from 'assets/2/photo-preview.png'
+import img41 from 'assets/2/dashboard1.png'
+import img42 from 'assets/2/dashboard2.png'
 
 const images = [
   img01,
@@ -75,7 +78,10 @@ const images = [
   img36,
   img37,
   img38,
-  img39
+  img39,
+  img40,
+  img41,
+  img42
 ]
 
 export default () =>

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { rgba } from 'polished'
 
 import routes from 'routes'
@@ -23,27 +23,25 @@ const StepInfo = ({ history, location, texts, ...props }) => {
     'step-2': texts.onboarding2.titles[1],
     'step-3': texts.onboarding2.titles[2],
     'step-4': texts.onboarding2.titles[3],
-    'finish': texts.onboarding2.titles[4]
+    finish: texts.onboarding2.titles[4]
   }
 
-  console.log(step, stepNumber, pathIndex, percent);
-
   return (
-      <Wrapper {...props} isActive={Object.keys(pathToTitleMap).includes(step)}>
-        <Title>
-          <Back onClick={history.goBack} />
-          {pathToTitleMap[step]}
-        </Title>
+    <Wrapper {...props} isActive={Object.keys(pathToTitleMap).includes(step)}>
+      <Title>
+        <Back onClick={history.goBack} />
+        {pathToTitleMap[step]}
+      </Title>
 
-        <Steps isActive={step !== 'finish'}>
-          {[1, 2, 3, 4].map(number => (
-            <Step key={number} isActive={stepNumber === number} isDone={stepNumber > number}>
-              <CircularProgress value={(stepNumber === number && percent) || 0} />
-              {number}
-            </Step>
-          ))}
-        </Steps>
-      </Wrapper>
+      <Steps isActive={step !== 'finish'}>
+        {[1, 2, 3, 4].map(number => (
+          <Step key={number} isActive={stepNumber === number} isDone={stepNumber > number}>
+            <CircularProgress value={(stepNumber === number && percent) || 0} />
+            {number}
+          </Step>
+        ))}
+      </Steps>
+    </Wrapper>
   )
 }
 

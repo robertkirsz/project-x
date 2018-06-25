@@ -18,6 +18,7 @@ import Button from 'components/Button'
 import PhoneInput from 'components/PhoneInput'
 import SmsDialog from 'components/SmsDialog'
 import PinInput2 from 'components/PinInput2'
+import NativeModal from 'components/NativeModal'
 
 import logo from 'assets/logo.svg'
 import editNumber from 'assets/2/edit-phone-number.svg'
@@ -52,7 +53,12 @@ class FirstLoginPage extends Component {
     consent4: false,
     consent5: false,
     showSmsDialog: false,
-    resendTime: 10
+    resendTime: 10,
+    showConsentModal: false,
+    showConsentModalId: 'consent1',
+    showLocationModal: false,
+    allowLocation: false,
+    locationModalCallback: null
   }
 
   componentDidMount() {
@@ -62,7 +68,7 @@ class FirstLoginPage extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (
       prevProps.location.pathname !== '/onboarding-2/first-login/pin-number' &&
       this.props.location.pathname === '/onboarding-2/first-login/pin-number' &&
@@ -70,6 +76,10 @@ class FirstLoginPage extends Component {
     ) {
       this.timeout = setTimeout(this.generatePin, 1000)
       this.interval = setInterval(this.resendInterval, 1000)
+    }
+
+    if (!prevState.consent2 && this.state.consent2 && !this.state.allowLocation) {
+      this.handleLocationModalOpen()
     }
   }
 
@@ -216,7 +226,7 @@ class FirstLoginPage extends Component {
 
     const consents1 = (
       <Div flex={1} itemsCenter column padding="30px 16px">
-        <img src={logo} alt="" />
+        <img src={logo} alt="" width="108" />
 
         <img src={consentLogo} alt="" style={{ marginTop: 16 }} />
 
@@ -246,9 +256,9 @@ class FirstLoginPage extends Component {
               label="Terms of Service of mBank and IDNow"
             />
 
-            <Link mLeft="auto" onClick={this.handleConsentModalOpen('consent1')}>
+            <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent1')}>
               Read
-            </Link>
+            </ConsentLink>
           </Div>
 
           <Div itemsCenter>
@@ -268,9 +278,9 @@ class FirstLoginPage extends Component {
               label="Data processing and usage"
             />
 
-            <Link mLeft="auto" onClick={this.handleConsentModalOpen('consent1')}>
+            <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent1')}>
               Read
-            </Link>
+            </ConsentLink>
           </Div>
 
           <Div itemsCenter>
@@ -290,9 +300,9 @@ class FirstLoginPage extends Component {
               label="General Data Protection Regulation"
             />
 
-            <Link mLeft="auto" onClick={this.handleConsentModalOpen('consent3')}>
+            <ConsentLink mLeft="auto" onClick={this.handleConsentModalOpen('consent3')}>
               Read
-            </Link>
+            </ConsentLink>
           </Div>
         </Div>
 
@@ -332,6 +342,13 @@ class FirstLoginPage extends Component {
           onClick={() => this.setState({ showSmsDialog: false })}
         />
 
+        <NativeModal
+          type="location"
+          open={this.state.showLocationModal}
+          onClose={this.handleLocationModalClose}
+          onConfirm={this.handleLocationModalConfirm}
+        />
+
         <Route path="/onboarding-2/first-login/phone-number" render={() => phoneNumber} />
         <Route path="/onboarding-2/first-login/pin-number" render={() => pinNumber} />
         <Route path="/onboarding-2/first-login/consents-1" render={() => consents1} />
@@ -342,3 +359,8 @@ class FirstLoginPage extends Component {
 }
 
 export default withStyles(styles)(withTexts(FirstLoginPage))
+
+const ConsentLink = Link.extend`
+  font-family: Roboto;
+  text-decoration: none;
+`

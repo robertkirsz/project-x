@@ -397,7 +397,7 @@ class Step1Page extends Component {
         </Div>
 
         <Button
-          onClick={() => this.props.history.push('/onboarding-2/step-1/industry')}
+          onClick={() => this.props.history.push('/onboarding-2/step-2/prepare')}
           disabled={!allValid(['job', 'industry'], this.state)}
           style={{ marginTop: 'auto' }}
         >

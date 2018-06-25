@@ -132,7 +132,7 @@ export default {
       prepareToVideo: {
         title: 'Video identification',
         0: 'Prepare an ID document',
-        1: 'Look fo a quiet place',
+        1: 'Look for a quiet place',
         2: 'Keep your signal strong'
       },
       connecting: {

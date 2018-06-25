@@ -59,6 +59,10 @@ class Step1Page extends Component {
       sessionStorage.setItem('lastName', event.target.value)
     }
 
+    if (name === 'phoneNumber') {
+      sessionStorage.setItem('phoneNumber', event.target.value)
+    }
+
     this.setState({ [name]: event.target.value })
   }
 

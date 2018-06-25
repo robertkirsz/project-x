@@ -152,6 +152,9 @@ export default {
         6: 'One moment please…',
         7: 'Please wait while our identification Expert checks your data.'
       },
+      smsCode: {
+        
+      },
       accountReady: {
         0: 'Your new mBank account is ready!',
         1: 'Forward account data',

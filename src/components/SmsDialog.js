@@ -5,25 +5,29 @@ import { CSSTransition } from 'react-transition-group'
 
 const now = new Date()
 
-export default ({ pin, isVisible, ...props }) => (
-  <CSSTransition in={isVisible} classNames="transition" timeout={500} mountOnEnter unmountOnExit {...props}>
-    <Wrapper itemsCenter>
-      <Avatar>me</Avatar>
+export default ({ pin, isVisible, withDash, ...props }) => {
+  const sign = withDash ? '-' : ''
 
-      <Div column mLeft={12}>
-        <Title>mBank Europe</Title>
+  return (
+    <CSSTransition in={isVisible} classNames="transition" timeout={500} mountOnEnter unmountOnExit {...props}>
+      <Wrapper itemsCenter>
+        <Avatar>me</Avatar>
 
-        <Subtitle>
-          Your validation code is {pin.slice(0, pin.length / 2) + '-' + pin.slice(pin.length / 2, pin.length)}
-        </Subtitle>
-      </Div>
+        <Div column mLeft={12}>
+          <Title>mBank Europe</Title>
 
-      <Time>
-        {now.getHours()}:{now.getMinutes()}
-      </Time>
-    </Wrapper>
-  </CSSTransition>
-)
+          <Subtitle>
+            Your validation code is {pin.slice(0, pin.length / 2) + sign + pin.slice(pin.length / 2, pin.length)}
+          </Subtitle>
+        </Div>
+
+        <Time>
+          {now.getHours()}:{now.getMinutes()}
+        </Time>
+      </Wrapper>
+    </CSSTransition>
+  )
+}
 
 const Wrapper = Div.extend`
   position: fixed;

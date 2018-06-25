@@ -413,6 +413,7 @@ class FirstLoginPage extends Component {
         <Route path="/onboarding-2/first-login/consents-2" render={() => consents2} />
 
         <SmsDialog
+          withDash
           isVisible={this.state.showSmsDialog}
           pin={this.state.generatedPin}
           onClick={() => this.setState({ showSmsDialog: false })}

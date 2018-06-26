@@ -5,6 +5,8 @@ import { Route } from 'react-router-dom'
 
 import uuid from 'utils/uuid'
 import parseValues from 'utils/parseValues'
+import isEmailValid from 'utils/isEmailValid'
+import isPhoneNumberValid from 'utils/isPhoneNumberValid'
 import allValid from 'utils/allValid'
 import { withTexts } from 'providers/TextProvider'
 import routes from 'routes'
@@ -371,7 +373,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/birth')}
-          disabled={!allValid(['email', 'phoneNumber'], this.state)}
+          disabled={!isPhoneNumberValid(this.state.phoneNumber) || !isEmailValid(this.state.email)}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}

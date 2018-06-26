@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 
 import uuid from 'utils/uuid'
 import allValid from 'utils/allValid'
-import validateEmail from 'utils/validateEmail'
+import isEmailValid from 'utils/isEmailValid'
 import { withTexts } from 'providers/TextProvider'
 
 import TextField from '@material-ui/core/TextField'
@@ -116,7 +116,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-2/step-1/birth')}
-          disabled={!allValid(['firstName', 'lastName', 'email'], this.state, { email: validateEmail })}
+          disabled={!allValid(['firstName', 'lastName', 'email'], this.state, { email: isEmailValid })}
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}

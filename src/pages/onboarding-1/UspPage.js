@@ -133,6 +133,5 @@ const SkipButton = styled(Link)`
 
 const Image = styled.img.attrs({ alt: '' })`
   display: block;
-  width: 100%;
-  max-width: 217px;
+  height: 230px;
 `

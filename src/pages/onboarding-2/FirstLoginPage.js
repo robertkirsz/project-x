@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { Div } from 'styled-kit'
-import { Switch, Route } from 'react-router-dom'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { Route } from 'react-router-dom'
 import _random from 'lodash/random'
 
 import isPhoneNumberValid from 'utils/isPhoneNumberValid'
@@ -34,8 +33,6 @@ import consentLogo2 from 'assets/2/consent-logo-2.svg'
 import arrow from 'assets/arrow-left.svg'
 
 const PIN_LENGTH = 6
-
-const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 const styles = theme => ({
   colorSwitchBase: {
@@ -418,16 +415,10 @@ class FirstLoginPage extends Component {
 
     return (
       <Fragment>
-        <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator('fade-right')}>
-          <CSSTransition key={this.props.location.key} classNames="fade-right" timeout={500}>
-            <Switch location={this.props.location}>
-              <Route path="/onboarding-2/first-login/phone-number" render={() => phoneNumber} />
-              <Route path="/onboarding-2/first-login/pin-number" render={() => pinNumber} />
-              <Route path="/onboarding-2/first-login/consents-1" render={() => consents1} />
-              <Route path="/onboarding-2/first-login/consents-2" render={() => consents2} />
-            </Switch>
-          </CSSTransition>
-        </TransitionGroup>
+        <Route path="/onboarding-2/first-login/phone-number" render={() => phoneNumber} />
+        <Route path="/onboarding-2/first-login/pin-number" render={() => pinNumber} />
+        <Route path="/onboarding-2/first-login/consents-1" render={() => consents1} />
+        <Route path="/onboarding-2/first-login/consents-2" render={() => consents2} />
 
         <SmsDialog
           withDash
@@ -468,15 +459,6 @@ class FirstLoginPage extends Component {
 }
 
 export default withStyles(styles)(withTexts(FirstLoginPage))
-
-const AnimationWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-`
 
 const ConsentLink = Link.extend`
   font-family: Roboto;

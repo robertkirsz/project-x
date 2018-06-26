@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Div } from 'styled-kit'
-import styled from 'styled-components'
-import { Switch, Route } from 'react-router-dom'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { Route } from 'react-router-dom'
 
 import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
@@ -21,8 +19,6 @@ import video2 from 'assets/video-identification-2.svg'
 import video4 from 'assets/video-identification-4.svg'
 import video5 from 'assets/video-identification-5.svg'
 import flag from 'assets/germany.svg'
-
-const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 class Step1Page extends Component {
   timeout = null
@@ -141,25 +137,13 @@ class Step1Page extends Component {
     )
 
     return (
-      <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator('fade-bottom')}>
-        <CSSTransition key={this.props.location.key} classNames="fade-bottom" timeout={500}>
-          <Switch location={this.props.location}>
-            <Route path="/onboarding-2/step-2/prepare" render={() => prepareToVideo} />
-            <Route path="/onboarding-2/step-2/connecting" render={() => connecting} />
-            <Route path="/onboarding-2/step-2/conversation" render={() => conversation} />
-          </Switch>
-        </CSSTransition>
-      </TransitionGroup>
+      <Fragment>
+        <Route path="/onboarding-2/step-2/prepare" render={() => prepareToVideo} />
+        <Route path="/onboarding-2/step-2/connecting" render={() => connecting} />
+        <Route path="/onboarding-2/step-2/conversation" render={() => conversation} />
+      </Fragment>
     )
   }
 }
 
 export default withTexts(Step1Page)
-
-const AnimationWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-`

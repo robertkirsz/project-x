@@ -1,8 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Div } from 'styled-kit'
-import styled from 'styled-components'
-import { Switch, Route } from 'react-router-dom'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { Route } from 'react-router-dom'
 
 import uuid from 'utils/uuid'
 import allValid from 'utils/allValid'
@@ -19,8 +17,6 @@ import Checkbox from '@material-ui/core/Checkbox'
 
 import { H2, Small, Link } from 'components/Typography'
 import Button from 'components/Button'
-
-const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 class Step1Page extends Component {
   state = {
@@ -409,29 +405,16 @@ class Step1Page extends Component {
     )
 
     return (
-      <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator('fade-right')}>
-        <CSSTransition key={this.props.location.key} classNames="fade-right" timeout={500}>
-          <Switch location={this.props.location}>
-            <Route path="/onboarding-2/step-1/name" render={() => name} />
-            <Route path="/onboarding-2/step-1/birth" render={() => birth} />
-            <Route path="/onboarding-2/step-1/residential-address" render={() => residentialAddress} />
-            <Route path="/onboarding-2/step-1/correspondence-address" render={() => correspondenceAddress} />
-            <Route path="/onboarding-2/step-1/tax-information" render={() => taxInformation} />
-            <Route path="/onboarding-2/step-1/occupational-status" render={() => occupationalStatus} />
-          </Switch>
-        </CSSTransition>
-      </TransitionGroup>
+      <Fragment>
+        <Route path="/onboarding-2/step-1/name" render={() => name} />
+        <Route path="/onboarding-2/step-1/birth" render={() => birth} />
+        <Route path="/onboarding-2/step-1/residential-address" render={() => residentialAddress} />
+        <Route path="/onboarding-2/step-1/correspondence-address" render={() => correspondenceAddress} />
+        <Route path="/onboarding-2/step-1/tax-information" render={() => taxInformation} />
+        <Route path="/onboarding-2/step-1/occupational-status" render={() => occupationalStatus} />
+      </Fragment>
     )
   }
 }
 
 export default withTexts(Step1Page)
-
-const AnimationWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-`

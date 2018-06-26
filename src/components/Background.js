@@ -26,12 +26,11 @@ class Background extends Component {
 
     const isIntroPage = location.pathname === '/onboarding-2/intro'
     const isConversationPage = location.pathname === '/onboarding-2/step-2/conversation'
-    const animate = location.pathname.includes('/onboarding-2/step-2/')
 
     return (
       <Wrapper>
         <Content onSubmit={event => event.preventDefault()}>{children}</Content>
-        <Stripes animate={animate} style={{ paddingBottom: isConversationPage && 90 }}>
+        <Stripes style={{ paddingBottom: isConversationPage && 90 }}>
           <Red style={{ height: isIntroPage ? 0 : red }} />
           <Black style={{ height: isIntroPage ? 0 : black }} />
           <Orange style={{ height: isIntroPage ? 0 : orange }} />
@@ -66,7 +65,7 @@ const Stripes = styled.div`
   left: 0;
   z-index: 1;
 
-  ${props => props.animate && 'transition: padding-bottom 0.5s;'}
+  transition: padding-bottom 0.5s;
 
   pointer-events: none;
 `
@@ -82,7 +81,13 @@ const Wrapper = styled.div`
   flex: 1;
   flex-direction: column;
 
-  ${props => props.fullScreen && css`${Stripe} { height: 100%; }`}
+  ${props =>
+    props.fullScreen &&
+    css`
+      ${Stripe} {
+        height: 100%;
+      }
+    `};
 `
 
 const Red = styled(Stripe)`

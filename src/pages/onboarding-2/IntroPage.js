@@ -60,7 +60,7 @@ const Pattern = styled.div`
   height: 100%;
   background: url(${pattern});
   transition: 0.3s;
-  opacity: ${props => props.show ? 0.2 : 0};
+  opacity: ${props => (props.show ? 0.2 : 0)};
   z-index: 11;
 `
 

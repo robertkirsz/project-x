@@ -386,7 +386,7 @@ class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>{t.birth[0]}</H2>
 
-        <Div  flex="none" mBottom={16} column listTop={12} mTop={8}>
+        <Div flex="none" mBottom={16} column listTop={12} mTop={8}>
           <TextField
             type="date"
             label={texts.misc.birthDate}
@@ -559,7 +559,7 @@ class Step1Page extends Component {
 
         <Small mTop={8}>{t.industry[1]}</Small>
 
-        <Div column mTop={24} pLeft={24}>
+        <Div flex="none" column mTop={24} pLeft={24}>
           <FormControl component="fieldset" required>
             <RadioGroup
               name="industry"
@@ -584,7 +584,7 @@ class Step1Page extends Component {
           <TextField
             value={this.state.industry}
             onChange={this.handleChange('industry')}
-            style={{ alignSelf: 'center', marginTop: 16 }}
+            style={{ alignSelf: 'center', marginTop: 16, marginBottom: 8, flex: 'none' }}
             autoFocus
           />
         )}

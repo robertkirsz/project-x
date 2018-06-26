@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { hot } from 'react-hot-loader'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { Div } from 'styled-kit'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import preloadImages from 'utils/preloadImages'
 import TextProvider from 'providers/TextProvider'
@@ -40,6 +41,8 @@ import DashboardPage from 'pages/onboarding-2/DashboardPage'
 import NotFoundPage from 'pages/NotFoundPage'
 
 const VERSION = 'v0.8.6'
+
+const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 class App extends Component {
   state = {
@@ -135,14 +138,20 @@ class App extends Component {
             {/* Flow 2 */}
             <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
             <PrivateRoute path="/onboarding-2/usp/:index" isRestricted={!loggedIn} component={UspPage2} />
-            <PrivateRoute path="/onboarding-2/first-login" isRestricted={!loggedIn} component={FirstLoginPage2} />
-            <PrivateRoute path="/onboarding-2/step-1" isRestricted={!loggedIn} component={Step1Page2} />
-            <PrivateRoute path="/onboarding-2/step-2" isRestricted={!loggedIn} component={Step2Page2} />
-            <PrivateRoute path="/onboarding-2/step-3" isRestricted={!loggedIn} component={Step3Page2} />
-            <PrivateRoute path="/onboarding-2/step-4" isRestricted={!loggedIn} component={Step4Page2} />
-            <PrivateRoute path="/onboarding-2/finish" isRestricted={!loggedIn} component={FinishPage2} />
 
-            <PrivateRoute path="/dashboard" isRestricted={!loggedIn} component={DashboardPage} />
+            <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator('fade-right')}>
+              <CSSTransition key={this.props.location.key} classNames="fade-right" timeout={500}>
+                <Switch location={this.props.location}>
+                  <PrivateRoute path="/onboarding-2/first-login" isRestricted={!loggedIn} component={FirstLoginPage2} />
+                  <PrivateRoute path="/onboarding-2/step-1" isRestricted={!loggedIn} component={Step1Page2} />
+                  <PrivateRoute path="/onboarding-2/step-2" isRestricted={!loggedIn} component={Step2Page2} />
+                  <PrivateRoute path="/onboarding-2/step-3" isRestricted={!loggedIn} component={Step3Page2} />
+                  <PrivateRoute path="/onboarding-2/step-4" isRestricted={!loggedIn} component={Step4Page2} />
+                  <PrivateRoute path="/onboarding-2/finish" isRestricted={!loggedIn} component={FinishPage2} />
+                  <PrivateRoute path="/dashboard" isRestricted={!loggedIn} component={DashboardPage} />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
 
             {/* 404 */}
             <Redirect from="/index.html" to="/" />
@@ -168,4 +177,12 @@ const AppVersion = styled.span`
   color: #aaa;
   font-weight: bold;
   pointer-events: none;
+`
+
+const AnimationWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 `

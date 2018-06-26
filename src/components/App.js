@@ -41,7 +41,7 @@ import DashboardPage from 'pages/onboarding-2/DashboardPage'
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-const VERSION = 'v0.8.6'
+const VERSION = 'v1.0.0'
 
 const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
@@ -89,8 +89,6 @@ class App extends Component {
 
   render() {
     const { password, loggedIn, imagesLoaded, language, direction, routeIndex } = this.state
-
-    console.log(direction, routeIndex)
 
     return (
       <TextProvider language={language}>

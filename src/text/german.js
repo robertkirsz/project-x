@@ -25,12 +25,12 @@ export default {
     allowLocation: 'Erlaube MeineFinanzen auf den Standort deines Geräts zuzugreifen',
     allowCamera: 'Erlaube der MeineFinanzen App, Bilder und Videos aufzunehmen',
     germany: 'Deutschland',
-    continue: 'Continue',
-    thanks: 'Thanks!',
-    start: "Let's start!",
-    read: 'Read',
-    enter: 'Enter',
-    validationCode: 'Validation code'
+    continue: 'Fortsetzen',
+    thanks: 'Danke!',
+    start: 'Lasst uns anfangen!',
+    read: 'Lesen',
+    enter: 'Eingeben',
+    validationCode: 'Validierungscode'
   },
   onboarding1: {
     firstLogin: {

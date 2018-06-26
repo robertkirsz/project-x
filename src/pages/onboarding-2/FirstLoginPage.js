@@ -98,7 +98,13 @@ class FirstLoginPage extends Component {
 
   change = name => value => this.setState({ [name]: value })
 
-  handleChange = name => event => this.setState({ [name]: event.target.value })
+  handleChange = name => event => {
+    if (name === 'phoneNumber') {
+      sessionStorage.setItem('phoneNumber', event.target.value)
+    }
+
+    this.setState({ [name]: event.target.value })
+  }
 
   handleCheckboxChange = name => event => this.setState({ [name]: event.target.checked })
 

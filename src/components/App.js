@@ -1,5 +1,3 @@
-// TODO: schować pattern po zakończeniu animacji intro page
-
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { hot } from 'react-hot-loader'

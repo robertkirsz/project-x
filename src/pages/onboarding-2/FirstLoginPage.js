@@ -193,7 +193,9 @@ class FirstLoginPage extends Component {
         />
 
         <H2 center>
-          {parseValues(texts.onboarding2.other[2], { phoneNumber: '+49 ' + this.state.phoneNumber })}
+          {parseValues(texts.onboarding2.other[2], {
+            phoneNumber: '+49 ' + (this.state.phoneNumber || sessionStorage.getItem('phoneNumber'))
+          })}
           <img
             src={editNumber}
             alt=""
@@ -222,7 +224,10 @@ class FirstLoginPage extends Component {
         </Div>
 
         <Button
-          onClick={() => this.props.history.push('/onboarding-2/first-login/consents-1')}
+          onClick={() => {
+            this.props.history.push('/onboarding-2/first-login/consents-1')
+            this.setState({ showSmsDialog: false })
+          }}
           disabled={!pinIsValid}
           style={{ marginTop: 25 }}
         >
@@ -387,11 +392,7 @@ class FirstLoginPage extends Component {
           </Div>
         </Div>
 
-        <Button
-          onClick={() => this.props.history.push('/onboarding-2/step-1/name')}
-          disabled={!this.state.consent4 || !this.state.consent4}
-          style={{ marginTop: 'auto' }}
-        >
+        <Button onClick={() => this.props.history.push('/onboarding-2/step-1/name')} style={{ marginTop: 'auto' }}>
           {texts.misc.start}
         </Button>
       </Div>

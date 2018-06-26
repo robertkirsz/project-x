@@ -4,11 +4,11 @@ import { Div } from 'styled-kit'
 import { CSSTransition } from 'react-transition-group'
 
 import { withTexts } from 'providers/TextProvider'
-
-const now = new Date()
+import parseValues from 'utils/parseValues'
 
 const SmsDialog = ({ pin, isVisible, withDash, texts, ...props }) => {
   const sign = withDash ? '-' : ''
+  const now = new Date()
 
   return (
     <CSSTransition in={isVisible} classNames="transition" timeout={500} mountOnEnter unmountOnExit {...props}>
@@ -19,13 +19,14 @@ const SmsDialog = ({ pin, isVisible, withDash, texts, ...props }) => {
           <Title>MeineFinanzen</Title>
 
           <Subtitle>
-            {/*  TODO: texts.onboarding1.step2.smsCode[0] */}
-            Your validation code is {pin.slice(0, pin.length / 2) + sign + pin.slice(pin.length / 2, pin.length)}
+            {parseValues(texts.onboarding1.step2.smsCode[0], {
+              code: pin.slice(0, pin.length / 2) + sign + pin.slice(pin.length / 2, pin.length)
+            })}
           </Subtitle>
         </Div>
 
         <Time>
-          {now.getHours()}:{now.getMinutes()}
+          {now.getHours()}:{now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes()}
         </Time>
       </Wrapper>
     </CSSTransition>

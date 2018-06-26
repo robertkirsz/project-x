@@ -16,6 +16,7 @@ import img15 from 'assets/video-identification-1.svg'
 import img16 from 'assets/video-identification-2.svg'
 import img17 from 'assets/video-identification-3.svg'
 import img18 from 'assets/video-identification-4.svg'
+import img50 from 'assets/video-identification-3.svg'
 import img19 from 'assets/pin-logo.svg'
 import img20 from 'assets/mail.svg'
 import img21 from 'assets/camera.svg'
@@ -46,6 +47,7 @@ import img46 from 'assets/photo-back.png'
 import img47 from 'assets/photo-back-2.png'
 import img48 from 'assets/id-now-logo.svg'
 import img49 from 'assets/loader.gif'
+import img51 from 'assets/germany.svg'
 
 const images = [
   img01,
@@ -95,7 +97,9 @@ const images = [
   img46,
   img47,
   img48,
-  img49
+  img49,
+  img50,
+  img51
 ]
 
 export default () =>

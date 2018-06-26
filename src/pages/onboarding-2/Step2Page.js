@@ -2,18 +2,23 @@ import React, { Component, Fragment } from 'react'
 import { Div } from 'styled-kit'
 import { Route } from 'react-router-dom'
 
-// import parseValues from 'utils/parseValues'
+import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
+
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 
 import { H1, H2, Paragraph } from 'components/Typography'
 import Button, { ButtonSpinner } from 'components/Button'
 import NativeModal from 'components/NativeModal'
 import ConversationDemo from 'components/ConversationDemo1'
 
-import video1 from 'assets/video-identification-1.svg'
 import video2 from 'assets/video-identification-2.svg'
-import video3 from 'assets/video-identification-3.svg'
 import video4 from 'assets/video-identification-4.svg'
+import video5 from 'assets/video-identification-5.svg'
+import flag from 'assets/germany.svg'
 
 class Step1Page extends Component {
   timeout = null
@@ -22,7 +27,7 @@ class Step1Page extends Component {
 
   componentDidMount() {
     if (this.props.location.pathname === '/onboarding-2/step-2/connecting') {
-      this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
+      // this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
     }
   }
 
@@ -31,7 +36,7 @@ class Step1Page extends Component {
       prevProps.location.pathname !== '/onboarding-2/step-2/connecting' &&
       this.props.location.pathname === '/onboarding-2/step-2/connecting'
     ) {
-      this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
+      // this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
     }
 
     if (
@@ -56,26 +61,32 @@ class Step1Page extends Component {
   render() {
     const { texts } = this.props
 
-    const t = texts.onboarding1.step2
-
     const prepareToVideo = (
-      <Div flex={1} column itemsCenter padding="30px 16px">
-        <Div column selfStart listTop={40} mTop={24}>
-          <Div listLeft={48} itemsCenter>
-            <img src={video1} alt="" />
-            <Paragraph>{t.prepareToVideo[0]}</Paragraph>
-          </Div>
+      <Div flex={1} column itemsCenter padding="150px 16px 30px">
+          <H1 center>{parseValues(texts.onboarding2.other[15], { userName: sessionStorage.getItem('firstName') })}</H1>
 
-          <Div listLeft={48} itemsCenter>
-            <img src={video2} alt="" />
-            <Paragraph>{t.prepareToVideo[1]}</Paragraph>
-          </Div>
+          <H2 center>{texts.onboarding2.other[16]}</H2>
 
-          <Div listLeft={48} itemsCenter>
-            <img src={video3} alt="" />
-            <Paragraph>{t.prepareToVideo[2]}</Paragraph>
+          <FormControl style={{ width: '100%', marginTop: 6 }}>
+            <InputLabel htmlFor="country">{texts.misc.country}</InputLabel>
+            <Select value="Deutschland - Personalausweis" >
+              <MenuItem value="Deutschland - Personalausweis">
+                <img src={flag} width="20" alt="" style={{ marginRight: 6 }} /> Deutschland - Personalausweis
+              </MenuItem>
+            </Select>
+          </FormControl>
+
+          <Div selfStretch justifyAround mTop={50}>
+            <Div column listTop={16} itemsCenter width={130}>
+              <img src={video2} alt="" width="80" height="80" />
+              <Paragraph center>{texts.onboarding1.step2.prepareToVideo[1]}</Paragraph>
+            </Div>
+
+            <Div column listTop={16} itemsCenter width={130}>
+              <img src={video5} alt="" width="80" height="80" />
+              <Paragraph center>{texts.onboarding1.step2.prepareToVideo[2]}</Paragraph>
+            </Div>
           </Div>
-        </Div>
 
         <Button
           onClick={() => this.props.history.push('/onboarding-2/step-2/connecting')}
@@ -89,11 +100,11 @@ class Step1Page extends Component {
     const connecting = (
       <Div flex={1} column itemsCenter padding="30px 16px">
         <H1 center mTop={44}>
-          {t.connecting[0]}
+          {texts.onboarding1.step2.connecting[0]}
         </H1>
 
         <H2 center mTop={24} maxWidth={230}>
-          {t.connecting[1]}
+          {texts.onboarding1.step2.connecting[1]}
         </H2>
 
         <img

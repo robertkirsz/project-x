@@ -248,7 +248,7 @@ class FirstLoginPage extends Component {
 
         <img src={logo} alt="" width="108" />
 
-        <img src={consentLogo} alt="" style={{ marginTop: 16 }} />
+        <img src={consentLogo} alt="" style={{ marginTop: 16 }} height="84" />
 
         <H1 center mTop={8}>
           {texts.onboarding2.other[6]}
@@ -342,7 +342,7 @@ class FirstLoginPage extends Component {
 
         <img src={logo} alt="" width="108" />
 
-        <img src={consentLogo2} alt="" style={{ marginTop: 16 }} />
+        <img src={consentLogo2} alt="" style={{ marginTop: 16 }} height="84" />
 
         <H1 center mTop={8}>
           {texts.onboarding2.other[8]}

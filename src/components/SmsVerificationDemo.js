@@ -5,6 +5,7 @@ import _random from 'lodash/random'
 import { placeholder } from 'polished'
 
 import { withTexts } from 'providers/TextProvider'
+import parseValues from 'utils/parseValues'
 
 import SmsDialog from 'components/SmsDialog'
 import { Link } from 'components/Typography'
@@ -64,30 +65,29 @@ class SmsVerificationDemo extends Component {
           <Title>{texts.onboarding1.step2.smsCode[1]}</Title>
 
           <Body>
-            {/* TODO {texts.onboarding1.step2.smsCode[1]} */}
-            Finally, you now have to enter the ident code. This code has been received as a SMS to the number
-            +491234567899.
+            {parseValues(texts.onboarding1.step2.smsCode[2], {
+              phoneNumber: '+49 ' + sessionStorage.getItem('phoneNumber')
+            })}
           </Body>
 
           <Body>
-            {/* TODO {texts.onboarding1.step2.smsCode[3]} */}
-            {/* TODO {texts.onboarding1.step2.smsCode[4]} */}
-            Haven’t received an SMS? <Link onClick={this.resendPin}>We can send it again</Link>
+            {texts.onboarding1.step2.smsCode[3]}{' '}
+            <Link onClick={this.resendPin}>{texts.onboarding1.step2.smsCode[4]}</Link>
           </Body>
         </Div>
 
         <Input
-          placeholder="type an indent code"
+          placeholder={texts.misc.validationCode}
           value={this.state.pin}
           onChange={event => this.setState({ pin: event.target.value })}
         />
 
         <Button
+          disabled={pinInvalid}
           onClick={() => {
             if (pinInvalid) return
             this.props.onFinish()
           }}
-          disabled={pinInvalid}
         >
           {texts.misc.enter}
         </Button>

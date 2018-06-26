@@ -29,7 +29,8 @@ export default {
     thanks: 'Thanks!',
     start: "Let's start!",
     read: 'Read',
-    enter: 'Enter'
+    enter: 'Enter',
+    validationCode: 'Validation code'
   },
   onboarding1: {
     firstLogin: {

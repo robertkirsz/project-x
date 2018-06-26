@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { Div } from 'styled-kit'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
+import routes from 'routes'
 import preloadImages from 'utils/preloadImages'
 import TextProvider from 'providers/TextProvider'
 
@@ -45,11 +46,27 @@ const VERSION = 'v0.8.6'
 const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 class App extends Component {
+  static getDerivedStateFromProps(props, state) {
+    const previousRouteIndex = state.routeIndex
+    const currentRouteIndex = routes.findIndex(route => route === props.location.pathname)
+
+    const direction =
+      previousRouteIndex === currentRouteIndex
+        ? state.direction
+        : previousRouteIndex > currentRouteIndex
+          ? 'left'
+          : 'right'
+
+    return { direction, routeIndex: currentRouteIndex }
+  }
+
   state = {
     password: '',
     loggedIn: Boolean(sessionStorage.getItem('loggedIn')),
     imagesLoaded: false,
-    language: sessionStorage.getItem('language') || 'english'
+    language: sessionStorage.getItem('language') || 'english',
+    direction: 'right',
+    routeIndex: 0
   }
 
   componentDidMount = () => preloadImages().then(() => this.setState({ imagesLoaded: true }))
@@ -71,7 +88,9 @@ class App extends Component {
   }
 
   render() {
-    const { password, loggedIn, imagesLoaded, language } = this.state
+    const { password, loggedIn, imagesLoaded, language, direction, routeIndex } = this.state
+
+    console.log(direction, routeIndex)
 
     return (
       <TextProvider language={language}>
@@ -139,8 +158,8 @@ class App extends Component {
             <PrivateRoute path="/onboarding-2/intro" isRestricted={!loggedIn} component={IntroPage2} />
             <PrivateRoute path="/onboarding-2/usp/:index" isRestricted={!loggedIn} component={UspPage2} />
 
-            <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator('fade-right')}>
-              <CSSTransition key={this.props.location.key} classNames="fade-right" timeout={500}>
+            <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator(`fade-${direction}`)}>
+              <CSSTransition key={this.props.location.key} classNames={`fade-${direction}`} timeout={500}>
                 <Switch location={this.props.location}>
                   <PrivateRoute path="/onboarding-2/first-login" isRestricted={!loggedIn} component={FirstLoginPage2} />
                   <PrivateRoute path="/onboarding-2/step-1" isRestricted={!loggedIn} component={Step1Page2} />

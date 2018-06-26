@@ -66,13 +66,18 @@ class FirstLoginPage extends Component {
     showConsentModalId: 'consent1',
     showLocationModal: false,
     allowLocation: false,
-    locationModalCallback: null
+    locationModalCallback: null,
+    show: false
   }
 
   componentDidMount() {
+    this.timeout = setTimeout(() => this.setState({ show: true }), 300)
+
     if (this.props.location.pathname === '/onboarding-2/first-login/pin-number' && !this.state.generatedPin) {
-      this.timeout = setTimeout(this.generatePin, 1000)
-      this.interval = setInterval(this.resendInterval, 1000)
+      this.timeout = setTimeout(() => {
+        this.timeout = setTimeout(this.generatePin, 1000)
+        this.interval = setInterval(this.resendInterval, 1000)
+      })
     }
   }
 
@@ -155,7 +160,13 @@ class FirstLoginPage extends Component {
       this.state.pin !== '' && this.state.generatedPin !== '' && this.state.pin === this.state.generatedPin
 
     const phoneNumber = (
-      <Div flex={1} column itemsCenter padding="30px 16px">
+      <Div
+        flex={1}
+        column
+        itemsCenter
+        padding="30px 16px"
+        style={{ transition: '0.3s', opacity: this.state.show ? 1 : 0 }}
+      >
         <img src={logo} alt="" width="108" />
 
         <H1 center mTop={14}>

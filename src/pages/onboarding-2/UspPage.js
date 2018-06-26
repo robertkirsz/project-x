@@ -36,14 +36,20 @@ class UspPage extends PureComponent {
     return currentSlide !== state.currentSlide ? { currentSlide, direction } : null
   }
 
+  timeout = null
+
   state = {
     currentSlide: parseInt(this.props.match.params.index, 10) - 1,
     direction: 'right',
-    isReady: false
+    show: false
   }
 
   componentDidMount() {
-    this.timeout = setTimeout(() => this.setState({ isReady: true }), 300)
+    this.timeout = setTimeout(() => this.setState({ show: true }), 300)
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeout)
   }
 
   goToSlide = index => event => {
@@ -53,9 +59,14 @@ class UspPage extends PureComponent {
   }
 
   handleButtonClick = () => {
-    this.state.currentSlide === 4
-      ? this.props.history.push('/onboarding-2/first-login/phone-number')
-      : this.props.history.replace(`/onboarding-2/usp/${this.state.currentSlide + 2}`)
+    if (this.state.currentSlide === 4) {
+      this.setState({ show: false }, () => {
+        this.timeout = setTimeout(() => this.props.history.push('/onboarding-2/first-login/phone-number'), 500)
+        return
+      })
+    }
+
+    this.props.history.replace(`/onboarding-2/usp/${this.state.currentSlide + 2}`)
   }
 
   render() {
@@ -74,7 +85,7 @@ class UspPage extends PureComponent {
           column
           itemsCenter
           padding="24px 0 0"
-          style={{ transition: '0.3s', opacity: this.state.isReady ? 1 : 0 }}
+          style={{ transition: '0.3s', opacity: this.state.show ? 1 : 0 }}
         >
           <Pagination small size={5} value={currentSlide} onChange={this.goToSlide} />
 

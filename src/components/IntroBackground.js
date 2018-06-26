@@ -48,7 +48,7 @@ const Stripes = styled.div`
   display: flex;
 
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 
   position: absolute;
   top: 0;

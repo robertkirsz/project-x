@@ -29,7 +29,7 @@ class Background extends Component {
 
     return (
       <Wrapper>
-        <Content>{children}</Content>
+        <Content onSubmit={event => event.preventDefault()}>{children}</Content>
         <Stripes style={{ paddingBottom: isConversationPage && 90 }}>
           <Red style={{ height: isIntroPage ? 0 : red }} />
           <Black style={{ height: isIntroPage ? 0 : black }} />
@@ -45,7 +45,7 @@ class Background extends Component {
 
 export default withRouter(Background)
 
-const Content = styled.main`
+const Content = styled.form`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ const Stripes = styled.div`
   align-items: flex-end;
 
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 
   position: absolute;
   top: 0;

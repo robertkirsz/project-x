@@ -193,48 +193,48 @@ export default {
         0: 'Bitte öffne die Bestätigungs-E-Mail',
         1: '…und schließe den Registrierungsvorgang mit einem Klick auf den Link in der E-Mail ab'
       }
+    }
+  },
+  onboarding2: {
+    titles: {
+      0: 'Personal information',
+      1: 'Video identification',
+      2: 'Account opening',
+      3: 'Set up profile picture',
+      4: 'Congratulations!'
     },
-    onboarding2: {
-      titles: {
-        0: 'Personal information',
-        1: 'Video identification',
-        2: 'Account opening',
-        3: 'Set up profile picture',
-        4: 'Congratulations!'
-      },
-      usp: {
-        0: 'Euro money transfer for free and in real time',
-        1: 'Transfer money to any bank, business or friend immediately.',
-        2: 'ATM for free worldwide',
-        3: 'Up to 500 Euro you can take cash from ATM for free in any country.',
-        4: 'Multicurrency contactless',
-        5: 'Pay in any country with your credit card with exchange rate 0,1%, the lowest on the market.',
-        6: '…and many more!',
-        7: 'Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan on one click process.',
-        8: 'Start now!'
-      },
-      other: {
-        0: 'Open account in 8 minutes!',
-        1: 'Enter the 6-digit code',
-        2: "We've send it to {phoneNumber}",
-        3: "Wait for {time} and resend if the code didn't arrive",
-        4: 'Resend the code',
-        5: 'Confirm & Pair',
-        6: 'Data processing consents',
-        7: 'They are necessary so we can provide you the best possible services in accordance with European law',
-        8: 'Communication consents',
-        9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!',
-        10: 'To be sure that you log in to the right place, you will recognize it with your profile pic.',
-        11: 'Don’t forget to smile!',
-        12: '{userName} your mBank Europe account is ready to use!',
-        13: 'Your MasterCard Debit PayPass card is on its way to the address provided in the form',
-        14: "Let's go there!",
-        15: '{userName}, before we start',
-        16: 'Select country of your official ID issuance',
-        17: 'Hi, please state your first name and familyname',
-        18: 'Please hold the camera on the front of your ID card. Read out your ID number - it’s in the top right corner.',
-        19: 'Now, please show the back side adn read out the address.'
-      }
+    usp: {
+      0: 'Euro money transfer for free and in real time',
+      1: 'Transfer money to any bank, business or friend immediately.',
+      2: 'ATM for free worldwide',
+      3: 'Up to 500 Euro you can take cash from ATM for free in any country.',
+      4: 'Multicurrency contactless',
+      5: 'Pay in any country with your credit card with exchange rate 0,1%, the lowest on the market.',
+      6: '…and many more!',
+      7: 'Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan on one click process.',
+      8: 'Start now!'
+    },
+    other: {
+      0: 'Open account in 8 minutes!',
+      1: 'Enter the 6-digit code',
+      2: "We've send it to {phoneNumber}",
+      3: "Wait for {time} and resend if the code didn't arrive",
+      4: 'Resend the code',
+      5: 'Confirm & Pair',
+      6: 'Data processing consents',
+      7: 'They are necessary so we can provide you the best possible services in accordance with European law',
+      8: 'Communication consents',
+      9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!',
+      10: 'To be sure that you log in to the right place, you will recognize it with your profile pic.',
+      11: 'Don’t forget to smile!',
+      12: '{userName} your mBank Europe account is ready to use!',
+      13: 'Your MasterCard Debit PayPass card is on its way to the address provided in the form',
+      14: "Let's go there!",
+      15: '{userName}, before we start',
+      16: 'Select country of your official ID issuance',
+      17: 'Hi, please state your first name and familyname',
+      18: 'Please hold the camera on the front of your ID card. Read out your ID number - it’s in the top right corner.',
+      19: 'Now, please show the back side adn read out the address.'
     }
   }
 }

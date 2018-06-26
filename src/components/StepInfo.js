@@ -72,7 +72,7 @@ const Wrapper = styled.div`
 const Title = styled.div`
   align-self: stretch;
 
-  margin: 33px 0 14px;
+  margin: 18px 0 14px;
   padding: 0 18px;
 
   position: relative;

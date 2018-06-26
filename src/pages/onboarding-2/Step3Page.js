@@ -25,23 +25,23 @@ class Step1Page extends Component {
     const t = texts.onboarding1.step1
 
     return (
-      <Div flex={1} column itemsCenter padding="150px 16px 30px">
+      <Div flex={1} column itemsCenter padding="130px 16px 30px">
         <H1 center>{t.finish[0]}</H1>
 
-        <H2 center mTop={24}>
+        <H2 center mTop={16}>
           {t.finish[1]}
         </H2>
 
         <H2 center>{t.finish[2]}</H2>
 
-        <StyledLink mTop={36} href={contractPdf} download="Contract.pdf">
+        <StyledLink mTop={16} href={contractPdf} download="Contract.pdf">
           <img src={downloadFile} alt="" style={{ marginRight: 18 }} />
           {t.finish[3]}
         </StyledLink>
 
         <FormControlLabel
           label={<WithEm dangerouslySetInnerHTML={{ __html: t.finish[4] }} />}
-          style={{ marginTop: 'auto' }}
+          style={{ marginTop: 'auto', flex: 'none' }}
           control={
             <Checkbox
               checked={this.state.confirmed}

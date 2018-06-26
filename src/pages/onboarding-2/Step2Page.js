@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Div } from 'styled-kit'
-import { Route } from 'react-router-dom'
+import styled from 'styled-components'
+import { Switch, Route } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
@@ -19,6 +21,8 @@ import video2 from 'assets/video-identification-2.svg'
 import video4 from 'assets/video-identification-4.svg'
 import video5 from 'assets/video-identification-5.svg'
 import flag from 'assets/germany.svg'
+
+const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 class Step1Page extends Component {
   timeout = null
@@ -62,12 +66,12 @@ class Step1Page extends Component {
     const { texts } = this.props
 
     const prepareToVideo = (
-      <Div flex={1} column itemsCenter padding="150px 16px 30px">
+      <Div flex={1} width="100vw" column itemsCenter padding="130px 16px 30px">
         <H1 center>{parseValues(texts.onboarding2.other[15], { userName: sessionStorage.getItem('firstName') })}</H1>
 
         <H2 center>{texts.onboarding2.other[16]}</H2>
 
-        <FormControl style={{ width: '100%', marginTop: 6 }}>
+        <FormControl style={{ width: '100%', marginTop: 6, flex: 'none' }}>
           <InputLabel htmlFor="country">{texts.misc.country}</InputLabel>
           <Select value="Deutschland - Personalausweis">
             <MenuItem value="Deutschland - Personalausweis">
@@ -76,7 +80,7 @@ class Step1Page extends Component {
           </Select>
         </FormControl>
 
-        <Div selfStretch justifyAround mTop={50}>
+        <Div flex="none" mBottom={16} selfStretch justifyAround mTop={50}>
           <Div column listTop={16} itemsCenter width={130}>
             <img src={video2} alt="" width="80" height="80" />
             <Paragraph center>{texts.onboarding1.step2.prepareToVideo[1]}</Paragraph>
@@ -98,8 +102,8 @@ class Step1Page extends Component {
     )
 
     const connecting = (
-      <Div flex={1} column itemsCenter padding="150px 16px 30px">
-        <H1 center mTop={44}>
+      <Div flex={1} width="100vw" column itemsCenter padding="130px 16px 30px">
+        <H1 center mTop={32}>
           {texts.onboarding1.step2.connecting[0]}
         </H1>
 
@@ -110,7 +114,7 @@ class Step1Page extends Component {
         <img
           src={video4}
           alt=""
-          style={{ marginTop: 66 }}
+          style={{ marginTop: 48 }}
           onClick={() => this.setState({ showAllowCameraModal: true })}
         />
 
@@ -128,7 +132,7 @@ class Step1Page extends Component {
     )
 
     const conversation = (
-      <Div flex={1} column>
+      <Div flex={1} width="100vw" column>
         <ConversationDemo2
           texts={texts.onboarding1.step2.conversation}
           onFinish={() => this.props.history.push('/onboarding-2/step-3')}
@@ -137,13 +141,25 @@ class Step1Page extends Component {
     )
 
     return (
-      <Fragment>
-        <Route path="/onboarding-2/step-2/prepare" render={() => prepareToVideo} />
-        <Route path="/onboarding-2/step-2/connecting" render={() => connecting} />
-        <Route path="/onboarding-2/step-2/conversation" render={() => conversation} />
-      </Fragment>
+      <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator('fade-bottom')}>
+        <CSSTransition key={this.props.location.key} classNames="fade-bottom" timeout={500}>
+          <Switch location={this.props.location}>
+            <Route path="/onboarding-2/step-2/prepare" render={() => prepareToVideo} />
+            <Route path="/onboarding-2/step-2/connecting" render={() => connecting} />
+            <Route path="/onboarding-2/step-2/conversation" render={() => conversation} />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     )
   }
 }
 
 export default withTexts(Step1Page)
+
+const AnimationWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+`

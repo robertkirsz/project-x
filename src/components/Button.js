@@ -52,6 +52,7 @@ export const Dot = styled.span`
   }
 `
 
+// prettier-ignore
 export default styled.button`
   display: flex;
   justify-content: center;
@@ -70,15 +71,20 @@ export default styled.button`
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+  transform-origin: center;
 
-  ${props =>
-    props.secondary &&
-    css`
-      color: ${colors.darkRed};
-      border: 2px solid ${colors.darkRed};
-      background: white;
-    `} &:disabled {
+  ${props => props.secondary && css`
+    color: ${colors.darkRed};
+    border: 2px solid ${colors.darkRed};
+    background: white;
+  `}
+
+  &:disabled {
     opacity: 0.4;
     pointer-events: none;
+  }
+
+  &:active {
+    transform: translateY(2px) scale(0.98);
   }
 `

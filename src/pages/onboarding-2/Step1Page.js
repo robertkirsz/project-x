@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Div } from 'styled-kit'
-import { Route } from 'react-router-dom'
+import styled from 'styled-components'
+import { Switch, Route } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import uuid from 'utils/uuid'
 import allValid from 'utils/allValid'
@@ -17,6 +19,8 @@ import Checkbox from '@material-ui/core/Checkbox'
 
 import { H2, Small, Link } from 'components/Typography'
 import Button from 'components/Button'
+
+const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 class Step1Page extends Component {
   state = {
@@ -97,10 +101,10 @@ class Step1Page extends Component {
     const t = texts.onboarding1.step1
 
     const name = (
-      <Div flex={1} column padding="150px 16px 30px">
+      <Div flex={1} column padding="130px 16px 30px">
         <H2>{t.name[0]}</H2>
 
-        <Div listLeft={12} mTop={8}>
+        <Div flex="none" listLeft={12} mTop={8}>
           <TextField label={t.name[1]} value={this.state.firstName} onChange={this.handleChange('firstName')} />
 
           <TextField label={t.name[2]} value={this.state.lastName} onChange={this.handleChange('lastName')} />
@@ -111,7 +115,7 @@ class Step1Page extends Component {
           type="email"
           value={this.state.email}
           onChange={this.handleChange('email')}
-          style={{ marginTop: 12 }}
+          style={{ marginTop: 12, marginBottom: 16, flex: 'none' }}
         />
 
         <Button
@@ -125,10 +129,10 @@ class Step1Page extends Component {
     )
 
     const birth = (
-      <Div flex={1} column padding="150px 16px 30px">
+      <Div flex={1} column padding="130px 16px 30px">
         <H2>{t.birth[1]}</H2>
 
-        <Div column listTop={12} mTop={8}>
+        <Div flex="none" mBottom={16} column listTop={12} mTop={8}>
           <TextField
             type="date"
             label={texts.misc.birthDate}
@@ -161,7 +165,7 @@ class Step1Page extends Component {
     )
 
     const residentialAddress = (
-      <Div flex={1} column padding="150px 16px 30px">
+      <Div flex={1} column padding="130px 16px 30px">
         <H2>
           {texts.misc.thanks} {t.residentialAddress[0]}
         </H2>
@@ -241,7 +245,7 @@ class Step1Page extends Component {
     )
 
     const correspondenceAddress = (
-      <Div flex={1} column padding="150px 16px 30px">
+      <Div flex={1} column padding="130px 16px 30px">
         <H2>{t.correspondenceAddress[0]}</H2>
 
         <Div flex="none" column listTop={12} mTop={8}>
@@ -277,7 +281,7 @@ class Step1Page extends Component {
             />
           </Div>
 
-          <FormControl style={{ width: 'calc(50% - 8px)' }}>
+          <FormControl style={{ width: 'calc(50% - 8px)', marginBottom: 16 }}>
             <InputLabel htmlFor="correspondenceCountry">{texts.misc.country}</InputLabel>
 
             <Select
@@ -312,7 +316,7 @@ class Step1Page extends Component {
     )
 
     const taxInformation = (
-      <Div flex={1} column padding="150px 16px 30px">
+      <Div flex={1} column padding="130px 16px 30px">
         <Div flex="none" column>
           <H2>{t.taxInformation[0]}</H2>
 
@@ -355,14 +359,14 @@ class Step1Page extends Component {
     )
 
     const occupationalStatus = (
-      <Div flex={1} column padding="150px 16px 30px">
+      <Div flex={1} column padding="130px 16px 30px">
         <H2>{t.occupationalStatus[0]}</H2>
 
         <Small mTop={8}>
           {t.occupationalStatus[1]} {t.occupationalStatus[3]}
         </Small>
 
-        <Div column mTop={24}>
+        <Div flex="none" mBottom={16} column mTop={24}>
           <FormControl>
             <InputLabel htmlFor="jobSelect">{t.occupationalStatus[2]}</InputLabel>
             <Select
@@ -405,16 +409,29 @@ class Step1Page extends Component {
     )
 
     return (
-      <Fragment>
-        <Route path="/onboarding-2/step-1/name" render={() => name} />
-        <Route path="/onboarding-2/step-1/birth" render={() => birth} />
-        <Route path="/onboarding-2/step-1/residential-address" render={() => residentialAddress} />
-        <Route path="/onboarding-2/step-1/correspondence-address" render={() => correspondenceAddress} />
-        <Route path="/onboarding-2/step-1/tax-information" render={() => taxInformation} />
-        <Route path="/onboarding-2/step-1/occupational-status" render={() => occupationalStatus} />
-      </Fragment>
+      <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator('fade-right')}>
+        <CSSTransition key={this.props.location.key} classNames="fade-right" timeout={500}>
+          <Switch location={this.props.location}>
+            <Route path="/onboarding-2/step-1/name" render={() => name} />
+            <Route path="/onboarding-2/step-1/birth" render={() => birth} />
+            <Route path="/onboarding-2/step-1/residential-address" render={() => residentialAddress} />
+            <Route path="/onboarding-2/step-1/correspondence-address" render={() => correspondenceAddress} />
+            <Route path="/onboarding-2/step-1/tax-information" render={() => taxInformation} />
+            <Route path="/onboarding-2/step-1/occupational-status" render={() => occupationalStatus} />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     )
   }
 }
 
 export default withTexts(Step1Page)
+
+const AnimationWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+`

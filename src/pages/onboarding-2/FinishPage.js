@@ -32,7 +32,7 @@ class FinishPage extends Component {
 
         <Div listLeft={24} itemsStart mTop="auto">
           <img src={cardSample} alt="" />
-          <H2>{texts.onboarding2.other[13]}</H2>
+          <H2 style={{ flex: 1 }}>{texts.onboarding2.other[13]}</H2>
         </Div>
 
         <Button onClick={() => this.props.history.push('/dashboard')} style={{ marginTop: 37 }} secondary>

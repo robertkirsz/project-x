@@ -325,7 +325,7 @@ class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>{t.name[0]}</H2>
 
-        <Div column listTop={12} mTop={8}>
+        <Div flex="none" column listTop={12} mTop={8} mBottom={16}>
           <TextField label={t.name[1]} value={this.state.firstName} onChange={this.handleChange('firstName')} />
 
           <TextField label={t.name[2]} value={this.state.lastName} onChange={this.handleChange('lastName')} />
@@ -361,7 +361,7 @@ class Step1Page extends Component {
 
         <Small mTop={8}>{t.contact[1]}</Small>
 
-        <Div column listTop={12} mTop={8}>
+        <Div flex="none" mBottom={16} column listTop={12} mTop={8}>
           <PhoneInput value={this.state.phoneNumber} onChange={this.handleChange('phoneNumber')} />
 
           <TextField
@@ -386,7 +386,7 @@ class Step1Page extends Component {
       <Div flex={1} column padding="30px 16px">
         <H2>{t.birth[0]}</H2>
 
-        <Div column listTop={12} mTop={8}>
+        <Div  flex="none" mBottom={16} column listTop={12} mTop={8}>
           <TextField
             type="date"
             label={texts.misc.birthDate}

@@ -36,7 +36,7 @@ export default class IntroPage extends Component {
 
   render = () => (
     <Wrapper>
-      <Pattern />
+      <Pattern show={this.state.mounted} />
       <Logo show={this.state.mounted} />
       <Background />
     </Wrapper>
@@ -59,7 +59,8 @@ const Pattern = styled.div`
   width: 100%;
   height: 100%;
   background: url(${pattern});
-  opacity: 0.2;
+  transition: 0.3s;
+  opacity: ${props => props.show ? 0.2 : 0};
   z-index: 11;
 `
 

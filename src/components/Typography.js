@@ -4,6 +4,7 @@ const withUnit = value => (typeof value === 'number' ? `${value}px` : value)
 
 // prettier-ignore
 const baseStyles = css`
+  flex: none;
   display: flex;
   align-items: center;
   margin: 0;
@@ -12,6 +13,7 @@ const baseStyles = css`
   line-height: 1;
   letter-spacing: 0;
   color: ${({ theme }) => theme.darkMode ? 'white' : '#1F1A15'};
+
   ${({ center }) => center && 'text-align: center;'}
   ${({ maxWidth }) => maxWidth && typeof maxWidth !== 'boolean' && css`max-width: ${withUnit(maxWidth)};`}
   ${({ mTop }) => mTop && typeof mTop !== 'boolean' && css`margin-top: ${withUnit(mTop)};`}

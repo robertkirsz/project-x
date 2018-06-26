@@ -38,7 +38,12 @@ class UspPage extends PureComponent {
 
   state = {
     currentSlide: parseInt(this.props.match.params.index, 10) - 1,
-    direction: 'right'
+    direction: 'right',
+    isReady: false
+  }
+
+  componentDidMount() {
+    this.timeout = setTimeout(() => this.setState({ isReady: true }), 300)
   }
 
   goToSlide = index => event => {
@@ -64,7 +69,13 @@ class UspPage extends PureComponent {
         onSwipeLeft={this.goToSlide(move(currentSlide, 1, 4))}
         onSwipeRight={this.goToSlide(move(currentSlide, -1, 4))}
       >
-        <Div flex={1} column itemsCenter padding="24px 0 0">
+        <Div
+          flex={1}
+          column
+          itemsCenter
+          padding="24px 0 0"
+          style={{ transition: '0.3s', opacity: this.state.isReady ? 1 : 0 }}
+        >
           <Pagination small size={5} value={currentSlide} onChange={this.goToSlide} />
 
           <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator(`fade-${direction}`)}>
@@ -109,7 +120,7 @@ const AnimationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   position: relative;
   overflow: hidden;
 `

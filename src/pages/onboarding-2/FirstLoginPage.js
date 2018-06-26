@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { Div } from 'styled-kit'
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import _random from 'lodash/random'
 
 import isPhoneNumberValid from 'utils/isPhoneNumberValid'
@@ -9,7 +10,7 @@ import parseValues from 'utils/parseValues'
 import { withTexts } from 'providers/TextProvider'
 
 import { withStyles } from '@material-ui/core/styles'
-import Switch from '@material-ui/core/Switch'
+import MuiSwitch from '@material-ui/core/Switch'
 import green from '@material-ui/core/colors/green'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import MuiButton from '@material-ui/core/Button'
@@ -33,6 +34,8 @@ import consentLogo2 from 'assets/2/consent-logo-2.svg'
 import arrow from 'assets/arrow-left.svg'
 
 const PIN_LENGTH = 6
+
+const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
 const styles = theme => ({
   colorSwitchBase: {
@@ -165,10 +168,10 @@ class FirstLoginPage extends Component {
         <PhoneInput
           value={this.state.phoneNumber}
           onChange={this.handleChange('phoneNumber')}
-          style={{ marginTop: 35 }}
+          style={{ marginTop: 35, flex: 'none' }}
         />
 
-        <H2 center mTop={8}>
+        <H2 center mTop={8} mBottom={16}>
           {texts.onboarding1.firstLogin[1]}
         </H2>
 
@@ -195,7 +198,7 @@ class FirstLoginPage extends Component {
           length={PIN_LENGTH}
           isValid={pinIsValid}
           onChange={this.change('pin')}
-          style={{ margin: '26px auto 30px' }}
+          style={{ margin: '26px auto 30px', flex: 'none' }}
         />
 
         <H2 center>
@@ -214,6 +217,7 @@ class FirstLoginPage extends Component {
           column
           itemsCenter
           mTop="auto"
+          flex="none"
           style={{ transition: '0.3s', opacity: pinIsValid ? 0 : 1, pointerEvents: pinIsValid && 'none' }}
         >
           <Paragraph center maxWidth={170}>
@@ -258,12 +262,12 @@ class FirstLoginPage extends Component {
           {texts.onboarding2.other[7]}
         </H2>
 
-        <Div column selfStretch mTop={19}>
+        <Div flex="none" mBottom={16} column selfStretch mTop={19}>
           <Div itemsCenter>
             <FormControlLabel
               label={texts.onboarding1.step1.consents[3]}
               control={
-                <Switch
+                <MuiSwitch
                   checked={this.state.consent1}
                   onChange={this.handleCheckboxChange('consent1')}
                   value="consent1"
@@ -285,7 +289,7 @@ class FirstLoginPage extends Component {
             <FormControlLabel
               label={texts.onboarding1.step1.consents[5]}
               control={
-                <Switch
+                <MuiSwitch
                   checked={this.state.consent2}
                   onChange={this.handleCheckboxChange('consent2')}
                   value="consent2"
@@ -307,7 +311,7 @@ class FirstLoginPage extends Component {
             <FormControlLabel
               label={texts.onboarding1.step1.consents[6]}
               control={
-                <Switch
+                <MuiSwitch
                   checked={this.state.consent3}
                   onChange={this.handleCheckboxChange('consent3')}
                   value="consent3"
@@ -352,12 +356,12 @@ class FirstLoginPage extends Component {
           {texts.onboarding2.other[9]}
         </H2>
 
-        <Div column selfStretch mTop={19}>
+        <Div flex="none" mBottom={16} column selfStretch mTop={19}>
           <Div itemsCenter>
             <FormControlLabel
               label={texts.onboarding1.step1.consents[2]}
               control={
-                <Switch
+                <MuiSwitch
                   checked={this.state.consent4}
                   onChange={this.handleCheckboxChange('consent4')}
                   value="consent4"
@@ -379,7 +383,7 @@ class FirstLoginPage extends Component {
             <FormControlLabel
               label={texts.onboarding1.step1.consents[4]}
               control={
-                <Switch
+                <MuiSwitch
                   checked={this.state.consent5}
                   onChange={this.handleCheckboxChange('consent5')}
                   value="consent5"
@@ -414,10 +418,16 @@ class FirstLoginPage extends Component {
 
     return (
       <Fragment>
-        <Route path="/onboarding-2/first-login/phone-number" render={() => phoneNumber} />
-        <Route path="/onboarding-2/first-login/pin-number" render={() => pinNumber} />
-        <Route path="/onboarding-2/first-login/consents-1" render={() => consents1} />
-        <Route path="/onboarding-2/first-login/consents-2" render={() => consents2} />
+        <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator('fade-right')}>
+          <CSSTransition key={this.props.location.key} classNames="fade-right" timeout={500}>
+            <Switch location={this.props.location}>
+              <Route path="/onboarding-2/first-login/phone-number" render={() => phoneNumber} />
+              <Route path="/onboarding-2/first-login/pin-number" render={() => pinNumber} />
+              <Route path="/onboarding-2/first-login/consents-1" render={() => consents1} />
+              <Route path="/onboarding-2/first-login/consents-2" render={() => consents2} />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
 
         <SmsDialog
           withDash
@@ -458,6 +468,15 @@ class FirstLoginPage extends Component {
 }
 
 export default withStyles(styles)(withTexts(FirstLoginPage))
+
+const AnimationWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+`
 
 const ConsentLink = Link.extend`
   font-family: Roboto;

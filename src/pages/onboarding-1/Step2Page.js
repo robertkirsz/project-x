@@ -119,17 +119,17 @@ class Step2Page extends Component {
         <Div column selfStart listTop={40} mTop={24}>
           <Div listLeft={48} itemsCenter>
             <img src={video1} alt="" />
-            <Paragraph>{t.prepareToVideo[0]}</Paragraph>
+            <Paragraph style={{ flex: 1 }}>{t.prepareToVideo[0]}</Paragraph>
           </Div>
 
           <Div listLeft={48} itemsCenter>
             <img src={video2} alt="" />
-            <Paragraph>{t.prepareToVideo[1]}</Paragraph>
+            <Paragraph style={{ flex: 1 }}>{t.prepareToVideo[1]}</Paragraph>
           </Div>
 
           <Div listLeft={48} itemsCenter>
             <img src={video3} alt="" />
-            <Paragraph>{t.prepareToVideo[2]}</Paragraph>
+            <Paragraph style={{ flex: 1 }}>{t.prepareToVideo[2]}</Paragraph>
           </Div>
         </Div>
 

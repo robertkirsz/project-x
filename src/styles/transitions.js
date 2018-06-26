@@ -73,4 +73,26 @@ injectGlobal`
       }
     }
   }
+
+  .fade-bottom {
+    &-enter {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+      &-active {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        transition: 0.5s;
+      }
+    }
+    &-exit {
+      ${layerStyles}
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      &-active {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+        transition: 0.5s;
+      }
+    }
+  }
 `

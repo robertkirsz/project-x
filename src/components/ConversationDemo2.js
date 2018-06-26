@@ -76,7 +76,7 @@ const Wrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-top: 110px;
+  margin-top: 90px;
 `
 
 const Images = styled.div`

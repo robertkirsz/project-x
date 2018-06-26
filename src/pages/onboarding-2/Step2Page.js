@@ -13,7 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import { H1, H2, Paragraph } from 'components/Typography'
 import Button, { ButtonSpinner } from 'components/Button'
 import NativeModal from 'components/NativeModal'
-import ConversationDemo from 'components/ConversationDemo1'
+import ConversationDemo2 from 'components/ConversationDemo2'
 
 import video2 from 'assets/video-identification-2.svg'
 import video4 from 'assets/video-identification-4.svg'
@@ -27,7 +27,7 @@ class Step1Page extends Component {
 
   componentDidMount() {
     if (this.props.location.pathname === '/onboarding-2/step-2/connecting') {
-      // this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
+      this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
     }
   }
 
@@ -36,7 +36,7 @@ class Step1Page extends Component {
       prevProps.location.pathname !== '/onboarding-2/step-2/connecting' &&
       this.props.location.pathname === '/onboarding-2/step-2/connecting'
     ) {
-      // this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
+      this.timeout = setTimeout(this.handleAllowCameraModalShow, 2500)
     }
 
     if (
@@ -63,30 +63,30 @@ class Step1Page extends Component {
 
     const prepareToVideo = (
       <Div flex={1} column itemsCenter padding="150px 16px 30px">
-          <H1 center>{parseValues(texts.onboarding2.other[15], { userName: sessionStorage.getItem('firstName') })}</H1>
+        <H1 center>{parseValues(texts.onboarding2.other[15], { userName: sessionStorage.getItem('firstName') })}</H1>
 
-          <H2 center>{texts.onboarding2.other[16]}</H2>
+        <H2 center>{texts.onboarding2.other[16]}</H2>
 
-          <FormControl style={{ width: '100%', marginTop: 6 }}>
-            <InputLabel htmlFor="country">{texts.misc.country}</InputLabel>
-            <Select value="Deutschland - Personalausweis" >
-              <MenuItem value="Deutschland - Personalausweis">
-                <img src={flag} width="20" alt="" style={{ marginRight: 6 }} /> Deutschland - Personalausweis
-              </MenuItem>
-            </Select>
-          </FormControl>
+        <FormControl style={{ width: '100%', marginTop: 6 }}>
+          <InputLabel htmlFor="country">{texts.misc.country}</InputLabel>
+          <Select value="Deutschland - Personalausweis">
+            <MenuItem value="Deutschland - Personalausweis">
+              <img src={flag} width="20" alt="" style={{ marginRight: 6 }} /> Deutschland - Personalausweis
+            </MenuItem>
+          </Select>
+        </FormControl>
 
-          <Div selfStretch justifyAround mTop={50}>
-            <Div column listTop={16} itemsCenter width={130}>
-              <img src={video2} alt="" width="80" height="80" />
-              <Paragraph center>{texts.onboarding1.step2.prepareToVideo[1]}</Paragraph>
-            </Div>
-
-            <Div column listTop={16} itemsCenter width={130}>
-              <img src={video5} alt="" width="80" height="80" />
-              <Paragraph center>{texts.onboarding1.step2.prepareToVideo[2]}</Paragraph>
-            </Div>
+        <Div selfStretch justifyAround mTop={50}>
+          <Div column listTop={16} itemsCenter width={130}>
+            <img src={video2} alt="" width="80" height="80" />
+            <Paragraph center>{texts.onboarding1.step2.prepareToVideo[1]}</Paragraph>
           </Div>
+
+          <Div column listTop={16} itemsCenter width={130}>
+            <img src={video5} alt="" width="80" height="80" />
+            <Paragraph center>{texts.onboarding1.step2.prepareToVideo[2]}</Paragraph>
+          </Div>
+        </Div>
 
         <Button
           onClick={() => this.props.history.push('/onboarding-2/step-2/connecting')}
@@ -98,7 +98,7 @@ class Step1Page extends Component {
     )
 
     const connecting = (
-      <Div flex={1} column itemsCenter padding="30px 16px">
+      <Div flex={1} column itemsCenter padding="150px 16px 30px">
         <H1 center mTop={44}>
           {texts.onboarding1.step2.connecting[0]}
         </H1>
@@ -129,7 +129,7 @@ class Step1Page extends Component {
 
     const conversation = (
       <Div flex={1} column>
-        <ConversationDemo
+        <ConversationDemo2
           texts={texts.onboarding1.step2.conversation}
           onFinish={() => this.props.history.push('/onboarding-2/step-3')}
         />

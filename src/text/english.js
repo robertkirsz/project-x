@@ -204,17 +204,6 @@ export default {
       3: 'Set up profile picture',
       4: 'Congratulations!'
     },
-    // usp: {
-    //   0: 'Euro money transfer for free and in real time',
-    //   1: 'Transfer money to any bank, business or friend immediately.',
-    //   2: 'ATM for free worldwide',
-    //   3: 'Up to 500 Euro you can take cash from ATM for free in any country.',
-    //   4: 'Multicurrency contactless',
-    //   5: 'Pay in any country with your credit card with exchange rate 0,1%, the lowest on the market.',
-    //   6: '…and many more!',
-    //   7: 'Credit, insurance, investments and more: insure your trips, use simply investment tools. Get your loan on one click process.',
-    //   8: 'Start now!'
-    // },
     other: {
       0: 'Open account in 8 minutes!',
       1: 'Enter the 6-digit code',
@@ -232,10 +221,7 @@ export default {
       13: 'Your MasterCard Debit PayPass card is on its way to the address provided in the form',
       14: "Let's go there!",
       15: '{userName}, before we start',
-      16: 'Select country of your official ID issuance',
-      17: 'Hi, please state your first name and familyname',
-      18: 'Please hold the camera on the front of your ID card. Read out your ID number - it’s in the top right corner.',
-      19: 'Now, please show the back side adn read out the address.'
+      16: 'Select country of your official ID issuance'
     }
   }
 }

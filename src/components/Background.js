@@ -25,11 +25,12 @@ class Background extends Component {
     const [red, black, orange, darkRed, blue, green] = this.state.heights
 
     const isIntroPage = location.pathname === '/onboarding-2/intro'
+    const isConversationPage = location.pathname === '/onboarding-2/step-2/conversation'
 
     return (
       <Wrapper>
         <Content>{children}</Content>
-        <Stripes>
+        <Stripes style={{ paddingBottom: isConversationPage && 90 }}>
           <Red style={{ height: isIntroPage ? 0 : red }} />
           <Black style={{ height: isIntroPage ? 0 : black }} />
           <Orange style={{ height: isIntroPage ? 0 : orange }} />

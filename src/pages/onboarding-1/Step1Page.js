@@ -86,7 +86,8 @@ class Step1Page extends Component {
     showConsentModalId: 'consent1',
     showLocationModal: false,
     allowLocation: false,
-    locationModalCallback: null
+    locationModalCallback: null,
+    showMoreOptionsForm: false
   }
 
   change = name => value => this.setState({ [name]: value })
@@ -560,7 +561,9 @@ class Step1Page extends Component {
 
         <Div column mTop={24} pLeft={24}>
           <FormControl component="fieldset" required>
-            <RadioGroup name="industry" value={this.state.industry} onChange={this.handleChange('industry')}>
+            <RadioGroup name="industry" value={this.state.industry} onChange={event => {
+              this.setState({ industry: event.target.value, showMoreOptionsForm: false })
+            }}>
               {t.industry.industries.map(industry => (
                 <FormControlLabel
                   key={industry}
@@ -573,11 +576,18 @@ class Step1Page extends Component {
           </FormControl>
         </Div>
 
-        {/* TODO: Make ''+ More options' work on '/onboarding-1/step-1/industry' */}
+        {this.state.showMoreOptionsForm && (
+          <TextField
+            value={this.state.industry}
+            onChange={this.handleChange('industry')}
+            style={{ alignSelf: 'center', marginTop: 16 }}
+            autoFocus
+          />
+        )}
 
-        <Link center mTop={16} style={{ alignSelf: 'center' }}>
+        {!this.state.showMoreOptionsForm && <Link center mTop={16} style={{ alignSelf: 'center' }} onClick={() => this.setState({ showMoreOptionsForm: true, industry: '' })}>
           {t.industry[2]}
-        </Link>
+        </Link>}
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/review')}

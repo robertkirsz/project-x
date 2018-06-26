@@ -1,3 +1,5 @@
+// TODO: schować pattern po zakończeniu animacji intro page
+
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { hot } from 'react-hot-loader'
@@ -39,14 +41,13 @@ import DashboardPage from 'pages/onboarding-2/DashboardPage'
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-const VERSION = 'v0.8.0'
+const VERSION = 'v0.8.2'
 
 class App extends Component {
   state = {
     password: '',
     loggedIn: Boolean(sessionStorage.getItem('loggedIn')),
     imagesLoaded: false,
-    shouldPrefillData: false,
     language: sessionStorage.getItem('language') || 'english'
   }
 
@@ -69,7 +70,7 @@ class App extends Component {
   }
 
   render() {
-    const { password, loggedIn, imagesLoaded, shouldPrefillData, language } = this.state
+    const { password, loggedIn, imagesLoaded, language } = this.state
 
     return (
       <TextProvider language={language}>
@@ -128,12 +129,7 @@ class App extends Component {
             <PrivateRoute path="/onboarding-1/usp" isRestricted={!loggedIn} component={UspPage} />
             <PrivateRoute path="/onboarding-1/first-login" isRestricted={!loggedIn} component={FirstLoginPage} />
 
-            <PrivateRoute
-              path="/onboarding-1/step-1"
-              isRestricted={!loggedIn}
-              component={Step1Page}
-              shouldPrefillData={shouldPrefillData}
-            />
+            <PrivateRoute path="/onboarding-1/step-1" isRestricted={!loggedIn} component={Step1Page} />
 
             <PrivateRoute path="/onboarding-1/step-2" isRestricted={!loggedIn} component={Step2Page} />
             <PrivateRoute path="/onboarding-1/step-3" isRestricted={!loggedIn} component={Step3Page} />
@@ -156,11 +152,7 @@ class App extends Component {
           </Switch>
 
           {process.env.NODE_ENV === 'development' && (
-            <RouteChanger
-              location={this.props.location}
-              history={this.props.history}
-              handlePrefill={() => this.setState({ shouldPrefillData: true })}
-            />
+            <RouteChanger location={this.props.location} history={this.props.history} />
           )}
         </Background>
       </TextProvider>
@@ -170,7 +162,6 @@ class App extends Component {
 
 export default hot(module)(App)
 
-/* prettier-ignore */
 const AppVersion = styled.span`
   position: fixed;
   bottom: 8px;

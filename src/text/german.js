@@ -22,8 +22,8 @@ export default {
     confirmPassword: 'Passwort bestätigen',
     deny: 'Ablehnen',
     allow: 'Erlauben',
-    allowLocation: 'Erlaube mBank Europe auf den Standort deines Geräts zuzugreifen',
-    allowCamera: 'Erlaube der mBank Europe App, Bilder und Videos aufzunehmen',
+    allowLocation: 'Erlaube MeineFinanzen auf den Standort deines Geräts zuzugreifen',
+    allowCamera: 'Erlaube der MeineFinanzen App, Bilder und Videos aufzunehmen',
     germany: 'Deutschland',
     continue: 'Continue',
     thanks: 'Thanks!',
@@ -57,7 +57,7 @@ export default {
     },
     step1: {
       intro: {
-        0: 'Eröffne dein mBank europe Konto in 3 einfachen Schritten und beginne mit…'
+        0: 'Eröffne dein MeineFinanzen europe Konto in 3 einfachen Schritten und beginne mit…'
       },
       name: {
         0: 'Bitte erzähle uns etwas über dich',
@@ -114,17 +114,17 @@ export default {
         0: 'Fast geschafft! Nur folgende Einwilligungen fehlen noch',
         1: 'Alle bestätigen',
         2: 'Fernsabsatzgesetz',
-        3: 'Nutzungsbedingungen der mBank und von IDNow',
-        4: 'Werbliche Informationen der mBank-Partner',
+        3: 'Nutzungsbedingungen der MeineFinanzen und von IDNow',
+        4: 'Werbliche Informationen der MeineFinanzen-Partner',
         5: 'Datenverarbeitung und Datennutzung',
         6: 'Datenschutz-Grundverordnung'
       },
       finish: {
-        0: 'Geschafft! Lass und jetzt dein mBank europe Konto eröffnen!',
+        0: 'Geschafft! Lass und jetzt dein MeineFinanzen europe Konto eröffnen!',
         1: 'Unten findest du den Link zu deinem Kontovertrag.',
         2: 'Du musst ihn jetzt nicht herunterladen, wir haben ihn dir bereits per E-Mail geschickt',
-        3: 'Lade den kompletten mBank Kontovertrag herunter (PDF)',
-        4: 'Ich möchte ein mBank europe Konto eröffnen und bestätige, dass ich <em>für mich selbst handle</em>'
+        3: 'Lade den kompletten MeineFinanzen Kontovertrag herunter (PDF)',
+        4: 'Ich möchte ein MeineFinanzen europe Konto eröffnen und bestätige, dass ich <em>für mich selbst handle</em>'
       }
     },
     step2: {
@@ -162,7 +162,7 @@ export default {
         4: 'We can send it again'
       },
       accountReady: {
-        0: 'Dein neues mBank Konto ist eröffnet!',
+        0: 'Dein neues MeineFinanzen Konto ist eröffnet!',
         1: 'Hier sind deine Kontodaten',
         2: 'IBAN',
         3: 'DE12 1234 5678 9876 54',
@@ -227,7 +227,7 @@ export default {
       9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!',
       10: 'To be sure that you log in to the right place, you will recognize it with your profile pic.',
       11: 'Don’t forget to smile!',
-      12: '{userName} your mBank Europe account is ready to use!',
+      12: '{userName} your MeineFinanzen account is ready to use!',
       13: 'Your MasterCard Debit PayPass card is on its way to the address provided in the form',
       14: "Let's go there!",
       15: '{userName}, before we start',

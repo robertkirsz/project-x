@@ -30,13 +30,10 @@ export default props => {
           ))}
         </RoutesList>
       </Button>
-
-      <Button onClick={props.handlePrefill}>Prefill</Button>
     </Wrapper>
   )
 }
 
-/* prettier-ignore */
 const RoutesList = styled.div`
   padding: 2px 4px;
 
@@ -73,7 +70,7 @@ const RoutesList = styled.div`
       text-decoration: underline;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   display: flex;

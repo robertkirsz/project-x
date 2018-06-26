@@ -22,8 +22,8 @@ export default {
     confirmPassword: 'Confirm password',
     deny: 'Deny',
     allow: 'Allow',
-    allowLocation: 'Allow mBank Europe to access this device’s location?',
-    allowCamera: 'Allow mBank Europe app to take pictures and record video?',
+    allowLocation: 'Allow MeineFinanzen to access this device’s location?',
+    allowCamera: 'Allow MeineFinanzen app to take pictures and record video?',
     germany: 'Germany',
     continue: 'Continue',
     thanks: 'Thanks!',
@@ -39,7 +39,7 @@ export default {
     },
     usp: {
       0: 'Transfer money for free worldwide',
-      1: 'Send money abroad for free in realtime with mBank Europe. Transfer money to any bank, business or friend immediately.',
+      1: 'Send money abroad for free in realtime with MeineFinanzen. Transfer money to any bank, business or friend immediately.',
       2: 'ATM for free worldwide',
       3: 'Up to 500 Euro you can take cash from ATM for free in any country.',
       4: 'Multicurrency contactless',
@@ -55,7 +55,7 @@ export default {
     },
     step1: {
       intro: {
-        0: 'Get your new mBank account in only 3 simple steps and start with…'
+        0: 'Get your new MeineFinanzen account in only 3 simple steps and start with…'
       },
       name: {
         0: 'Please tell us something about yourself',
@@ -112,17 +112,17 @@ export default {
         0: 'Almost done! Only a few consents left',
         1: 'Confirm all',
         2: 'Electronic communication',
-        3: 'Terms of Service of mBank and IDNow',
-        4: 'Advertisement of mBank partners',
+        3: 'Terms of Service of MeineFinanzen and IDNow',
+        4: 'Advertisement of MeineFinanzen partners',
         5: 'Data processing and usage',
         6: 'General Data Protection Regulation'
       },
       finish: {
-        0: 'Finally, let’s open your mBank account!',
+        0: 'Finally, let’s open your MeineFinanzen account!',
         1: 'Below is a link to the contract.',
         2: 'But you don’t need to download it now, as we already sent it to you by email.',
-        3: 'Download the full mBank Account Contract (PDF)',
-        4: 'I want to open an mBank account and confirm that I act on <em>my own behalf</em>'
+        3: 'Download the full MeineFinanzen Account Contract (PDF)',
+        4: 'I want to open an MeineFinanzen account and confirm that I act on <em>my own behalf</em>'
       }
     },
     step2: {
@@ -160,7 +160,7 @@ export default {
         4: 'We can send it again'
       },
       accountReady: {
-        0: 'Your new mBank account is ready!',
+        0: 'Your new MeineFinanzen account is ready!',
         1: 'Forward account data',
         2: 'IBAN',
         3: 'DE12 1234 5678 9876 54',
@@ -225,7 +225,7 @@ export default {
       9: 'Thanks to these we will be able to provide you with better quality of advertising, without irritation and unnecessary spam!',
       10: 'To be sure that you log in to the right place, you will recognize it with your profile pic.',
       11: 'Don’t forget to smile!',
-      12: '{userName} your mBank Europe account is ready to use!',
+      12: '{userName} your MeineFinanzen account is ready to use!',
       13: 'Your MasterCard Debit PayPass card is on its way to the address provided in the form',
       14: "Let's go there!",
       15: '{userName}, before we start',

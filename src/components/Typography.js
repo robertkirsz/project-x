@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 
 const withUnit = value => (typeof value === 'number' ? `${value}px` : value)
 
-/* prettier-ignore */
+// prettier-ignore
 const baseStyles = css`
   display: flex;
   align-items: center;

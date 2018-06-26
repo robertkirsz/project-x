@@ -99,7 +99,6 @@ class UspPage extends Component {
 
 export default withTexts(UspPage)
 
-/* prettier-ignore */
 const Header = styled.header`
   flex: none;
   display: flex;

@@ -561,9 +561,13 @@ class Step1Page extends Component {
 
         <Div column mTop={24} pLeft={24}>
           <FormControl component="fieldset" required>
-            <RadioGroup name="industry" value={this.state.industry} onChange={event => {
-              this.setState({ industry: event.target.value, showMoreOptionsForm: false })
-            }}>
+            <RadioGroup
+              name="industry"
+              value={this.state.industry}
+              onChange={event => {
+                this.setState({ industry: event.target.value, showMoreOptionsForm: false })
+              }}
+            >
               {t.industry.industries.map(industry => (
                 <FormControlLabel
                   key={industry}
@@ -585,9 +589,16 @@ class Step1Page extends Component {
           />
         )}
 
-        {!this.state.showMoreOptionsForm && <Link center mTop={16} style={{ alignSelf: 'center' }} onClick={() => this.setState({ showMoreOptionsForm: true, industry: '' })}>
-          {t.industry[2]}
-        </Link>}
+        {!this.state.showMoreOptionsForm && (
+          <Link
+            center
+            mTop={16}
+            style={{ alignSelf: 'center' }}
+            onClick={() => this.setState({ showMoreOptionsForm: true, industry: '' })}
+          >
+            {t.industry[2]}
+          </Link>
+        )}
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/review')}

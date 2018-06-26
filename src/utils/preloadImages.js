@@ -11,6 +11,7 @@ import img11 from 'assets/usp-1.png'
 import img12 from 'assets/usp-2.png'
 import img13 from 'assets/usp-3.png'
 import img14 from 'assets/usp-4.png'
+import img08 from 'assets/usp-5.png'
 import img15 from 'assets/video-identification-1.svg'
 import img16 from 'assets/video-identification-2.svg'
 import img17 from 'assets/video-identification-3.svg'
@@ -54,6 +55,7 @@ const images = [
   img05,
   img06,
   img07,
+  img08,
   img09,
   img10,
   img11,

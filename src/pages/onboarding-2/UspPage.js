@@ -16,6 +16,7 @@ import image1 from 'assets/2/usp-1.gif'
 import image2 from 'assets/2/usp-2.gif'
 import image3 from 'assets/2/usp-3.gif'
 import image4 from 'assets/2/usp-4.gif'
+import image5 from 'assets/2/usp-5.gif'
 
 const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
@@ -47,7 +48,7 @@ class UspPage extends PureComponent {
   }
 
   handleButtonClick = () => {
-    this.state.currentSlide === 3
+    this.state.currentSlide === 4
       ? this.props.history.push('/onboarding-2/first-login/phone-number')
       : this.props.history.replace(`/onboarding-2/usp/${this.state.currentSlide + 2}`)
   }
@@ -56,15 +57,15 @@ class UspPage extends PureComponent {
     const { texts, location } = this.props
     const { currentSlide, direction } = this.state
 
-    const t = texts.onboarding2.usp
+    const t = texts.onboarding1.usp
 
     return (
       <Swiper
-        onSwipeLeft={this.goToSlide(move(currentSlide, 1, 3))}
-        onSwipeRight={this.goToSlide(move(currentSlide, -1, 3))}
+        onSwipeLeft={this.goToSlide(move(currentSlide, 1, 4))}
+        onSwipeRight={this.goToSlide(move(currentSlide, -1, 4))}
       >
         <Div flex={1} column itemsCenter padding="24px 0 0">
-          <Pagination small size={4} value={currentSlide} onChange={this.goToSlide} />
+          <Pagination small size={5} value={currentSlide} onChange={this.goToSlide} />
 
           <TransitionGroup component={AnimationWrapper} childFactory={childFactoryCreator(`fade-${direction}`)}>
             <CSSTransition key={location.key} classNames={`fade-${direction}`} timeout={500}>
@@ -84,12 +85,16 @@ class UspPage extends PureComponent {
                 <Route path="/onboarding-2/usp/4">
                   <Screen image={image4} title={t[6]} subtitle={t[7]} />
                 </Route>
+
+                <Route path="/onboarding-2/usp/5">
+                  <Screen image={image5} title={t[8]} subtitle={t[9]} />
+                </Route>
               </Switch>
             </CSSTransition>
           </TransitionGroup>
 
           <Button onClick={this.handleButtonClick} style={{ margin: 'auto 16px 48px' }}>
-            {this.state.currentSlide === 3 ? t[8] : texts.misc.continue}
+            {this.state.currentSlide === 4 ? t[10] : texts.misc.continue}
           </Button>
         </Div>
       </Swiper>

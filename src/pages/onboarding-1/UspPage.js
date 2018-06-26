@@ -16,6 +16,7 @@ import image1 from 'assets/usp-1.png'
 import image2 from 'assets/usp-2.png'
 import image3 from 'assets/usp-3.png'
 import image4 from 'assets/usp-4.png'
+import image5 from 'assets/usp-5.png'
 
 class UspPage extends Component {
   state = { currentSlide: 0 }
@@ -35,8 +36,8 @@ class UspPage extends Component {
         </Header>
 
         <Swiper
-          onSwipeLeft={this.goToSlide(move(currentSlide, 1, 3))}
-          onSwipeRight={this.goToSlide(move(currentSlide, -1, 3))}
+          onSwipeLeft={this.goToSlide(move(currentSlide, 1, 4))}
+          onSwipeRight={this.goToSlide(move(currentSlide, -1, 4))}
         >
           <Div flex={1}>
             {currentSlide === 0 && (
@@ -86,12 +87,24 @@ class UspPage extends Component {
                 </H2>
               </Div>
             )}
+
+            {currentSlide === 4 && (
+              <Div flex={1} column itemsCenter padding={30}>
+                <Image src={image5} />
+                <H1 center mTop={24}>
+                  {t[8]}
+                </H1>
+                <H2 center mTop={16}>
+                  {t[9]}
+                </H2>
+              </Div>
+            )}
           </Div>
         </Swiper>
 
-        {currentSlide < 3 && <Pagination size={4} value={currentSlide} onChange={this.goToSlide} />}
+        {currentSlide < 4 && <Pagination size={5} value={currentSlide} onChange={this.goToSlide} />}
 
-        {currentSlide === 3 && <Button onClick={() => this.props.history.push('/onboarding-1/step-1')}>{t[8]}</Button>}
+        {currentSlide === 4 && <Button onClick={() => this.props.history.push('/onboarding-1/step-1')}>{t[10]}</Button>}
       </Div>
     )
   }

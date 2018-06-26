@@ -33,6 +33,7 @@ export default [
   '/onboarding-2/usp/2',
   '/onboarding-2/usp/3',
   '/onboarding-2/usp/4',
+  '/onboarding-2/usp/5',
   '/onboarding-2/first-login/phone-number',
   '/onboarding-2/first-login/pin-number',
   '/onboarding-2/first-login/consents-1',

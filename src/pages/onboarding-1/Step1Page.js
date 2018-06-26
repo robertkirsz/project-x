@@ -773,7 +773,15 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-1/finish')}
-          disabled={!allValid(consentData.map(item => item.id), this.state)}
+          disabled={
+            !(
+              this.state.consent1 &&
+              this.state.consent2 &&
+              this.state.consent3 &&
+              this.state.consent4 &&
+              this.state.consent5
+            )
+          }
           style={{ marginTop: 'auto' }}
         >
           {texts.misc.nextStep}
@@ -809,7 +817,7 @@ class Step1Page extends Component {
 
         <Button
           onClick={() => this.props.history.push('/onboarding-1/step-2')}
-          disabled={!allValid(['consent6'], this.state)}
+          disabled={!this.state.consent6}
           style={{ marginTop: 24 }}
         >
           {texts.misc.nextStep}

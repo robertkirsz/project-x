@@ -80,6 +80,7 @@ class SmsVerificationDemo extends Component {
           placeholder={texts.misc.validationCode}
           value={this.state.pin}
           onChange={event => this.setState({ pin: event.target.value })}
+          type="number"
         />
 
         <Button

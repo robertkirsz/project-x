@@ -88,7 +88,7 @@ class App extends Component {
   }
 
   render() {
-    const { password, loggedIn, imagesLoaded, language, direction, routeIndex } = this.state
+    const { password, loggedIn, imagesLoaded, language, direction } = this.state
 
     return (
       <TextProvider language={language}>

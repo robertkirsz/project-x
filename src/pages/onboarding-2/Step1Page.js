@@ -196,6 +196,7 @@ class Step1Page extends Component {
               value={this.state.streetNumber}
               onChange={this.handleChange('streetNumber')}
               style={{ flex: 1 }}
+              type="number"
             />
           </Div>
 

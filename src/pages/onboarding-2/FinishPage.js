@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Div } from 'styled-kit'
 
@@ -12,36 +12,28 @@ import pattern from 'assets/2/background-pattern.svg'
 import cardSample from 'assets/2/card-sample.svg'
 import photoPreview from 'assets/2/photo-preview.png'
 
-class FinishPage extends Component {
-  state = {}
+const FinishPage = ({ texts, history }) => (
+  <Background flex={1} column itemsCenter padding="110px 16px 32px">
+    <Photo src={photoPreview} alt="" />
 
-  render() {
-    const { texts } = this.props
+    <Title
+      dangerouslySetInnerHTML={{
+        __html: parseValues(texts.onboarding2.other[12], {
+          userName: `<strong>${sessionStorage.getItem('firstName')} ${sessionStorage.getItem('lastName')}</strong>`
+        })
+      }}
+    />
 
-    return (
-      <Background flex={1} column itemsCenter padding="110px 16px 32px">
-        <Photo src={photoPreview} alt="" />
+    <Div listLeft={24} itemsStart mTop="auto">
+      <img src={cardSample} alt="" />
+      <H2 style={{ flex: 1 }}>{texts.onboarding2.other[13]}</H2>
+    </Div>
 
-        <Title
-          dangerouslySetInnerHTML={{
-            __html: parseValues(texts.onboarding2.other[12], {
-              userName: `<strong>${sessionStorage.getItem('firstName')} ${sessionStorage.getItem('lastName')},</strong>`
-            })
-          }}
-        />
-
-        <Div listLeft={24} itemsStart mTop="auto">
-          <img src={cardSample} alt="" />
-          <H2 style={{ flex: 1 }}>{texts.onboarding2.other[13]}</H2>
-        </Div>
-
-        <Button onClick={() => this.props.history.push('/dashboard')} style={{ marginTop: 37 }} secondary>
-          {texts.onboarding2.other[14]}
-        </Button>
-      </Background>
-    )
-  }
-}
+    <Button onClick={() => history.push('/onboarding-2/dashboard')} style={{ marginTop: 37 }} secondary>
+      {texts.onboarding2.other[14]}
+    </Button>
+  </Background>
+)
 
 export default withTexts(FinishPage)
 

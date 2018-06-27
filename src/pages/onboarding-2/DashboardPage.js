@@ -12,4 +12,5 @@ const Background = Div.extend`
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center bottom, center top;
+  margin-bottom: 6px;
 `

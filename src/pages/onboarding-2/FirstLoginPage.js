@@ -228,7 +228,7 @@ class FirstLoginPage extends Component {
           flex="none"
           style={{ transition: '0.3s', opacity: pinIsValid ? 0 : 1, pointerEvents: pinIsValid && 'none' }}
         >
-          <Paragraph center maxWidth={170}>
+          <Paragraph center maxWidth={280}>
             {parseValues(texts.onboarding2.other[3], {
               time: '0:' + (this.state.resendTime < 10 ? `0${this.state.resendTime}` : this.state.resendTime)
             })}

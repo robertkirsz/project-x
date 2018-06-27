@@ -60,9 +60,8 @@ class UspPage extends PureComponent {
 
   handleButtonClick = () => {
     if (this.state.currentSlide === 4) {
-      this.setState({ show: false }, () => {
+      return this.setState({ show: false }, () => {
         this.timeout = setTimeout(() => this.props.history.push('/onboarding-2/first-login/phone-number'), 500)
-        return
       })
     }
 

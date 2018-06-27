@@ -16,7 +16,7 @@ const SmsDialog = ({ pin, isVisible, withDash, texts, ...props }) => {
         <Avatar>me</Avatar>
 
         <Div column mLeft={12}>
-          <Title>MeineFinanzen</Title>
+          <Title>Meine Finanzen</Title>
 
           <Subtitle>
             {parseValues(texts.onboarding1.step2.smsCode[0], {

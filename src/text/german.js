@@ -5,8 +5,8 @@ export default {
     skip: 'Überspringen',
     okay: 'Okay',
     residentialAddress: 'Wohnanschrift',
-    correspondenceAddress: 'Korrespondenzanschrift',
-    phoneNumber: 'Telefonnummer',
+    correspondenceAddress: 'Abweichende Postadresse',
+    phoneNumber: 'Handynummer',
     emailAddress: 'E-Mail Adresse',
     birthDate: 'Geburtsdatum',
     birthPlace: 'Geburtsort',
@@ -27,7 +27,7 @@ export default {
     germany: 'Deutschland',
     continue: 'Fortsetzen',
     thanks: 'Danke!',
-    start: 'Lasst uns anfangen!',
+    start: 'Lass uns anfangen!',
     read: 'Lesen',
     enter: 'Eingeben',
     validationCode: 'Validierungscode'
@@ -58,7 +58,7 @@ export default {
     },
     step1: {
       intro: {
-        0: 'Eröffne dein Meine Finanzen  Konto in 3 einfachen Schritten und beginne mit…'
+        0: 'Eröffne dein Meine Finanzen Konto in 3 einfachen Schritten und beginne mit…'
       },
       name: {
         0: 'Bitte erzähle uns etwas über dich',
@@ -71,7 +71,7 @@ export default {
       },
       contact: {
         0: 'Wir benötigen deine Kontaktinformationen',
-        1: 'Deine Telefonnummer und E-Mail Adresse werden für die Registrierung gebraucht'
+        1: 'Deine Handynummer und E-Mail Adresse werden für die Registrierung benötigt'
       },
       birth: {
         0: 'Bitte gib folgende Daten ein…',
@@ -84,7 +84,7 @@ export default {
         4: 'Hausnummer'
       },
       correspondenceAddress: {
-        0: 'Füge deine Korrespondenzanschrift hinzu'
+        0: 'Füge (falls notwendig) eine abweichende Postadresse hinzu'
       },
       taxInformation: {
         0: 'Möchtest du deine Steuerinformationen angeben?',
@@ -98,14 +98,14 @@ export default {
         0: 'Was machst du beruflich?',
         1: 'Wir müssen dir die Frage erneut aus rechtlichen Gründen stellen',
         2: 'Wähle deinen derzeit ausgeübten Beruf aus',
-        3: 'und in welcher Branche arbeitest du',
+        3: 'und in welcher Branche arbeitest du?',
         roles: ['Geschäftsstellenleiter', 'Creative director', 'Produktmanager']
       },
       industry: {
         0: 'In welcher Branche arbeitest du?',
         1: 'Das ist die letzte Frage!',
         2: '+ Weitere Optionen',
-        3: 'Wir benötigen dies aus rechtlichen Gründen',
+        3: 'Wir benötigen diese Information aus rechtlichen Gründen',
         industries: ['Keine Angabe', 'Finanzen', 'Fertigungsindustrie', 'Tourismus']
       },
       review: {
@@ -121,11 +121,11 @@ export default {
         6: 'Datenschutz-Grundverordnung'
       },
       finish: {
-        0: 'Geschafft! Lass und jetzt dein Meine Finanzen  Konto eröffnen!',
+        0: 'Geschafft! Lass und jetzt dein Meine Finanzen Konto eröffnen!',
         1: 'Unten findest du den Link zu deinem Kontovertrag.',
         2: 'Du musst ihn jetzt nicht herunterladen, wir haben ihn dir bereits per E-Mail geschickt',
         3: 'Lade den kompletten Meine Finanzen Kontovertrag herunter (PDF)',
-        4: 'Ich möchte ein Meine Finanzen  Konto eröffnen und bestätige, dass ich <em>für mich selbst handle</em>'
+        4: 'Ich möchte ein Meine Finanzen Konto eröffnen und bestätige, dass ich <em>für mich selbst handle</em>'
       }
     },
     step2: {
@@ -140,27 +140,27 @@ export default {
       },
       connecting: {
         0: 'Bitte warte einen Moment',
-        1: 'Wir stellen die Verbindung mit einem/einer unserer Berater(innen) her'
+        1: 'Wir stellen die Verbindung mit einem/einer unserer Experten her'
       },
       waiting: {
         0: 'Bitte warte einen Moment'
       },
       conversation: {
         0: 'Name und Foto',
-        1: 'Bitte schauen Sie in die Kamera und sagen Ihren Vor und Nachname.',
+        1: 'Bitte schaue in die Kamera und sage deinen Vor- und Nachnamen.',
         2: 'Vorderseite des Personalausweises',
-        3: 'Bitte halten sie die Vorderseite des Personalausweises in die Kamera, damit wir die Details lesen können.',
+        3: 'Bitte halte die Vorderseite des Personalausweises in die Kamera, damit wir die Details lesen können.',
         4: 'Rückseite des Personalausweises',
-        5: 'Bitte halten sie die Rückseite des Personalausweises in die Kamera, damit wir die Details lesen können.',
+        5: 'Bitte halte die Rückseite des Personalausweises in die Kamera, damit wir die Details lesen können.',
         6: 'Einen Moment bitte…',
-        7: 'Bitte warten sie kurz, da ein Experte deine Daten checkt.'
+        7: 'Bitte warte kurz, da ein Experte deine Daten checkt.'
       },
       smsCode: {
         0: 'Dein Validierungscode lautet {code}',
         1: 'SMS Code',
-        2: 'Abschließend musst du den Ident Code eingeben. Dieser Code wird als SMS an ihre Nummer geschickt.',
-        3: 'Haben sie die SMS erhalten?',
-        4: 'Wir können diesen Code nochmal schicken'
+        2: 'Abschließend musst du den Ident Code eingeben. Dieser Code wird als SMS an deine Nummer geschickt.',
+        3: 'Hast du die SMS erhalten?',
+        4: 'Wir können dir diesen Code nochmal schicken'
       },
       accountReady: {
         0: 'Dein neues Meine Finanzen Konto ist eröffnet!',
@@ -187,7 +187,7 @@ export default {
       passwordSetup: {
         title: 'Passwort Einstellungen',
         0: 'Wir benötigen deine Kontaktinformationen',
-        1: 'Du benötigst dieses Passwort um dich in deinen Account einzuloggen. Für eine sichere Passwortstärke verwendest du am besten mindestens 6 Buchstaben, einer davon sollte groß sein, Zeichen und Zahlen'
+        1: 'Du benötigst dieses Passwort, um dich in deinen Account einzuloggen. Für eine sichere Passwortstärke verwendest du am besten mindestens 6 Buchstaben, einer davon sollte groß sein, Sonderzeichen und Zahlen'
       },
       emailConfirm: {
         title: 'E-Mail Bestätigung',
@@ -201,27 +201,27 @@ export default {
       0: 'Persönliche Informationen',
       1: 'Video Identifikation',
       2: 'Kontoeröffnung',
-      3: 'Profil einsetzen',
+      3: 'Gesichtserkennung',
       4: 'Glückwunsch!'
     },
     other: {
       0: 'Eröffne das Konto in 8 Minuten!',
-      1: 'Gebe den 6-stelligen Code ein',
-      2: 'Wir haben es an folgende {phoneNumber} geschickt',
-      3: 'Warten sie {time} und wenn der Code nicht ankommt, senden wir ihnen einen neuen.',
+      1: 'Gib den 6-stelligen Code ein',
+      2: 'Wir haben ihn dir an folgende Handynummer {phoneNumber} geschickt',
+      3: 'Warte {time} und wenn der Code nicht ankommt, senden wir ihn dir erneut.',
       4: 'Code nochmal senden',
-      5: 'Bestätigen und Paaren',
+      5: 'Bestätigen',
       6: 'Zustimmung zur Datenverarbeitung',
-      7: 'Dies ist notwendig um ihnen den besten Service auch im Zusammenhang mit europäischen Gesetzen zu bieten',
+      7: 'Dies ist notwendig um dir den besten Service auch im Zusammenhang mit europäischen Gesetzen zu bieten',
       8: 'Bestätigung Marketing',
-      9: 'So bekommen Sie hochwertige Werbung ohne nötigen Spam!',
-      10: 'Um sicher zu sein, dass Sie sich am richtigen Ort eingeloggt werden Sie an Ihrem Profilbild erkannt.',
+      9: 'So erhälst du passende Werbung und keinen unnötigen Spam!',
+      10: 'Nehme nun ein Foto auf, damit du dich in Zukunft mittels Gesichtserkennung einloggen kannst.',
       11: 'Bitte lächeln!',
-      12: '{userName}, Ihr Mein Finanzen Konto ist jetzt bereit!',
-      13: 'Ihre Mastercard-Bankkarte ist  nun unterwegs zur Adresse, die Sie angegeben haben',
+      12: '{userName} Dein Mein Finanzen Konto ist jetzt bereit!',
+      13: 'Deine Mastercard-Bankkarte ist unterwegs zu der von die angegebenen Adresse',
       14: 'Los!',
       15: '{userName}, bevor wir anfangen',
-      16: 'Wählen Sie das Ausstellerland Ihres Ausweises'
+      16: 'Wähle das Ausstellerland deines Ausweises aus'
     }
   }
 }

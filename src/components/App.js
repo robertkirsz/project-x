@@ -41,7 +41,7 @@ import DashboardPage from 'pages/onboarding-2/DashboardPage'
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-const VERSION = 'v1.0.2'
+const VERSION = 'v1.0.3'
 
 const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 
@@ -165,7 +165,7 @@ class App extends Component {
                   <PrivateRoute path="/onboarding-2/step-3" isRestricted={!loggedIn} component={Step3Page2} />
                   <PrivateRoute path="/onboarding-2/step-4" isRestricted={!loggedIn} component={Step4Page2} />
                   <PrivateRoute path="/onboarding-2/finish" isRestricted={!loggedIn} component={FinishPage2} />
-                  <PrivateRoute path="/dashboard" isRestricted={!loggedIn} component={DashboardPage} />
+                  <PrivateRoute path="/onboarding-2/dashboard" isRestricted={!loggedIn} component={DashboardPage} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

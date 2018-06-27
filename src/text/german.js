@@ -39,8 +39,8 @@ export default {
       2: 'Ich habe bereits ein Konto'
     },
     usp: {
-      0: 'Weltweit kostenfrei Geld abheben',
-      1: 'In Deutschland kannst du in mehr als 15.000 Stores unserer Partner kostenlos Geld abheben. Im Ausland kannst du bis zu 500 Euro kostenlos abheben',
+      0: 'Weltweit kostenfrei Geld abheben und einzahlen',
+      1: 'In Deutschland kannst du an Geldautomaten und in mehr als 15.000 Stores unserer Partner kostenlos Geld abheben und einzahlen',
       2: 'Überweise in Deutschland & in Europa in Echtzeit',
       3: 'Sofortige Benachrichtigung über all deine Kontobewegungen',
       4: 'Regelmäßige Sparmöglichkeit - ganz einfach sparen ohne Aufwand',

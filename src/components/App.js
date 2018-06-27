@@ -41,7 +41,7 @@ import DashboardPage from 'pages/onboarding-2/DashboardPage'
 // 404
 import NotFoundPage from 'pages/NotFoundPage'
 
-const VERSION = 'v1.0.1'
+const VERSION = 'v1.0.2'
 
 const childFactoryCreator = classNames => child => React.cloneElement(child, { classNames })
 

@@ -50,23 +50,27 @@ export default class ConversationDemo1 extends Component {
 
     return (
       <Wrapper onClick={this.goNext}>
-        <Images>
-          <Primary
-            style={{
-              backgroundImage: `url(${screens[screenIndex].primary})`,
-              backgroundSize: screens[screenIndex].size,
-              backgroundPosition: screens[screenIndex].position
-            }}
-          />
-          {screens[screenIndex].secondary && <Secondary />}
-          <Logo />
-        </Images>
+        {screens.map((screen, index) => (
+          <Layer key={index} isVisible={index <= screenIndex} style={{ zIndex: index }}>
+            <Images>
+              <Primary
+                style={{
+                  backgroundImage: `url(${screens[index].primary})`,
+                  backgroundSize: screens[index].size,
+                  backgroundPosition: screens[index].position
+                }}
+              />
+              {screens[index].secondary && <Secondary />}
+              <Logo />
+            </Images>
 
-        <Content>
-          <Bubble>
-            <Subtitle>{screens[screenIndex].subtitle}</Subtitle>
-          </Bubble>
-        </Content>
+            <Content>
+              <Bubble>
+                <Subtitle>{screens[index].subtitle}</Subtitle>
+              </Bubble>
+            </Content>
+          </Layer>
+        ))}
       </Wrapper>
     )
   }
@@ -74,9 +78,21 @@ export default class ConversationDemo1 extends Component {
 
 const Wrapper = styled.div`
   flex: 1;
+  margin-top: 90px;
+  position: relative;
+`
+
+const Layer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 90px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s;
+  opacity: ${props => (props.isVisible ? 1 : 0)};
+  background: black;
 `
 
 const Images = styled.div`
@@ -87,7 +103,6 @@ const Images = styled.div`
 
 const Primary = styled.div`
   flex: 1;
-  background-color: black;
   background-repeat: no-repeat;
 `
 
